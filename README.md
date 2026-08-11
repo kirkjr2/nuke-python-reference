@@ -1,5 +1,7 @@
 # Nuke Python Reference
 
+**Live reference:** https://nuke-python-reference.pages.dev/
+
 Unofficial community reference for Nuke Python scripting.
 
 The site provides a searchable reference for native Nuke nodes, their Python-facing arguments, defaults, example values, menu locations, and curated Python examples.
