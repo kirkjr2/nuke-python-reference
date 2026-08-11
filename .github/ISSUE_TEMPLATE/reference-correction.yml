@@ -1,6 +1,8 @@
 name: Reference correction
-about: Report incorrect node data, argument information, examples, or documentation
-labels: [documentation]
+description: Report incorrect node data, argument information, examples, or documentation
+title: "Reference correction: "
+labels:
+  - documentation
 body:
   - type: markdown
     attributes:
