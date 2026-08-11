@@ -1,0 +1,75 @@
+name: Reference correction
+about: Report incorrect node data, argument information, examples, or documentation
+labels: [documentation]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the Nuke Python Reference. Include the specific node and Nuke version whenever possible.
+
+  - type: input
+    id: node
+    attributes:
+      label: Node or page
+      description: Node class, display name, or reference page.
+      placeholder: Blur, Merge2, Tracker4...
+    validations:
+      required: true
+
+  - type: input
+    id: nuke-version
+    attributes:
+      label: Nuke version
+      description: The Nuke version where you observed the issue.
+      placeholder: 17.0v3
+    validations:
+      required: false
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: What needs correcting?
+      options:
+        - Argument or knob name
+        - Python type
+        - Default value
+        - Allowed/example value
+        - Description
+        - Python example
+        - Menu/category location
+        - Node availability/version difference
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What the reference currently shows
+      description: Paste the incorrect text, code, value, or behavior if possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should show
+      description: Describe the correction and include working Python if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Source or verification
+      description: Optional Foundry documentation, Nuke test result, tutorial, screenshot, or other source supporting the correction.
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Anything else that would help reproduce or verify the issue.
+    validations:
+      required: false
