@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "title": "Create a TimeDissolve node",
+      "code": "# Create the node and keep a reference to it.\ntimeDissolve = nuke.createNode(\"TimeDissolve\")",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "foundry_toolbar_16",
+          "erwan_python"
+        ],
+        "editorial_note": "Node class is present in the locked scanner dataset; Foundry toolbar source is used where the class is exposed in the standard toolbar."
+      }
+    },
+    {
+      "title": "Connect foreground and background inputs",
+      "code": "# Connect two image streams to the node.\ntimeDissolve = nuke.createNode(\"TimeDissolve\")\ntimeDissolve.setInput(0, foreground)\ntimeDissolve.setInput(1, background)",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "foundry_toolbar_16",
+          "erwan_python"
+        ],
+        "editorial_note": "Generic two-input graph pattern; exact A/B semantic labels remain defined by the scanner metadata."
+      }
+    },
+    {
+      "arguments": [
+        "in"
+      ],
+      "code": "# Configure the \"in\" control.\ntimeDissolve = nuke.createNode(\"TimeDissolve\")\ntimeDissolve[\"in\"].setValue(0.0)",
+      "confidence": "scanner_backed",
+      "kind": "scanner_backed_editorial",
+      "provenance": {
+        "argument": "in",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "generator_reference_examples",
+        "source": "locked_reference_metadata",
+        "source_type": "generated",
+        "editorial_pass": "remaining_queue_v5"
+      },
+      "title": "Set in",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Merge",
+    "class": "TimeDissolve",
+    "display_name": "TimeDissolve",
+    "id": "node:TimeDissolve",
+    "menu_path": "Merge/TimeDissolve"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_EDITORIAL",
+  "status_reason": "Remaining-queue functional editorial pass completed. Examples combine the locked scanner's node/knob data with documented Nuke Python creation, graph-wiring, and inspection patterns. Node-specific interactive workflows are not invented.",
+  "editorial_family": "Merge / Channel"
+}

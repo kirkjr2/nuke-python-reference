@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "title": "Create a C_CameraSolver2_1 node",
+      "code": "# Create the node and keep a reference to it.\nc_CameraSolver2_1 = nuke.createNode(\"C_CameraSolver2_1\")",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "foundry_toolbar_16",
+          "erwan_python"
+        ],
+        "editorial_note": "Node class is present in the locked scanner dataset; Foundry toolbar source is used where the class is exposed in the standard toolbar."
+      }
+    },
+    {
+      "arguments": [
+        "alphaShape"
+      ],
+      "code": "# Configure the \"alphaShape\" control.\nc_CameraSolver2_1 = nuke.createNode(\"C_CameraSolver2_1\")\nc_CameraSolver2_1[\"alphaShape\"].setValue(\"Elliptical\")",
+      "confidence": "scanner_backed",
+      "kind": "scanner_backed_editorial",
+      "provenance": {
+        "argument": "alphaShape",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated",
+        "editorial_pass": "remaining_queue_v5"
+      },
+      "title": "Set Shape",
+      "editorial_revision": "v2_task_comment"
+    },
+    {
+      "title": "Inspect the node's public knobs",
+      "code": "# List the knob names exposed by this node in your Nuke version.\nc_CameraSolver2_1 = nuke.createNode(\"C_CameraSolver2_1\")\nprint(c_CameraSolver2_1.knobs().keys())",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "hiram_snippets",
+          "erwan_python"
+        ],
+        "editorial_note": "Useful when node controls vary by Nuke version or the node is specialized."
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "CaraVR",
+    "class": "C_CameraSolver2_1",
+    "display_name": "C_CameraSolver",
+    "id": "node:C_CameraSolver2_1",
+    "menu_path": "CaraVR/C_CameraSolver"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_EDITORIAL",
+  "status_reason": "Remaining-queue functional editorial pass completed. Examples combine the locked scanner's node/knob data with documented Nuke Python creation, graph-wiring, and inspection patterns. Node-specific interactive workflows are not invented.",
+  "editorial_family": "Utility / Other"
+}

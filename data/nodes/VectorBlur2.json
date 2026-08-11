@@ -1,0 +1,2924 @@
+{
+  "$schema": "../schemas/node.schema.json",
+  "argument_order": [
+    "alpha",
+    "blur_inside",
+    "blur_type",
+    "blur_uv",
+    "channels",
+    "fringe",
+    "gpuName",
+    "grow_bbox",
+    "inject",
+    "invert_mask",
+    "invert_uv",
+    "maskChannelInput",
+    "maskChannelMask",
+    "maskFromFlag",
+    "mix",
+    "motion_falloff",
+    "mv_presets",
+    "normalize",
+    "offset",
+    "output",
+    "scale",
+    "soft_lines",
+    "useGPUIfAvailable",
+    "uv",
+    "uv_offset"
+  ],
+  "arguments": {
+    "alpha": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "none"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "If your vectors have been pre-multiplied, set this to the channel that was used to pre-multiply them.\n\nWhere possible, you should use vectors that have not been pre-multiplied but if these are not available, providing the channel that was used for pre-multiplication should improve the results."
+      },
+      "id": "arg:alpha",
+      "knob_type": "Channel_Knob",
+      "label": "uv alpha",
+      "name": "alpha",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "none",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          "rgba",
+          "rgb",
+          "alpha",
+          "none"
+        ]
+      }
+    },
+    "blur_inside": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Apply a small blur inside regions with zero motion, to give a smoother transition to areas with motion blur."
+      },
+      "id": "arg:blur_inside",
+      "knob_type": "Boolean_Knob",
+      "label": "blur inside",
+      "name": "blur_inside",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "blur_type": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 1.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "gaussian"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The profile to use along the direction of blur:\n\n@b;uniform@n\ta box-like profile with uniform weighting along the blur vector\n@b;gaussian@n\ta gaussian profile with a softer fall-off towards the ends of the blur vector. "
+      },
+      "id": "arg:blur_type",
+      "knob_type": "Enumeration_Knob",
+      "label": "blur type",
+      "name": "blur_type",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "gaussian",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "uniform",
+          "gaussian"
+        ]
+      }
+    },
+    "blur_uv": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "none"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Apply the motion blur filter to the motion vectors themselves, before using them to blur the image. This smooths out gradients in the motion vectors, resulting in a softer blur between regions with very different motion.\n\n@b;none@n\tdon't blur the UVs\n@b;uniform@n\tapply a small uniform blur to soften edges in the UV map\n@b;linear@n\tapply a linearly-weighted blur to blend between regions with different motion. This has a stronger  effect than the @b;uniform@n option."
+      },
+      "id": "arg:blur_uv",
+      "knob_type": "Enumeration_Knob",
+      "label": "blur uv",
+      "name": "blur_uv",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "none",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "none",
+          "uniform",
+          "linear"
+        ]
+      }
+    },
+    "channels": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "all"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The effect is applied only to these channels"
+      },
+      "id": "arg:channels",
+      "knob_type": "ChannelMask_Knob",
+      "label": "",
+      "name": "channels",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "all",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          "rgba",
+          "rgb",
+          "alpha",
+          "all",
+          "none"
+        ]
+      }
+    },
+    "fringe": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use 4*(1-mask)*mask to mix."
+      },
+      "id": "arg:fringe",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "fringe",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "gpuName": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "NVIDIA GeForce RTX 4070 Ti SUPER"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "This is the GPU that will be used for rendering, when <b>Use GPU if available</b> is selected.\n\nIf you have more than one GPU in your machine, you can select a different <b>GPU Device</b> to use by editing your <b>Preferences</b>. (Note that selecting a different GPU will require a restart of Nuke to take effect.)\n\n<b>Local GPU</b> will be shown as <b>Not available</b> when any of the following is true:\n\t * <b>Use CPU</b> is selected as the <b>GPU Device</b> in your <b>Preferences</b>.\n\t * No suitable GPU was found on your system. Please refer to the documentation for details of the requirements for GPU acceleration.\n\t * It was not possible to create a context for processing on the selected GPU. For example, this can happen when there is not enough free memory available on the GPU.\n\n\n\tTo use the GPU when rendering from the command line, add <b>--gpu</b> to your command.\n"
+      },
+      "id": "arg:gpuName",
+      "knob_type": "Text_Knob",
+      "label": "",
+      "name": "gpuName",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "NVIDIA GeForce RTX 4070 Ti SUPER"
+        ]
+      }
+    },
+    "grow_bbox": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "grow_bbox\nAdd this many pixels to outside edge of image. You will need to set this manually for cropped images with non-zero uv channels."
+      },
+      "id": "arg:grow_bbox",
+      "knob_type": "WH_Knob",
+      "label": "expand blur bbox",
+      "name": "grow_bbox",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0.0,
+            0.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "inject": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Copy mask to the output mask.a channel"
+      },
+      "id": "arg:inject",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "inject",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "invert_mask": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Invert the use of the mask channel."
+      },
+      "id": "arg:invert_mask",
+      "knob_type": "Boolean_Knob",
+      "label": "invert",
+      "name": "invert_mask",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "invert_uv": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Invert the motion vectors before blurring them.\n\nNote that you will only see an effect from this when the shutter is not centred at the current frame (for Nuke vectors, this means when the shutter offset is not equal to -0.5). "
+      },
+      "id": "arg:invert_uv",
+      "knob_type": "Boolean_Knob",
+      "label": "invert uv",
+      "name": "invert_uv",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "maskChannelInput": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "none"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use this channel from the original input to mix the output with the original input."
+      },
+      "id": "arg:maskChannelInput",
+      "knob_type": "Channel_Knob",
+      "label": "",
+      "name": "maskChannelInput",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "none",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          "rgba",
+          "rgb",
+          "alpha",
+          "none"
+        ]
+      }
+    },
+    "maskChannelMask": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "alpha"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "If the mask input is connected, use this channel from it to mix the output with the original input."
+      },
+      "id": "arg:maskChannelMask",
+      "knob_type": "Channel_Knob",
+      "label": "",
+      "name": "maskChannelMask",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "rgba.alpha",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          "rgba",
+          "rgb",
+          "alpha",
+          "none"
+        ]
+      }
+    },
+    "maskFromFlag": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:maskFromFlag",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "maskFromFlag",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "mix": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Dissolve between the original image at 0 and the full effect at 1."
+      },
+      "id": "arg:mix",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "mix",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "motion_falloff": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.33
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Control the steepness of the gaussian fall-off on the blur. 0 gives a very sharp fall-off, while 1 gives a shallow fall-off."
+      },
+      "id": "arg:motion_falloff",
+      "knob_type": "Array_Knob",
+      "label": "motion falloff",
+      "name": "motion_falloff",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.33",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.33,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "mv_presets": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Nuke ScanlineRender"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Apply preset to match the chosen renderer's default settings."
+      },
+      "id": "arg:mv_presets",
+      "knob_type": "Enumeration_Knob",
+      "label": "mv presets",
+      "name": "mv_presets",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Nuke ScanlineRender",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "Nuke ScanlineRender",
+          "PRMan",
+          "V-Ray Velocity Clamped",
+          "V-Ray Velocity",
+          "Arnold",
+          "Modo",
+          "Modo Remap",
+          "MentalRay"
+        ]
+      }
+    },
+    "normalize": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Whether to normalize the results to compensate for tearing (holes appearing behind moving objects) and collisions (objects moving on top of one another) in the rendered output.\n\nNormalizing can exacerbate the effects of tearing and collisions, but it tends to give a softer blur than not normalizing. Which to use will depend on both your input and the desired effect."
+      },
+      "id": "arg:normalize",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "normalize",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "offset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": -0.5
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Shutter starts at frame + this"
+      },
+      "id": "arg:offset",
+      "knob_type": "Array_Knob",
+      "label": "shutter offset",
+      "name": "offset",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "-0.5",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          -0.5,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "output": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "result"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Display the final result, or the uv map that will be used to generate the motion blur, after any vector preprocessing has been done."
+      },
+      "id": "arg:output",
+      "knob_type": "Enumeration_Knob",
+      "label": "",
+      "name": "output",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "result",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "result",
+          "uvs"
+        ]
+      }
+    },
+    "scale": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The incoming u and v channels are multiplied by this."
+      },
+      "id": "arg:scale",
+      "knob_type": "WH_Knob",
+      "label": "motion amount",
+      "name": "scale",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0.0,
+            0.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "soft_lines": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Turn this on to increase the softness of the motion blur by drawing wider lines, a the expense of slower processing."
+      },
+      "id": "arg:soft_lines",
+      "knob_type": "Boolean_Knob",
+      "label": "soft lines",
+      "name": "soft_lines",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "useGPUIfAvailable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Select this to render on the <b>Local GPU</b>, if available.\n\nYou can select this even if no GPU is currently available on your machine. The GPU will then be used whenever the script is opened on a machine which does have a GPU available. You should also select this if you wish to render from the command line with the <b>--gpu</b> option.\n\nIf this node requires full frames from its inputs, and is therefore unable to reduce its memory overhead, it will fall back to the CPU if an attempt to render a frame on the GPU fails due to lack of memory. When this occurs, a warning message will be printed to the console."
+      },
+      "id": "arg:useGPUIfAvailable",
+      "knob_type": "Boolean_Knob",
+      "label": "Use GPU if available",
+      "name": "useGPUIfAvailable",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "uv": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "none"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The u channel controls the horizontal size of the blur vector, the v channel controls the vertical size. @i;If uv's are read from a file, be sure to set the read colorspace to raw data."
+      },
+      "id": "arg:uv",
+      "knob_type": "Channel_Knob",
+      "label": "uv channels",
+      "name": "uv",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "none",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          "rgba",
+          "rgb",
+          "alpha",
+          "none"
+        ]
+      }
+    },
+    "uv_offset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Constant value added to the u and v. For uv data read from a file this should be -.5 or possibly -127/255."
+      },
+      "id": "arg:uv_offset",
+      "knob_type": "UV_Knob",
+      "label": "uv offset",
+      "name": "uv_offset",
+      "python_type": "list[float × 2]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    }
+  },
+  "creation": {
+    "alternates": [
+      "nuke.nodes.VectorBlur2()"
+    ],
+    "preferred": "nuke.createNode(\"VectorBlur2\")",
+    "preferred_style": "nuke.createNode"
+  },
+  "description": {
+    "format": "nuke_help_html",
+    "plain_text": "VectorBlur: Blurs each pixel into a straight line, using the values of the u and v channels to determine the direction to blur in. The main use of this is to add Motion Blur to an image. Many renderers can be made to produce this motion data as a 2-channel floating-point image. You should unpremult these images if possible. The MotionBlur3D operator can be used to produce vectors from an animated Nuke Camera operator. Use ChannelCopy to put them into the uv channels of the rendering, then use this operator to add the motion blur. You can also use the constant values to add motion blur for camera movement and shake. Subtract the x/y translate or camera rotation at this frame from frame+1 to get the correct values.",
+    "source": "nuke.Node.help()",
+    "text": "<p>VectorBlur: Blurs each pixel into a straight line, using the values of the u and v channels to determine the direction to blur in. The main use of this is to add Motion Blur to an image.</p><p>Many renderers can be made to produce this motion data as a 2-channel floating-point image. You should unpremult these images if possible. The MotionBlur3D operator can be used to produce vectors from an animated Nuke Camera operator. Use ChannelCopy to put them into the uv channels of the rendering, then use this operator to add the motion blur.</p><p>You can also use the constant values to add motion blur for camera movement and shake. Subtract the x/y translate or camera rotation at this frame from frame+1 to get the correct values.</p>"
+  },
+  "id": "node:VectorBlur2",
+  "identity": {
+    "aliases": [],
+    "class": "VectorBlur2",
+    "display_name": "VectorBlur"
+  },
+  "inputs": {
+    "maximum": 2,
+    "minimum": 2,
+    "scanner_current": 0
+  },
+  "internal_argument_order": [
+    "Mask",
+    "autolabel",
+    "bookmark",
+    "cached",
+    "channel",
+    "disable",
+    "dope_sheet",
+    "enable",
+    "gl_color",
+    "help",
+    "hide_input",
+    "icon",
+    "indicators",
+    "knobChanged",
+    "label",
+    "layer",
+    "lifetimeEnd",
+    "lifetimeStart",
+    "mask",
+    "maskChannel",
+    "maskFrom",
+    "name",
+    "note_font",
+    "note_font_color",
+    "note_font_size",
+    "onCreate",
+    "onDestroy",
+    "panel",
+    "postage_stamp",
+    "postage_stamp_frame",
+    "process_mask",
+    "rootNodeUpdated",
+    "selected",
+    "tile_color",
+    "updateUI",
+    "useLifetime",
+    "xpos",
+    "ypos"
+  ],
+  "internal_arguments": {
+    "Mask": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:Mask",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "Mask",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "autolabel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:autolabel",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "autolabel",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "bookmark": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Show this node in the bookmark list."
+      },
+      "id": "arg:bookmark",
+      "knob_type": "Boolean_Knob",
+      "label": "Bookmark",
+      "name": "bookmark",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "cached": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Always keep the output of this in memory so that it can be read quickly when changing things connected to it."
+      },
+      "id": "arg:cached",
+      "knob_type": "Boolean_Knob",
+      "label": "Cached",
+      "name": "cached",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "channel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:channel",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "channel",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "all",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "disable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Pass default input through this node without any processing."
+      },
+      "id": "arg:disable",
+      "knob_type": "Disable_Knob",
+      "label": "Disable",
+      "name": "disable",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "dope_sheet": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Always show this node's animation in the dopesheet."
+      },
+      "id": "arg:dope_sheet",
+      "knob_type": "Boolean_Knob",
+      "label": "Dope Sheet",
+      "name": "dope_sheet",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:enable",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "enable",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "gl_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Color for this node's controls in the viewer.<br>X indicates the color is unset and uses the Preferences/DefaultNodeGLColor value.<br>Use the right click menu to revert to unset."
+      },
+      "id": "arg:gl_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Handles",
+      "name": "gl_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "help": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:help",
+      "knob_type": "EvalString_Knob",
+      "label": "",
+      "name": "help",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "hide_input": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Don't draw the arrows going into this node when it is not selected."
+      },
+      "id": "arg:hide_input",
+      "knob_type": "Boolean_Knob",
+      "label": "Hide Input",
+      "name": "hide_input",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "icon": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:icon",
+      "knob_type": "File_Knob",
+      "label": "INVISIBLE",
+      "name": "icon",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "indicators": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:indicators",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "indicators",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "knobChanged": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:knobChanged",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "knobChanged",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "label": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Text to display on the node.\nSome html is accepted."
+      },
+      "id": "arg:label",
+      "knob_type": "Multiline_Eval_String_Knob",
+      "label": "Label",
+      "name": "label",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "layer": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:layer",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "layer",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "all",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "lifetimeEnd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": false,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The end frame after which the node will behave as if disabled."
+      },
+      "id": "arg:lifetimeEnd",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "lifetimeEnd",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "lifetimeStart": {
+      "capabilities": {
+        "animated": false,
+        "enabled": false,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The start frame to enable the node from."
+      },
+      "id": "arg:lifetimeStart",
+      "knob_type": "Array_Knob",
+      "label": "Lifetime Range",
+      "name": "lifetimeStart",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "mask": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:mask",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "mask",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "none",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "maskChannel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:maskChannel",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "maskChannel",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "rgba.alpha",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "maskFrom": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:maskFrom",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "maskFrom",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "name": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "VectorBlur1"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Name of the node, used to refer to it in expressions.\nValid names start with a letter or underscore and may only contain letters, digits and underscores."
+      },
+      "id": "arg:name",
+      "knob_type": "String_Knob",
+      "label": "",
+      "name": "name",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "VectorBlur1",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "VectorBlur1"
+        ]
+      }
+    },
+    "note_font": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "Verdana"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Font"
+      },
+      "id": "arg:note_font",
+      "knob_type": "Font_Knob",
+      "label": "Font",
+      "name": "note_font",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Verdana",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "Verdana"
+        ]
+      }
+    },
+    "note_font_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Color"
+      },
+      "id": "arg:note_font_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Color",
+      "name": "note_font_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "note_font_size": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 11.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:note_font_size",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "note_font_size",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "11",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          11.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "onCreate": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:onCreate",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "onCreate",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "onDestroy": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:onDestroy",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "onDestroy",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "panel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete",
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:panel",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "panel",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "postage_stamp": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Display a small image on this node in the Node Graph indicating its output."
+      },
+      "id": "arg:postage_stamp",
+      "knob_type": "Boolean_Knob",
+      "label": "Postage Stamp",
+      "name": "postage_stamp",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "postage_stamp_frame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Specify the frame number to use for a static postage stamp. This is only used when the postage stamp mode preference is set to 'Static frame'. If the frame number is outside the frame range for the node, it will be clamped."
+      },
+      "id": "arg:postage_stamp_frame",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "postage_stamp_frame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "process_mask": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:process_mask",
+      "knob_type": "Boolean_Knob",
+      "label": "INVISIBLE",
+      "name": "process_mask",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "rootNodeUpdated": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "root node has been updated"
+      },
+      "id": "arg:rootNodeUpdated",
+      "knob_type": "EvalString_Knob",
+      "label": "root node has been updated",
+      "name": "rootNodeUpdated",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "selected": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:selected",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "selected",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "tile_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Color of this node's icon in the graph.<br>/ indicates the color is unset and uses the Preferences/Node Colors value, if any.<br>Use the right click menu to revert to unset."
+      },
+      "id": "arg:tile_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Color",
+      "name": "tile_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "updateUI": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:updateUI",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "updateUI",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "useLifetime": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "When checked the node is only enabled between the specified frame ranges, outside of the frame ranges it behaves as if disabled."
+      },
+      "id": "arg:useLifetime",
+      "knob_type": "Boolean_Knob",
+      "label": "Use Lifetime",
+      "name": "useLifetime",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "xpos": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": -2147483648.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:xpos",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "xpos",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "-52",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          -2147483648.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "ypos": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:ypos",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "ypos",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "157",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    }
+  },
+  "kind": "nuke_node_reference",
+  "navigation": {
+    "categories": [
+      "Filter"
+    ],
+    "category": "Filter",
+    "icons": [
+      "VectorBlur.png"
+    ],
+    "menu_path": "Filter/VectorBlur",
+    "menu_paths": [
+      "Filter/VectorBlur"
+    ]
+  },
+  "provenance": {
+    "generator": "Nuke Reference Generator v3",
+    "generator_schema_version": 3,
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "scanner": "Nuke Command Reference Scanner v5",
+    "scanner_schema_version": 5,
+    "type_map_version": 1
+  },
+  "schema_version": "1.0.0"
+}

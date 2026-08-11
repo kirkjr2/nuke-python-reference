@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "code": "# Create a Blur node and set a 10 pixel blur.\nblur = nuke.createNode(\"Blur\")\nblur[\"size\"].setValue(10)\nblur[\"filter\"].setValue(\"gaussian\")",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Create a Gaussian blur"
+    },
+    {
+      "code": "# Create a Blur and limit the effect to RGB.\nblur = nuke.createNode(\"Blur\")\nblur[\"channels\"].setValue(\"rgb\")\nblur[\"size\"].setValue(20)",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Blur only RGB"
+    },
+    {
+      "code": "# Set horizontal and vertical blur independently.\nblur = nuke.createNode(\"Blur\")\nblur[\"size\"].setValue(25, 0)\nblur[\"size\"].setValue(5, 1)",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Use different horizontal and vertical values"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Filter",
+    "class": "Blur",
+    "display_name": "Blur",
+    "id": "node:Blur",
+    "menu_path": "Filter/Blur"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Existing curated examples approved in the site."
+}

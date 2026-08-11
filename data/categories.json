@@ -1,0 +1,2065 @@
+{
+  "3D": [
+    {
+      "class": "AmbientOcclusion",
+      "display_name": "AmbientOcclusion",
+      "file": "nodes/AmbientOcclusion.json"
+    },
+    {
+      "class": "ApplyMaterial",
+      "display_name": "ApplyMaterial",
+      "file": "nodes/ApplyMaterial.json"
+    },
+    {
+      "class": "Axis3",
+      "display_name": "Axis",
+      "file": "nodes/Axis3.json"
+    },
+    {
+      "class": "Axis4",
+      "display_name": "Axis",
+      "file": "nodes/Axis4.json"
+    },
+    {
+      "class": "BasicMaterial",
+      "display_name": "BasicMaterial",
+      "file": "nodes/BasicMaterial.json"
+    },
+    {
+      "class": "BasicSurface",
+      "display_name": "BasicSurface",
+      "file": "nodes/BasicSurface.json"
+    },
+    {
+      "class": "BlendMat",
+      "display_name": "BlendMat",
+      "file": "nodes/BlendMat.json"
+    },
+    {
+      "class": "Camera3",
+      "display_name": "Camera",
+      "file": "nodes/Camera3.json"
+    },
+    {
+      "class": "Camera4",
+      "display_name": "Camera",
+      "file": "nodes/Camera4.json"
+    },
+    {
+      "class": "CameraTracker",
+      "display_name": "CameraTracker",
+      "file": "nodes/CameraTracker.json"
+    },
+    {
+      "class": "Card2",
+      "display_name": "Card",
+      "file": "nodes/Card2.json"
+    },
+    {
+      "class": "ConstantShader",
+      "display_name": "ConstantShader",
+      "file": "nodes/ConstantShader.json"
+    },
+    {
+      "class": "CrosstalkGeo",
+      "display_name": "CrosstalkGeo",
+      "file": "nodes/CrosstalkGeo.json"
+    },
+    {
+      "class": "Cube",
+      "display_name": "Cube",
+      "file": "nodes/Cube.json"
+    },
+    {
+      "class": "Cylinder",
+      "display_name": "Cylinder",
+      "file": "nodes/Cylinder.json"
+    },
+    {
+      "class": "DepthGenerator",
+      "display_name": "DepthGenerator",
+      "file": "nodes/DepthGenerator.json"
+    },
+    {
+      "class": "DepthToPoints",
+      "display_name": "DepthToPoints",
+      "file": "nodes/DepthToPoints.json"
+    },
+    {
+      "class": "DepthToPosition",
+      "display_name": "DepthToPosition",
+      "file": "nodes/DepthToPosition.json"
+    },
+    {
+      "class": "Diffuse",
+      "display_name": "Diffuse",
+      "file": "nodes/Diffuse.json"
+    },
+    {
+      "class": "DirectLight",
+      "display_name": "Direct",
+      "file": "nodes/DirectLight.json"
+    },
+    {
+      "class": "DirectLight1",
+      "display_name": "DirectLight",
+      "file": "nodes/DirectLight1.json"
+    },
+    {
+      "class": "DisplaceGeo",
+      "display_name": "DisplaceGeo",
+      "file": "nodes/DisplaceGeo.json"
+    },
+    {
+      "class": "Displacement",
+      "display_name": "Displacement",
+      "file": "nodes/Displacement.json"
+    },
+    {
+      "class": "EditGeo",
+      "display_name": "EditGeo",
+      "file": "nodes/EditGeo.json"
+    },
+    {
+      "class": "Emission",
+      "display_name": "Emission",
+      "file": "nodes/Emission.json"
+    },
+    {
+      "class": "Environment",
+      "display_name": "Environment",
+      "file": "nodes/Environment.json"
+    },
+    {
+      "class": "EnvironmentLight",
+      "display_name": "EnvironmentLight",
+      "file": "nodes/EnvironmentLight.json"
+    },
+    {
+      "class": "FillMat",
+      "display_name": "FillMat",
+      "file": "nodes/FillMat.json"
+    },
+    {
+      "class": "FillShader",
+      "display_name": "FillShader",
+      "file": "nodes/FillShader.json"
+    },
+    {
+      "class": "GeoActivation",
+      "display_name": "GeoActivation",
+      "file": "nodes/GeoActivation.json"
+    },
+    {
+      "class": "GeoBindMaterial",
+      "display_name": "GeoBindMaterial",
+      "file": "nodes/GeoBindMaterial.json"
+    },
+    {
+      "class": "GeoCamera",
+      "display_name": "GeoCamera",
+      "file": "nodes/GeoCamera.json"
+    },
+    {
+      "class": "GeoCard",
+      "display_name": "GeoCard",
+      "file": "nodes/GeoCard.json"
+    },
+    {
+      "class": "GeoClearMask",
+      "display_name": "GeoClearMask",
+      "file": "nodes/GeoClearMask.json"
+    },
+    {
+      "class": "GeoCollection",
+      "display_name": "GeoCollection",
+      "file": "nodes/GeoCollection.json"
+    },
+    {
+      "class": "GeoColorSpace",
+      "display_name": "GeoColorSpace",
+      "file": "nodes/GeoColorSpace.json"
+    },
+    {
+      "class": "GeoConstrain",
+      "display_name": "GeoConstrain",
+      "file": "nodes/GeoConstrain.json"
+    },
+    {
+      "class": "GeoCube",
+      "display_name": "GeoCube",
+      "file": "nodes/GeoCube.json"
+    },
+    {
+      "class": "GeoCylinder",
+      "display_name": "GeoCylinder",
+      "file": "nodes/GeoCylinder.json"
+    },
+    {
+      "class": "GeoDeletePoints",
+      "display_name": "GeoDeletePoints",
+      "file": "nodes/GeoDeletePoints.json"
+    },
+    {
+      "class": "GeoDiskLight",
+      "display_name": "GeoDiskLight",
+      "file": "nodes/GeoDiskLight.json"
+    },
+    {
+      "class": "GeoDisplace",
+      "display_name": "GeoDisplace",
+      "file": "nodes/GeoDisplace.json"
+    },
+    {
+      "class": "GeoDistantLight",
+      "display_name": "GeoDistantLight",
+      "file": "nodes/GeoDistantLight.json"
+    },
+    {
+      "class": "GeoDomeLight",
+      "display_name": "GeoDomeLight",
+      "file": "nodes/GeoDomeLight.json"
+    },
+    {
+      "class": "GeoDrawMode",
+      "display_name": "GeoDrawMode",
+      "file": "nodes/GeoDrawMode.json"
+    },
+    {
+      "class": "GeoDuplicate",
+      "display_name": "GeoDuplicate",
+      "file": "nodes/GeoDuplicate.json"
+    },
+    {
+      "class": "GeoEditLight",
+      "display_name": "GeoEditLight",
+      "file": "nodes/GeoEditLight.json"
+    },
+    {
+      "class": "GeoExport",
+      "display_name": "GeoExport",
+      "file": "nodes/GeoExport.json"
+    },
+    {
+      "class": "GeoFieldSet",
+      "display_name": "GeoFieldSet",
+      "file": "nodes/GeoFieldSet.json"
+    },
+    {
+      "class": "GeoGeneratePoints",
+      "display_name": "GeoGeneratePoints",
+      "file": "nodes/GeoGeneratePoints.json"
+    },
+    {
+      "class": "GeoGrade",
+      "display_name": "GeoGrade",
+      "file": "nodes/GeoGrade.json"
+    },
+    {
+      "class": "GeoImport",
+      "display_name": "GeoImport",
+      "file": "nodes/GeoImport.json"
+    },
+    {
+      "class": "GeoInstance",
+      "display_name": "GeoInstance",
+      "file": "nodes/GeoInstance.json"
+    },
+    {
+      "class": "GeoMask",
+      "display_name": "GeoMask",
+      "file": "nodes/GeoMask.json"
+    },
+    {
+      "class": "GeoMerge",
+      "display_name": "GeoMerge",
+      "file": "nodes/GeoMerge.json"
+    },
+    {
+      "class": "GeoNoise",
+      "display_name": "GeoNoise",
+      "file": "nodes/GeoNoise.json"
+    },
+    {
+      "class": "GeoNormals",
+      "display_name": "GeoNormals",
+      "file": "nodes/GeoNormals.json"
+    },
+    {
+      "class": "GeoPoints",
+      "display_name": "GeoPoints",
+      "file": "nodes/GeoPoints.json"
+    },
+    {
+      "class": "GeoPointsToMesh",
+      "display_name": "GeoPointsToMesh",
+      "file": "nodes/GeoPointsToMesh.json"
+    },
+    {
+      "class": "GeoProjectUV",
+      "display_name": "GeoProjectUV",
+      "file": "nodes/GeoProjectUV.json"
+    },
+    {
+      "class": "GeoPython",
+      "display_name": "GeoPython",
+      "file": "nodes/GeoPython.json"
+    },
+    {
+      "class": "GeoRadialWarp",
+      "display_name": "GeoRadialWarp",
+      "file": "nodes/GeoRadialWarp.json"
+    },
+    {
+      "class": "GeoReference",
+      "display_name": "GeoReference",
+      "file": "nodes/GeoReference.json"
+    },
+    {
+      "class": "GeoScene",
+      "display_name": "GeoScene",
+      "file": "nodes/GeoScene.json"
+    },
+    {
+      "class": "GeoScope",
+      "display_name": "GeoScope",
+      "file": "nodes/GeoScope.json"
+    },
+    {
+      "class": "GeoSelect",
+      "display_name": "GeoSelect",
+      "file": "nodes/GeoSelect.json"
+    },
+    {
+      "class": "GeoSelection",
+      "display_name": "GeoSelection",
+      "file": "nodes/GeoSelection.json"
+    },
+    {
+      "class": "GeoSphere",
+      "display_name": "GeoSphere",
+      "file": "nodes/GeoSphere.json"
+    },
+    {
+      "class": "GeoSphereLight",
+      "display_name": "GeoSphereLight",
+      "file": "nodes/GeoSphereLight.json"
+    },
+    {
+      "class": "GeoTransform",
+      "display_name": "GeoTransform",
+      "file": "nodes/GeoTransform.json"
+    },
+    {
+      "class": "GeoTrilinearWarp",
+      "display_name": "GeoTrilinearWarp",
+      "file": "nodes/GeoTrilinearWarp.json"
+    },
+    {
+      "class": "GeoViewScene",
+      "display_name": "GeoViewScene",
+      "file": "nodes/GeoViewScene.json"
+    },
+    {
+      "class": "GeoVisibility",
+      "display_name": "GeoVisibility",
+      "file": "nodes/GeoVisibility.json"
+    },
+    {
+      "class": "GeoXform",
+      "display_name": "GeoXform",
+      "file": "nodes/GeoXform.json"
+    },
+    {
+      "class": "Light3",
+      "display_name": "Light",
+      "file": "nodes/Light3.json"
+    },
+    {
+      "class": "LogGeo",
+      "display_name": "LogGeo",
+      "file": "nodes/LogGeo.json"
+    },
+    {
+      "class": "LookupGeo",
+      "display_name": "LookupGeo",
+      "file": "nodes/LookupGeo.json"
+    },
+    {
+      "class": "MergeGeo",
+      "display_name": "MergeGeo",
+      "file": "nodes/MergeGeo.json"
+    },
+    {
+      "class": "MergeLayerShader",
+      "display_name": "MergeLayerShader",
+      "file": "nodes/MergeLayerShader.json"
+    },
+    {
+      "class": "MergeMat",
+      "display_name": "MergeMat",
+      "file": "nodes/MergeMat.json"
+    },
+    {
+      "class": "ModelBuilder",
+      "display_name": "ModelBuilder",
+      "file": "nodes/ModelBuilder.json"
+    },
+    {
+      "class": "ModifyRIB",
+      "display_name": "ModifyRIB",
+      "file": "nodes/ModifyRIB.json"
+    },
+    {
+      "class": "MtlXStandardSurface",
+      "display_name": "MtlXStandardSurface",
+      "file": "nodes/MtlXStandardSurface.json"
+    },
+    {
+      "class": "Normals",
+      "display_name": "Normals",
+      "file": "nodes/Normals.json"
+    },
+    {
+      "class": "Phong",
+      "display_name": "Phong",
+      "file": "nodes/Phong.json"
+    },
+    {
+      "class": "Light",
+      "display_name": "Point",
+      "file": "nodes/Light.json"
+    },
+    {
+      "class": "PointCloudGenerator",
+      "display_name": "PointCloudGenerator",
+      "file": "nodes/PointCloudGenerator.json"
+    },
+    {
+      "class": "PointLight",
+      "display_name": "PointLight",
+      "file": "nodes/PointLight.json"
+    },
+    {
+      "class": "PoissonMesh",
+      "display_name": "PoissonMesh",
+      "file": "nodes/PoissonMesh.json"
+    },
+    {
+      "class": "PositionToPoints2",
+      "display_name": "PositionToPoints",
+      "file": "nodes/PositionToPoints2.json"
+    },
+    {
+      "class": "PreviewSurface",
+      "display_name": "PreviewSurface",
+      "file": "nodes/PreviewSurface.json"
+    },
+    {
+      "class": "ProcGeo",
+      "display_name": "ProceduralNoise",
+      "file": "nodes/ProcGeo.json"
+    },
+    {
+      "class": "Project3D2",
+      "display_name": "Project3D",
+      "file": "nodes/Project3D2.json"
+    },
+    {
+      "class": "Project3DShader",
+      "display_name": "Project3DShader",
+      "file": "nodes/Project3DShader.json"
+    },
+    {
+      "class": "RadialDistort",
+      "display_name": "RadialDistort",
+      "file": "nodes/RadialDistort.json"
+    },
+    {
+      "class": "RayRender",
+      "display_name": "RayRender",
+      "file": "nodes/RayRender.json"
+    },
+    {
+      "class": "ReadGeo2",
+      "display_name": "ReadGeo",
+      "file": "nodes/ReadGeo2.json"
+    },
+    {
+      "class": "Reflection",
+      "display_name": "Reflection",
+      "file": "nodes/Reflection.json"
+    },
+    {
+      "class": "ReflectiveSurface",
+      "display_name": "ReflectiveSurface",
+      "file": "nodes/ReflectiveSurface.json"
+    },
+    {
+      "class": "Refraction",
+      "display_name": "Refraction",
+      "file": "nodes/Refraction.json"
+    },
+    {
+      "class": "ReLight",
+      "display_name": "Relight",
+      "file": "nodes/ReLight.json"
+    },
+    {
+      "class": "ScanlineRender",
+      "display_name": "ScanlineRender",
+      "file": "nodes/ScanlineRender.json"
+    },
+    {
+      "class": "ScanlineRender2",
+      "display_name": "ScanlineRender",
+      "file": "nodes/ScanlineRender2.json"
+    },
+    {
+      "class": "Scene",
+      "display_name": "Scene",
+      "file": "nodes/Scene.json"
+    },
+    {
+      "class": "Specular",
+      "display_name": "Specular",
+      "file": "nodes/Specular.json"
+    },
+    {
+      "class": "Sphere",
+      "display_name": "Sphere",
+      "file": "nodes/Sphere.json"
+    },
+    {
+      "class": "SplatRender",
+      "display_name": "SplatRender",
+      "file": "nodes/SplatRender.json"
+    },
+    {
+      "class": "Spotlight",
+      "display_name": "Spot",
+      "file": "nodes/Spotlight.json"
+    },
+    {
+      "class": "SpotLight1",
+      "display_name": "SpotLight",
+      "file": "nodes/SpotLight1.json"
+    },
+    {
+      "class": "TransformGeo",
+      "display_name": "TransformGeo",
+      "file": "nodes/TransformGeo.json"
+    },
+    {
+      "class": "Transmission",
+      "display_name": "Transmission",
+      "file": "nodes/Transmission.json"
+    },
+    {
+      "class": "Trilinear",
+      "display_name": "Trilinear",
+      "file": "nodes/Trilinear.json"
+    },
+    {
+      "class": "UVProject",
+      "display_name": "UVProject",
+      "file": "nodes/UVProject.json"
+    },
+    {
+      "class": "Wireframe",
+      "display_name": "Wireframe",
+      "file": "nodes/Wireframe.json"
+    },
+    {
+      "class": "WireframeShader",
+      "display_name": "WireframeShader",
+      "file": "nodes/WireframeShader.json"
+    },
+    {
+      "class": "WriteGeo",
+      "display_name": "WriteGeo",
+      "file": "nodes/WriteGeo.json"
+    }
+  ],
+  "AIR": [
+    {
+      "class": "BigCat",
+      "display_name": "BigCat",
+      "file": "nodes/BigCat.json"
+    },
+    {
+      "class": "CatFileCreator",
+      "display_name": "CatFileCreator",
+      "file": "nodes/CatFileCreator.json"
+    },
+    {
+      "class": "CopyCat",
+      "display_name": "CopyCat",
+      "file": "nodes/CopyCat.json"
+    },
+    {
+      "class": "Deblur",
+      "display_name": "Deblur",
+      "file": "nodes/Deblur.json"
+    },
+    {
+      "class": "Inference",
+      "display_name": "Inference",
+      "file": "nodes/Inference.json"
+    },
+    {
+      "class": "Upscale",
+      "display_name": "Upscale",
+      "file": "nodes/Upscale.json"
+    }
+  ],
+  "CaraVR": [
+    {
+      "class": "C_AlphaGenerator2_1",
+      "display_name": "C_AlphaGenerator",
+      "file": "nodes/C_AlphaGenerator2_1.json"
+    },
+    {
+      "class": "C_Blender2_1",
+      "display_name": "C_Blender",
+      "file": "nodes/C_Blender2_1.json"
+    },
+    {
+      "class": "C_Blur2_1",
+      "display_name": "C_Blur",
+      "file": "nodes/C_Blur2_1.json"
+    },
+    {
+      "class": "C_CameraIngest2_1",
+      "display_name": "C_CameraIngest",
+      "file": "nodes/C_CameraIngest2_1.json"
+    },
+    {
+      "class": "C_CameraSolver2_1",
+      "display_name": "C_CameraSolver",
+      "file": "nodes/C_CameraSolver2_1.json"
+    },
+    {
+      "class": "C_ColourMatcher2_1",
+      "display_name": "C_ColourMatcher",
+      "file": "nodes/C_ColourMatcher2_1.json"
+    },
+    {
+      "class": "C_DisparityGenerator2_1",
+      "display_name": "C_DisparityGenerator",
+      "file": "nodes/C_DisparityGenerator2_1.json"
+    },
+    {
+      "class": "C_GenerateMap2_1",
+      "display_name": "C_GenerateMap",
+      "file": "nodes/C_GenerateMap2_1.json"
+    },
+    {
+      "class": "C_GlobalWarp2_1",
+      "display_name": "C_GlobalWarp",
+      "file": "nodes/C_GlobalWarp2_1.json"
+    },
+    {
+      "class": "C_Stitcher2_1",
+      "display_name": "C_Stitcher",
+      "file": "nodes/C_Stitcher2_1.json"
+    },
+    {
+      "class": "C_STMap2_1",
+      "display_name": "C_STMap",
+      "file": "nodes/C_STMap2_1.json"
+    },
+    {
+      "class": "C_Tracker2_1",
+      "display_name": "C_Tracker",
+      "file": "nodes/C_Tracker2_1.json"
+    }
+  ],
+  "Channel": [
+    {
+      "class": "AddChannels",
+      "display_name": "Add",
+      "file": "nodes/AddChannels.json"
+    },
+    {
+      "class": "ChannelMerge",
+      "display_name": "ChannelMerge",
+      "file": "nodes/ChannelMerge.json"
+    },
+    {
+      "class": "Copy",
+      "display_name": "Copy",
+      "file": "nodes/Copy.json"
+    },
+    {
+      "class": "Remove",
+      "display_name": "Remove",
+      "file": "nodes/Remove.json"
+    },
+    {
+      "class": "Shuffle2",
+      "display_name": "Shuffle",
+      "file": "nodes/Shuffle2.json"
+    }
+  ],
+  "Color": [
+    {
+      "class": "Add",
+      "display_name": "Add",
+      "file": "nodes/Add.json"
+    },
+    {
+      "class": "Clamp",
+      "display_name": "Clamp",
+      "file": "nodes/Clamp.json"
+    },
+    {
+      "class": "ClipTest",
+      "display_name": "ClipTest",
+      "file": "nodes/ClipTest.json"
+    },
+    {
+      "class": "CMSTestPattern",
+      "display_name": "CMSTestPattern",
+      "file": "nodes/CMSTestPattern.json"
+    },
+    {
+      "class": "ColorCorrect",
+      "display_name": "ColorCorrect",
+      "file": "nodes/ColorCorrect.json"
+    },
+    {
+      "class": "ColorLookup",
+      "display_name": "ColorLookup",
+      "file": "nodes/ColorLookup.json"
+    },
+    {
+      "class": "ColorMatrix",
+      "display_name": "ColorMatrix",
+      "file": "nodes/ColorMatrix.json"
+    },
+    {
+      "class": "Colorspace",
+      "display_name": "Colorspace",
+      "file": "nodes/Colorspace.json"
+    },
+    {
+      "class": "ColorTransfer",
+      "display_name": "ColorTransfer",
+      "file": "nodes/ColorTransfer.json"
+    },
+    {
+      "class": "CCrosstalk",
+      "display_name": "Crosstalk",
+      "file": "nodes/CCrosstalk.json"
+    },
+    {
+      "class": "EXPTool",
+      "display_name": "Exposure",
+      "file": "nodes/EXPTool.json"
+    },
+    {
+      "class": "Expression",
+      "display_name": "Expression",
+      "file": "nodes/Expression.json"
+    },
+    {
+      "class": "Gamma",
+      "display_name": "Gamma",
+      "file": "nodes/Gamma.json"
+    },
+    {
+      "class": "GenerateLUT",
+      "display_name": "GenerateLUT",
+      "file": "nodes/GenerateLUT.json"
+    },
+    {
+      "class": "Grade",
+      "display_name": "Grade",
+      "file": "nodes/Grade.json"
+    },
+    {
+      "class": "HistEQ",
+      "display_name": "HistEQ",
+      "file": "nodes/HistEQ.json"
+    },
+    {
+      "class": "Histogram",
+      "display_name": "Histogram",
+      "file": "nodes/Histogram.json"
+    },
+    {
+      "class": "HSVTool",
+      "display_name": "HSVTool",
+      "file": "nodes/HSVTool.json"
+    },
+    {
+      "class": "HueCorrect",
+      "display_name": "HueCorrect",
+      "file": "nodes/HueCorrect.json"
+    },
+    {
+      "class": "HueShift",
+      "display_name": "HueShift",
+      "file": "nodes/HueShift.json"
+    },
+    {
+      "class": "Invert",
+      "display_name": "Invert",
+      "file": "nodes/Invert.json"
+    },
+    {
+      "class": "Log2Lin",
+      "display_name": "Log2Lin",
+      "file": "nodes/Log2Lin.json"
+    },
+    {
+      "class": "MatchGrade",
+      "display_name": "MatchGrade",
+      "file": "nodes/MatchGrade.json"
+    },
+    {
+      "class": "MinColor",
+      "display_name": "MinColor",
+      "file": "nodes/MinColor.json"
+    },
+    {
+      "class": "Multiply",
+      "display_name": "Multiply",
+      "file": "nodes/Multiply.json"
+    },
+    {
+      "class": "OCIOCDLTransform",
+      "display_name": "OCIO CDLTransform",
+      "file": "nodes/OCIOCDLTransform.json"
+    },
+    {
+      "class": "OCIOColorSpace",
+      "display_name": "OCIO ColorSpace",
+      "file": "nodes/OCIOColorSpace.json"
+    },
+    {
+      "class": "OCIODisplay",
+      "display_name": "OCIO Display",
+      "file": "nodes/OCIODisplay.json"
+    },
+    {
+      "class": "OCIOFileTransform",
+      "display_name": "OCIO FileTransform",
+      "file": "nodes/OCIOFileTransform.json"
+    },
+    {
+      "class": "OCIOLogConvert",
+      "display_name": "OCIO LogConvert",
+      "file": "nodes/OCIOLogConvert.json"
+    },
+    {
+      "class": "OCIOLookTransform",
+      "display_name": "OCIO LookTransform",
+      "file": "nodes/OCIOLookTransform.json"
+    },
+    {
+      "class": "OCIONamedTransform",
+      "display_name": "OCIO NamedTransform",
+      "file": "nodes/OCIONamedTransform.json"
+    },
+    {
+      "class": "PLogLin",
+      "display_name": "PLogLin",
+      "file": "nodes/PLogLin.json"
+    },
+    {
+      "class": "Posterize",
+      "display_name": "Posterize",
+      "file": "nodes/Posterize.json"
+    },
+    {
+      "class": "RolloffContrast",
+      "display_name": "RolloffContrast",
+      "file": "nodes/RolloffContrast.json"
+    },
+    {
+      "class": "Sampler",
+      "display_name": "Sampler",
+      "file": "nodes/Sampler.json"
+    },
+    {
+      "class": "Saturation",
+      "display_name": "Saturation",
+      "file": "nodes/Saturation.json"
+    },
+    {
+      "class": "SoftClip",
+      "display_name": "SoftClip",
+      "file": "nodes/SoftClip.json"
+    },
+    {
+      "class": "Toe2",
+      "display_name": "Toe",
+      "file": "nodes/Toe2.json"
+    },
+    {
+      "class": "Vectorfield",
+      "display_name": "Vectorfield (Apply 3D LUT)",
+      "file": "nodes/Vectorfield.json"
+    }
+  ],
+  "Deep": [
+    {
+      "class": "DeepColorCorrect2",
+      "display_name": "DeepColorCorrect",
+      "file": "nodes/DeepColorCorrect2.json"
+    },
+    {
+      "class": "DeepCrop",
+      "display_name": "DeepCrop",
+      "file": "nodes/DeepCrop.json"
+    },
+    {
+      "class": "DeepExpression",
+      "display_name": "DeepExpression",
+      "file": "nodes/DeepExpression.json"
+    },
+    {
+      "class": "DeepFromFrames",
+      "display_name": "DeepFromFrames",
+      "file": "nodes/DeepFromFrames.json"
+    },
+    {
+      "class": "DeepFromImage",
+      "display_name": "DeepFromImage",
+      "file": "nodes/DeepFromImage.json"
+    },
+    {
+      "class": "DeepMerge2",
+      "display_name": "DeepMerge",
+      "file": "nodes/DeepMerge2.json"
+    },
+    {
+      "class": "DeepRead",
+      "display_name": "DeepRead",
+      "file": "nodes/DeepRead.json"
+    },
+    {
+      "class": "DeepRecolor",
+      "display_name": "DeepRecolor",
+      "file": "nodes/DeepRecolor.json"
+    },
+    {
+      "class": "DeepReformat",
+      "display_name": "DeepReformat",
+      "file": "nodes/DeepReformat.json"
+    },
+    {
+      "class": "DeepSample",
+      "display_name": "DeepSample",
+      "file": "nodes/DeepSample.json"
+    },
+    {
+      "class": "DeepToImage2",
+      "display_name": "DeepToImage",
+      "file": "nodes/DeepToImage2.json"
+    },
+    {
+      "class": "DeepToPoints",
+      "display_name": "DeepToPoints",
+      "file": "nodes/DeepToPoints.json"
+    },
+    {
+      "class": "DeepTransform",
+      "display_name": "DeepTransform",
+      "file": "nodes/DeepTransform.json"
+    },
+    {
+      "class": "DeepWrite",
+      "display_name": "DeepWrite",
+      "file": "nodes/DeepWrite.json"
+    }
+  ],
+  "Draw": [
+    {
+      "class": "Dither",
+      "display_name": "Dither",
+      "file": "nodes/Dither.json"
+    },
+    {
+      "class": "DustBust",
+      "display_name": "DustBust",
+      "file": "nodes/DustBust.json"
+    },
+    {
+      "class": "Flare",
+      "display_name": "Flare",
+      "file": "nodes/Flare.json"
+    },
+    {
+      "class": "Glint",
+      "display_name": "Glint",
+      "file": "nodes/Glint.json"
+    },
+    {
+      "class": "Grain2",
+      "display_name": "Grain",
+      "file": "nodes/Grain2.json"
+    },
+    {
+      "class": "Grid",
+      "display_name": "Grid",
+      "file": "nodes/Grid.json"
+    },
+    {
+      "class": "LightWrap",
+      "display_name": "LightWrap",
+      "file": "nodes/LightWrap.json"
+    },
+    {
+      "class": "MarkerRemoval",
+      "display_name": "MarkerRemoval",
+      "file": "nodes/MarkerRemoval.json"
+    },
+    {
+      "class": "Noise",
+      "display_name": "Noise",
+      "file": "nodes/Noise.json"
+    },
+    {
+      "class": "Radial",
+      "display_name": "Radial",
+      "file": "nodes/Radial.json"
+    },
+    {
+      "class": "Ramp",
+      "display_name": "Ramp",
+      "file": "nodes/Ramp.json"
+    },
+    {
+      "class": "Rectangle",
+      "display_name": "Rectangle",
+      "file": "nodes/Rectangle.json"
+    },
+    {
+      "class": "Roto",
+      "display_name": "Roto",
+      "file": "nodes/Roto.json"
+    },
+    {
+      "class": "RotoPaint",
+      "display_name": "RotoPaint",
+      "file": "nodes/RotoPaint.json"
+    },
+    {
+      "class": "ScannedGrain",
+      "display_name": "ScannedGrain",
+      "file": "nodes/ScannedGrain.json"
+    },
+    {
+      "class": "Sparkles",
+      "display_name": "Sparkles",
+      "file": "nodes/Sparkles.json"
+    },
+    {
+      "class": "Text2",
+      "display_name": "Text",
+      "file": "nodes/Text2.json"
+    }
+  ],
+  "Field": [
+    {
+      "class": "FieldConstant",
+      "display_name": "FieldConstant",
+      "file": "nodes/FieldConstant.json"
+    },
+    {
+      "class": "FieldCrop",
+      "display_name": "FieldCrop",
+      "file": "nodes/FieldCrop.json"
+    },
+    {
+      "class": "FieldImage",
+      "display_name": "FieldImage",
+      "file": "nodes/FieldImage.json"
+    },
+    {
+      "class": "FieldInvert",
+      "display_name": "FieldInvert",
+      "file": "nodes/FieldInvert.json"
+    },
+    {
+      "class": "FieldMath",
+      "display_name": "FieldMath",
+      "file": "nodes/FieldMath.json"
+    },
+    {
+      "class": "FieldMerge",
+      "display_name": "FieldMerge",
+      "file": "nodes/FieldMerge.json"
+    },
+    {
+      "class": "FieldMix",
+      "display_name": "FieldMix",
+      "file": "nodes/FieldMix.json"
+    },
+    {
+      "class": "FieldPosition",
+      "display_name": "FieldPosition",
+      "file": "nodes/FieldPosition.json"
+    },
+    {
+      "class": "FieldRamp",
+      "display_name": "FieldRamp",
+      "file": "nodes/FieldRamp.json"
+    },
+    {
+      "class": "FieldShape",
+      "display_name": "FieldShape",
+      "file": "nodes/FieldShape.json"
+    },
+    {
+      "class": "FieldShapeModify",
+      "display_name": "FieldShapeModify",
+      "file": "nodes/FieldShapeModify.json"
+    },
+    {
+      "class": "FieldShapeToDensity",
+      "display_name": "FieldShapeToDensity",
+      "file": "nodes/FieldShapeToDensity.json"
+    },
+    {
+      "class": "FieldTransform",
+      "display_name": "FieldTransform",
+      "file": "nodes/FieldTransform.json"
+    }
+  ],
+  "Filter": [
+    {
+      "class": "Bilateral2",
+      "display_name": "Bilateral",
+      "file": "nodes/Bilateral2.json"
+    },
+    {
+      "class": "Blur",
+      "display_name": "Blur",
+      "file": "nodes/Blur.json"
+    },
+    {
+      "class": "Bokeh",
+      "display_name": "Bokeh",
+      "file": "nodes/Bokeh.json"
+    },
+    {
+      "class": "BumpBoss",
+      "display_name": "BumpBoss",
+      "file": "nodes/BumpBoss.json"
+    },
+    {
+      "class": "Convolve2",
+      "display_name": "Convolve",
+      "file": "nodes/Convolve2.json"
+    },
+    {
+      "class": "Defocus",
+      "display_name": "Defocus",
+      "file": "nodes/Defocus.json"
+    },
+    {
+      "class": "DegrainBlue",
+      "display_name": "DegrainBlue",
+      "file": "nodes/DegrainBlue.json"
+    },
+    {
+      "class": "DegrainSimple",
+      "display_name": "DegrainSimple",
+      "file": "nodes/DegrainSimple.json"
+    },
+    {
+      "class": "Denoise2",
+      "display_name": "Denoise",
+      "file": "nodes/Denoise2.json"
+    },
+    {
+      "class": "DirBlurWrapper",
+      "display_name": "DirBlur",
+      "file": "nodes/DirBlurWrapper.json"
+    },
+    {
+      "class": "DropShadow",
+      "display_name": "DropShadow",
+      "file": "nodes/DropShadow.json"
+    },
+    {
+      "class": "EdgeBlur",
+      "display_name": "EdgeBlur",
+      "file": "nodes/EdgeBlur.json"
+    },
+    {
+      "class": "EdgeDetectWrapper",
+      "display_name": "EdgeDetect",
+      "file": "nodes/EdgeDetectWrapper.json"
+    },
+    {
+      "class": "EdgeExtend",
+      "display_name": "EdgeExtend",
+      "file": "nodes/EdgeExtend.json"
+    },
+    {
+      "class": "Emboss",
+      "display_name": "Emboss",
+      "file": "nodes/Emboss.json"
+    },
+    {
+      "class": "Erode",
+      "display_name": "Erode (blur)",
+      "file": "nodes/Erode.json"
+    },
+    {
+      "class": "Dilate",
+      "display_name": "Erode (fast)",
+      "file": "nodes/Dilate.json"
+    },
+    {
+      "class": "FilterErode",
+      "display_name": "Erode (filter)",
+      "file": "nodes/FilterErode.json"
+    },
+    {
+      "class": "Glow2",
+      "display_name": "Glow",
+      "file": "nodes/Glow2.json"
+    },
+    {
+      "class": "GodRays",
+      "display_name": "GodRays",
+      "file": "nodes/GodRays.json"
+    },
+    {
+      "class": "Inpaint2",
+      "display_name": "Inpaint",
+      "file": "nodes/Inpaint2.json"
+    },
+    {
+      "class": "Laplacian",
+      "display_name": "Laplacian",
+      "file": "nodes/Laplacian.json"
+    },
+    {
+      "class": "LevelSet",
+      "display_name": "LevelSet",
+      "file": "nodes/LevelSet.json"
+    },
+    {
+      "class": "Median",
+      "display_name": "Median",
+      "file": "nodes/Median.json"
+    },
+    {
+      "class": "MotionBlur",
+      "display_name": "MotionBlur",
+      "file": "nodes/MotionBlur.json"
+    },
+    {
+      "class": "MotionBlur2D",
+      "display_name": "MotionBlur2D",
+      "file": "nodes/MotionBlur2D.json"
+    },
+    {
+      "class": "MotionBlur3D",
+      "display_name": "MotionBlur3D",
+      "file": "nodes/MotionBlur3D.json"
+    },
+    {
+      "class": "Sharpen",
+      "display_name": "Sharpen",
+      "file": "nodes/Sharpen.json"
+    },
+    {
+      "class": "Soften",
+      "display_name": "Soften",
+      "file": "nodes/Soften.json"
+    },
+    {
+      "class": "VectorBlur2",
+      "display_name": "VectorBlur",
+      "file": "nodes/VectorBlur2.json"
+    },
+    {
+      "class": "VolumeRays",
+      "display_name": "VolumeRays",
+      "file": "nodes/VolumeRays.json"
+    },
+    {
+      "class": "ZDefocus2",
+      "display_name": "ZDefocus",
+      "file": "nodes/ZDefocus2.json"
+    },
+    {
+      "class": "ZSlice",
+      "display_name": "ZSlice",
+      "file": "nodes/ZSlice.json"
+    }
+  ],
+  "FurnaceCore": [
+    {
+      "class": "OFXuk.co.thefoundry.furnace.f_align_v403",
+      "display_name": "F_Align",
+      "file": "nodes/OFXuk.co.thefoundry.furnace.f_align_v403.json"
+    },
+    {
+      "class": "OFXuk.co.thefoundry.furnace.f_deflicker2_v403",
+      "display_name": "F_DeFlicker2",
+      "file": "nodes/OFXuk.co.thefoundry.furnace.f_deflicker2_v403.json"
+    },
+    {
+      "class": "OFXuk.co.thefoundry.furnace.f_regrain_v403",
+      "display_name": "F_ReGrain",
+      "file": "nodes/OFXuk.co.thefoundry.furnace.f_regrain_v403.json"
+    },
+    {
+      "class": "OFXuk.co.thefoundry.furnace.f_rigremoval_v403",
+      "display_name": "F_RigRemoval",
+      "file": "nodes/OFXuk.co.thefoundry.furnace.f_rigremoval_v403.json"
+    },
+    {
+      "class": "OFXuk.co.thefoundry.furnace.f_steadiness_v403",
+      "display_name": "F_Steadiness",
+      "file": "nodes/OFXuk.co.thefoundry.furnace.f_steadiness_v403.json"
+    },
+    {
+      "class": "OFXuk.co.thefoundry.furnace.f_wireremoval_v403",
+      "display_name": "F_WireRemoval",
+      "file": "nodes/OFXuk.co.thefoundry.furnace.f_wireremoval_v403.json"
+    }
+  ],
+  "Image": [
+    {
+      "class": "CheckerBoard2",
+      "display_name": "CheckerBoard",
+      "file": "nodes/CheckerBoard2.json"
+    },
+    {
+      "class": "ColorBars",
+      "display_name": "ColorBars",
+      "file": "nodes/ColorBars.json"
+    },
+    {
+      "class": "ColorWheel",
+      "display_name": "ColorWheel",
+      "file": "nodes/ColorWheel.json"
+    },
+    {
+      "class": "Constant",
+      "display_name": "Constant",
+      "file": "nodes/Constant.json"
+    },
+    {
+      "class": "CurveTool",
+      "display_name": "CurveTool",
+      "file": "nodes/CurveTool.json"
+    },
+    {
+      "class": "Profile",
+      "display_name": "Profile",
+      "file": "nodes/Profile.json"
+    },
+    {
+      "class": "Read",
+      "display_name": "Read",
+      "file": "nodes/Read.json"
+    },
+    {
+      "class": "UnrealReader",
+      "display_name": "UnrealReader",
+      "file": "nodes/UnrealReader.json"
+    },
+    {
+      "class": "Viewer",
+      "display_name": "Viewer",
+      "file": "nodes/Viewer.json"
+    },
+    {
+      "class": "Write",
+      "display_name": "Write",
+      "file": "nodes/Write.json"
+    }
+  ],
+  "Keyer": [
+    {
+      "class": "ChromaKeyer",
+      "display_name": "ChromaKeyer",
+      "file": "nodes/ChromaKeyer.json"
+    },
+    {
+      "class": "Cryptomatte",
+      "display_name": "Cryptomatte",
+      "file": "nodes/Cryptomatte.json"
+    },
+    {
+      "class": "Difference",
+      "display_name": "Difference",
+      "file": "nodes/Difference.json"
+    },
+    {
+      "class": "Encryptomatte",
+      "display_name": "Encryptomatte",
+      "file": "nodes/Encryptomatte.json"
+    },
+    {
+      "class": "HueKeyer",
+      "display_name": "HueKeyer",
+      "file": "nodes/HueKeyer.json"
+    },
+    {
+      "class": "IBKGizmo",
+      "display_name": "IBKGizmo",
+      "file": "nodes/IBKGizmo.json"
+    },
+    {
+      "class": "Keyer",
+      "display_name": "Keyer",
+      "file": "nodes/Keyer.json"
+    },
+    {
+      "class": "OFXuk.co.thefoundry.keylight.keylight_v201",
+      "display_name": "Keylight",
+      "file": "nodes/OFXuk.co.thefoundry.keylight.keylight_v201.json"
+    },
+    {
+      "class": "Primatte3",
+      "display_name": "Primatte",
+      "file": "nodes/Primatte3.json"
+    },
+    {
+      "class": "Ultimatte",
+      "display_name": "Ultimatte",
+      "file": "nodes/Ultimatte.json"
+    }
+  ],
+  "Merge": [
+    {
+      "class": "AddMix",
+      "display_name": "AddMix",
+      "file": "nodes/AddMix.json"
+    },
+    {
+      "class": "Blend",
+      "display_name": "Blend",
+      "file": "nodes/Blend.json"
+    },
+    {
+      "class": "ContactSheet",
+      "display_name": "ContactSheet",
+      "file": "nodes/ContactSheet.json"
+    },
+    {
+      "class": "CopyBBox",
+      "display_name": "CopyBBox",
+      "file": "nodes/CopyBBox.json"
+    },
+    {
+      "class": "CopyRectangle",
+      "display_name": "CopyRectangle",
+      "file": "nodes/CopyRectangle.json"
+    },
+    {
+      "class": "Dissolve",
+      "display_name": "Dissolve",
+      "file": "nodes/Dissolve.json"
+    },
+    {
+      "class": "Keymix",
+      "display_name": "KeyMix",
+      "file": "nodes/Keymix.json"
+    },
+    {
+      "class": "LayerContactSheet",
+      "display_name": "LayerContactSheet",
+      "file": "nodes/LayerContactSheet.json"
+    },
+    {
+      "class": "Merge2",
+      "display_name": "Merge",
+      "file": "nodes/Merge2.json"
+    },
+    {
+      "class": "MergeExpression",
+      "display_name": "MergeExpression",
+      "file": "nodes/MergeExpression.json"
+    },
+    {
+      "class": "Premult",
+      "display_name": "Premult",
+      "file": "nodes/Premult.json"
+    },
+    {
+      "class": "Switch",
+      "display_name": "Switch",
+      "file": "nodes/Switch.json"
+    },
+    {
+      "class": "TimeDissolve",
+      "display_name": "TimeDissolve",
+      "file": "nodes/TimeDissolve.json"
+    },
+    {
+      "class": "Unpremult",
+      "display_name": "Unpremult",
+      "file": "nodes/Unpremult.json"
+    },
+    {
+      "class": "VariableSwitch",
+      "display_name": "VariableSwitch",
+      "file": "nodes/VariableSwitch.json"
+    },
+    {
+      "class": "ZMerge",
+      "display_name": "ZMerge",
+      "file": "nodes/ZMerge.json"
+    }
+  ],
+  "MetaData": [
+    {
+      "class": "AddTimeCode",
+      "display_name": "AddTimeCode",
+      "file": "nodes/AddTimeCode.json"
+    },
+    {
+      "class": "CompareMetaData",
+      "display_name": "CompareMetaData",
+      "file": "nodes/CompareMetaData.json"
+    },
+    {
+      "class": "CopyMetaData",
+      "display_name": "CopyMetaData",
+      "file": "nodes/CopyMetaData.json"
+    },
+    {
+      "class": "ModifyMetaData",
+      "display_name": "ModifyMetaData",
+      "file": "nodes/ModifyMetaData.json"
+    },
+    {
+      "class": "ViewMetaData",
+      "display_name": "ViewMetaData",
+      "file": "nodes/ViewMetaData.json"
+    }
+  ],
+  "Other": [
+    {
+      "class": "Assert",
+      "display_name": "Assert",
+      "file": "nodes/Assert.json"
+    },
+    {
+      "class": "AudioRead",
+      "display_name": "AudioRead",
+      "file": "nodes/AudioRead.json"
+    },
+    {
+      "class": "BlinkScript",
+      "display_name": "BlinkScript",
+      "file": "nodes/BlinkScript.json"
+    },
+    {
+      "class": "DiskCache",
+      "display_name": "DiskCache",
+      "file": "nodes/DiskCache.json"
+    },
+    {
+      "class": "Dot",
+      "display_name": "Dot",
+      "file": "nodes/Dot.json"
+    },
+    {
+      "class": "Group",
+      "display_name": "Group",
+      "file": "nodes/Group.json"
+    },
+    {
+      "class": "Input",
+      "display_name": "Input",
+      "file": "nodes/Input.json"
+    },
+    {
+      "class": "LiveGroup",
+      "display_name": "LiveGroup",
+      "file": "nodes/LiveGroup.json"
+    },
+    {
+      "class": "LiveInput",
+      "display_name": "LiveInput",
+      "file": "nodes/LiveInput.json"
+    },
+    {
+      "class": "NoOp",
+      "display_name": "NoOp",
+      "file": "nodes/NoOp.json"
+    },
+    {
+      "class": "Output",
+      "display_name": "Output",
+      "file": "nodes/Output.json"
+    },
+    {
+      "class": "PostageStamp",
+      "display_name": "PostageStamp",
+      "file": "nodes/PostageStamp.json"
+    },
+    {
+      "class": "Precomp",
+      "display_name": "Precomp",
+      "file": "nodes/Precomp.json"
+    },
+    {
+      "class": "StickyNote",
+      "display_name": "StickyNote",
+      "file": "nodes/StickyNote.json"
+    },
+    {
+      "class": "VariableGroup",
+      "display_name": "VariableGroup",
+      "file": "nodes/VariableGroup.json"
+    }
+  ],
+  "Particles": [
+    {
+      "class": "ParticleAttractToSphere",
+      "display_name": "ParticleAttractToSphere",
+      "file": "nodes/ParticleAttractToSphere.json"
+    },
+    {
+      "class": "ParticleBlinkScript",
+      "display_name": "ParticleBlinkScript",
+      "file": "nodes/ParticleBlinkScript.json"
+    },
+    {
+      "class": "ParticleBounce",
+      "display_name": "ParticleBounce",
+      "file": "nodes/ParticleBounce.json"
+    },
+    {
+      "class": "ParticleCache",
+      "display_name": "ParticleCache",
+      "file": "nodes/ParticleCache.json"
+    },
+    {
+      "class": "ParticleColorByAge",
+      "display_name": "ParticleColorByAge",
+      "file": "nodes/ParticleColorByAge.json"
+    },
+    {
+      "class": "ParticleConstrainToSphere",
+      "display_name": "ParticleConstrainToSphere",
+      "file": "nodes/ParticleConstrainToSphere.json"
+    },
+    {
+      "class": "ParticleCurve",
+      "display_name": "ParticleCurve",
+      "file": "nodes/ParticleCurve.json"
+    },
+    {
+      "class": "ParticleCylinderFlow",
+      "display_name": "ParticleCylinderFlow",
+      "file": "nodes/ParticleCylinderFlow.json"
+    },
+    {
+      "class": "ParticleDirection",
+      "display_name": "ParticleDirection",
+      "file": "nodes/ParticleDirection.json"
+    },
+    {
+      "class": "ParticleDirectionalForce",
+      "display_name": "ParticleDirectionalForce",
+      "file": "nodes/ParticleDirectionalForce.json"
+    },
+    {
+      "class": "ParticleDistributeSphere",
+      "display_name": "ParticleDistributeSphere",
+      "file": "nodes/ParticleDistributeSphere.json"
+    },
+    {
+      "class": "ParticleDrag2",
+      "display_name": "ParticleDrag",
+      "file": "nodes/ParticleDrag2.json"
+    },
+    {
+      "class": "ParticleEmitter",
+      "display_name": "ParticleEmitter",
+      "file": "nodes/ParticleEmitter.json"
+    },
+    {
+      "class": "ParticleExpression",
+      "display_name": "ParticleExpression",
+      "file": "nodes/ParticleExpression.json"
+    },
+    {
+      "class": "ParticleFlock",
+      "display_name": "ParticleFlock",
+      "file": "nodes/ParticleFlock.json"
+    },
+    {
+      "class": "ParticleFuse",
+      "display_name": "ParticleFuse",
+      "file": "nodes/ParticleFuse.json"
+    },
+    {
+      "class": "ParticleGravity",
+      "display_name": "ParticleGravity",
+      "file": "nodes/ParticleGravity.json"
+    },
+    {
+      "class": "ParticleGrid",
+      "display_name": "ParticleGrid",
+      "file": "nodes/ParticleGrid.json"
+    },
+    {
+      "class": "ParticleHelixFlow",
+      "display_name": "ParticleHelixFlow",
+      "file": "nodes/ParticleHelixFlow.json"
+    },
+    {
+      "class": "ParticleInfo",
+      "display_name": "ParticleInfo",
+      "file": "nodes/ParticleInfo.json"
+    },
+    {
+      "class": "ParticleKill",
+      "display_name": "ParticleKill",
+      "file": "nodes/ParticleKill.json"
+    },
+    {
+      "class": "ParticleLookAt",
+      "display_name": "ParticleLookAt",
+      "file": "nodes/ParticleLookAt.json"
+    },
+    {
+      "class": "ParticleMerge",
+      "display_name": "ParticleMerge",
+      "file": "nodes/ParticleMerge.json"
+    },
+    {
+      "class": "ParticleMotionAlign",
+      "display_name": "ParticleMotionAlign",
+      "file": "nodes/ParticleMotionAlign.json"
+    },
+    {
+      "class": "ParticlePointForce",
+      "display_name": "ParticlePointForce",
+      "file": "nodes/ParticlePointForce.json"
+    },
+    {
+      "class": "ParticleProjectDisplace",
+      "display_name": "ParticleProjectDisplace",
+      "file": "nodes/ParticleProjectDisplace.json"
+    },
+    {
+      "class": "ParticleProjectImage",
+      "display_name": "ParticleProjectImage",
+      "file": "nodes/ParticleProjectImage.json"
+    },
+    {
+      "class": "ParticleSettings",
+      "display_name": "ParticleSettings",
+      "file": "nodes/ParticleSettings.json"
+    },
+    {
+      "class": "ParticleShockWave",
+      "display_name": "ParticleShockWave",
+      "file": "nodes/ParticleShockWave.json"
+    },
+    {
+      "class": "ParticleSpawn",
+      "display_name": "ParticleSpawn",
+      "file": "nodes/ParticleSpawn.json"
+    },
+    {
+      "class": "ParticleSpeedLimit",
+      "display_name": "ParticleSpeedLimit",
+      "file": "nodes/ParticleSpeedLimit.json"
+    },
+    {
+      "class": "ParticleToGeo",
+      "display_name": "ParticleToGeo",
+      "file": "nodes/ParticleToGeo.json"
+    },
+    {
+      "class": "ParticleTurbulence",
+      "display_name": "ParticleTurbulence",
+      "file": "nodes/ParticleTurbulence.json"
+    },
+    {
+      "class": "ParticleVortex",
+      "display_name": "ParticleVortex",
+      "file": "nodes/ParticleVortex.json"
+    },
+    {
+      "class": "ParticleWind",
+      "display_name": "ParticleWind",
+      "file": "nodes/ParticleWind.json"
+    }
+  ],
+  "Time": [
+    {
+      "class": "add32p",
+      "display_name": "Add 3:2 pulldown",
+      "file": "nodes/add32p.json"
+    },
+    {
+      "class": "AppendClip",
+      "display_name": "AppendClip",
+      "file": "nodes/AppendClip.json"
+    },
+    {
+      "class": "FrameBlend",
+      "display_name": "FrameBlend",
+      "file": "nodes/FrameBlend.json"
+    },
+    {
+      "class": "FrameHold",
+      "display_name": "FrameHold",
+      "file": "nodes/FrameHold.json"
+    },
+    {
+      "class": "FrameRange",
+      "display_name": "FrameRange",
+      "file": "nodes/FrameRange.json"
+    },
+    {
+      "class": "Kronos",
+      "display_name": "Kronos",
+      "file": "nodes/Kronos.json"
+    },
+    {
+      "class": "NoTimeBlur",
+      "display_name": "NoTimeBlur",
+      "file": "nodes/NoTimeBlur.json"
+    },
+    {
+      "class": "remove32p",
+      "display_name": "Remove 3:2 pulldown",
+      "file": "nodes/remove32p.json"
+    },
+    {
+      "class": "Retime",
+      "display_name": "Retime",
+      "file": "nodes/Retime.json"
+    },
+    {
+      "class": "SmartVector",
+      "display_name": "SmartVector",
+      "file": "nodes/SmartVector.json"
+    },
+    {
+      "class": "TemporalMedian",
+      "display_name": "TemporalMedian",
+      "file": "nodes/TemporalMedian.json"
+    },
+    {
+      "class": "TimeBlur",
+      "display_name": "TimeBlur",
+      "file": "nodes/TimeBlur.json"
+    },
+    {
+      "class": "TimeClip",
+      "display_name": "TimeClip",
+      "file": "nodes/TimeClip.json"
+    },
+    {
+      "class": "TimeEcho",
+      "display_name": "TimeEcho",
+      "file": "nodes/TimeEcho.json"
+    },
+    {
+      "class": "TimeOffset",
+      "display_name": "TimeOffset",
+      "file": "nodes/TimeOffset.json"
+    },
+    {
+      "class": "TimeWarp",
+      "display_name": "TimeWarp",
+      "file": "nodes/TimeWarp.json"
+    },
+    {
+      "class": "VectorGenerator",
+      "display_name": "VectorGenerator",
+      "file": "nodes/VectorGenerator.json"
+    },
+    {
+      "class": "VectorToMotion",
+      "display_name": "VectorToMotion",
+      "file": "nodes/VectorToMotion.json"
+    }
+  ],
+  "Transform": [
+    {
+      "class": "AdjBBox",
+      "display_name": "AdjustBBox",
+      "file": "nodes/AdjBBox.json"
+    },
+    {
+      "class": "BlackOutside",
+      "display_name": "BlackOutside",
+      "file": "nodes/BlackOutside.json"
+    },
+    {
+      "class": "CameraShake3",
+      "display_name": "CameraShake",
+      "file": "nodes/CameraShake3.json"
+    },
+    {
+      "class": "Card3D",
+      "display_name": "Card3D",
+      "file": "nodes/Card3D.json"
+    },
+    {
+      "class": "CornerPin2D",
+      "display_name": "CornerPin",
+      "file": "nodes/CornerPin2D.json"
+    },
+    {
+      "class": "Crop",
+      "display_name": "Crop",
+      "file": "nodes/Crop.json"
+    },
+    {
+      "class": "GridWarp3",
+      "display_name": "GridWarp",
+      "file": "nodes/GridWarp3.json"
+    },
+    {
+      "class": "GridWarpTracker",
+      "display_name": "GridWarpTracker",
+      "file": "nodes/GridWarpTracker.json"
+    },
+    {
+      "class": "IDistort",
+      "display_name": "IDistort",
+      "file": "nodes/IDistort.json"
+    },
+    {
+      "class": "LensDistortion2",
+      "display_name": "LensDistortion",
+      "file": "nodes/LensDistortion2.json"
+    },
+    {
+      "class": "Mirror2",
+      "display_name": "Mirror",
+      "file": "nodes/Mirror2.json"
+    },
+    {
+      "class": "PlanarTracker",
+      "display_name": "PlanarTracker",
+      "file": "nodes/PlanarTracker.json"
+    },
+    {
+      "class": "PointsTo3D",
+      "display_name": "PointsTo3D",
+      "file": "nodes/PointsTo3D.json"
+    },
+    {
+      "class": "Position",
+      "display_name": "Position",
+      "file": "nodes/Position.json"
+    },
+    {
+      "class": "Reconcile3D",
+      "display_name": "Reconcile3D",
+      "file": "nodes/Reconcile3D.json"
+    },
+    {
+      "class": "Reformat",
+      "display_name": "Reformat",
+      "file": "nodes/Reformat.json"
+    },
+    {
+      "class": "SphericalTransform2",
+      "display_name": "SphericalTransform",
+      "file": "nodes/SphericalTransform2.json"
+    },
+    {
+      "class": "SplineWarp3",
+      "display_name": "SplineWarp",
+      "file": "nodes/SplineWarp3.json"
+    },
+    {
+      "class": "Stabilize2D",
+      "display_name": "Stabilize",
+      "file": "nodes/Stabilize2D.json"
+    },
+    {
+      "class": "STMap",
+      "display_name": "STMap",
+      "file": "nodes/STMap.json"
+    },
+    {
+      "class": "Tile",
+      "display_name": "Tile",
+      "file": "nodes/Tile.json"
+    },
+    {
+      "class": "Tracker4",
+      "display_name": "Tracker",
+      "file": "nodes/Tracker4.json"
+    },
+    {
+      "class": "Transform",
+      "display_name": "Transform",
+      "file": "nodes/Transform.json"
+    },
+    {
+      "class": "TransformMasked",
+      "display_name": "TransformMasked",
+      "file": "nodes/TransformMasked.json"
+    },
+    {
+      "class": "TVIscale2",
+      "display_name": "TVIScale",
+      "file": "nodes/TVIscale2.json"
+    },
+    {
+      "class": "VectorCornerPin",
+      "display_name": "VectorCornerPin",
+      "file": "nodes/VectorCornerPin.json"
+    },
+    {
+      "class": "VectorDistort",
+      "display_name": "VectorDistort",
+      "file": "nodes/VectorDistort.json"
+    }
+  ],
+  "Views": [
+    {
+      "class": "Anaglyph",
+      "display_name": "Anaglyph",
+      "file": "nodes/Anaglyph.json"
+    },
+    {
+      "class": "JoinViews",
+      "display_name": "JoinViews",
+      "file": "nodes/JoinViews.json"
+    },
+    {
+      "class": "MixViews",
+      "display_name": "MixViews",
+      "file": "nodes/MixViews.json"
+    },
+    {
+      "class": "OneView",
+      "display_name": "OneView",
+      "file": "nodes/OneView.json"
+    },
+    {
+      "class": "ReConverge",
+      "display_name": "ReConverge",
+      "file": "nodes/ReConverge.json"
+    },
+    {
+      "class": "ShuffleViews",
+      "display_name": "ShuffleViews",
+      "file": "nodes/ShuffleViews.json"
+    },
+    {
+      "class": "SideBySide",
+      "display_name": "SideBySide",
+      "file": "nodes/SideBySide.json"
+    }
+  ]
+}

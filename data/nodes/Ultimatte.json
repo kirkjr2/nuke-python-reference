@@ -1,0 +1,6216 @@
+{
+  "$schema": "../schemas/node.schema.json",
+  "argument_order": [
+    "brights",
+    "cleanup",
+    "cleanup_blur",
+    "cleanup_cleanup",
+    "cleanup_enable",
+    "cleanup_recover",
+    "cleanup_shrink",
+    "color_brightness",
+    "color_brights",
+    "color_conformance",
+    "color_conformance_enable",
+    "color_darks",
+    "color_hue",
+    "color_midtones",
+    "color_saturation",
+    "cool",
+    "darks",
+    "edge_kernel",
+    "film",
+    "film_brights",
+    "film_correction",
+    "film_darks",
+    "film_enable",
+    "film_shrink",
+    "film_strength",
+    "film_transparency",
+    "output_mode",
+    "overlay_color",
+    "overlay_mode",
+    "overlay_mono",
+    "overlay_toolbar",
+    "reset",
+    "screen_brights_red_larger",
+    "screen_brights_red_smaller",
+    "screen_color",
+    "screen_correct",
+    "screen_correct_enable",
+    "screen_darks_red_larger",
+    "screen_darks_red_smaller",
+    "screen_orphans",
+    "screen_shrink",
+    "screen_tolerance",
+    "shadow",
+    "shadow_enable",
+    "shadows_blur",
+    "shadows_density",
+    "shadows_high",
+    "shadows_low",
+    "shadows_tint",
+    "spill_ambience",
+    "spill_backgroundveiling",
+    "spill_brights",
+    "spill_cool",
+    "spill_darks",
+    "spill_midtones",
+    "spill_strength",
+    "spill_suppression",
+    "spill_suppression_enable",
+    "spill_warm",
+    "toolbar_addmatte",
+    "toolbar_addoverlay",
+    "toolbar_holdShadow",
+    "toolbar_matchcolor",
+    "toolbar_matchshadow",
+    "toolbar_removenoise",
+    "toolbar_removeoverlay",
+    "toolbar_removespill",
+    "toolbar_restorespill",
+    "toolbar_screen",
+    "ultimatte_toolbar",
+    "us_add_overlay",
+    "us_add_overlay_cp",
+    "us_remove_ovelray",
+    "us_remove_ovelray_cp",
+    "us_remove_spill",
+    "us_restore_spill",
+    "warm"
+  ],
+  "arguments": {
+    "brights": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust matte density in bright foreground areas. Low values are more transparent, high values are more opaque. Hard, dark edges may occur around foreground subjects if this control is set too high."
+      },
+      "id": "arg:brights",
+      "knob_type": "Array_Knob",
+      "label": "brights",
+      "name": "brights",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "cleanup": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable matte clean up processing.<br>These controls adjust the black and gray areas of the matte. This will dramatically affect the foreground edges, the opacity of transparent objects, and the noise in the foreground image. They will result in loss of foreground detail, so use sparingly, and whenever possible solve the problem using Screen Correct controls instead.<br>The effects of the Cleanup controls can be seen in both the matte and the color channels."
+      },
+      "id": "arg:cleanup",
+      "knob_type": "Boolean_Knob",
+      "label": "cleanup",
+      "name": "cleanup",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "cleanup_blur": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Soften the cleaned-up matte."
+      },
+      "id": "arg:cleanup_blur",
+      "knob_type": "WH_Knob",
+      "label": "blur",
+      "name": "cleanup_blur",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0.0,
+            0.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "cleanup_cleanup": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Reduce imperfections or small amounts of noise in the screen (backing) area. Lower values are sharper, higher values reduce more noise.<br>Raising this setting too high will result in a 'cut and paste' look with a hard, unnatural edge. Foreground detail may be reduced as well as the background noise. In general, the Screen Correction controls are better for dealing with imperfections in the screen."
+      },
+      "id": "arg:cleanup_cleanup",
+      "knob_type": "Array_Knob",
+      "label": "cleanup",
+      "name": "cleanup_cleanup",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "cleanup_enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "enable"
+      },
+      "id": "arg:cleanup_enable",
+      "knob_type": "Link_Knob",
+      "label": "enable",
+      "name": "cleanup_enable",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "cleanup_recover": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "This sets a threshold below which the Cleanup controls will have no influence."
+      },
+      "id": "arg:cleanup_recover",
+      "knob_type": "Array_Knob",
+      "label": "recover",
+      "name": "cleanup_recover",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "cleanup_shrink": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Choke (reduce) the size of the cleaned-up matte."
+      },
+      "id": "arg:cleanup_shrink",
+      "knob_type": "WH_Knob",
+      "label": "shrink",
+      "name": "cleanup_shrink",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0.0,
+            0.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "color_brightness": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the overall intensity of the image. There is no change at the default setting of 0."
+      },
+      "id": "arg:color_brightness",
+      "knob_type": "Array_Knob",
+      "label": "brightness",
+      "name": "color_brightness",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "color_brights": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.5
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "These per-channel controls increase or decrease the influence of the color matching effect on the corresponding channels in the bright areas of the image. Adjustments will affect the entire image, but the greatest effect will be seen in the bright areas."
+      },
+      "id": "arg:color_brights",
+      "knob_type": "Color_Knob",
+      "label": "brights",
+      "name": "color_brights",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.5",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "color_conformance": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable color conformance processing.<br>This color corrects the processed foreground to better match the background. Use the Viewer toolbar match pickers to choose colors that should match and if necessary, adjust the overall correction with the Color controls. The effects of the Color controls are best judged from the final composite."
+      },
+      "id": "arg:color_conformance",
+      "knob_type": "Boolean_Knob",
+      "label": "color conformance",
+      "name": "color_conformance",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "color_conformance_enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "enable"
+      },
+      "id": "arg:color_conformance_enable",
+      "knob_type": "Link_Knob",
+      "label": "enable",
+      "name": "color_conformance_enable",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "color_darks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.5
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "These per-channel controls increase or decrease the influence of the color matching effect on the corresponding channels in the darker parts of the image. Adjustments will affect the entire image, but the greatest effect will be seen in the darkest areas."
+      },
+      "id": "arg:color_darks",
+      "knob_type": "Color_Knob",
+      "label": "darks",
+      "name": "color_darks",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.5",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "color_hue": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the color of the image without affecting it's brightness or color intensity (purity) values. There is no change at the default setting of 0."
+      },
+      "id": "arg:color_hue",
+      "knob_type": "Array_Knob",
+      "label": "hue",
+      "name": "color_hue",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "color_midtones": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.5
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "These per-channel controls increase or decrease the influence of the color matching effect on the corresponding channels in the mid-tones of the image. Adjustments will affect the entire image, but the greatest effect will be seen in the midrange areas."
+      },
+      "id": "arg:color_midtones",
+      "knob_type": "Color_Knob",
+      "label": "midtones",
+      "name": "color_midtones",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.5",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "color_saturation": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the color intensity (purity) values without altering the color content or brightness values. There is no change at the default setting of 0. At the minimum value of -200 the image is reduced to monochrome."
+      },
+      "id": "arg:color_saturation",
+      "knob_type": "Array_Knob",
+      "label": "saturation",
+      "name": "color_saturation",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "cool": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust matte density in cool colors. Low values are more transparent, high values are more opaque. Print-through may occur in blue-hued foreground objects if this control is set too low."
+      },
+      "id": "arg:cool",
+      "knob_type": "Array_Knob",
+      "label": "cool",
+      "name": "cool",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "darks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust matte density in black glossy or dark foreground objects. Low values are more transparent, high values are more opaque. Hard, dark edges may occur around foreground subjects if this control is set too high."
+      },
+      "id": "arg:darks",
+      "knob_type": "Array_Knob",
+      "label": "darks",
+      "name": "darks",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "edge_kernel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The number of pixels to use as a kernel to reduce dark edges that may exist in transition areas due to an over-dense matte. Raising this setting too high may cause excessive print-through in the edges."
+      },
+      "id": "arg:edge_kernel",
+      "knob_type": "Array_Knob",
+      "label": "edge kernel",
+      "name": "edge_kernel",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "film": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable film correction processing.<br>This attempts to reduce the effects of cyan undercutting, a phenomenon the occurs due to the nature of film's emulsion layers. This appears as a smeared red edge in areas of sharp transitions and can best be seen by viewing the individual RGB channels. Cyan undercutting is typically not a problem until bluescreen keying techniques are applied. Since the red emulsion layer tracks at a slower rate than the blue and green emulsion layers, the artificial red edge it produces will be retained as foreground detail resulting in an unacceptable composite.<br>The effects of the Film controls can best be seen while viewing the final composite."
+      },
+      "id": "arg:film",
+      "knob_type": "Boolean_Knob",
+      "label": "Film",
+      "name": "film",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "film_brights": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 200.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust to include or eliminate bright areas from the subject overlay.<br>The effect of this setting can best be seen while viewing the subject overlay."
+      },
+      "id": "arg:film_brights",
+      "knob_type": "Array_Knob",
+      "label": "brights",
+      "name": "film_brights",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "200",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          200.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "film_correction": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.20000000298023224
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of correction per-channel in the foreground image.<br>The effects of these settings can best be seen while viewing the final composite."
+      },
+      "id": "arg:film_correction",
+      "knob_type": "Color_Knob",
+      "label": "correction",
+      "name": "film_correction",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.200000003 0 0",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "film_darks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 5.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust to include or eliminate dark areas from the subject overlay.<br>The effect of this setting can best be seen while viewing the subject overlay."
+      },
+      "id": "arg:film_darks",
+      "knob_type": "Array_Knob",
+      "label": "darks",
+      "name": "film_darks",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "5",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          5.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "film_enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "enable"
+      },
+      "id": "arg:film_enable",
+      "knob_type": "Link_Knob",
+      "label": "enable",
+      "name": "film_enable",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "film_shrink": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 2.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Shrink (erode) the subject overlay.<br>The effect of this setting can best be seen while viewing the subject overlay."
+      },
+      "id": "arg:film_shrink",
+      "knob_type": "WH_Knob",
+      "label": "shrink",
+      "name": "film_shrink",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "2",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            2.0,
+            2.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "film_strength": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the overall amount of film correction applied to the foreground image.<br>The effect of this setting can best be seen while viewing the final composite."
+      },
+      "id": "arg:film_strength",
+      "knob_type": "Array_Knob",
+      "label": "strength",
+      "name": "film_strength",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "film_transparency": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of film correction in partially transparent foreground areas (such as hair detail).<br>The effects of these settings can best be seen while viewing the final composite."
+      },
+      "id": "arg:film_transparency",
+      "knob_type": "Array_Knob",
+      "label": "transparency",
+      "name": "film_transparency",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "output_mode": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "composite"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The type of output to produce."
+      },
+      "id": "arg:output_mode",
+      "knob_type": "Enumeration_Knob",
+      "label": "output mode",
+      "name": "output_mode",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "composite",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "composite",
+          "premultiplied",
+          "unpremultiplied"
+        ]
+      }
+    },
+    "overlay_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.5799999833106995
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The color in which to render the overlay when it is visible."
+      },
+      "id": "arg:overlay_color",
+      "knob_type": "AColor_Knob",
+      "label": "overlay color",
+      "name": "overlay_color",
+      "python_type": "list[float, float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.5799999833 0.0700000003 0.2199999988 0.5",
+      "shape": {
+        "array_size": 4,
+        "dimensions": 1,
+        "height": 1,
+        "width": 4
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    "overlay_mode": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "off"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Select overlay rendering:<ul><li>off - do not display overlay</li><li>screen - draw the overlay on the screen area</li><li>subject - draw the overlay on the foreground subject area</li></ul>Use the Add and Remove Overlay tools to select pixels that should be included in (or excluded from, respectively), the screen correct region. This will be used to fully eliminate the selected backing region from the final composite. Under some circumstances it may be difficult to completely cover the screen area with the overlay. This does not mean the screen will not be removed in that area, but it may be necessary to adjust other controls. Re-sampling the screen color may also help in this case, but be careful about selecting in shadow areas if the final composite requires retention of shadows.<br>Note that the Add and Remove Overlay tools accumulate scrubbed pixels in 'keep' and 'remove' lists. If the lists contain equivalent values, a conflict may occur, resulting in no visible change to the overlay when picking. To correct this, try using Undo to revert recent selections or the 'Reset' button on the Screen Correct tab."
+      },
+      "id": "arg:overlay_mode",
+      "knob_type": "Enumeration_Knob",
+      "label": "overlay",
+      "name": "overlay_mode",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "off",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "off",
+          "screen",
+          "subject"
+        ]
+      }
+    },
+    "overlay_mono": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Make the input image grayscale so that the overlay areas can be more easily distinguished."
+      },
+      "id": "arg:overlay_mono",
+      "knob_type": "Boolean_Knob",
+      "label": "show image as monochrome",
+      "name": "overlay_mono",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "overlay_toolbar": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Select overlay rendering:<ul><li>off - do not display overlay</li><li>screen - draw the overlay on the screen area</li><li>subject - draw the overlay on the foreground subject area</li></ul>Use the Add and Remove Overlay tools to select pixels that should be included in (or excluded from, respectively), the screen correct region. This will be used to fully eliminate the selected backing region from the final composite. Under some circumstances it may be difficult to completely cover the screen area with the overlay. This does not mean the screen will not be removed in that area, but it may be necessary to adjust other controls. Re-sampling the screen color may also help in this case, but be careful about selecting in shadow areas if the final composite requires retention of shadows.<br>Note that the Add and Remove Overlay tools accumulate scrubbed pixels in 'keep' and 'remove' lists. If the lists contain equivalent values, a conflict may occur, resulting in no visible change to the overlay when picking. To correct this, try using Undo to revert recent selections or the 'Reset' button on the Screen Correct tab."
+      },
+      "id": "arg:overlay_toolbar",
+      "knob_type": "Link_Knob",
+      "label": "",
+      "name": "overlay_toolbar",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "off",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "reset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Reset the spill suppression settings to their default values."
+      },
+      "id": "arg:reset",
+      "knob_type": "Script_Knob",
+      "label": "",
+      "name": "reset",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "screen_brights_red_larger": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust to include or exclude bright areas from the screen overlay where the red value is greater than the non-screen color value. (Non-screen color being green for a blue screen and blue for a green screen.)"
+      },
+      "id": "arg:screen_brights_red_larger",
+      "knob_type": "Array_Knob",
+      "label": "brights(red larger)",
+      "name": "screen_brights_red_larger",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "screen_brights_red_smaller": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust to include or exclude bright areas from the screen overlay where the non-screen color value is greater than the red value. (Non-screen color being green for a blue screen and blue for a green screen.)"
+      },
+      "id": "arg:screen_brights_red_smaller",
+      "knob_type": "Array_Knob",
+      "label": "brights(red smaller)",
+      "name": "screen_brights_red_smaller",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "screen_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Backing color.<br>The primary color on which the screen extraction is based. Choose an area on the blue (green) screen near important subject detail that is not obscured in any way."
+      },
+      "id": "arg:screen_color",
+      "knob_type": "Color_Knob",
+      "label": "screen color",
+      "name": "screen_color",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "screen_correct": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable screen correction.<br>Ultimatte Screen Correct compensates for anomalies in the backing area such as uneven lighting, smudges, seams, variation in the backing color, blue (green) set pieces, and unwanted shadows cast by set pieces, boom arms, etc.<br>Given this, why would you ever turn it off? There are a few cases where you can get better results by disabling the screen correction: <ul><li>When there is no clear view of the screen. For instance it is entirely covered by smoke, or is shot through a window with lots of reflections.</li><li>When you happen to have a combination of noise/grain and screen color that make it impractical or impossible to find settings for the controls that produce a usable result.</li></ul>The screen correct algorithm generates a synthetic clean plate internally, but for best results, also provide a clean plate as input if you have one. If a clean plate is available, it will be used to achieve the best shadow separation while the synthetic cleanplate will be used to reduce artifacts like film grain and video noise.<br>Since the synthetic clean plate is generated from the input foreground image, it is important to pre-crop out any 'non-image' areas like black blanking lines in some video images or letterbox areas so that they are not interpolated into the screen area, contributing to an inaccurate synthetic clean plate.<br>"
+      },
+      "id": "arg:screen_correct",
+      "knob_type": "Boolean_Knob",
+      "label": "screen correct",
+      "name": "screen_correct",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "screen_correct_enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "enable"
+      },
+      "id": "arg:screen_correct_enable",
+      "knob_type": "Link_Knob",
+      "label": "enable",
+      "name": "screen_correct_enable",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "screen_darks_red_larger": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust to include or exclude dark areas from the screen overlay where the red value is greater than the non-screen color value. (Non-screen color being green for a blue screen and blue for a green screen.)"
+      },
+      "id": "arg:screen_darks_red_larger",
+      "knob_type": "Array_Knob",
+      "label": "darks(red larger)",
+      "name": "screen_darks_red_larger",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "screen_darks_red_smaller": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust to include or exclude dark areas from the screen overlay where the non-screen color is greater than the red value. (Non-screen color being green for a blue screen and blue for a green screen.)"
+      },
+      "id": "arg:screen_darks_red_smaller",
+      "knob_type": "Array_Knob",
+      "label": "darks(red smaller)",
+      "name": "screen_darks_red_smaller",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "screen_orphans": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 1.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "coarse"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Controls which neighboring 'rogue' pixels are included or excluded from the screen overlay."
+      },
+      "id": "arg:screen_orphans",
+      "knob_type": "Enumeration_Knob",
+      "label": "orphans",
+      "name": "screen_orphans",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "coarse",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "off",
+          "coarse",
+          "medium",
+          "fine"
+        ]
+      }
+    },
+    "screen_shrink": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 2.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Shrink (erode) the screen overlay."
+      },
+      "id": "arg:screen_shrink",
+      "knob_type": "WH_Knob",
+      "label": "shrink",
+      "name": "screen_shrink",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "2",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            2.0,
+            2.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "screen_tolerance": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.5099999904632568
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the color range or tolerance per channel to be included or excluded from the screen overlay."
+      },
+      "id": "arg:screen_tolerance",
+      "knob_type": "Color_Knob",
+      "label": "screen tolerance",
+      "name": "screen_tolerance",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.5099999905 0.5099999905 0.5199999809",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "shadow": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable shadow processing.<br>This is used to adjust the opacity, sharpness, and color of shadows with minimal effect on the foreground subject. Shadow processing relies on the internal synthetic clean plate and thus is only active if screen correct is also enabled.<br>The effects of the Shadows controls can be seen in both the matte and the color channels."
+      },
+      "id": "arg:shadow",
+      "knob_type": "Boolean_Knob",
+      "label": "shadow",
+      "name": "shadow",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "shadow_enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "enable"
+      },
+      "id": "arg:shadow_enable",
+      "knob_type": "Link_Knob",
+      "label": "enable",
+      "name": "shadow_enable",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "shadows_blur": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Blur the retained shadows."
+      },
+      "id": "arg:shadows_blur",
+      "knob_type": "WH_Knob",
+      "label": "blur",
+      "name": "shadows_blur",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0.0,
+            0.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    },
+    "shadows_density": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "This value changes the density of shadows that are retained. Higher values increase and lower values decrease the density."
+      },
+      "id": "arg:shadows_density",
+      "knob_type": "Array_Knob",
+      "label": "density",
+      "name": "shadows_density",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "shadows_high": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Lower the value on this control to reduce or eliminate unwanted shadows that are lighter than those that are to be retained. Note that this will lighten all preserved shadows."
+      },
+      "id": "arg:shadows_high",
+      "knob_type": "Array_Knob",
+      "label": "high",
+      "name": "shadows_high",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "shadows_low": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Increase this value to restore the density of the darkest part of shadows that are to be retained."
+      },
+      "id": "arg:shadows_low",
+      "knob_type": "Array_Knob",
+      "label": "low",
+      "name": "shadows_low",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "shadows_tint": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Tint the color of retained shadows."
+      },
+      "id": "arg:shadows_tint",
+      "knob_type": "Color_Knob",
+      "label": "tint",
+      "name": "shadows_tint",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "spill_ambience": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.5
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "A color that subtly influences the foreground in areas that may have contained spill."
+      },
+      "id": "arg:spill_ambience",
+      "knob_type": "Color_Knob",
+      "label": "ambience",
+      "name": "spill_ambience",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.5",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "spill_backgroundveiling": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.4
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The veiling values are used to override the automatic suppression of the backing color. The Ultimatte process uses the backing (screen) color to suppress the backing to black. An indication that the automatic settings did not suppress enough backing is 'veiling', a colorized haze in some background areas. An indication that the automatic settings suppressed too much backing is darkened or mis-colored foreground edges and transparencies.<br>In most cases these settings can be left at their default values.<br>Use each channel value to override the automatic suppression of that channel. Increasing the value will increase the amount of veiling (residue) left in the backing area. Decreasing the value will increase suppression of that color in the screen area and can cause foreground edges and transparencies to shift color towards the channel's complementary color (cyan for red, magenta for green, and yellow for blue)."
+      },
+      "id": "arg:spill_backgroundveiling",
+      "knob_type": "Color_Knob",
+      "label": "background veiling",
+      "name": "spill_backgroundveiling",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.4",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "spill_brights": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 100.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of spill on bright foreground objects."
+      },
+      "id": "arg:spill_brights",
+      "knob_type": "Array_Knob",
+      "label": "brights",
+      "name": "spill_brights",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "100",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          100.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "spill_cool": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 50.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of spill in cool colored foreground objects. Used to reproduce blue, green, or cyan colors that changed through the spill suppression algorithms."
+      },
+      "id": "arg:spill_cool",
+      "knob_type": "Array_Knob",
+      "label": "cool",
+      "name": "spill_cool",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "50",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          50.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "spill_darks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of spill on dark foreground objects."
+      },
+      "id": "arg:spill_darks",
+      "knob_type": "Array_Knob",
+      "label": "darks",
+      "name": "spill_darks",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "spill_midtones": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of spill on midrange foreground objects."
+      },
+      "id": "arg:spill_midtones",
+      "knob_type": "Array_Knob",
+      "label": "midtones",
+      "name": "spill_midtones",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "spill_strength": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 40.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust the intensity of effect of the ambient color."
+      },
+      "id": "arg:spill_strength",
+      "knob_type": "Array_Knob",
+      "label": "strength",
+      "name": "spill_strength",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "40",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          40.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "spill_suppression": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable spill suppression processing.<br>The Ultimatte algorithms will automatically suppress spill if spill suppression processing is enabled. Use the Spill controls to eliminate excessive spill and to restore color similar to the backing that has been inappropriately removed from the foreground.<br>The effects of the Spill controls can be seen in the processed foreground but are best judged from the final composite."
+      },
+      "id": "arg:spill_suppression",
+      "knob_type": "Boolean_Knob",
+      "label": "spill suppression",
+      "name": "spill_suppression",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "spill_suppression_enable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "enable"
+      },
+      "id": "arg:spill_suppression_enable",
+      "knob_type": "Link_Knob",
+      "label": "enable",
+      "name": "spill_suppression_enable",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "spill_warm": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 50.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjusts the amount of spill in warm colored foreground objects. Used to reproduce pink, purple, and magenta colors for bluescreen, or yellow and orange colors for greenscreen that changed through the spill suppression algorithms."
+      },
+      "id": "arg:spill_warm",
+      "knob_type": "Array_Knob",
+      "label": "warm",
+      "name": "spill_warm",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "50",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          50.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "toolbar_addmatte": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Add Matte tool to scrub areas that should be opaque but are not."
+      },
+      "id": "arg:toolbar_addmatte",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltBrush; + ",
+      "name": "toolbar_addmatte",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_addoverlay": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Add Overlay tool to select colors that represent the blue (green) screen, including shadows. Make sure the overlay does not include any foreground detail that you want to retain."
+      },
+      "id": "arg:toolbar_addoverlay",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltBrush; + ",
+      "name": "toolbar_addoverlay",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_holdShadow": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Hold Shadow tool to scrub areas in the backing with shadows that should be preserved. If unwanted shadows are retained, use the Remove Noise tool to reduce or eliminate them. The density, sharpness, and tint of shadows can be adjusted in the shadows tab. Note that Screen Correction processing must be active for the Hold Shadow tool to function."
+      },
+      "id": "arg:toolbar_holdShadow",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltColorPicker; hold shadow ",
+      "name": "toolbar_holdShadow",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_matchcolor": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Match Color tool to correct foreground colors to match background colors. First select a foreground color and then select a background color to which the chosen foreground color should be matched. The foreground color should be selected from the processed foreground, not the original input, since the original input color values generally have some spill from the screen. Results are best when the hue and level of the selected color pairs are not too dissimilar."
+      },
+      "id": "arg:toolbar_matchcolor",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltBrush; color ",
+      "name": "toolbar_matchcolor",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_matchshadow": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Match Shadows tool to select a color for tinting of retained shadows."
+      },
+      "id": "arg:toolbar_matchshadow",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltEraser; shadow ",
+      "name": "toolbar_matchshadow",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_removenoise": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Remove Noise tool to scrub areas in the backing that should be fully transparent but are not."
+      },
+      "id": "arg:toolbar_removenoise",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltEraser; - ",
+      "name": "toolbar_removenoise",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_removeoverlay": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Use the Remove Overlay tool to select colors that represent the backing. If the overlay covers foreground detail, use this tool to scrub on those areas to remove them from the overlay."
+      },
+      "id": "arg:toolbar_removeoverlay",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltEraser; - ",
+      "name": "toolbar_removeoverlay",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_removespill": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Remove backing color from areas exhibiting excessive spill."
+      },
+      "id": "arg:toolbar_removespill",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltEraser; - ",
+      "name": "toolbar_removespill",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_restorespill": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Restore backing color in areas where it was removed unnecessarily or where spill has been over-suppressed."
+      },
+      "id": "arg:toolbar_restorespill",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltBrush; + ",
+      "name": "toolbar_restorespill",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_screen": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Backing color.<br>The primary color on which the screen extraction is based. Choose an area on the blue (green) screen near important subject detail that is not obscured in any way."
+      },
+      "id": "arg:toolbar_screen",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltColorPicker; screen ",
+      "name": "toolbar_screen",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "ultimatte_toolbar": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": true
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:ultimatte_toolbar",
+      "knob_type": "Tab_Knob",
+      "label": "",
+      "name": "ultimatte_toolbar",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "us_add_overlay": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:us_add_overlay",
+      "knob_type": "UltimatteSample_Knob",
+      "label": "",
+      "name": "us_add_overlay",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "us_add_overlay_cp": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:us_add_overlay_cp",
+      "knob_type": "UltimatteSample_Knob",
+      "label": "",
+      "name": "us_add_overlay_cp",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "us_remove_ovelray": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:us_remove_ovelray",
+      "knob_type": "UltimatteSample_Knob",
+      "label": "",
+      "name": "us_remove_ovelray",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "us_remove_ovelray_cp": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:us_remove_ovelray_cp",
+      "knob_type": "UltimatteSample_Knob",
+      "label": "",
+      "name": "us_remove_ovelray_cp",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "us_remove_spill": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:us_remove_spill",
+      "knob_type": "UltimatteSample_Knob",
+      "label": "",
+      "name": "us_remove_spill",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "us_restore_spill": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:us_restore_spill",
+      "knob_type": "UltimatteSample_Knob",
+      "label": "",
+      "name": "us_restore_spill",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "warm": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Adjust matte density in warm colors (like flesh tones). Low values are more transparent, high values are more opaque. Print-through may occur in red-hued foreground objects if this control is set too low."
+      },
+      "id": "arg:warm",
+      "knob_type": "Array_Knob",
+      "label": "warm",
+      "name": "warm",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    }
+  },
+  "creation": {
+    "alternates": [
+      "nuke.nodes.Ultimatte()"
+    ],
+    "preferred": "nuke.createNode(\"Ultimatte\")",
+    "preferred_style": "nuke.createNode"
+  },
+  "description": {
+    "format": "nuke_help_html",
+    "plain_text": "Ultimatte AdvantEdge technology is the culmination of over 25 years of bluescreen imaging experience by Ultimatte Corporation. While individual controls for the keying parameters are accessable for fine tuning, most keys can be set up using the interactive picking tools in the Viewer toolbar. The image is analyzed and Ultimatte AdvantEdge automatically calculates optimum settings for several different parameters simultaneously. This powerful analysis allows Ultimatte AdvantEdge to offer a very simple user interface without sacrificing flexibility and image control. The final result is a composite that preserves fine details like hair, smoke, and motion blurred edges with a minimum of compromises. In most cases you will use the Viewer toolbar pickers in order from left to right. First pick the screen color from a representative backing area near detail that you want to retain. Next, activate the overlay display and use the overlay + and - pickers to get the overlay to cover as much of the screen as possible without intruding on the foreground subject area. The overlay indicates areas that will definitely not be in the composite. Now turn the overlay view off, view the alpha channel, and use the matte + and - pickers to bring areas more solidly into the matte or remove noise or other aberrations from the matte. The Hold Shadow tool can also be used to indicate shadows that should be retained in the final composite, rather than using the matte + tool to bring them into the matte. This allows the shadows to be handled separately (and more accurately) from foreground subject areas. Finally, you can use the spill and match pickers to improve the color correction applied to the RGB channels. Image inputs are:fg : foreground (green/blue screen plate, the only input that is required)bg : backgroundcp : clean plategm : garbage matte (areas that should be ignored)hm : holdout matte (areas that are definitely foreground)Ultimatte is a trademark of Ultimatte Corporation. Ultimatte patent is held by Ultimatte Corporation.",
+    "source": "nuke.Node.help()",
+    "text": "<p>Ultimatte AdvantEdge technology is the culmination of over 25 years of bluescreen imaging experience by Ultimatte Corporation. While individual controls for the keying parameters are accessable for fine tuning, most keys can be set up using the interactive picking tools in the Viewer toolbar. The image is analyzed and Ultimatte AdvantEdge automatically calculates optimum settings for several different parameters simultaneously. This powerful analysis allows Ultimatte AdvantEdge to offer a very simple user interface without sacrificing flexibility and image control. The final result is a composite that preserves fine details like hair, smoke, and motion blurred edges with a minimum of compromises.</p><p>In most cases you will use the Viewer toolbar pickers in order from left to right.<br>First pick the screen color from a representative backing area near detail that you want to retain.<br>Next, activate the overlay display and use the overlay + and - pickers to get the overlay to cover as much of the screen as possible without intruding on the foreground subject area. The overlay indicates areas that will definitely not be in the composite.<br>Now turn the overlay view off, view the alpha channel, and use the matte + and - pickers to bring areas more solidly into the matte or remove noise or other aberrations from the matte.<br>The Hold Shadow tool can also be used to indicate shadows that should be retained in the final composite, rather than using the matte + tool to bring them into the matte. This allows the shadows to be handled separately (and more accurately) from foreground subject areas.<br>Finally, you can use the spill and match pickers to improve the color correction applied to the RGB channels.</p><p>Image inputs are:<ul><li>fg : foreground (green/blue screen plate, the only input that is required)</li><li>bg : background</li><li>cp : clean plate</li><li>gm : garbage matte (areas that should be ignored)</li><li>hm : holdout matte (areas that are definitely foreground)</li></ul><p>Ultimatte is a trademark of Ultimatte Corporation.<br>Ultimatte patent is held by Ultimatte Corporation.</p>"
+  },
+  "id": "node:Ultimatte",
+  "identity": {
+    "aliases": [],
+    "class": "Ultimatte",
+    "display_name": "Ultimatte"
+  },
+  "inputs": {
+    "maximum": 5,
+    "minimum": 5,
+    "scanner_current": 0
+  },
+  "internal_argument_order": [
+    "autolabel",
+    "bookmark",
+    "cached",
+    "color_brights_panelDropped",
+    "color_darks_panelDropped",
+    "color_midtones_panelDropped",
+    "disable",
+    "dope_sheet",
+    "film_correction_panelDropped",
+    "gl_color",
+    "help",
+    "hide_input",
+    "icon",
+    "indicators",
+    "invert",
+    "knobChanged",
+    "label",
+    "lifetimeEnd",
+    "lifetimeStart",
+    "name",
+    "note_font",
+    "note_font_color",
+    "note_font_size",
+    "onCreate",
+    "onDestroy",
+    "overlay_color_panelDropped",
+    "panel",
+    "postage_stamp",
+    "postage_stamp_frame",
+    "rootNodeUpdated",
+    "screen_color_panelDropped",
+    "screen_tolerance_panelDropped",
+    "selected",
+    "shadows_tint_panelDropped",
+    "spill_ambience_panelDropped",
+    "spill_backgroundveiling_panelDropped",
+    "tile_color",
+    "toolbar_addmatte_panelDropped",
+    "toolbar_addoverlay_panelDropped",
+    "toolbar_holdShadow_panelDropped",
+    "toolbar_matchcolor_panelDropped",
+    "toolbar_matchshadow_panelDropped",
+    "toolbar_removenoise_panelDropped",
+    "toolbar_removeoverlay_panelDropped",
+    "toolbar_removespill_panelDropped",
+    "toolbar_restoreDetail",
+    "toolbar_restoreDetail_panelDropped",
+    "toolbar_restorespill_panelDropped",
+    "toolbar_screen_panelDropped",
+    "updateUI",
+    "useLifetime",
+    "xpos",
+    "ypos"
+  ],
+  "internal_arguments": {
+    "autolabel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:autolabel",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "autolabel",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "bookmark": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Show this node in the bookmark list."
+      },
+      "id": "arg:bookmark",
+      "knob_type": "Boolean_Knob",
+      "label": "Bookmark",
+      "name": "bookmark",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "cached": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Always keep the output of this in memory so that it can be read quickly when changing things connected to it."
+      },
+      "id": "arg:cached",
+      "knob_type": "Boolean_Knob",
+      "label": "Cached",
+      "name": "cached",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "color_brights_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:color_brights_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "color_brights_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "color_darks_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:color_darks_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "color_darks_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "color_midtones_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:color_midtones_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "color_midtones_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "disable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Pass default input through this node without any processing."
+      },
+      "id": "arg:disable",
+      "knob_type": "Disable_Knob",
+      "label": "Disable",
+      "name": "disable",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "dope_sheet": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Always show this node's animation in the dopesheet."
+      },
+      "id": "arg:dope_sheet",
+      "knob_type": "Boolean_Knob",
+      "label": "Dope Sheet",
+      "name": "dope_sheet",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "film_correction_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:film_correction_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "film_correction_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "gl_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Color for this node's controls in the viewer.<br>X indicates the color is unset and uses the Preferences/DefaultNodeGLColor value.<br>Use the right click menu to revert to unset."
+      },
+      "id": "arg:gl_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Handles",
+      "name": "gl_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "help": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:help",
+      "knob_type": "EvalString_Knob",
+      "label": "",
+      "name": "help",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "hide_input": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Don't draw the arrows going into this node when it is not selected."
+      },
+      "id": "arg:hide_input",
+      "knob_type": "Boolean_Knob",
+      "label": "Hide Input",
+      "name": "hide_input",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "icon": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:icon",
+      "knob_type": "File_Knob",
+      "label": "INVISIBLE",
+      "name": "icon",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "indicators": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:indicators",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "indicators",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "invert": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:invert",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "invert",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "knobChanged": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:knobChanged",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "knobChanged",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "label": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Text to display on the node.\nSome html is accepted."
+      },
+      "id": "arg:label",
+      "knob_type": "Multiline_Eval_String_Knob",
+      "label": "Label",
+      "name": "label",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "lifetimeEnd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": false,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The end frame after which the node will behave as if disabled."
+      },
+      "id": "arg:lifetimeEnd",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "lifetimeEnd",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "lifetimeStart": {
+      "capabilities": {
+        "animated": false,
+        "enabled": false,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The start frame to enable the node from."
+      },
+      "id": "arg:lifetimeStart",
+      "knob_type": "Array_Knob",
+      "label": "Lifetime Range",
+      "name": "lifetimeStart",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "name": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "Ultimatte1"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Name of the node, used to refer to it in expressions.\nValid names start with a letter or underscore and may only contain letters, digits and underscores."
+      },
+      "id": "arg:name",
+      "knob_type": "String_Knob",
+      "label": "",
+      "name": "name",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Ultimatte1",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "Ultimatte1"
+        ]
+      }
+    },
+    "note_font": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "Verdana"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Font"
+      },
+      "id": "arg:note_font",
+      "knob_type": "Font_Knob",
+      "label": "Font",
+      "name": "note_font",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Verdana",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "Verdana"
+        ]
+      }
+    },
+    "note_font_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Color"
+      },
+      "id": "arg:note_font_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Color",
+      "name": "note_font_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "note_font_size": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 11.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:note_font_size",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "note_font_size",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "11",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          11.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "onCreate": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:onCreate",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "onCreate",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "onDestroy": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:onDestroy",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "onDestroy",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "overlay_color_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:overlay_color_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "overlay_color_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "panel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete",
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:panel",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "panel",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "postage_stamp": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Display a small image on this node in the Node Graph indicating its output."
+      },
+      "id": "arg:postage_stamp",
+      "knob_type": "Boolean_Knob",
+      "label": "Postage Stamp",
+      "name": "postage_stamp",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "postage_stamp_frame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Specify the frame number to use for a static postage stamp. This is only used when the postage stamp mode preference is set to 'Static frame'. If the frame number is outside the frame range for the node, it will be clamped."
+      },
+      "id": "arg:postage_stamp_frame",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "postage_stamp_frame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "rootNodeUpdated": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "root node has been updated"
+      },
+      "id": "arg:rootNodeUpdated",
+      "knob_type": "EvalString_Knob",
+      "label": "root node has been updated",
+      "name": "rootNodeUpdated",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "screen_color_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:screen_color_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "screen_color_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "screen_tolerance_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:screen_tolerance_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "screen_tolerance_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "selected": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:selected",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "selected",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "shadows_tint_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:shadows_tint_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "shadows_tint_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "spill_ambience_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:spill_ambience_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "spill_ambience_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "spill_backgroundveiling_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:spill_backgroundveiling_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "spill_backgroundveiling_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "tile_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Color of this node's icon in the graph.<br>/ indicates the color is unset and uses the Preferences/Node Colors value, if any.<br>Use the right click menu to revert to unset."
+      },
+      "id": "arg:tile_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Color",
+      "name": "tile_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "toolbar_addmatte_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_addmatte_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_addmatte_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_addoverlay_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_addoverlay_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_addoverlay_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_holdShadow_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_holdShadow_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_holdShadow_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_matchcolor_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_matchcolor_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_matchcolor_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_matchshadow_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_matchshadow_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_matchshadow_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_removenoise_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_removenoise_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_removenoise_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_removeoverlay_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_removeoverlay_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_removeoverlay_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_removespill_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_removespill_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_removespill_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_restoreDetail": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "hidden"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Restore detail in partially transparent areas"
+      },
+      "id": "arg:toolbar_restoreDetail",
+      "knob_type": "Eyedropper_Knob",
+      "label": "@UltColorPicker; restore detail ",
+      "name": "toolbar_restoreDetail",
+      "python_type": "list[float × 8]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0 0 0 0 0 0",
+      "shape": {
+        "array_size": 8,
+        "dimensions": 1,
+        "height": 1,
+        "width": 8
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    },
+    "toolbar_restoreDetail_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_restoreDetail_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_restoreDetail_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_restorespill_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_restorespill_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_restorespill_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "toolbar_screen_panelDropped": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label",
+          "hidden",
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "panel dropped state"
+      },
+      "id": "arg:toolbar_screen_panelDropped",
+      "knob_type": "Boolean_Knob",
+      "label": "panel dropped state",
+      "name": "toolbar_screen_panelDropped",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "updateUI": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:updateUI",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "updateUI",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "useLifetime": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "When checked the node is only enabled between the specified frame ranges, outside of the frame ranges it behaves as if disabled."
+      },
+      "id": "arg:useLifetime",
+      "knob_type": "Boolean_Knob",
+      "label": "Use Lifetime",
+      "name": "useLifetime",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "xpos": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": -2147483648.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:xpos",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "xpos",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "-52",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          -2147483648.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "ypos": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:ypos",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "ypos",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "157",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    }
+  },
+  "kind": "nuke_node_reference",
+  "navigation": {
+    "categories": [
+      "Keyer"
+    ],
+    "category": "Keyer",
+    "icons": [
+      "Ultimatte.png"
+    ],
+    "menu_path": "Keyer/Ultimatte",
+    "menu_paths": [
+      "Keyer/Ultimatte"
+    ]
+  },
+  "provenance": {
+    "generator": "Nuke Reference Generator v3",
+    "generator_schema_version": 3,
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "scanner": "Nuke Command Reference Scanner v5",
+    "scanner_schema_version": 5,
+    "type_map_version": 1
+  },
+  "schema_version": "1.0.0"
+}

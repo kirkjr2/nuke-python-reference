@@ -1,0 +1,6303 @@
+{
+  "$schema": "../schemas/node.schema.json",
+  "argument_order": [
+    "addTrack",
+    "addTracks",
+    "afterFrameRender",
+    "afterRender",
+    "autoTrack",
+    "autoTracksInteractionKnob",
+    "autoTracksKnob",
+    "averageTracks",
+    "beforeFrameRender",
+    "beforeRender",
+    "cameraMotion",
+    "centreViewOnSelected",
+    "clearAll",
+    "clearBkwd",
+    "clearFwd",
+    "clearOffset",
+    "consistencyThreshold",
+    "deleteAll",
+    "deleteOutliers",
+    "deleteSelected",
+    "deleteTracks",
+    "enabledAxes",
+    "endFrame",
+    "enforceFeatureSeparation",
+    "enforceNumberFeatures",
+    "exportButton",
+    "exportMenu",
+    "featureSeparation",
+    "featureSpread",
+    "globalOptimisation",
+    "gpuName",
+    "hotkeyInteraction",
+    "ignoreMask",
+    "keyframeOverlap",
+    "lastExecutedFrame",
+    "licenseCheckResult",
+    "licenseCheckTrigger",
+    "linkOutput",
+    "matchThreshold",
+    "minTrackLength",
+    "numberFeatures",
+    "panTiltRollMM",
+    "panTiltRollS",
+    "patchSize",
+    "placementInteraction",
+    "previewFeatures",
+    "previewFeaturesKnob",
+    "referenceFrame",
+    "refineFeatures",
+    "renderProgress",
+    "resampleType",
+    "selectAll",
+    "selectedTrackIndexKnob",
+    "setReferenceFrameButton",
+    "showErrorOnTrack",
+    "smoothnessThreshold",
+    "solveButton",
+    "solveRMSError",
+    "solveType",
+    "startFrame",
+    "trackBkwdRange",
+    "trackControls",
+    "trackFwdAndBwd",
+    "trackFwdRange",
+    "trackNext",
+    "trackPrev",
+    "trackRange",
+    "trackReset",
+    "trackStop",
+    "trackToEnd",
+    "trackToStart",
+    "trackingSpace",
+    "tracks",
+    "transformType",
+    "useGPUIfAvailable",
+    "userTrackInteractionKnob",
+    "userTracksMatchEnforced",
+    "validationErrorThreshold",
+    "zoomMagnificationSize_Tracker",
+    "zoomWindowBehaviour_Tracker",
+    "zoomWindowFilterBehaviour_Tracker",
+    "zoomWindowGroupKnob",
+    "zoomWindowSize_Tracker"
+  ],
+  "arguments": {
+    "addTrack": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Add a new track."
+      },
+      "id": "arg:addTrack",
+      "knob_type": "Script_Knob",
+      "label": "Add track",
+      "name": "addTrack",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "addTracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "When enabled, allows you to quickly lay down tracks. Holding down the Command/Ctrl+Alt keys will also turn this on."
+      },
+      "id": "arg:addTracks",
+      "knob_type": "Boolean_Knob",
+      "label": "@Tracker/AddTrackOff;@Tracker/AddTrackOn;",
+      "name": "addTracks",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "afterFrameRender": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "After Each Frame"
+      },
+      "id": "arg:afterFrameRender",
+      "knob_type": "PythonKnob",
+      "label": "After Each Frame",
+      "name": "afterFrameRender",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "afterRender": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "After Render"
+      },
+      "id": "arg:afterRender",
+      "knob_type": "PythonKnob",
+      "label": "After Render",
+      "name": "afterRender",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "autoTrack": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "node = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nif proceed: \n  knobsString = node.writeKnobs(nuke.WRITE_NON_DEFAULT_ONLY) \n  hasTracks = 'autoTracksKnob' in knobsString \n  if hasTracks: \n    proceed = nuke.ask('Proceeding will reset the existing automatic feature tracks. Are you sure?') \nif proceed: \n  node['executeType'].setValue(0) \n  first = max(node.firstFrame(), int(node['startFrame'].getValue())) \n  last = min(node.lastFrame(), int(node['endFrame'].getValue())) \n  rangeFwd = nuke.FrameRange(first, last, 1) \n  rangeBwd = nuke.FrameRange(last, first, -1) \n  if node['trackFwdAndBwd'].getValue() != 0.0: \n    ranges = nuke.FrameRanges([rangeFwd, rangeBwd]) \n  else: \n    ranges = nuke.FrameRanges([rangeFwd]) \n  try: \n    nuke.execute( node, ranges ) \n  except RuntimeError as err: \n    raise err \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Automatically track the sequence for the specified frame range. Once the sequence is tracked, use Solve to calculate the camera motion."
+      },
+      "id": "arg:autoTrack",
+      "knob_type": "PyScript_Knob",
+      "label": "Track",
+      "name": "autoTrack",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "node = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nif proceed: \n  knobsString = node.writeKnobs(nuke.WRITE_NON_DEFAULT_ONLY) \n  hasTracks = 'autoTracksKnob' in knobsString \n  if hasTracks: \n    proceed = nuke.ask('Proceeding will reset the existing automatic feature tracks. Are you sure?') \nif proceed: \n  node['executeType'].setValue(0) \n  first = max(node.firstFrame(), int(node['startFrame'].getValue())) \n  last = min(node.lastFrame(), int(node['endFrame'].getValue())) \n  rangeFwd = nuke.FrameRange(first, last, 1) \n  rangeBwd = nuke.FrameRange(last, first, -1) \n  if node['trackFwdAndBwd'].getValue() != 0.0: \n    ranges = nuke.FrameRanges([rangeFwd, rangeBwd]) \n  else: \n    ranges = nuke.FrameRanges([rangeFwd]) \n  try: \n    nuke.execute( node, ranges ) \n  except RuntimeError as err: \n    raise err \n"
+        ]
+      }
+    },
+    "autoTracksInteractionKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:autoTracksInteractionKnob",
+      "knob_type": "InteractionEventHandlerKnob",
+      "label": "",
+      "name": "autoTracksInteractionKnob",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "autoTracksKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:autoTracksKnob",
+      "knob_type": "AutoTracksKnob",
+      "label": "",
+      "name": "autoTracksKnob",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "version 2 \nentries 0 \n",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "averageTracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Create a new track, which is the average of all currently selected tracks."
+      },
+      "id": "arg:averageTracks",
+      "knob_type": "Script_Knob",
+      "label": "Average tracks",
+      "name": "averageTracks",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "beforeFrameRender": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Before Each Frame"
+      },
+      "id": "arg:beforeFrameRender",
+      "knob_type": "PythonKnob",
+      "label": "Before Each Frame",
+      "name": "beforeFrameRender",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "beforeRender": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Before Render"
+      },
+      "id": "arg:beforeRender",
+      "knob_type": "PythonKnob",
+      "label": "Before Render",
+      "name": "beforeRender",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "cameraMotion": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Rotation Only"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the type of camera solve. Use 'Rotation Only' for a nodal camera move. Use 'Free Camera' for a rotating and translating camera. Use 'Linear Motion' for a straight camera path. Use 'Planar Motion' for a flat camera path."
+      },
+      "id": "arg:cameraMotion",
+      "knob_type": "Enumeration_Knob",
+      "label": "Camera Motion",
+      "name": "cameraMotion",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Rotation Only",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "Rotation Only",
+          "Free Camera",
+          "Linear Motion",
+          "Planar Motion"
+        ]
+      }
+    },
+    "centreViewOnSelected": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "When tracking user tracks, keep the viewer window centred on the selected (tracked) tracks. If multiple tracks are selected, the viewer is centred at the average position."
+      },
+      "id": "arg:centreViewOnSelected",
+      "knob_type": "Boolean_Knob",
+      "label": "Centre view on selected tracks",
+      "name": "centreViewOnSelected",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "clearAll": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Clear all animation for all selected trackers, removing any calculated track data."
+      },
+      "id": "arg:clearAll",
+      "knob_type": "Script_Knob",
+      "label": "@Tracker/ClearAll",
+      "name": "clearAll",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "clearBkwd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Clear animation backward of current frame for selected trackers."
+      },
+      "id": "arg:clearBkwd",
+      "knob_type": "Script_Knob",
+      "label": "@Tracker/ClearBkwd",
+      "name": "clearBkwd",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "clearFwd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Clear animation forward of current frame for selected trackers."
+      },
+      "id": "arg:clearFwd",
+      "knob_type": "Script_Knob",
+      "label": "@Tracker/ClearFwd",
+      "name": "clearFwd",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "clearOffset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Move the track point back to the current tracker position for selected trackers."
+      },
+      "id": "arg:clearOffset",
+      "knob_type": "Script_Knob",
+      "label": "@Tracker/ClearOffset",
+      "name": "clearOffset",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "consistencyThreshold": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the threshold for consistent track generation. Increase the threshold to ensure track motion is locally consistent. Use consistency to prevent poor tracks in complex sequences."
+      },
+      "id": "arg:consistencyThreshold",
+      "knob_type": "Array_Knob",
+      "label": "Track Consistency",
+      "name": "consistencyThreshold",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "deleteAll": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Delete all auto-tracks."
+      },
+      "id": "arg:deleteAll",
+      "knob_type": "Script_Knob",
+      "label": "Delete All",
+      "name": "deleteAll",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "deleteOutliers": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Delete outlier auto-tracks where the error is above the specified threshold (marked in red)."
+      },
+      "id": "arg:deleteOutliers",
+      "knob_type": "Script_Knob",
+      "label": "Reject",
+      "name": "deleteOutliers",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "deleteSelected": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Delete selected auto-tracks."
+      },
+      "id": "arg:deleteSelected",
+      "knob_type": "Script_Knob",
+      "label": "Delete Selected",
+      "name": "deleteSelected",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "deleteTracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Remove all currently selected tracks."
+      },
+      "id": "arg:deleteTracks",
+      "knob_type": "Script_Knob",
+      "label": "Delete tracks",
+      "name": "deleteTracks",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "enabledAxes": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 7.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enable or disable a particular component of the solved rotation for stabilisation, match-moving or export."
+      },
+      "id": "arg:enabledAxes",
+      "knob_type": "Bitmask_Knob",
+      "label": "Enable Axis",
+      "name": "enabledAxes",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "all",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "all"
+        ]
+      }
+    },
+    "endFrame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The last frame of the range."
+      },
+      "id": "arg:endFrame",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "endFrame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "enforceFeatureSeparation": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enforce feature track separation even at the cost of having fewer tracks."
+      },
+      "id": "arg:enforceFeatureSeparation",
+      "knob_type": "Boolean_Knob",
+      "label": "enforce",
+      "name": "enforceFeatureSeparation",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "enforceNumberFeatures": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Enforce the maximum number of features at any frame even at the cost of stopping some tracks earlier during back-tracking. This will ensure even distribution of active tracks throughout the video."
+      },
+      "id": "arg:enforceNumberFeatures",
+      "knob_type": "Boolean_Knob",
+      "label": "enforce",
+      "name": "enforceNumberFeatures",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "exportButton": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "node = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nlicenseCheckResult = node['licenseCheckResult'].getValue() != 0.0 \nif licenseCheckResult: \n  w = node.screenWidth() \n  h = node.screenHeight() \n  x = node.xpos() + int(w/2) # bottom right corner \n  y = node.ypos() + int(h/2) \n  link = False \n  linkKnob = node['linkOutput'] \n  if linkKnob: \n    link = linkKnob.getValue() != 0.0 \n  outputRotationKnob = 'panTiltRollS' # The default: stabilising C_SphericalTransform \n  metadataOnly = False # The default: actually do the transform \n  menuKnob = node['exportMenu'] \n  if menuKnob: \n    menuChoice = int(menuKnob.getValue()) \n    if menuChoice == 1 or menuChoice == 3: # match-moving C_SphericalTransform \n      outputRotationKnob = 'panTiltRollMM' \n    if menuChoice == 2 or menuChoice == 3: # metadata-only C_SphericalTransform \n      metadataOnly = True \n  transform = nuke.createNode('C_SphericalTransform2_1', '', False) \n  transform.setInput(0, node.input(0)) \n  transform.setXYpos(x + transform.screenWidth(), y + int(transform.screenHeight()/2)) \n  if link: \n    transform['panTiltRollOutput'].setExpression(node.name() + '.enabledAxes & 1 ? ' + node.name() + '.' + outputRotationKnob + '.x : 0', 0) \n    transform['panTiltRollOutput'].setExpression(node.name() + '.enabledAxes & 2 ? ' + node.name() + '.' + outputRotationKnob + '.y : 0', 1) \n    transform['panTiltRollOutput'].setExpression(node.name() + '.enabledAxes & 4 ? ' + node.name() + '.' + outputRotationKnob + '.z : 0', 2) \n  else: \n    if int(node['enabledAxes'].getValue()) & 1:      transform['panTiltRollOutput'].copyAnimation(0, node[outputRotationKnob].animation(0)) \n    if int(node['enabledAxes'].getValue()) & 2:      transform['panTiltRollOutput'].copyAnimation(1, node[outputRotationKnob].animation(1)) \n    if int(node['enabledAxes'].getValue()) & 4:      transform['panTiltRollOutput'].copyAnimation(2, node[outputRotationKnob].animation(2)) \n  if metadataOnly: \n    transform['metaDataOperation'].setValue('Transform')"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Bake out new nodes for the calculated camera."
+      },
+      "id": "arg:exportButton",
+      "knob_type": "PyScript_Knob",
+      "label": "Create",
+      "name": "exportButton",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "node = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nlicenseCheckResult = node['licenseCheckResult'].getValue() != 0.0 \nif licenseCheckResult: \n  w = node.screenWidth() \n  h = node.screenHeight() \n  x = node.xpos() + int(w/2) # bottom right corner \n  y = node.ypos() + int(h/2) \n  link = False \n  linkKnob = node['linkOutput'] \n  if linkKnob: \n    link = linkKnob.getValue() != 0.0 \n  outputRotationKnob = 'panTiltRollS' # The default: stabilising C_SphericalTransform \n  metadataOnly = False # The default: actually do the transform \n  menuKnob = node['exportMenu'] \n  if menuKnob: \n    menuChoice = int(menuKnob.getValue()) \n    if menuChoice == 1 or menuChoice == 3: # match-moving C_SphericalTransform \n      outputRotationKnob = 'panTiltRollMM' \n    if menuChoice == 2 or menuChoice == 3: # metadata-only C_SphericalTransform \n      metadataOnly = True \n  transform = nuke.createNode('C_SphericalTransform2_1', '', False) \n  transform.setInput(0, node.input(0)) \n  transform.setXYpos(x + transform.screenWidth(), y + int(transform.screenHeight()/2)) \n  if link: \n    transform['panTiltRollOutput'].setExpression(node.name() + '.enabledAxes & 1 ? ' + node.name() + '.' + outputRotationKnob + '.x : 0', 0) \n    transform['panTiltRollOutput'].setExpression(node.name() + '.enabledAxes & 2 ? ' + node.name() + '.' + outputRotationKnob + '.y : 0', 1) \n    transform['panTiltRollOutput'].setExpression(node.name() + '.enabledAxes & 4 ? ' + node.name() + '.' + outputRotationKnob + '.z : 0', 2) \n  else: \n    if int(node['enabledAxes'].getValue()) & 1:      transform['panTiltRollOutput'].copyAnimation(0, node[outputRotationKnob].animation(0)) \n    if int(node['enabledAxes'].getValue()) & 2:      transform['panTiltRollOutput'].copyAnimation(1, node[outputRotationKnob].animation(1)) \n    if int(node['enabledAxes'].getValue()) & 4:      transform['panTiltRollOutput'].copyAnimation(2, node[outputRotationKnob].animation(2)) \n  if metadataOnly: \n    transform['metaDataOperation'].setValue('Transform')"
+        ]
+      }
+    },
+    "exportMenu": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "C_SphericalTransform (Stabilise)"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Create a new spherical transform node based on the results of the solve:\n\n<b>C_SphericalTransform (Stabilise):</b> Create a C_SphericalTransform node with rotation configured to stabilise the tracked scene.\n<b>C_SphericalTransform (Match-move):</b> Create a C_SphericalTransform node with rotation configured to match the tracked scene.\n<b>C_SphericalTransform (Stabilise, Metadata only):</b> Create a SphericalTransform node, operating on metadata only, with rotation configured to stabilise the tracked scene.\n<b>C_SphericalTransform (Match-move, Metadata only):</b> Create a SphericalTransform node, operating on metadata only, with rotation configured to match the tracked scene."
+      },
+      "id": "arg:exportMenu",
+      "knob_type": "Enumeration_Knob",
+      "label": "",
+      "name": "exportMenu",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "C_SphericalTransform (Stabilise)",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "C_SphericalTransform (Stabilise)",
+          "C_SphericalTransform (Match-move)",
+          "C_SphericalTransform (Stabilise, Metadata only)",
+          "C_SphericalTransform (Match-move, Metadata only)"
+        ]
+      }
+    },
+    "featureSeparation": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 20.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set a required feature separation to force feature tracks to cover the image. Reduce separation when increasing the number of features to track."
+      },
+      "id": "arg:featureSeparation",
+      "knob_type": "Array_Knob",
+      "label": "Feature Separation",
+      "name": "featureSeparation",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "20",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          20.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "featureSpread": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.1
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the threshold to detect features. A high value selects points that are distinct in a local region. A low value selects prominent points in areas of high contrast. "
+      },
+      "id": "arg:featureSpread",
+      "knob_type": "Array_Knob",
+      "label": "Feature Spread",
+      "name": "featureSpread",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.1,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "globalOptimisation": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "After the solve, refine the estimated camera motion via global optimisation. This will increase the solve time, but it may improve the solve accuracy."
+      },
+      "id": "arg:globalOptimisation",
+      "knob_type": "Boolean_Knob",
+      "label": "Refine camera motion",
+      "name": "globalOptimisation",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "gpuName": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "NVIDIA GeForce RTX 4070 Ti SUPER"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "This is the GPU that will be used for rendering, when <b>Use GPU if available</b> is selected.\n\nIf you have more than one GPU in your machine, you can select a different <b>GPU Device</b> to use by editing your <b>Preferences</b>. (Note that selecting a different GPU will require a restart of Nuke to take effect.)\n\n<b>Local GPU</b> will be shown as <b>Not available</b> when any of the following is true:\n\t * <b>Use CPU</b> is selected as the <b>GPU Device</b> in your <b>Preferences</b>.\n\t * No suitable GPU was found on your system. Please refer to the documentation for details of the requirements for GPU acceleration.\n\t * It was not possible to create a context for processing on the selected GPU. For example, this can happen when there is not enough free memory available on the GPU.\n\n\n\tTo use the GPU when rendering from the command line, add <b>--gpu</b> to your command.\n"
+      },
+      "id": "arg:gpuName",
+      "knob_type": "Text_Knob",
+      "label": "",
+      "name": "gpuName",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "NVIDIA GeForce RTX 4070 Ti SUPER"
+        ]
+      }
+    },
+    "hotkeyInteraction": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:hotkeyInteraction",
+      "knob_type": "HotkeyPressedInteractionKnobClass",
+      "label": "",
+      "name": "hotkeyInteraction",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "ignoreMask": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "None"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the input mask to exclude regions from feature detection and tracking."
+      },
+      "id": "arg:ignoreMask",
+      "knob_type": "Enumeration_Knob",
+      "label": "Mask",
+      "name": "ignoreMask",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "None",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "None",
+          "Source Alpha",
+          "Source Inverted Alpha",
+          "Mask Luminance",
+          "Mask Inverted Luminance",
+          "Mask Alpha",
+          "Mask Inverted Alpha"
+        ]
+      }
+    },
+    "keyframeOverlap": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.85
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the rate at which analysis keys are created to define the camera motion. Increase this value to create more analysis keys in the solve to handle abrupt changes in motion. Lower this value to reduce the number of analysis keys and minimise drift in the calculated motion."
+      },
+      "id": "arg:keyframeOverlap",
+      "knob_type": "Array_Knob",
+      "label": "Keyframe Overlap",
+      "name": "keyframeOverlap",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.85",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.85,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "lastExecutedFrame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:lastExecutedFrame",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "lastExecutedFrame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "licenseCheckResult": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:licenseCheckResult",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "licenseCheckResult",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "licenseCheckTrigger": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:licenseCheckTrigger",
+      "knob_type": "PyScript_Knob",
+      "label": "",
+      "name": "licenseCheckTrigger",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "linkOutput": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Link to the Tracker output so that cameras are updated with the solve."
+      },
+      "id": "arg:linkOutput",
+      "knob_type": "Boolean_Knob",
+      "label": "Link output",
+      "name": "linkOutput",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "matchThreshold": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.25
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the threshold to terminate a feature track. Increase the threshold to make tracking more tolerant to image changes and produce longer tracks."
+      },
+      "id": "arg:matchThreshold",
+      "knob_type": "Array_Knob",
+      "label": "Track Error Threshold",
+      "name": "matchThreshold",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.25",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.25,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "minTrackLength": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 10.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the minimum length for tracks. Increase the track length to avoid short tracks in long sequences with slow camera movements and improve the solve."
+      },
+      "id": "arg:minTrackLength",
+      "knob_type": "Array_Knob",
+      "label": "Minimum Length",
+      "name": "minTrackLength",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "10",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          10.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "numberFeatures": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 300.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the number of features to detect for tracking. Increasing the number of features will help in shots that are difficult to solve. "
+      },
+      "id": "arg:numberFeatures",
+      "knob_type": "Array_Knob",
+      "label": "Number of Features",
+      "name": "numberFeatures",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "300",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          300.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "panTiltRollMM": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The solved match-moving pan, tilt and roll angle, in degrees."
+      },
+      "id": "arg:panTiltRollMM",
+      "knob_type": "XYZ_Knob",
+      "label": "Pan tilt roll (MM)",
+      "name": "panTiltRollMM",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            10,
+            20,
+            30
+          ]
+        ]
+      }
+    },
+    "panTiltRollS": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The solved stabilising pan, tilt and roll angle, in degrees."
+      },
+      "id": "arg:panTiltRollS",
+      "knob_type": "XYZ_Knob",
+      "label": "Pan tilt roll (Stab)",
+      "name": "panTiltRollS",
+      "python_type": "list[float, float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0 0 0",
+      "shape": {
+        "array_size": 3,
+        "dimensions": 1,
+        "height": 1,
+        "width": 3
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            10,
+            20,
+            30
+          ]
+        ]
+      }
+    },
+    "patchSize": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 14.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The size of the image patch that is tracked. Increase the patch size to create more stable tracks, reduce the patch size to ensure tracks are matched exactly."
+      },
+      "id": "arg:patchSize",
+      "knob_type": "Array_Knob",
+      "label": "Patch Size",
+      "name": "patchSize",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "14",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          14.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "placementInteraction": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:placementInteraction",
+      "knob_type": "TrackPlacementInteractionKnobClass",
+      "label": "",
+      "name": "placementInteraction",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "previewFeatures": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Preview feature detection to check that features will cover the image."
+      },
+      "id": "arg:previewFeatures",
+      "knob_type": "Boolean_Knob",
+      "label": "Preview Features",
+      "name": "previewFeatures",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "previewFeaturesKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:previewFeaturesKnob",
+      "knob_type": "PreviewFeaturesKnob",
+      "label": "",
+      "name": "previewFeaturesKnob",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "referenceFrame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set a reference frame at which the rotation will be zero."
+      },
+      "id": "arg:referenceFrame",
+      "knob_type": "Array_Knob",
+      "label": "Reference Frame",
+      "name": "referenceFrame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "refineFeatures": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Refine detected features to lock onto local corner points."
+      },
+      "id": "arg:refineFeatures",
+      "knob_type": "Boolean_Knob",
+      "label": "Refine feature locations",
+      "name": "refineFeatures",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "renderProgress": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Render Progress"
+      },
+      "id": "arg:renderProgress",
+      "knob_type": "PythonKnob",
+      "label": "Render Progress",
+      "name": "renderProgress",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "resampleType": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 1.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Cubic"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the image resample filter type."
+      },
+      "id": "arg:resampleType",
+      "knob_type": "Enumeration_Knob",
+      "label": "Filter",
+      "name": "resampleType",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Cubic",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "Bilinear",
+          "Cubic",
+          "Lanczos",
+          "Nearest"
+        ]
+      }
+    },
+    "selectAll": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Select all tracks."
+      },
+      "id": "arg:selectAll",
+      "knob_type": "Script_Knob",
+      "label": "Select all",
+      "name": "selectAll",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "selectedTrackIndexKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": -1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:selectedTrackIndexKnob",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "selectedTrackIndexKnob",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "-1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          -1.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "setReferenceFrameButton": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the current frame as the reference."
+      },
+      "id": "arg:setReferenceFrameButton",
+      "knob_type": "Script_Knob",
+      "label": "Set to current",
+      "name": "setReferenceFrameButton",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "showErrorOnTrack": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Make the colour of each key on the track path corresponds to the relative error of the track, where green indicates being close to the grabbed pattern (low error) and red means further away (high error)."
+      },
+      "id": "arg:showErrorOnTrack",
+      "knob_type": "Boolean_Knob",
+      "label": "@Tracker/ShowErrorOn",
+      "name": "showErrorOnTrack",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "smoothnessThreshold": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.1
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the threshold for smooth track generation. Increase the threshold to remove tracks that glitch over time. Use smoothness to prevent poor tracks in complex sequences."
+      },
+      "id": "arg:smoothnessThreshold",
+      "knob_type": "Array_Knob",
+      "label": "Track Smoothness",
+      "name": "smoothnessThreshold",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.1,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "solveButton": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Calculate the camera motion."
+      },
+      "id": "arg:solveButton",
+      "knob_type": "Script_Knob",
+      "label": "Solve",
+      "name": "solveButton",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "solveRMSError": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "RMS error (in degrees) of the solve. Use this to review the overall error across all feature tracks."
+      },
+      "id": "arg:solveRMSError",
+      "knob_type": "Array_Knob",
+      "label": "Solve Error",
+      "name": "solveRMSError",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "solveType": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Auto-tracks"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Choose which feature tracks will be used for the camera solve."
+      },
+      "id": "arg:solveType",
+      "knob_type": "Enumeration_Knob",
+      "label": "Solve Using",
+      "name": "solveType",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Auto-tracks",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "Auto-tracks",
+          "User tracks",
+          "Combined"
+        ]
+      }
+    },
+    "startFrame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The first frame of the range."
+      },
+      "id": "arg:startFrame",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "startFrame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "trackBkwdRange": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = max(node.firstFrame(), int(node['startFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, -1) \np = nuke.Panel('Enter tracking range') \np.addSingleLineInput('from:', str(frameRange.first())) \np.addSingleLineInput('to:', str(frameRange.last())) \np.addSingleLineInput('step:', str(frameRange.increment())) \nret = p.show() \nif ret: \n  try: \n    first = int(p.value('from:')) \n    last = int(p.value('to:')) \n    increment = int(p.value('step:')) \n    frameRange = nuke.FrameRange(first, last, increment) \n  except ValueError: # value check \n    nuke.message('Invalid range values!') \n    cancelExecution = 1 \nelse: \n  cancelExecution = 1 \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Track a range of frames using the frame range dialog."
+      },
+      "id": "arg:trackBkwdRange",
+      "knob_type": "PyScript_Knob",
+      "label": "@Tracker/TrackRangeBackward",
+      "name": "trackBkwdRange",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = max(node.firstFrame(), int(node['startFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, -1) \np = nuke.Panel('Enter tracking range') \np.addSingleLineInput('from:', str(frameRange.first())) \np.addSingleLineInput('to:', str(frameRange.last())) \np.addSingleLineInput('step:', str(frameRange.increment())) \nret = p.show() \nif ret: \n  try: \n    first = int(p.value('from:')) \n    last = int(p.value('to:')) \n    increment = int(p.value('step:')) \n    frameRange = nuke.FrameRange(first, last, increment) \n  except ValueError: # value check \n    nuke.message('Invalid range values!') \n    cancelExecution = 1 \nelse: \n  cancelExecution = 1 \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+        ]
+      }
+    },
+    "trackControls": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": true
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Tracker Controls"
+      },
+      "id": "arg:trackControls",
+      "knob_type": "Tab_Knob",
+      "label": "Tracker Controls",
+      "name": "trackControls",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "trackFwdAndBwd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Extend feature tracks in both forward and backward direction. Use this to improve the quality of stabilisation in tricky sequences. This will make tracking slower."
+      },
+      "id": "arg:trackFwdAndBwd",
+      "knob_type": "Boolean_Knob",
+      "label": "Track forwards and backwards",
+      "name": "trackFwdAndBwd",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "trackFwdRange": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = min(node.lastFrame(), int(node['endFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, 1) \np = nuke.Panel('Enter tracking range') \np.addSingleLineInput('from:', str(frameRange.first())) \np.addSingleLineInput('to:', str(frameRange.last())) \np.addSingleLineInput('step:', str(frameRange.increment())) \nret = p.show() \nif ret: \n  try: \n    first = int(p.value('from:')) \n    last = int(p.value('to:')) \n    increment = int(p.value('step:')) \n    frameRange = nuke.FrameRange(first, last, increment) \n  except ValueError: # value check \n    nuke.message('Invalid range values!') \n    cancelExecution = 1 \nelse: \n  cancelExecution = 1 \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Track a range of frames using the frame range dialog."
+      },
+      "id": "arg:trackFwdRange",
+      "knob_type": "PyScript_Knob",
+      "label": "@Tracker/TrackRangeForward",
+      "name": "trackFwdRange",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = min(node.lastFrame(), int(node['endFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, 1) \np = nuke.Panel('Enter tracking range') \np.addSingleLineInput('from:', str(frameRange.first())) \np.addSingleLineInput('to:', str(frameRange.last())) \np.addSingleLineInput('step:', str(frameRange.increment())) \nret = p.show() \nif ret: \n  try: \n    first = int(p.value('from:')) \n    last = int(p.value('to:')) \n    increment = int(p.value('step:')) \n    frameRange = nuke.FrameRange(first, last, increment) \n  except ValueError: # value check \n    nuke.message('Invalid range values!') \n    cancelExecution = 1 \nelse: \n  cancelExecution = 1 \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+        ]
+      }
+    },
+    "trackNext": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "first = nuke.frame() \nlast = first + 1 \nframeRange = nuke.FrameRange(first, last, 1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Track the next frame.\nHot key: C"
+      },
+      "id": "arg:trackNext",
+      "knob_type": "PyScript_Knob",
+      "label": "@Tracker/TrackNextFrame",
+      "name": "trackNext",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "first = nuke.frame() \nlast = first + 1 \nframeRange = nuke.FrameRange(first, last, 1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+        ]
+      }
+    },
+    "trackPrev": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "first = nuke.frame() \nlast = first - 1 \nframeRange = nuke.FrameRange(first, last, -1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Track the previous frame.\nHot key: X"
+      },
+      "id": "arg:trackPrev",
+      "knob_type": "PyScript_Knob",
+      "label": "@Tracker/TrackPrevFrame",
+      "name": "trackPrev",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "first = nuke.frame() \nlast = first - 1 \nframeRange = nuke.FrameRange(first, last, -1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+        ]
+      }
+    },
+    "trackRange": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Input"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Switch to tracking and solving a subset of frames. The options are:\n<b>Input:</b> the frame range is read from the upstream node.\n<b>Global:</b> the frame range is defined by the project settings (this is clipped by the Input range).\n<b>Custom:</b> a specific frame range can be user-defined (this is clipped by the Input range)."
+      },
+      "id": "arg:trackRange",
+      "knob_type": "Enumeration_Knob",
+      "label": "Frame Range",
+      "name": "trackRange",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Input",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "Input",
+          "Global",
+          "Custom"
+        ]
+      }
+    },
+    "trackReset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Resets the weights and pattern sizes of the selected tracks to their default values."
+      },
+      "id": "arg:trackReset",
+      "knob_type": "Script_Knob",
+      "label": "@Tracker/ResetTracker",
+      "name": "trackReset",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "trackStop": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Stop tracking.\nHot key: Esc"
+      },
+      "id": "arg:trackStop",
+      "knob_type": "CancelExecution_Knob",
+      "label": "@Tracker/TrackStop",
+      "name": "trackStop",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "trackToEnd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = min(node.lastFrame(), int(node['endFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, 1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Track to the last frame.\nHot key: V"
+      },
+      "id": "arg:trackToEnd",
+      "knob_type": "PyScript_Knob",
+      "label": "@Tracker/TrackToEnd",
+      "name": "trackToEnd",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = min(node.lastFrame(), int(node['endFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, 1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+        ]
+      }
+    },
+    "trackToStart": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = max(node.firstFrame(), int(node['startFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, -1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Track to the first frame.\nHot key: Z"
+      },
+      "id": "arg:trackToStart",
+      "knob_type": "PyScript_Knob",
+      "label": "@Tracker/TrackToStart",
+      "name": "trackToStart",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "node = nuke.thisNode() \nfirst = nuke.frame() \nlast = max(node.firstFrame(), int(node['startFrame'].getValue())) \nframeRange = nuke.FrameRange(first, last, -1) \nnode = nuke.thisNode() \nnode['licenseCheckTrigger'].execute() \nproceed = bool(node['licenseCheckResult'].getValue()) \nproceed = proceed and (not('cancelExecution' in locals()) or not cancelExecution) \nif proceed: \n  node['executeType'].setValue(1) \n  try: \n    nuke.execute(node, frameRange.first(), frameRange.last(), frameRange.increment()) \n  except RuntimeError as err: \n    if not err.args[0].startswith('Cancelled;'): # be quiet about cancellation, re-throw others \n      raise err \n  nuke.frame(int(node['lastExecutedFrame'].getValue())) \ncancelExecution = 0 # clean-up for the next execution \n"
+        ]
+      }
+    },
+    "trackingSpace": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Default"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Select space to track in. The <b>Latlong</b> space ensures tracks are accurate at the polar regions and are continuous across the left/right boundary of the latlong image. Use this to improve stabilisation in tricky shots where the camera rotates. This will make tracking slower."
+      },
+      "id": "arg:trackingSpace",
+      "knob_type": "Enumeration_Knob",
+      "label": "Tracking Space",
+      "name": "trackingSpace",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Default",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "Default",
+          "Latlong"
+        ]
+      }
+    },
+    "tracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:tracks",
+      "knob_type": "Table_Knob",
+      "label": "",
+      "name": "tracks",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "{ 1 9 0 } \n{ { 4 1 27 e e 1 } \n{ 3 1 58 name name 1 } \n{ 2 1 58 X X 1 } \n{ 2 1 58 Y Y 1 } \n{ 2 1 58 offsetX offsetX 1 } \n{ 2 1 58 offsetY offsetY 1 } \n{ 1 1 58 size size 1 } \n{ 1 1 58 weight weight 1 } \n{ 2 1 58 error error 1 } \n} \n{ \n} \n",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "transformType": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "None"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "<b>None:</b> No transformation applied to input image.\n\n<b>Stabilize:</b> Transforms the image so that the tracked points do not move.\n\n<b>Match-Move:</b> Transforms a different image so that it moves to match the tracked points."
+      },
+      "id": "arg:transformType",
+      "knob_type": "Enumeration_Knob",
+      "label": "Transform",
+      "name": "transformType",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "None",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "None",
+          "Stabilise",
+          "Match-Move"
+        ]
+      }
+    },
+    "useGPUIfAvailable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Select this to render on the <b>Local GPU</b>, if available.\n\nYou can select this even if no GPU is currently available on your machine. The GPU will then be used whenever the script is opened on a machine which does have a GPU available. You should also select this if you wish to render from the command line with the <b>--gpu</b> option.\n\nIf this node requires full frames from its inputs, and is therefore unable to reduce its memory overhead, it will fall back to the CPU if an attempt to render a frame on the GPU fails due to lack of memory. When this occurs, a warning message will be printed to the console."
+      },
+      "id": "arg:useGPUIfAvailable",
+      "knob_type": "Boolean_Knob",
+      "label": "Use GPU if available",
+      "name": "useGPUIfAvailable",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "userTrackInteractionKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:userTrackInteractionKnob",
+      "knob_type": "UserTrackInteractionKnob",
+      "label": "",
+      "name": "userTrackInteractionKnob",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "userTracksMatchEnforced": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Validate user tracks using the track error threshold, similarly to auto-tracks."
+      },
+      "id": "arg:userTracksMatchEnforced",
+      "knob_type": "Boolean_Knob",
+      "label": "apply to user tracks",
+      "name": "userTracksMatchEnforced",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "validationErrorThreshold": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.6
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the threshold for valid tracks (in degrees). Increase this to use more auto-tracks in the solve or reduce the threshold to prevent tracks being used in the solve. Try adjusting the threshold once the camera motion is solved and use Reject to delete outlier tracks."
+      },
+      "id": "arg:validationErrorThreshold",
+      "knob_type": "Array_Knob",
+      "label": "Validation Threshold",
+      "name": "validationErrorThreshold",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.6",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.6,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "zoomMagnificationSize_Tracker": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "0\tx1"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Magnify the zoom window, the zoom ratio is relative to the window, not the image.<p>Use Shift+Drag within the zoom window to quickly change magnification for very-fine scale adjustments."
+      },
+      "id": "arg:zoomMagnificationSize_Tracker",
+      "knob_type": "Enumeration_Knob",
+      "label": "",
+      "name": "zoomMagnificationSize_Tracker",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "0\tx1",
+          "1\tx2",
+          "2\tx4",
+          "3\tx8",
+          "4\tx16",
+          "5\tcustom"
+        ]
+      }
+    },
+    "zoomWindowBehaviour_Tracker": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 0.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "0\talways"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Indicate when the zoom window should be displayed in the Viewer."
+      },
+      "id": "arg:zoomWindowBehaviour_Tracker",
+      "knob_type": "Enumeration_Knob",
+      "label": "Show Zoom Window",
+      "name": "zoomWindowBehaviour_Tracker",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "0\talways",
+          "1\ton track move",
+          "2\twhen tracking",
+          "3\twhen tracking or track change",
+          "4\tnever"
+        ]
+      }
+    },
+    "zoomWindowFilterBehaviour_Tracker": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 1.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "1\ton playback"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Indicates when the zoom window image should be filtered. A filtered image gives a visually more stable track, particularly during playback. However, it can make positioning the track more difficult. The filter applied is matched to the Tracker's internal filter."
+      },
+      "id": "arg:zoomWindowFilterBehaviour_Tracker",
+      "knob_type": "Enumeration_Knob",
+      "label": "Zoom Window Filter",
+      "name": "zoomWindowFilterBehaviour_Tracker",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "0\talways",
+          "1\ton playback",
+          "2\tnever"
+        ]
+      }
+    },
+    "zoomWindowGroupKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": false
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Zoom window"
+      },
+      "id": "arg:zoomWindowGroupKnob",
+      "knob_type": "Tab_Knob",
+      "label": "Zoom window",
+      "name": "zoomWindowGroupKnob",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "zoomWindowSize_Tracker": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": true,
+        "reasons": []
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 2.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "2\t200px"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Specify the size and magnification of the zoom window to be displayed in the Viewer."
+      },
+      "id": "arg:zoomWindowSize_Tracker",
+      "knob_type": "Enumeration_Knob",
+      "label": "Zoom Size/Mag.",
+      "name": "zoomWindowSize_Tracker",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "2",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "0\t50px",
+          "1\t100px",
+          "2\t200px",
+          "3\tcustom"
+        ]
+      }
+    }
+  },
+  "creation": {
+    "alternates": [
+      "nuke.nodes.C_Tracker2_1()"
+    ],
+    "preferred": "nuke.createNode(\"C_Tracker2_1\")",
+    "preferred_style": "nuke.createNode"
+  },
+  "description": {
+    "format": "nuke_help_html",
+    "plain_text": "C_Tracker 2.1v5: Analyse the motion of a camera rig from a Latlong video. Input: Connect a source video for automatically tracking through the entire input video. Optionally, a part of the footage can be excluded using a mask. Analysis: Analyse the sequence by tracking and solving. Auto-tracks can be reviewed in the viewer and outliers deleted as necessary for a more accurate solve. User tracks: Add tracks manually to lock stabilisation to particular regions or when solve from auto-tracks fails in challenging videos. Export: Export a stabilising or match-moving C_SphericalTransform, matching the result of the solve. Optionally edit only the metadata to avoid unnecessary filter hits. Transform: Use this C_Tracker node directly for stabilisation or match-moving.",
+    "source": "nuke.Node.help()",
+    "text": "<p>C_Tracker 2.1v5: Analyse the motion of a camera rig from a Latlong video.</p><p><b>Input:</b> Connect a source video for automatically tracking through the entire input video. Optionally, a part of the footage can be excluded using a mask.</p><p><b>Analysis:</b> Analyse the sequence by tracking and solving. Auto-tracks can be reviewed in the viewer and outliers deleted as necessary for a more accurate solve.</p><p><b>User tracks:</b> Add tracks manually to lock stabilisation to particular regions or when solve from auto-tracks fails in challenging videos.</p><p><b>Export:</b> Export a stabilising or match-moving C_SphericalTransform, matching the result of the solve. Optionally edit only the metadata to avoid unnecessary filter hits.</p><p><b>Transform:</b> Use this C_Tracker node directly for stabilisation or match-moving.</p>"
+  },
+  "id": "node:C_Tracker2_1",
+  "identity": {
+    "aliases": [],
+    "class": "C_Tracker2_1",
+    "display_name": "C_Tracker"
+  },
+  "inputs": {
+    "maximum": 2,
+    "minimum": 1,
+    "scanner_current": 0
+  },
+  "internal_argument_order": [
+    "add_track",
+    "add_tracks",
+    "autolabel",
+    "average_tracks",
+    "bookmark",
+    "cached",
+    "clear_all",
+    "clear_bkwd",
+    "clear_fwd",
+    "clear_offset",
+    "delete_tracks",
+    "disable",
+    "dope_sheet",
+    "executeType",
+    "gl_color",
+    "grab_error_above",
+    "grab_interval",
+    "help",
+    "hide_input",
+    "icon",
+    "indicators",
+    "knobChanged",
+    "label",
+    "lifetimeEnd",
+    "lifetimeStart",
+    "matchThresholdLink",
+    "name",
+    "note_font",
+    "note_font_color",
+    "note_font_size",
+    "onCreate",
+    "onDestroy",
+    "panel",
+    "postage_stamp",
+    "postage_stamp_frame",
+    "rootNodeUpdated",
+    "select_all",
+    "selected",
+    "tile_color",
+    "trackValidation",
+    "track_bkwd_range",
+    "track_fwd_range",
+    "track_next",
+    "track_prev",
+    "track_reset",
+    "track_stop",
+    "track_to_end",
+    "track_to_start",
+    "updateUI",
+    "useLifetime",
+    "userTracksMatchEnforcedLink",
+    "validationErrorThresholdLink",
+    "xpos",
+    "ypos",
+    "zoomMagnification_Tracker",
+    "zoomWindowKnob",
+    "zoomWindowWHSize_Tracker"
+  ],
+  "internal_arguments": {
+    "add_track": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:add_track",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "add_track",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "add_tracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:add_tracks",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "add_tracks",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "autolabel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:autolabel",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "autolabel",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "average_tracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:average_tracks",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "average_tracks",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "bookmark": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Show this node in the bookmark list."
+      },
+      "id": "arg:bookmark",
+      "knob_type": "Boolean_Knob",
+      "label": "Bookmark",
+      "name": "bookmark",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "cached": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Always keep the output of this in memory so that it can be read quickly when changing things connected to it."
+      },
+      "id": "arg:cached",
+      "knob_type": "Boolean_Knob",
+      "label": "Cached",
+      "name": "cached",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "clear_all": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:clear_all",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "clear_all",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "clear_bkwd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:clear_bkwd",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "clear_bkwd",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "clear_fwd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:clear_fwd",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "clear_fwd",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "clear_offset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:clear_offset",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "clear_offset",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "delete_tracks": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:delete_tracks",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "delete_tracks",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "disable": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Pass default input through this node without any processing."
+      },
+      "id": "arg:disable",
+      "knob_type": "Disable_Knob",
+      "label": "Disable",
+      "name": "disable",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "dope_sheet": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Always show this node's animation in the dopesheet."
+      },
+      "id": "arg:dope_sheet",
+      "knob_type": "Boolean_Knob",
+      "label": "Dope Sheet",
+      "name": "dope_sheet",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "executeType": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 2.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:executeType",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "executeType",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "2",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          2.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "gl_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Color for this node's controls in the viewer.<br>X indicates the color is unset and uses the Preferences/DefaultNodeGLColor value.<br>Use the right click menu to revert to unset."
+      },
+      "id": "arg:gl_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Handles",
+      "name": "gl_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "grab_error_above": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:grab_error_above",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "grab_error_above",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "grab_interval": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:grab_interval",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "grab_interval",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "help": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:help",
+      "knob_type": "EvalString_Knob",
+      "label": "",
+      "name": "help",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "hide_input": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Don't draw the arrows going into this node when it is not selected."
+      },
+      "id": "arg:hide_input",
+      "knob_type": "Boolean_Knob",
+      "label": "Hide Input",
+      "name": "hide_input",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "icon": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:icon",
+      "knob_type": "File_Knob",
+      "label": "INVISIBLE",
+      "name": "icon",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "indicators": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:indicators",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "indicators",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "knobChanged": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:knobChanged",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "knobChanged",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "label": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Text to display on the node.\nSome html is accepted."
+      },
+      "id": "arg:label",
+      "knob_type": "Multiline_Eval_String_Knob",
+      "label": "Label",
+      "name": "label",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "lifetimeEnd": {
+      "capabilities": {
+        "animated": false,
+        "enabled": false,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The end frame after which the node will behave as if disabled."
+      },
+      "id": "arg:lifetimeEnd",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "lifetimeEnd",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "lifetimeStart": {
+      "capabilities": {
+        "animated": false,
+        "enabled": false,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "The start frame to enable the node from."
+      },
+      "id": "arg:lifetimeStart",
+      "knob_type": "Array_Knob",
+      "label": "Lifetime Range",
+      "name": "lifetimeStart",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "matchThresholdLink": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.25
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the threshold to terminate a feature track. Increase the threshold to make tracking more tolerant to image changes and produce longer tracks."
+      },
+      "id": "arg:matchThresholdLink",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "matchThresholdLink",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.25",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.25,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "name": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "C_Tracker1"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Name of the node, used to refer to it in expressions.\nValid names start with a letter or underscore and may only contain letters, digits and underscores."
+      },
+      "id": "arg:name",
+      "knob_type": "String_Knob",
+      "label": "",
+      "name": "name",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "C_Tracker1",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "C_Tracker1"
+        ]
+      }
+    },
+    "note_font": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": "Verdana"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Font"
+      },
+      "id": "arg:note_font",
+      "knob_type": "Font_Knob",
+      "label": "Font",
+      "name": "note_font",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Verdana",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "example",
+        "source": "scanner_initial_value",
+        "values": [
+          "Verdana"
+        ]
+      }
+    },
+    "note_font_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Color"
+      },
+      "id": "arg:note_font_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Color",
+      "name": "note_font_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "note_font_size": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 11.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:note_font_size",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "note_font_size",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "11",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          11.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "onCreate": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:onCreate",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "onCreate",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "onDestroy": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:onDestroy",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "onDestroy",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "panel": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete",
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:panel",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "panel",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "postage_stamp": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Display a small image on this node in the Node Graph indicating its output."
+      },
+      "id": "arg:postage_stamp",
+      "knob_type": "Boolean_Knob",
+      "label": "Postage Stamp",
+      "name": "postage_stamp",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "postage_stamp_frame": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Specify the frame number to use for a static postage stamp. This is only used when the postage stamp mode preference is set to 'Static frame'. If the frame number is outside the frame range for the node, it will be clamped."
+      },
+      "id": "arg:postage_stamp_frame",
+      "knob_type": "Array_Knob",
+      "label": "",
+      "name": "postage_stamp_frame",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "rootNodeUpdated": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "root node has been updated"
+      },
+      "id": "arg:rootNodeUpdated",
+      "knob_type": "EvalString_Knob",
+      "label": "root node has been updated",
+      "name": "rootNodeUpdated",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "select_all": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:select_all",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "select_all",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "selected": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:selected",
+      "knob_type": "Boolean_Knob",
+      "label": "",
+      "name": "selected",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "tile_color": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Color of this node's icon in the graph.<br>/ indicates the color is unset and uses the Preferences/Node Colors value, if any.<br>Use the right click menu to revert to unset."
+      },
+      "id": "arg:tile_color",
+      "knob_type": "ColorChip_Knob",
+      "label": "Color",
+      "name": "tile_color",
+      "python_type": "int",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0,
+          1,
+          10
+        ]
+      }
+    },
+    "trackValidation": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "hidden"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "raw": 2.0,
+        "source": "nuke.Knob.defaultValue()",
+        "value": "Free Camera"
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "Set the method to validate feature tracks (tracking in Latlong only). Use 'None' to switch off validation and retain all tracks. Use 'Rotating Camera' for a nodal camera move. Use 'Free Camera' to ensure tracks follow the expected motion for a moving camera."
+      },
+      "id": "arg:trackValidation",
+      "knob_type": "Enumeration_Knob",
+      "label": "Track Validation",
+      "name": "trackValidation",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "Free Camera",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "allowed_values",
+        "source": "nuke.Knob.values()",
+        "values": [
+          "None",
+          "Rotating Camera",
+          "Free Camera"
+        ]
+      }
+    },
+    "track_bkwd_range": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_bkwd_range",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_bkwd_range",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_fwd_range": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_fwd_range",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_fwd_range",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_next": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_next",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_next",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_prev": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_prev",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_prev",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_reset": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_reset",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_reset",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_stop": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_stop",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_stop",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_to_end": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_to_end",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_to_end",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "track_to_start": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "obsolete"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:track_to_start",
+      "knob_type": "Obsolete_Knob",
+      "label": "",
+      "name": "track_to_start",
+      "python_type": "Obsolete_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "updateUI": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": ""
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:updateUI",
+      "knob_type": "PythonKnob",
+      "label": "",
+      "name": "updateUI",
+      "python_type": "str",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "useLifetime": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.tooltip()",
+        "text": "When checked the node is only enabled between the specified frame ranges, outside of the frame ranges it behaves as if disabled."
+      },
+      "id": "arg:useLifetime",
+      "knob_type": "Boolean_Knob",
+      "label": "Use Lifetime",
+      "name": "useLifetime",
+      "python_type": "bool",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "false",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          true,
+          false
+        ]
+      }
+    },
+    "userTracksMatchEnforcedLink": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Stop track if err >"
+      },
+      "id": "arg:userTracksMatchEnforcedLink",
+      "knob_type": "Link_Knob",
+      "label": "Stop track if err >",
+      "name": "userTracksMatchEnforcedLink",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "true",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "validationErrorThresholdLink": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "internal_name_pattern"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": null
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Error Threshold"
+      },
+      "id": "arg:validationErrorThresholdLink",
+      "knob_type": "Link_Knob",
+      "label": "Error Threshold",
+      "name": "validationErrorThresholdLink",
+      "python_type": "Link_Knob",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "0.6",
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "none",
+        "source": "none",
+        "values": []
+      }
+    },
+    "xpos": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": -2147483648.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:xpos",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "xpos",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "-52",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          -2147483648.0,
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "ypos": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": true
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "generic_node_knob",
+          "internal_label"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "INVISIBLE"
+      },
+      "id": "arg:ypos",
+      "knob_type": "Array_Knob",
+      "label": "INVISIBLE",
+      "name": "ypos",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "157",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "zoomMagnification_Tracker": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "hidden"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 1.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Zoom Magnification"
+      },
+      "id": "arg:zoomMagnification_Tracker",
+      "knob_type": "Array_Knob",
+      "label": "Zoom Magnification",
+      "name": "zoomMagnification_Tracker",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "1",
+      "shape": {
+        "array_size": 1,
+        "dimensions": 1,
+        "height": 1,
+        "width": 1
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          1.0,
+          0.0,
+          0.5
+        ]
+      }
+    },
+    "zoomWindowKnob": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "hidden"
+        ]
+      },
+      "default": {
+        "confidence": "fallback",
+        "source": "fresh_node_initial_value",
+        "value": 0.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "none",
+        "text": ""
+      },
+      "id": "arg:zoomWindowKnob",
+      "knob_type": "ZoomWindow_knob",
+      "label": "",
+      "name": "zoomWindowKnob",
+      "python_type": "float",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": null,
+      "shape": {
+        "array_size": null,
+        "dimensions": null,
+        "height": null,
+        "width": null
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          0.0,
+          0.5,
+          1.0
+        ]
+      }
+    },
+    "zoomWindowWHSize_Tracker": {
+      "capabilities": {
+        "animated": false,
+        "enabled": true,
+        "has_expression": false,
+        "visible": false
+      },
+      "classification": {
+        "public": false,
+        "reasons": [
+          "hidden"
+        ]
+      },
+      "default": {
+        "confidence": "scanner",
+        "source": "nuke.Knob.defaultValue()",
+        "value": 200.0
+      },
+      "description": {
+        "format": "plain_text",
+        "source": "nuke.Knob.label()",
+        "text": "Zoom W/H Size"
+      },
+      "id": "arg:zoomWindowWHSize_Tracker",
+      "knob_type": "WH_Knob",
+      "label": "Zoom W/H Size",
+      "name": "zoomWindowWHSize_Tracker",
+      "python_type": "float | list[float, float]",
+      "python_type_source": "generator_type_map_v1",
+      "raw_script": "200",
+      "shape": {
+        "array_size": 2,
+        "dimensions": 1,
+        "height": 1,
+        "width": 2
+      },
+      "values": {
+        "kind": "examples",
+        "source": "generator_reference_examples",
+        "values": [
+          [
+            200.0,
+            200.0
+          ],
+          10,
+          [
+            10,
+            10
+          ],
+          [
+            20,
+            5
+          ]
+        ]
+      }
+    }
+  },
+  "kind": "nuke_node_reference",
+  "navigation": {
+    "categories": [
+      "CaraVR"
+    ],
+    "category": "CaraVR",
+    "icons": [
+      "C_Tracker.png"
+    ],
+    "menu_path": "CaraVR/C_Tracker",
+    "menu_paths": [
+      "CaraVR/C_Tracker"
+    ]
+  },
+  "provenance": {
+    "generator": "Nuke Reference Generator v3",
+    "generator_schema_version": 3,
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "scanner": "Nuke Command Reference Scanner v5",
+    "scanner_schema_version": 5,
+    "type_map_version": 1
+  },
+  "schema_version": "1.0.0"
+}

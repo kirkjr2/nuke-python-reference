@@ -1,0 +1,93 @@
+{
+  "$id": "node.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "argument_order": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "creation": {
+      "type": "object"
+    },
+    "description": {
+      "type": "object"
+    },
+    "id": {
+      "pattern": "^node:",
+      "type": "string"
+    },
+    "identity": {
+      "additionalProperties": false,
+      "properties": {
+        "aliases": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "class": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "class",
+        "display_name",
+        "aliases"
+      ],
+      "type": "object"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "internal_argument_order": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "internal_arguments": {
+      "type": "object"
+    },
+    "kind": {
+      "const": "nuke_node_reference"
+    },
+    "navigation": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "id",
+    "identity",
+    "description",
+    "navigation",
+    "creation",
+    "inputs",
+    "argument_order",
+    "arguments",
+    "internal_argument_order",
+    "internal_arguments",
+    "provenance"
+  ],
+  "title": "Nuke Node Reference",
+  "type": "object"
+}

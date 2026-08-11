@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Render a New 3D scene",
+      "code": "# Render a GeoScene/GeoMerge using an explicit camera.\nrender = nuke.createNode(\"ScanlineRender2\")\nrender.setInput(0, scene)\nrender.setInput(1, camera)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_scanline2"
+        ],
+        "editorial_note": "New 3D input order should be verified in Nuke before publishing if scanner metadata disagrees."
+      }
+    },
+    {
+      "arguments": [
+        "aov_merge_mode0"
+      ],
+      "code": "# Configure the \"aov_merge_mode0\" control.\nscanlineRender2 = nuke.createNode(\"ScanlineRender2\")\nscanlineRender2[\"aov_merge_mode0\"].setValue(\"premult-blend\")",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "aov_merge_mode0",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set aov_merge_mode0",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "3D",
+    "class": "ScanlineRender2",
+    "display_name": "ScanlineRender",
+    "id": "node:ScanlineRender2",
+    "menu_path": "3D/3D/ScanlineRender"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in a functional research batch with node/workflow-specific examples grounded in Foundry and selected creator documentation."
+}

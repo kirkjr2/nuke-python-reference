@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Recolor a deep stream",
+      "code": "# Insert DeepRecolor into an existing deep-data pipe.\nnode = nuke.createNode(\"DeepRecolor\")\nnode.setInput(0, deep_image)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_deepmodify"
+        ],
+        "editorial_note": "Workflow placement is source-backed; node-specific controls remain documented from scanner metadata."
+      }
+    },
+    {
+      "arguments": [
+        "bbox"
+      ],
+      "code": "# Configure the \"bbox\" control.\ndeepRecolor = nuke.createNode(\"DeepRecolor\")\ndeepRecolor[\"bbox\"].setValue(\"union\")",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "bbox",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set set bbox to ",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Deep",
+    "class": "DeepRecolor",
+    "display_name": "DeepRecolor",
+    "id": "node:DeepRecolor",
+    "menu_path": "Deep/DeepRecolor"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in a functional research batch with node/workflow-specific examples grounded in Foundry and selected creator documentation."
+}

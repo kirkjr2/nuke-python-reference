@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "code": "# Create a Grade and increase the gain.\ngrade = nuke.createNode(\"Grade\")\ngrade[\"multiply\"].setValue(1.25)",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Increase gain"
+    },
+    {
+      "code": "# Apply a gamma adjustment.\ngrade = nuke.createNode(\"Grade\")\ngrade[\"gamma\"].setValue(0.9)",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Adjust gamma"
+    },
+    {
+      "code": "# Limit the Grade operation to RGB channels.\ngrade = nuke.createNode(\"Grade\")\ngrade[\"channels\"].setValue(\"rgb\")",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Grade RGB only"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Color",
+    "class": "Grade",
+    "display_name": "Grade",
+    "id": "node:Grade",
+    "menu_path": "Color/Grade"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Existing curated examples approved in the site."
+}

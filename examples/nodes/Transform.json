@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Match-move an element with animated transform values",
+      "code": "# Transform knobs can be animated or expression-linked to tracking data.\ntransform = nuke.createNode(\"Transform\")\ntransform.setInput(0, element)\ntransform[\"translate\"].setValue(100, 0)\ntransform[\"translate\"].setValue(50, 1)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_transform_nodes"
+        ],
+        "editorial_note": ""
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Transform",
+    "class": "Transform",
+    "display_name": "Transform",
+    "id": "node:Transform",
+    "menu_path": "Transform/Transform"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in Tracking/Transform/Reformat or Keying/Matte/Roto functional research."
+}

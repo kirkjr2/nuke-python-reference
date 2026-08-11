@@ -1,0 +1,71 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "title": "Import geometry from disk",
+      "code": "# Import an Alembic, FBX, OBJ, or supported USD geometry file.\ngeo = nuke.createNode(\"ReadGeo2\")\ngeo[\"file\"].setValue(\"D:/assets/vehicle.abc\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_readgeo"
+        ],
+        "editorial_note": ""
+      }
+    },
+    {
+      "title": "Connect a texture stream",
+      "code": "# Feed an image into ReadGeo's texture input.\ngeo = nuke.createNode(\"ReadGeo2\")\ngeo[\"file\"].setValue(\"D:/assets/vehicle.fbx\")\ngeo.setInput(0, texture)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_readgeo"
+        ],
+        "editorial_note": ""
+      }
+    },
+    {
+      "arguments": [
+        "display"
+      ],
+      "code": "# Configure the \"display\" control.\nreadGeo2 = nuke.createNode(\"ReadGeo2\")\nreadGeo2[\"display\"].setValue(\"off\")",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "display",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set display",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "3D",
+    "class": "ReadGeo2",
+    "display_name": "ReadGeo",
+    "id": "node:ReadGeo2",
+    "menu_path": "3D/3D Classic/Geometry/ReadGeo"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in a functional research batch with node/workflow-specific examples grounded in Foundry and selected creator documentation."
+}

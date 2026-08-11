@@ -1,0 +1,786 @@
+[
+  {
+    "category": "3D",
+    "display_name": "PrmanRender",
+    "fallback_candidate": "PrmanRender",
+    "icon": "Render.png",
+    "path": "3D/3D Classic/RenderMan/PrmanRender",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.createPrmanRender()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "C:/Program Files/Nuke17.0v3/plugins/PrmanRender.dll: The specified module could not be found.\r\n",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "3D",
+    "display_name": "UVTile",
+    "fallback_candidate": "UVTile",
+    "icon": "Shader.png",
+    "path": "3D/3D Classic/Shader/UVTile",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.createUVTile()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "UVTile: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "3D",
+    "display_name": "<unnamed>",
+    "fallback_candidate": "<unnamed>",
+    "icon": "",
+    "path": "3D/3D/Shader/<unnamed>",
+    "reason": "fallback_failed_validation",
+    "script": "",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Syntax error at \"<unnamed>\"",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Split and Join Selectively",
+    "fallback_candidate": "Split and Join Selectively",
+    "icon": "Split and Join Selectively.png",
+    "path": "CaraVR/Split and Join Selectively",
+    "reason": "fallback_failed_validation",
+    "script": "jve2_1.splitAndJoinSelectively()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Split and Join Selectively: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Facebook_Surround_Depth_To_Points",
+    "fallback_candidate": "Facebook_Surround_Depth_To_Points",
+    "icon": "Facebook_Surround_Depth_To_Points.png",
+    "path": "CaraVR/Toolsets/Facebook_Surround_Depth_To_Points",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Facebook_Surround_Depth_To_Points2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Facebook_Surround_Depth_To_Points: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Google_Jump_Depth_To_Points",
+    "fallback_candidate": "Google_Jump_Depth_To_Points",
+    "icon": "Google_Jump_Depth_To_Points.png",
+    "path": "CaraVR/Toolsets/Google_Jump_Depth_To_Points",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Google_Jump_Depth_To_Points2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Google_Jump_Depth_To_Points: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Latlong_Blur",
+    "fallback_candidate": "Latlong_Blur",
+    "icon": "Latlong_Blur.png",
+    "path": "CaraVR/Toolsets/Latlong_Blur",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Blur2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Blur: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Latlong_Comp",
+    "fallback_candidate": "Latlong_Comp",
+    "icon": "Latlong_Comp.png",
+    "path": "CaraVR/Toolsets/Latlong_Comp",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Comp2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Comp: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Latlong_Rotopaint",
+    "fallback_candidate": "Latlong_Rotopaint",
+    "icon": "Latlong_Rotopaint.png",
+    "path": "CaraVR/Toolsets/Latlong_Rotopaint",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Rotopaint2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Rotopaint: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Latlong_Tracked_Rotopaint",
+    "fallback_candidate": "Latlong_Tracked_Rotopaint",
+    "icon": "Latlong_Tracked_Rotopaint.png",
+    "path": "CaraVR/Toolsets/Latlong_Tracked_Rotopaint",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Tracked_Rotopaint2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Tracked_Rotopaint: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Nokia_OZO_Depth_To_Points",
+    "fallback_candidate": "Nokia_OZO_Depth_To_Points",
+    "icon": "Nokia_OZO_Depth_To_Points.png",
+    "path": "CaraVR/Toolsets/Nokia_OZO_Depth_To_Points",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Nokia_OZO_Depth_To_Points2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Nokia_OZO_Depth_To_Points: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Stitch",
+    "fallback_candidate": "Stitch",
+    "icon": "Stitch.png",
+    "path": "CaraVR/Toolsets/Stitch",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Stitch2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Stitch: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Stitch_ColourMatched",
+    "fallback_candidate": "Stitch_ColourMatched",
+    "icon": "Stitch_ColourMatched.png",
+    "path": "CaraVR/Toolsets/Stitch_ColourMatched",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Stitch_ColourMatched2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Stitch_ColourMatched: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Warp",
+    "fallback_candidate": "Warp",
+    "icon": "Warp.png",
+    "path": "CaraVR/Toolsets/Warp",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Warp2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Warp: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "CaraVR",
+    "display_name": "Warp_And_Stitch",
+    "fallback_candidate": "Warp_And_Stitch",
+    "icon": "Warp_And_Stitch.png",
+    "path": "CaraVR/Toolsets/Warp_And_Stitch",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Warp_And_Stitch2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Warp_And_Stitch: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Cattery",
+    "display_name": "<unnamed>",
+    "fallback_candidate": "<unnamed>",
+    "icon": "",
+    "path": "Cattery/<unnamed>",
+    "reason": "fallback_failed_validation",
+    "script": "",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Syntax error at \"<unnamed>\"",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Cattery",
+    "display_name": "<unnamed>",
+    "fallback_candidate": "<unnamed>",
+    "icon": "",
+    "path": "Cattery/<unnamed>",
+    "reason": "fallback_failed_validation",
+    "script": "",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Syntax error at \"<unnamed>\"",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Cattery",
+    "display_name": "Go to Cattery",
+    "fallback_candidate": "Go to Cattery",
+    "icon": "Go to Cattery.png",
+    "path": "Cattery/Go to Cattery",
+    "reason": "fallback_failed_validation",
+    "script": "import webbrowser; webbrowser.open(\"https://cattery.foundry.com\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Go to Cattery: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Cattery",
+    "display_name": "Update",
+    "fallback_candidate": "Update",
+    "icon": "Update.png",
+    "path": "Cattery/Update",
+    "reason": "fallback_failed_validation",
+    "script": "from nukescripts import cattery; cattery.create_menu()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Update: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Filter",
+    "display_name": "Matrix...",
+    "fallback_candidate": "Matrix...",
+    "icon": "Matrix.png",
+    "path": "Filter/Matrix...",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.create_matrix()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Matrix...: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Image",
+    "display_name": "UDIM import",
+    "fallback_candidate": "UDIM import",
+    "icon": "Read.png",
+    "path": "Image/UDIM import",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.udim_import()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "UDIM import: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Other",
+    "display_name": "Update",
+    "fallback_candidate": "Update",
+    "icon": "Update.png",
+    "path": "Other/All plugins/Update",
+    "reason": "fallback_failed_validation",
+    "script": "nukescripts.update_plugin_menu(\"All plugins\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Update: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Other",
+    "display_name": "Backdrop",
+    "fallback_candidate": "Backdrop",
+    "icon": "Backdrop.png",
+    "path": "Other/Backdrop",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.autoBackdrop()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Backdrop: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Time",
+    "display_name": "OFlow",
+    "fallback_candidate": "OFlow",
+    "icon": "Oflow.png",
+    "path": "Time/OFlow",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.createOFlow()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "OFlow: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TB_CG_beauty",
+    "fallback_candidate": "TB_CG_beauty",
+    "icon": "TB_CG_beauty.png",
+    "path": "ToolSets/2D/CG_beauty/TB_CG_beauty",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/2D/CG_beauty/TB_CG_beauty.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TB_CG_beauty: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TK_Keying",
+    "fallback_candidate": "TK_Keying",
+    "icon": "TK_Keying.png",
+    "path": "ToolSets/2D/Keying/TK_Keying",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/2D/Keying/TK_Keying.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TK_Keying: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TSV_SmartVectorFix",
+    "fallback_candidate": "TSV_SmartVectorFix",
+    "icon": "TSV_SmartVectorFix.png",
+    "path": "ToolSets/2D/SmartVector/TSV_SmartVectorFix",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/2D/SmartVector/TSV_SmartVectorFix.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TSV_SmartVectorFix: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TSV_SmartVectorGrade",
+    "fallback_candidate": "TSV_SmartVectorGrade",
+    "icon": "TSV_SmartVectorGrade.png",
+    "path": "ToolSets/2D/SmartVector/TSV_SmartVectorGrade",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/2D/SmartVector/TSV_SmartVectorGrade.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TSV_SmartVectorGrade: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TSV_SmartVectorSTMap",
+    "fallback_candidate": "TSV_SmartVectorSTMap",
+    "icon": "TSV_SmartVectorSTMap.png",
+    "path": "ToolSets/2D/SmartVector/TSV_SmartVectorSTMap",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/2D/SmartVector/TSV_SmartVectorSTMap.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TSV_SmartVectorSTMap: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "P_DustHit",
+    "fallback_candidate": "P_DustHit",
+    "icon": "P_DustHit.png",
+    "path": "ToolSets/3D/Particles/P_DustHit",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Particles/P_DustHit.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "P_DustHit: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "P_Fogbox",
+    "fallback_candidate": "P_Fogbox",
+    "icon": "P_Fogbox.png",
+    "path": "ToolSets/3D/Particles/P_Fogbox",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Particles/P_Fogbox.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "P_Fogbox: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "P_SnowRain",
+    "fallback_candidate": "P_SnowRain",
+    "icon": "P_SnowRain.png",
+    "path": "ToolSets/3D/Particles/P_SnowRain",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Particles/P_SnowRain.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "P_SnowRain: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "P_Sparks",
+    "fallback_candidate": "P_Sparks",
+    "icon": "P_Sparks.png",
+    "path": "ToolSets/3D/Particles/P_Sparks",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Particles/P_Sparks.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "P_Sparks: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "P_Trail",
+    "fallback_candidate": "P_Trail",
+    "icon": "P_Trail.png",
+    "path": "ToolSets/3D/Particles/P_Trail",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Particles/P_Trail.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "P_Trail: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TP_RRCleanProject",
+    "fallback_candidate": "TP_RRCleanProject",
+    "icon": "TP_RRCleanProject.png",
+    "path": "ToolSets/3D/Projection_and_Rig_Removal/TP_RRCleanProject",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Projection_and_Rig_Removal/TP_RRCleanProject.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TP_RRCleanProject: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TP_RRCleanTexture",
+    "fallback_candidate": "TP_RRCleanTexture",
+    "icon": "TP_RRCleanTexture.png",
+    "path": "ToolSets/3D/Projection_and_Rig_Removal/TP_RRCleanTexture",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Projection_and_Rig_Removal/TP_RRCleanTexture.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TP_RRCleanTexture: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TP_RRExistingProject",
+    "fallback_candidate": "TP_RRExistingProject",
+    "icon": "TP_RRExistingProject.png",
+    "path": "ToolSets/3D/Projection_and_Rig_Removal/TP_RRExistingProject",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Projection_and_Rig_Removal/TP_RRExistingProject.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TP_RRExistingProject: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TP_RRExistingTexture",
+    "fallback_candidate": "TP_RRExistingTexture",
+    "icon": "TP_RRExistingTexture.png",
+    "path": "ToolSets/3D/Projection_and_Rig_Removal/TP_RRExistingTexture",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Projection_and_Rig_Removal/TP_RRExistingTexture.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TP_RRExistingTexture: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TP_RRPlanarTrack",
+    "fallback_candidate": "TP_RRPlanarTrack",
+    "icon": "TP_RRPlanarTrack.png",
+    "path": "ToolSets/3D/Projection_and_Rig_Removal/TP_RRPlanarTrack",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Projection_and_Rig_Removal/TP_RRPlanarTrack.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TP_RRPlanarTrack: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "TR_Relighting",
+    "fallback_candidate": "TR_Relighting",
+    "icon": "TR_Relighting.png",
+    "path": "ToolSets/3D/Relighting/TR_Relighting",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/ToolSets/3D/Relighting/TR_Relighting.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "TR_Relighting: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "<unnamed>",
+    "fallback_candidate": "<unnamed>",
+    "icon": "-.png",
+    "path": "ToolSets/<unnamed>",
+    "reason": "fallback_failed_validation",
+    "script": "",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Syntax error at \"<unnamed>\"",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "<unnamed>",
+    "fallback_candidate": "<unnamed>",
+    "icon": "-.png",
+    "path": "ToolSets/<unnamed>",
+    "reason": "fallback_failed_validation",
+    "script": "",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Syntax error at \"<unnamed>\"",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "<unnamed>",
+    "fallback_candidate": "<unnamed>",
+    "icon": "-.png",
+    "path": "ToolSets/<unnamed>",
+    "reason": "fallback_failed_validation",
+    "script": "",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Syntax error at \"<unnamed>\"",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Facebook_Surround_Depth_To_Points2_1",
+    "fallback_candidate": "Facebook_Surround_Depth_To_Points2_1",
+    "icon": "Facebook_Surround_Depth_To_Points2_1.png",
+    "path": "ToolSets/CaraVR/Facebook_Surround_Depth_To_Points2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Facebook_Surround_Depth_To_Points2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Facebook_Surround_Depth_To_Points2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Google_Jump_Depth_To_Points2_1",
+    "fallback_candidate": "Google_Jump_Depth_To_Points2_1",
+    "icon": "Google_Jump_Depth_To_Points2_1.png",
+    "path": "ToolSets/CaraVR/Google_Jump_Depth_To_Points2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Google_Jump_Depth_To_Points2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Google_Jump_Depth_To_Points2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Latlong_Blur2_1",
+    "fallback_candidate": "Latlong_Blur2_1",
+    "icon": "Latlong_Blur2_1.png",
+    "path": "ToolSets/CaraVR/Latlong_Blur2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Blur2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Blur2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Latlong_Comp2_1",
+    "fallback_candidate": "Latlong_Comp2_1",
+    "icon": "Latlong_Comp2_1.png",
+    "path": "ToolSets/CaraVR/Latlong_Comp2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Comp2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Comp2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Latlong_Rotopaint2_1",
+    "fallback_candidate": "Latlong_Rotopaint2_1",
+    "icon": "Latlong_Rotopaint2_1.png",
+    "path": "ToolSets/CaraVR/Latlong_Rotopaint2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Rotopaint2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Rotopaint2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Latlong_Tracked_Rotopaint2_1",
+    "fallback_candidate": "Latlong_Tracked_Rotopaint2_1",
+    "icon": "Latlong_Tracked_Rotopaint2_1.png",
+    "path": "ToolSets/CaraVR/Latlong_Tracked_Rotopaint2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Latlong_Tracked_Rotopaint2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Latlong_Tracked_Rotopaint2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Nokia_OZO_Depth_To_Points2_1",
+    "fallback_candidate": "Nokia_OZO_Depth_To_Points2_1",
+    "icon": "Nokia_OZO_Depth_To_Points2_1.png",
+    "path": "ToolSets/CaraVR/Nokia_OZO_Depth_To_Points2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Nokia_OZO_Depth_To_Points2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Nokia_OZO_Depth_To_Points2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Stitch2_1",
+    "fallback_candidate": "Stitch2_1",
+    "icon": "Stitch2_1.png",
+    "path": "ToolSets/CaraVR/Stitch2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Stitch2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Stitch2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Stitch_ColourMatched2_1",
+    "fallback_candidate": "Stitch_ColourMatched2_1",
+    "icon": "Stitch_ColourMatched2_1.png",
+    "path": "ToolSets/CaraVR/Stitch_ColourMatched2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Stitch_ColourMatched2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Stitch_ColourMatched2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Warp2_1",
+    "fallback_candidate": "Warp2_1",
+    "icon": "Warp2_1.png",
+    "path": "ToolSets/CaraVR/Warp2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Warp2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Warp2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Warp_And_Stitch2_1",
+    "fallback_candidate": "Warp_And_Stitch2_1",
+    "icon": "Warp_And_Stitch2_1.png",
+    "path": "ToolSets/CaraVR/Warp_And_Stitch2_1",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nuke.loadToolset(\"C:/Program Files/Nuke17.0v3/plugins/caravr/ToolSets/CaraVR/Warp_And_Stitch2_1.nk\")",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Warp_And_Stitch2_1: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "ToolSets",
+    "display_name": "Create",
+    "fallback_candidate": "Create",
+    "icon": "ToolsetCreate.png",
+    "path": "ToolSets/Create",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.toolsets.addToolsetsPanel()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Create: Unknown command",
+      "type": "RuntimeError"
+    }
+  },
+  {
+    "category": "Views",
+    "display_name": "Split and Join",
+    "fallback_candidate": "Split and Join",
+    "icon": "SplitAndJoin.png",
+    "path": "Views/Split and Join",
+    "reason": "fallback_failed_validation",
+    "script": "with nuke.lastHitGroup():\n  nukescripts.create_viewsplitjoin()",
+    "shortcut": "",
+    "validation_error": {
+      "message": "Split and Join: Unknown command",
+      "type": "RuntimeError"
+    }
+  }
+]

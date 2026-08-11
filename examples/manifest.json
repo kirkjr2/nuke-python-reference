@@ -1,0 +1,28 @@
+{
+  "schema_version": "2.0.0",
+  "kind": "nuke_reference_examples_manifest",
+  "node_count": 405,
+  "remaining_queue_processed": 352,
+  "remaining_queue_count": 0,
+  "functional_family_counts": {
+    "Color": 39,
+    "Merge / Channel": 18,
+    "Utility / Other": 51,
+    "Transform / Tracking": 21,
+    "3D / Geometry": 106,
+    "Time / Retime / Motion": 17,
+    "AIR": 6,
+    "Filter / Blur / Sharpen / Edge": 32,
+    "Read / Write / I/O": 8,
+    "Keying / Matte / Roto": 24,
+    "Deep": 4,
+    "Particles": 26
+  },
+  "status_counts": {
+    "FUNCTIONAL_EDITORIAL": 352,
+    "FUNCTIONAL_RESEARCHED": 25,
+    "COMPLETE": 27,
+    "PARTIAL": 1
+  },
+  "optional_deep_dive_count": 40
+}

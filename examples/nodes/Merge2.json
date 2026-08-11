@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "code": "# Create a Merge node using the standard over operation.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"over\")",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Create an Over merge"
+    },
+    {
+      "code": "# Change an existing Merge node to Plus.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"plus\")",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Change the merge operation"
+    },
+    {
+      "code": "# Merge RGB channels while leaving other channels unchanged.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"Achannels\"].setValue(\"rgb\")\nmerge[\"Bchannels\"].setValue(\"rgb\")",
+      "confidence": "reviewed",
+      "kind": "curated",
+      "provenance": {
+        "source": "approved_site_examples",
+        "source_type": "project_curated"
+      },
+      "title": "Restrict the merge channels"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Merge",
+    "class": "Merge2",
+    "display_name": "Merge",
+    "id": "node:Merge2",
+    "menu_path": "Merge/Merge"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Existing curated examples approved in the site."
+}

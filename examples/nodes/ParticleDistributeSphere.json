@@ -1,0 +1,52 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Create the ParticleDistributeSphere gizmo",
+      "code": "# Create the bundled ParticleDistributeSphere gizmo.\ndistribute = nuke.createNode(\"ParticleDistributeSphere\")",
+      "kind": "minimal_verified",
+      "confidence": "limited",
+      "provenance": {
+        "source_type": "official_foundry_source_confirmation",
+        "note": "Foundry toolbar source confirms the bundled gizmo; no useful dedicated workflow example found in this research pass."
+      }
+    },
+    {
+      "title": "Inspect the node's available knobs",
+      "code": "# Print the internal knob names exposed by this node.\nparticleDistributeSphere = nuke.createNode(\"ParticleDistributeSphere\")\nprint(particleDistributeSphere.knobs().keys())",
+      "kind": "editorial_pattern",
+      "confidence": "reviewed_pattern",
+      "provenance": {
+        "source_type": "nuke_python_api_pattern",
+        "sources": [
+          "Erwan Leroy: Getting started with Python for Nuke"
+        ]
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Particles",
+    "class": "ParticleDistributeSphere",
+    "display_name": "ParticleDistributeSphere",
+    "id": "node:ParticleDistributeSphere",
+    "menu_path": "Particles/ParticleBlinkScript Gizmos/ParticleDistributeSphere"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [
+    "obscure_node_no_workflow_source"
+  ],
+  "schema_version": "1.0.0",
+  "status": "PARTIAL",
+  "status_reason": "Kept intentionally minimal: the node is confirmed by Foundry, but no useful dedicated workflow example was found."
+}

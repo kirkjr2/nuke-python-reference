@@ -1,0 +1,43 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Add an output inside a Group",
+      "code": "# Create an Output node inside a Group context.\ngroup = nuke.createNode(\"Group\")\ngroup.begin()\ntry:\n    group_input = nuke.createNode(\"Input\")\n    group_output = nuke.createNode(\"Output\")\n    group_output.setInput(0, group_input)\nfinally:\n    group.end()",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_output",
+          "foundry_input",
+          "foundry_group_api"
+        ],
+        "editorial_note": ""
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Other",
+    "class": "Output",
+    "display_name": "Output",
+    "id": "node:Output",
+    "menu_path": "Other/Output"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "schemas/manifest.schema.json",
+  "category_count": 19,
+  "contract": {
+    "index_schema": "schemas/index.schema.json",
+    "manifest_schema": "schemas/manifest.schema.json",
+    "node_schema": "schemas/node.schema.json"
+  },
+  "files": {
+    "categories": "categories.json",
+    "index": "index.json",
+    "nodes": "nodes/",
+    "unresolved": "unresolved.json"
+  },
+  "kind": "nuke_reference_manifest",
+  "node_count": 405,
+  "nuke": {
+    "major": 17,
+    "minor": 0,
+    "release": 3,
+    "string": "17.0v3"
+  },
+  "provenance": {
+    "generator": "Nuke Reference Generator v3",
+    "generator_schema_version": 3,
+    "scanner": "Nuke Command Reference Scanner v5",
+    "scanner_schema_version": 5,
+    "type_map_version": 1
+  },
+  "schema_version": "1.0.0",
+  "unresolved_menu_entry_count": 56
+}

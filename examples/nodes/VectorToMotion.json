@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Convert SmartVector output to motion channels",
+      "code": "# Convert SmartVector data into motion channels.\nvector_to_motion = nuke.createNode(\"VectorToMotion\")\nvector_to_motion.setInput(0, smart_vector)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_vector_to_motion"
+        ],
+        "editorial_note": "Assumes smart_vector is an existing SmartVector node."
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Time",
+    "class": "VectorToMotion",
+    "display_name": "VectorToMotion",
+    "id": "node:VectorToMotion",
+    "menu_path": "Time/VectorToMotion"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

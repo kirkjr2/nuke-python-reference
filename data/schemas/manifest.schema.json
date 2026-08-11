@@ -1,0 +1,46 @@
+{
+  "$id": "manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "category_count": {
+      "type": "integer"
+    },
+    "contract": {
+      "type": "object"
+    },
+    "files": {
+      "type": "object"
+    },
+    "kind": {
+      "const": "nuke_reference_manifest"
+    },
+    "node_count": {
+      "type": "integer"
+    },
+    "nuke": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "unresolved_menu_entry_count": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "nuke",
+    "node_count",
+    "contract",
+    "files",
+    "provenance"
+  ],
+  "type": "object"
+}

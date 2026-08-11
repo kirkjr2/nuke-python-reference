@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Generate an STMap from a solved lens",
+      "code": "# Analyze the plate in NukeX/Nuke Studio, then output an STMap.\nlens = nuke.createNode(\"LensDistortion2\")\nlens.setInput(0, plate)\nlens[\"outputType\"].setValue(\"STMap\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_lensdistortion"
+        ],
+        "editorial_note": ""
+      }
+    },
+    {
+      "arguments": [
+        "bboxType"
+      ],
+      "code": "# Configure the \"bboxType\" control.\nlensDistortion2 = nuke.createNode(\"LensDistortion2\")\nlensDistortion2[\"bboxType\"].setValue(\"Input\")",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "bboxType",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set BBox",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Transform",
+    "class": "LensDistortion2",
+    "display_name": "LensDistortion",
+    "id": "node:LensDistortion2",
+    "menu_path": "Transform/LensDistortion"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in Tracking/Transform/Reformat or Keying/Matte/Roto functional research."
+}

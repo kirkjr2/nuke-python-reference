@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Copy one image's bounding box onto another",
+      "code": "# Copy the bounding box from bbox_source onto image.\ncopy_bbox = nuke.createNode(\"CopyBBox\")\ncopy_bbox.setInput(0, bbox_source)  # A: bbox source\ncopy_bbox.setInput(1, image)        # B: image to modify",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_bbox"
+        ],
+        "editorial_note": ""
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Merge",
+    "class": "CopyBBox",
+    "display_name": "CopyBBox",
+    "id": "node:CopyBBox",
+    "menu_path": "Merge/CopyBBox"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

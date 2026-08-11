@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "title": "Create a FieldMix node",
+      "code": "# Create the node and keep a reference to it.\nfieldMix = nuke.createNode(\"FieldMix\")",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "foundry_toolbar_16",
+          "erwan_python"
+        ],
+        "editorial_note": "Node class is present in the locked scanner dataset; Foundry toolbar source is used where the class is exposed in the standard toolbar."
+      }
+    },
+    {
+      "arguments": [
+        "mix"
+      ],
+      "code": "# Blend the node's effect with its input.\nfieldMix = nuke.createNode(\"FieldMix\")\nfieldMix[\"mix\"].setValue(0.5)",
+      "confidence": "scanner_backed",
+      "kind": "scanner_backed_editorial",
+      "provenance": {
+        "argument": "mix",
+        "argument_description_source": "nuke.Knob.label()",
+        "argument_values_source": "generator_reference_examples",
+        "source": "locked_reference_metadata",
+        "source_type": "generated",
+        "editorial_pass": "remaining_queue_v5"
+      },
+      "title": "Set Mix",
+      "editorial_revision": "v2_task_comment"
+    },
+    {
+      "title": "Inspect the node's public knobs",
+      "code": "# List the knob names exposed by this node in your Nuke version.\nfieldMix = nuke.createNode(\"FieldMix\")\nprint(fieldMix.knobs().keys())",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "hiram_snippets",
+          "erwan_python"
+        ],
+        "editorial_note": "Useful when node controls vary by Nuke version or the node is specialized."
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Field",
+    "class": "FieldMix",
+    "display_name": "FieldMix",
+    "id": "node:FieldMix",
+    "menu_path": "Field/FieldMix"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_EDITORIAL",
+  "status_reason": "Remaining-queue functional editorial pass completed. Examples combine the locked scanner's node/knob data with documented Nuke Python creation, graph-wiring, and inspection patterns. Node-specific interactive workflows are not invented.",
+  "editorial_family": "Utility / Other"
+}

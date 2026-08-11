@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Pull a key from an IBK clean plate",
+      "code": "# Use a processed clean plate to drive the key.\nibk = nuke.createNode(\"IBKGizmo\")\nibk.setInput(1, clean_plate)  # c\nibk.setInput(2, foreground)   # fg\nibk[\"st\"].setValue(\"C-green\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_ibkgizmo"
+        ],
+        "editorial_note": "Input indices should be checked against the scanner's input labels before publishing."
+      }
+    },
+    {
+      "arguments": [
+        "screen"
+      ],
+      "code": "# Configure the \"screen\" control.\niBKGizmo = nuke.createNode(\"IBKGizmo\")\niBKGizmo[\"screen\"].setValue(\"blue\")",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "screen",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set screen type",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Keyer",
+    "class": "IBKGizmo",
+    "display_name": "IBKGizmo",
+    "id": "node:IBKGizmo",
+    "menu_path": "Keyer/IBKGizmo"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in Tracking/Transform/Reformat or Keying/Matte/Roto functional research."
+}

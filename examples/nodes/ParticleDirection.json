@@ -1,0 +1,42 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Push particles in a specified direction",
+      "code": "# Match the direction vector from Foundry's sample script.\ndirection = nuke.createNode(\"ParticleDirection\")\ndirection[\"direction\"].fromScript(\"{0 1 -0.5}\")\ndirection[\"channels\"].setValue(\"all\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_particle_examples",
+          "foundry_knob_api"
+        ],
+        "editorial_note": ""
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Particles",
+    "class": "ParticleDirection",
+    "display_name": "ParticleDirection",
+    "id": "node:ParticleDirection",
+    "menu_path": "Particles/ParticleBlinkScript Gizmos/ParticleDirection"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Join left and right views",
+      "code": "# Combine separate stereo views into one multi-view stream.\njoin = nuke.createNode(\"JoinViews\")\njoin.setInput(0, left_view)\njoin.setInput(1, right_view)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_joinviews"
+        ],
+        "editorial_note": "Assumes the project has left/right views configured."
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Views",
+    "class": "JoinViews",
+    "display_name": "JoinViews",
+    "id": "node:JoinViews",
+    "menu_path": "Views/JoinViews"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

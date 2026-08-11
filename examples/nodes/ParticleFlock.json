@@ -1,0 +1,42 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Apply the animated goal from Foundry's flocking sample",
+      "code": "# Reproduce the animated goal control from Foundry's sample.\nflock = nuke.createNode(\"ParticleFlock\")\nflock[\"goal\"].fromScript(\"{curve x1 0 x50 100} 0 0\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_particle_examples",
+          "foundry_knob_api"
+        ],
+        "editorial_note": "This intentionally uses fromScript because the official sample stores animation in Nuke script syntax."
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Particles",
+    "class": "ParticleFlock",
+    "display_name": "ParticleFlock",
+    "id": "node:ParticleFlock",
+    "menu_path": "Particles/ParticleBlinkScript Gizmos/ParticleFlock"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

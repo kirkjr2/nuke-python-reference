@@ -1,0 +1,58 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Crop a deep stream",
+      "code": "# Insert DeepCrop into an existing deep-data pipe.\nnode = nuke.createNode(\"DeepCrop\")\nnode.setInput(0, deep_image)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_deepmodify"
+        ],
+        "editorial_note": "Workflow placement is source-backed; node-specific controls remain documented from scanner metadata."
+      }
+    },
+    {
+      "arguments": [
+        "bbox"
+      ],
+      "code": "# Configure the \"bbox\" control.\ndeepCrop = nuke.createNode(\"DeepCrop\")\ndeepCrop[\"bbox\"].setValue([409.6000061035156, 311.20001220703125, 1638.4000244140625, 1244.800048828125])",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "bbox",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "scanner_initial_value",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set bbox",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Deep",
+    "class": "DeepCrop",
+    "display_name": "DeepCrop",
+    "id": "node:DeepCrop",
+    "menu_path": "Deep/DeepCrop"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in a functional research batch with node/workflow-specific examples grounded in Foundry and selected creator documentation."
+}

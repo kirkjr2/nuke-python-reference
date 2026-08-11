@@ -1,0 +1,54 @@
+{
+  "$id": "example.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "example_count": {
+      "type": "integer"
+    },
+    "examples": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "kind": {
+      "const": "nuke_node_examples"
+    },
+    "node": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "research_flags": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "enum": [
+        "COMPLETE",
+        "PARTIAL",
+        "RESEARCH",
+        "EMPTY",
+        "SKIP"
+      ]
+    },
+    "status_reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "node",
+    "status",
+    "examples",
+    "provenance"
+  ],
+  "type": "object"
+}

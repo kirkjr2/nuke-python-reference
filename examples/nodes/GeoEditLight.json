@@ -1,0 +1,75 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "title": "Create a GeoEditLight node",
+      "code": "# Create the node and keep a reference to it.\ngeoEditLight = nuke.createNode(\"GeoEditLight\")",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "foundry_toolbar_16",
+          "erwan_python"
+        ],
+        "editorial_note": "Node class is present in the locked scanner dataset; Foundry toolbar source is used where the class is exposed in the standard toolbar."
+      }
+    },
+    {
+      "title": "Insert the node into an existing pipe",
+      "code": "# Connect an existing source to input 0.\ngeoEditLight = nuke.createNode(\"GeoEditLight\")\ngeoEditLight.setInput(0, source)",
+      "kind": "functional_editorial",
+      "confidence": "editorial_verified_pattern",
+      "provenance": {
+        "source_type": "functional_family_research",
+        "source_ids": [
+          "erwan_python",
+          "alex_richter_python"
+        ],
+        "editorial_note": ""
+      }
+    },
+    {
+      "arguments": [
+        "display"
+      ],
+      "code": "# Configure the \"display\" control.\ngeoEditLight = nuke.createNode(\"GeoEditLight\")\ngeoEditLight[\"display\"].setValue(\"off\")",
+      "confidence": "scanner_backed",
+      "kind": "scanner_backed_editorial",
+      "provenance": {
+        "argument": "display",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated",
+        "editorial_pass": "remaining_queue_v5"
+      },
+      "title": "Set Display",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "3D",
+    "class": "GeoEditLight",
+    "display_name": "GeoEditLight",
+    "id": "node:GeoEditLight",
+    "menu_path": "3D/3D/Lights/GeoEditLight"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_EDITORIAL",
+  "status_reason": "Remaining-queue functional editorial pass completed. Examples combine the locked scanner's node/knob data with documented Nuke Python creation, graph-wiring, and inspection patterns. Node-specific interactive workflows are not invented.",
+  "editorial_family": "3D / Geometry"
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 1,
+  "examples": [
+    {
+      "title": "Set the depth channel and point density",
+      "code": "# Create a point cloud from a depth pass.\npoints = nuke.createNode(\"DepthToPoints\")\npoints[\"depth\"].setValue(\"depth.Z\")\npoints[\"detail\"].setValue(1.0)\npoints[\"pointSize\"].setValue(5)",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "official_foundry_research_pass1",
+        "source_ids": [
+          "foundry_depthtopoints"
+        ],
+        "editorial_note": ""
+      }
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "3D",
+    "class": "DepthToPoints",
+    "display_name": "DepthToPoints",
+    "id": "node:DepthToPoints",
+    "menu_path": "3D/3D Classic/Geometry/DepthToPoints"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Source-backed editorial example(s) added from Foundry research pass 1."
+}

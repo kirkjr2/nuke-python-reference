@@ -1,0 +1,157 @@
+{
+  "foundry_deepread": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/Content/reference_guide/deep_nodes/deepread.html",
+    "use": "DeepRead file/type workflow and scripting knob names."
+  },
+  "foundry_deepmerge": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/11.3/content/reference_guide/deep_nodes/deepmerge.html",
+    "use": "DeepMerge A/B inputs, combine/holdout operations, drop_hidden."
+  },
+  "foundry_deepexpression": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/11.2/content/reference_guide/deep_nodes/deepexpression.html",
+    "use": "DeepExpression temp variables and expression workflow."
+  },
+  "foundry_deepmodify": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/comp_environment/deep/modifying_deep_data.html",
+    "use": "Deep color correction and expression workflows."
+  },
+  "foundry_scanline": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/3d_nodes/scanlinerender.html",
+    "use": "Classic ScanlineRender scene/camera/background inputs and render controls."
+  },
+  "foundry_scanline2": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/3dnew_nodes/scanlinerender.html",
+    "use": "New 3D ScanlineRender2 scene/camera workflow."
+  },
+  "foundry_readgeo": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/3d_nodes/readgeo.html",
+    "use": "ReadGeo file import and texture input."
+  },
+  "foundry_writegeo": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/14.0/content/reference_guide/3d_nodes/writegeo.html",
+    "use": "WriteGeo file, frame range, and execution workflow."
+  },
+  "foundry_camera": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/Content/reference_guide/3dnew_nodes/camera.html",
+    "use": "Camera connections and imported camera data."
+  },
+  "foundry_camera_workflow": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/comp_environment/usd-3d-comp/working-with-cameras.html",
+    "use": "Camera-to-ScanlineRender workflow."
+  },
+  "foundry_cameratracker": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/3d_nodes/cameratracker.html",
+    "use": "CameraTracker source input and tracking workflow."
+  },
+  "foundry_cameratracker_api": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/developers/latest/pythondevguide/_autosummary/nukescripts.cameratracker.html",
+    "use": "CameraTracker helper functions such as createCamera/createScene/createEverything."
+  },
+  "luca_snippets": {
+    "publisher": "Luca Mignardi",
+    "url": "https://www.lucamignardi.com/nuke-python-snippets/",
+    "use": "Practical selected-node Read/DeepRead on_error scripting."
+  },
+  "corson_snippets": {
+    "publisher": "Corson Nicolas",
+    "url": "https://corson.be/nuke_python_snippet/",
+    "use": "Production-oriented Nuke Python snippets."
+  },
+  "foundry_tracker": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/transform_nodes/tracker.html",
+    "use": "Tracker workflow, transform modes, channels and CornerPin export."
+  },
+  "foundry_cornerpin": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/transform_nodes/cornerpin2d.html",
+    "use": "CornerPin2D tracked four-corner replacement workflow."
+  },
+  "foundry_transform_nodes": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/transform_nodes/transform_nodes.html",
+    "use": "Transform family roles."
+  },
+  "foundry_lensdistortion": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/Content/reference_guide/transform_nodes/lensdistortion.html",
+    "use": "LensDistortion analysis/output modes and STMap workflow."
+  },
+  "foundry_stmap": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/17.0v1/content/reference_guide/transform_nodes/stmap.html",
+    "use": "STMap source/map inputs and normalized UV behavior."
+  },
+  "foundry_ibkcolor": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/keyer_nodes/ibkcolor.html",
+    "use": "IBKColor clean-plate workflow."
+  },
+  "foundry_ibkgizmo": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/keyer_nodes/ibkgizmo.html",
+    "use": "IBKGizmo fg/c/bg input workflow and screen type controls."
+  },
+  "foundry_primatte": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/content/reference_guide/keyer_nodes/primatte.html",
+    "use": "Primatte sampling and Auto-Compute workflow."
+  },
+  "foundry_keyer_nodes": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/12.1/content/reference_guide/keyer_nodes/keyer_nodes.html",
+    "use": "Keyer family roles."
+  },
+  "foundry_toolbar_16": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/developers/16.0/pythondevguide/_modules/nukescripts/toolbars.html",
+    "use": "Official toolbar node classes and create-node conventions across Time, Channel, Color, Merge, Filter, 3D, Deep, Particles and utilities."
+  },
+  "nukepedia_shuffle_switcher": {
+    "publisher": "Nukepedia / Anton Riabkov",
+    "url": "https://www.nukepedia.com/tools/python/nodegraph/shuffle-switcher/",
+    "use": "Production evidence for scripting Shuffle/Shuffle2 channel workflows."
+  },
+  "nukepedia_tracker_roto": {
+    "publisher": "Nukepedia community",
+    "url": "https://www.nukepedia.com/tools/python/nodegraph/tracker-to-roto-1/",
+    "use": "Production evidence for Tracker-to-Roto linked/baked workflows."
+  },
+  "erwan_python": {
+    "publisher": "Erwan Leroy",
+    "url": "https://erwanleroy.com/getting-started-with-python-for-nuke/",
+    "use": "Practical node creation, knob access, setValue, and Nuke Python patterns."
+  },
+  "alex_richter_python": {
+    "publisher": "Alexander Richter",
+    "url": "https://www.alexanderrichtertd.com/python-nuke",
+    "use": "Practical Nuke Python node-tree automation patterns."
+  },
+  "hiram_snippets": {
+    "publisher": "Hiram Gifford",
+    "url": "https://www.hiramgifford.com/nuke-tools-and-scripts/nuke-python-code-snippets",
+    "use": "Production-oriented Nuke Python snippets and node/knob inspection patterns."
+  },
+  "luca_tutorials": {
+    "publisher": "Luca Mignardi",
+    "url": "https://www.lucamignardi.com/category/tutorial/",
+    "use": "Nuke workflow/tutorial context."
+  },
+  "gati_media": {
+    "publisher": "Gati Media",
+    "url": "https://www.gatimedia.co.uk/",
+    "use": "Secondary Nuke compositing/tutorial research pool."
+  }
+}

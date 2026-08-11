@@ -1,0 +1,71 @@
+{
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 3,
+  "examples": [
+    {
+      "title": "Combine two deep streams",
+      "code": "# Combine all samples from two deep images.\ndeep_merge = nuke.createNode(\"DeepMerge2\")\ndeep_merge.setInput(0, deep_a)\ndeep_merge.setInput(1, deep_b)\ndeep_merge[\"operation\"].setValue(\"combine\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_deepmerge"
+        ],
+        "editorial_note": ""
+      }
+    },
+    {
+      "title": "Use one deep stream as a holdout",
+      "code": "# Hold out samples in B using the samples in A.\ndeep_merge = nuke.createNode(\"DeepMerge2\")\ndeep_merge.setInput(0, holdout)\ndeep_merge.setInput(1, deep_image)\ndeep_merge[\"operation\"].setValue(\"holdout\")",
+      "kind": "source_backed_editorial",
+      "confidence": "source_backed_draft",
+      "provenance": {
+        "source_type": "functional_batch_research",
+        "source_ids": [
+          "foundry_deepmerge"
+        ],
+        "editorial_note": ""
+      }
+    },
+    {
+      "arguments": [
+        "metainput"
+      ],
+      "code": "# Configure the \"metainput\" control.\ndeepMerge2 = nuke.createNode(\"DeepMerge2\")\ndeepMerge2[\"metainput\"].setValue(\"A\")",
+      "confidence": "draft",
+      "kind": "metadata_draft",
+      "provenance": {
+        "argument": "metainput",
+        "argument_description_source": "nuke.Knob.tooltip()",
+        "argument_values_source": "nuke.Knob.values()",
+        "source": "locked_reference_metadata",
+        "source_type": "generated"
+      },
+      "title": "Set metadata from",
+      "editorial_revision": "v2_task_comment"
+    }
+  ],
+  "kind": "nuke_node_examples",
+  "node": {
+    "category": "Deep",
+    "class": "DeepMerge2",
+    "display_name": "DeepMerge",
+    "id": "node:DeepMerge2",
+    "menu_path": "Deep/DeepMerge"
+  },
+  "provenance": {
+    "examples_dataset": "Nuke Reference Examples v1",
+    "nuke_version": {
+      "major": 17,
+      "minor": 0,
+      "release": 3,
+      "string": "17.0v3"
+    },
+    "reference_schema_version": "1.0.0"
+  },
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "FUNCTIONAL_RESEARCHED",
+  "status_reason": "Upgraded in a functional research batch with node/workflow-specific examples grounded in Foundry and selected creator documentation."
+}
