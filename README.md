@@ -71,7 +71,7 @@ http://localhost:8000/
 
 The reference was generated from Nuke and then supplemented with editorial examples. Some specialized nodes may need corrections or better workflow examples over time.
 
-If you find incorrect argument information, examples, node behavior, or missing documentation, please report it through GitHub Issues or submit a contribution.
+If you find incorrect argument information, examples, node behavior, or missing documentation, please report it through GitHub Issues or submit a contribution. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Development pipeline
 
@@ -90,6 +90,16 @@ Website + editorial examples
 ```
 
 Generated reference files should not be manually edited when the same change belongs in the scanner or generator.
+
+## Reuse and licensing
+
+This project is intended to be open for reuse and repurposing.
+
+Original software code and original project-authored material are released under the [MIT License](LICENSE), where this project has the right to grant that license.
+
+The MIT license does **not** apply to third-party material owned by Foundry, Foundry licensors, community creators, or other rights holders. Reference data and examples may contain a mixture of original material, factual information generated from Nuke, and third-party-derived material.
+
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before redistributing the reference data or third-party-derived content.
 
 ## Changelog
 
