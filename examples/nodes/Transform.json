@@ -1,13 +1,27 @@
 {
   "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
+  "example_count": 2,
   "examples": [
-    {"title":"Move the selected image without modifying the source","code":"# Insert a Transform after the selected node and move the image.\nsource = nuke.selectedNode()\n\ntransform = nuke.createNode(\"Transform\")\ntransform.setInput(0, source)\ntransform[\"translate\"].setValue(100, 0)\ntransform[\"translate\"].setValue(50, 1)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Animate horizontal position","code":"# Animate the X component of translate from frame 1 to 50.\ntransform = nuke.createNode(\"Transform\")\ntranslate = transform[\"translate\"]\n\ntranslate.setAnimated(0)\ntranslate.setValueAt(0, 1, 0)\ntranslate.setValueAt(500, 50, 0)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Link rotation to another Transform","code":"# Drive this node's rotation from Transform1.\ndriven = nuke.createNode(\"Transform\")\ndriven[\"rotate\"].setExpression(\"Transform1.rotate\")","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}}
+    {
+      "title": "Configure and animate a Transform",
+      "code": "# Create a Transform and set its starting values.\ntransform = nuke.createNode(\"Transform\")\ntransform[\"translate\"].setValue([100, 50])\ntransform[\"rotate\"].setValue(15)\n\n# Animate only the X component from frame 1 to frame 50.\ntranslate = transform[\"translate\"]\ntranslate.setAnimated(0)\ntranslate.setValueAt(100, 1, 0)\ntranslate.setValueAt(500, 50, 0)",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    },
+    {
+      "title": "Drive one Transform from another",
+      "code": "# Create a driver Transform and a second Transform that follows its rotation.\ndriver = nuke.createNode(\"Transform\")\ndriver[\"rotate\"].setValue(20)\n\ndriven = nuke.createNode(\"Transform\")\ndriven[\"rotate\"].setExpression(driver.name() + \".rotate\")",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    }
   ],
-  "kind":"nuke_node_examples",
-  "node":{"category":"Transform","class":"Transform","display_name":"Transform","id":"node:Transform","menu_path":"Transform/Transform"},
-  "provenance":{"examples_dataset":"Nuke Reference Examples v1","nuke_version":{"major":17,"minor":0,"release":3,"string":"17.0v3"},"reference_schema_version":"1.0.0"},
-  "research_flags":[],"schema_version":"1.0.0","status":"COMPLETE","status_reason":"Practical examples v1 rewrite."
+  "kind": "nuke_node_examples",
+  "node": {"category": "Transform", "class": "Transform", "display_name": "Transform", "id": "node:Transform", "menu_path": "Transform/Transform"},
+  "provenance": {"examples_dataset": "Nuke Reference Examples v1", "nuke_version": {"major": 17, "minor": 0, "release": 3, "string": "17.0v3"}, "reference_schema_version": "1.0.0"},
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Practical examples v1 rewrite; awaiting manual Nuke verification."
 }
