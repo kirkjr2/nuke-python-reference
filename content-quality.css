@@ -1,0 +1,44 @@
+.editorial-quality {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 7px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--muted);
+  background: var(--panel);
+}
+
+.editorial-quality-documented {
+  border-color: #5b6d52;
+}
+
+.editorial-quality-needs-research {
+  border-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.editorial-overview {
+  max-width: 1050px;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  line-height: 1.55;
+}
+
+.editorial-overview-title {
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+}
+
+.editorial-note {
+  max-width: 1050px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
