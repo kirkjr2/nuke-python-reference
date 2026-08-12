@@ -1,11 +1,27 @@
 {
-  "$schema":"../schemas/example.schema.json","example_count":3,
-  "examples":[
-    {"title":"Brighten the selected image","code":"# Add a Grade after the selected node and raise its overall level.\nsource = nuke.selectedNode()\n\ngrade = nuke.createNode(\"Grade\")\ngrade.setInput(0, source)\ngrade[\"multiply\"].setValue(1.25)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Grade only the red channel","code":"# Restrict the correction to red instead of changing the full image.\nsource = nuke.selectedNode()\n\ngrade = nuke.createNode(\"Grade\")\ngrade.setInput(0, source)\ngrade[\"channels\"].setValue(\"red\")\ngrade[\"multiply\"].setValue(1.2)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Link gain to another Grade","code":"# Keep this Grade's multiply value synchronized with Grade1.\ngrading_copy = nuke.createNode(\"Grade\")\ngrading_copy[\"multiply\"].setExpression(\"Grade1.multiply\")","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}}
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Build a basic RGB grade",
+      "code": "# Create a Grade and adjust several controls together.\ngrade = nuke.createNode(\"Grade\")\ngrade[\"channels\"].setValue(\"rgb\")\ngrade[\"multiply\"].setValue([1.10, 1.05, 0.95, 1.0])\ngrade[\"gamma\"].setValue([0.95, 0.95, 0.95, 1.0])\n\n# Return the color controls to neutral values.\ngrade[\"multiply\"].setValue([1.0, 1.0, 1.0, 1.0])\ngrade[\"gamma\"].setValue([1.0, 1.0, 1.0, 1.0])",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    },
+    {
+      "title": "Adjust all Grade nodes in a script",
+      "code": "# Restrict every Grade node to RGB and raise its multiply value.\nfor grade in nuke.allNodes(\"Grade\"):\n    grade[\"channels\"].setValue(\"rgb\")\n    grade[\"multiply\"].setValue([1.1, 1.1, 1.1, 1.0])",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    }
   ],
-  "kind":"nuke_node_examples","node":{"category":"Color","class":"Grade","display_name":"Grade","id":"node:Grade","menu_path":"Color/Grade"},
-  "provenance":{"examples_dataset":"Nuke Reference Examples v1","nuke_version":{"major":17,"minor":0,"release":3,"string":"17.0v3"},"reference_schema_version":"1.0.0"},
-  "research_flags":[],"schema_version":"1.0.0","status":"COMPLETE","status_reason":"Practical examples v1 rewrite."
+  "kind": "nuke_node_examples",
+  "node": {"category": "Color", "class": "Grade", "display_name": "Grade", "id": "node:Grade", "menu_path": "Color/Grade"},
+  "provenance": {"examples_dataset": "Nuke Reference Examples v1", "nuke_version": {"major": 17, "minor": 0, "release": 3, "string": "17.0v3"}, "reference_schema_version": "1.0.0"},
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Practical examples v1 rewrite; awaiting manual Nuke verification."
 }
