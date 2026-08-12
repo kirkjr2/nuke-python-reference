@@ -1,11 +1,27 @@
 {
-  "$schema":"../schemas/example.schema.json","example_count":3,
-  "examples":[
-    {"title":"Create an EXR output for the selected branch","code":"# Add a Write after the selected node and configure an EXR sequence.\nsource = nuke.selectedNode()\n\nwrite = nuke.createNode(\"Write\")\nwrite.setInput(0, source)\nwrite[\"file\"].setValue(\"D:/renders/final/comp.####.exr\")\nwrite[\"channels\"].setValue(\"all\")","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Print every output path in the script","code":"# Audit all Write destinations before submitting a script to render.\nfor write in nuke.allNodes(\"Write\"):\n    print(write.name(), write[\"file\"].value())","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Disable selected Write nodes","code":"# Temporarily prevent selected Write nodes from rendering.\nfor write in nuke.selectedNodes(\"Write\"):\n    write[\"disable\"].setValue(True)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}}
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Configure an EXR Write node",
+      "code": "# Create a Write node for an EXR sequence.\nwrite = nuke.createNode(\"Write\")\nwrite[\"file\"].setValue(\"D:/renders/final.####.exr\")\nwrite[\"file_type\"].setValue(\"exr\")\nwrite[\"channels\"].setValue(\"all\")\n\n# Change the output to RGB only.\nwrite[\"channels\"].setValue(\"rgb\")",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    },
+    {
+      "title": "Render a Write node over a frame range",
+      "code": "# Create and configure a Write node before rendering.\nwrite = nuke.createNode(\"Write\")\nwrite[\"file\"].setValue(\"D:/renders/test.####.exr\")\nwrite[\"file_type\"].setValue(\"exr\")\n\n# Render frames 1001 through 1010.\nnuke.execute(write, 1001, 1010)",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    }
   ],
-  "kind":"nuke_node_examples","node":{"category":"Image","class":"Write","display_name":"Write","id":"node:Write","menu_path":"Image/Write"},
-  "provenance":{"examples_dataset":"Nuke Reference Examples v1","nuke_version":{"major":17,"minor":0,"release":3,"string":"17.0v3"},"reference_schema_version":"1.0.0"},
-  "research_flags":[],"schema_version":"1.0.0","status":"COMPLETE","status_reason":"Practical examples v1 rewrite."
+  "kind": "nuke_node_examples",
+  "node": {"category": "Image", "class": "Write", "display_name": "Write", "id": "node:Write", "menu_path": "Image/Write"},
+  "provenance": {"examples_dataset": "Nuke Reference Examples v1", "nuke_version": {"major": 17, "minor": 0, "release": 3, "string": "17.0v3"}, "reference_schema_version": "1.0.0"},
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Practical examples v1 rewrite; awaiting manual Nuke verification."
 }
