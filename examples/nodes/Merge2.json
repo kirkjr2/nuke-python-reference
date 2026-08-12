@@ -1,58 +1,11 @@
 {
-  "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
-  "examples": [
-    {
-      "code": "# Create a Merge node using the standard over operation.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"over\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Create an Over merge"
-    },
-    {
-      "code": "# Change an existing Merge node to Plus.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"plus\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Change the merge operation"
-    },
-    {
-      "code": "# Merge RGB channels while leaving other channels unchanged.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"Achannels\"].setValue(\"rgb\")\nmerge[\"Bchannels\"].setValue(\"rgb\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Restrict the merge channels"
-    }
+  "$schema":"../schemas/example.schema.json","example_count":3,
+  "examples":[
+    {"title":"Merge two selected nodes","code":"# Use the first two selected nodes as the Merge inputs.\nnodes = nuke.selectedNodes()\nbackground = nodes[0]\nforeground = nodes[1]\n\nmerge = nuke.createNode(\"Merge2\")\nmerge.setInput(0, foreground)\nmerge.setInput(1, background)\nmerge[\"operation\"].setValue(\"over\")","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
+    {"title":"Add two image streams together","code":"# Build a Plus merge from two existing nodes.\nmerge = nuke.createNode(\"Merge2\")\nmerge.setInput(0, element)\nmerge.setInput(1, plate)\nmerge[\"operation\"].setValue(\"plus\")","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
+    {"title":"Change selected Merge nodes to Over","code":"# Normalize selected Merge nodes to the standard Over operation.\nfor node in nuke.selectedNodes(\"Merge2\"):\n    node[\"operation\"].setValue(\"over\")","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}}
   ],
-  "kind": "nuke_node_examples",
-  "node": {
-    "category": "Merge",
-    "class": "Merge2",
-    "display_name": "Merge",
-    "id": "node:Merge2",
-    "menu_path": "Merge/Merge"
-  },
-  "provenance": {
-    "examples_dataset": "Nuke Reference Examples v1",
-    "nuke_version": {
-      "major": 17,
-      "minor": 0,
-      "release": 3,
-      "string": "17.0v3"
-    },
-    "reference_schema_version": "1.0.0"
-  },
-  "research_flags": [],
-  "schema_version": "1.0.0",
-  "status": "COMPLETE",
-  "status_reason": "Existing curated examples approved in the site."
+  "kind":"nuke_node_examples","node":{"category":"Merge","class":"Merge2","display_name":"Merge","id":"node:Merge2","menu_path":"Merge/Merge"},
+  "provenance":{"examples_dataset":"Nuke Reference Examples v1","nuke_version":{"major":17,"minor":0,"release":3,"string":"17.0v3"},"reference_schema_version":"1.0.0"},
+  "research_flags":[],"schema_version":"1.0.0","status":"COMPLETE","status_reason":"Practical examples v1 rewrite."
 }
