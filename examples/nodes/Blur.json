@@ -1,31 +1,27 @@
 {
   "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
+  "example_count": 2,
   "examples": [
     {
-      "title": "Blur only the alpha channel of the selected node",
-      "code": "# Add an alpha-only blur after the currently selected node.\nsource = nuke.selectedNode()\n\nblur = nuke.createNode(\"Blur\")\nblur.setInput(0, source)\nblur[\"channels\"].setValue(\"alpha\")\nblur[\"size\"].setValue(20)",
+      "title": "Configure the Blur effect",
+      "code": "# Create a Gaussian Blur that affects only alpha.\nblur = nuke.createNode(\"Blur\")\nblur[\"filter\"].setValue(\"gaussian\")\nblur[\"channels\"].setValue(\"alpha\")\nblur[\"size\"].setValue([20, 20])\n\n# Change it to a horizontal blur.\nblur[\"size\"].setValue([30, 0])\n\n# Process RGB instead of alpha.\nblur[\"channels\"].setValue(\"rgb\")",
       "kind": "practical_editorial",
-      "confidence": "reviewed",
-      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
-    },
-    {
-      "title": "Create a horizontal motion-style blur",
-      "code": "# Use the two components of size independently.\nsource = nuke.selectedNode()\n\nblur = nuke.createNode(\"Blur\")\nblur.setInput(0, source)\nblur[\"size\"].setValue(30, 0)\nblur[\"size\"].setValue(0, 1)",
-      "kind": "practical_editorial",
-      "confidence": "reviewed",
+      "confidence": "manual_test_requested",
       "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
     },
     {
       "title": "Change every Blur node in the script",
-      "code": "# Increase the blur size on every Blur node in the current script.\nfor blur in nuke.allNodes(\"Blur\"):\n    blur[\"size\"].setValue(10)",
+      "code": "# Give every Blur node the same Gaussian RGB blur.\nfor blur in nuke.allNodes(\"Blur\"):\n    blur[\"filter\"].setValue(\"gaussian\")\n    blur[\"channels\"].setValue(\"rgb\")\n    blur[\"size\"].setValue([10, 10])",
       "kind": "practical_editorial",
-      "confidence": "reviewed",
+      "confidence": "manual_test_requested",
       "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
     }
   ],
   "kind": "nuke_node_examples",
   "node": {"category": "Filter", "class": "Blur", "display_name": "Blur", "id": "node:Blur", "menu_path": "Filter/Blur"},
   "provenance": {"examples_dataset": "Nuke Reference Examples v1", "nuke_version": {"major": 17, "minor": 0, "release": 3, "string": "17.0v3"}, "reference_schema_version": "1.0.0"},
-  "research_flags": [], "schema_version": "1.0.0", "status": "COMPLETE", "status_reason": "Practical examples v1 rewrite."
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Practical examples v1 rewrite; awaiting manual Nuke verification."
 }
