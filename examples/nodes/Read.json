@@ -1,48 +1,11 @@
 {
-  "$schema": "../schemas/example.schema.json",
-  "example_count": 2,
-  "examples": [
-    {
-      "code": "# Create a Read node and assign a file path.\nread = nuke.createNode(\"Read\")\nread[\"file\"].setValue(\"D:/renders/shot.####.exr\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Create a Read node"
-    },
-    {
-      "code": "# Set the source frame range.\nread = nuke.createNode(\"Read\")\nread[\"first\"].setValue(1001)\nread[\"last\"].setValue(1100)",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Set the frame range"
-    }
+  "$schema":"../schemas/example.schema.json","example_count":3,
+  "examples":[
+    {"title":"Load an EXR image sequence","code":"# Create a Read for a frame-numbered EXR sequence.\nread = nuke.createNode(\"Read\")\nread[\"file\"].setValue(\"D:/renders/shot/beauty.####.exr\")\nread[\"first\"].setValue(1001)\nread[\"last\"].setValue(1100)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
+    {"title":"Find every Read node using EXR files","code":"# Collect EXR Read nodes for batch processing or validation.\nexr_reads = [\n    node for node in nuke.allNodes(\"Read\")\n    if node[\"file\"].value().lower().endswith(\".exr\")\n]\n\nfor read in exr_reads:\n    print(read.name(), read[\"file\"].value())","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
+    {"title":"Move selected Reads to a new render directory","code":"# Replace part of the file path on selected Read nodes.\nfor read in nuke.selectedNodes(\"Read\"):\n    old_path = read[\"file\"].value()\n    new_path = old_path.replace(\"D:/renders/old/\", \"D:/renders/new/\")\n    read[\"file\"].setValue(new_path)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}}
   ],
-  "kind": "nuke_node_examples",
-  "node": {
-    "category": "Image",
-    "class": "Read",
-    "display_name": "Read",
-    "id": "node:Read",
-    "menu_path": "Image/Read"
-  },
-  "provenance": {
-    "examples_dataset": "Nuke Reference Examples v1",
-    "nuke_version": {
-      "major": 17,
-      "minor": 0,
-      "release": 3,
-      "string": "17.0v3"
-    },
-    "reference_schema_version": "1.0.0"
-  },
-  "research_flags": [],
-  "schema_version": "1.0.0",
-  "status": "COMPLETE",
-  "status_reason": "Existing curated examples approved in the site."
+  "kind":"nuke_node_examples","node":{"category":"Image","class":"Read","display_name":"Read","id":"node:Read","menu_path":"Image/Read"},
+  "provenance":{"examples_dataset":"Nuke Reference Examples v1","nuke_version":{"major":17,"minor":0,"release":3,"string":"17.0v3"},"reference_schema_version":"1.0.0"},
+  "research_flags":[],"schema_version":"1.0.0","status":"COMPLETE","status_reason":"Practical examples v1 rewrite."
 }
