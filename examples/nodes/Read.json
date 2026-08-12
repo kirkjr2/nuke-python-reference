@@ -1,11 +1,27 @@
 {
-  "$schema":"../schemas/example.schema.json","example_count":3,
-  "examples":[
-    {"title":"Load an EXR image sequence","code":"# Create a Read for a frame-numbered EXR sequence.\nread = nuke.createNode(\"Read\")\nread[\"file\"].setValue(\"D:/renders/shot/beauty.####.exr\")\nread[\"first\"].setValue(1001)\nread[\"last\"].setValue(1100)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Find every Read node using EXR files","code":"# Collect EXR Read nodes for batch processing or validation.\nexr_reads = [\n    node for node in nuke.allNodes(\"Read\")\n    if node[\"file\"].value().lower().endswith(\".exr\")\n]\n\nfor read in exr_reads:\n    print(read.name(), read[\"file\"].value())","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}},
-    {"title":"Move selected Reads to a new render directory","code":"# Replace part of the file path on selected Read nodes.\nfor read in nuke.selectedNodes(\"Read\"):\n    old_path = read[\"file\"].value()\n    new_path = old_path.replace(\"D:/renders/old/\", \"D:/renders/new/\")\n    read[\"file\"].setValue(new_path)","kind":"practical_editorial","confidence":"reviewed","provenance":{"source_type":"project_curated","source":"practical_examples_v1"}}
+  "$schema": "../schemas/example.schema.json",
+  "example_count": 2,
+  "examples": [
+    {
+      "title": "Load an image sequence and set its frame range",
+      "code": "# Create a Read node for an image sequence.\nread = nuke.createNode(\"Read\")\nread[\"file\"].setValue(\"D:/renders/shot.####.exr\")\nread[\"first\"].setValue(1001)\nread[\"last\"].setValue(1100)\n\n# Update the frame range later without recreating the node.\nread[\"first\"].setValue(1010)\nread[\"last\"].setValue(1080)",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    },
+    {
+      "title": "Find every EXR Read node",
+      "code": "# Print the file paths of all EXR Read nodes in the script.\nfor read in nuke.allNodes(\"Read\"):\n    path = read[\"file\"].value()\n    if path.lower().endswith(\".exr\"):\n        print(path)",
+      "kind": "practical_editorial",
+      "confidence": "manual_test_requested",
+      "provenance": {"source_type": "project_curated", "source": "practical_examples_v1"}
+    }
   ],
-  "kind":"nuke_node_examples","node":{"category":"Image","class":"Read","display_name":"Read","id":"node:Read","menu_path":"Image/Read"},
-  "provenance":{"examples_dataset":"Nuke Reference Examples v1","nuke_version":{"major":17,"minor":0,"release":3,"string":"17.0v3"},"reference_schema_version":"1.0.0"},
-  "research_flags":[],"schema_version":"1.0.0","status":"COMPLETE","status_reason":"Practical examples v1 rewrite."
+  "kind": "nuke_node_examples",
+  "node": {"category": "Image", "class": "Read", "display_name": "Read", "id": "node:Read", "menu_path": "Image/Read"},
+  "provenance": {"examples_dataset": "Nuke Reference Examples v1", "nuke_version": {"major": 17, "minor": 0, "release": 3, "string": "17.0v3"}, "reference_schema_version": "1.0.0"},
+  "research_flags": [],
+  "schema_version": "1.0.0",
+  "status": "COMPLETE",
+  "status_reason": "Practical examples v1 rewrite; awaiting manual Nuke verification."
 }
