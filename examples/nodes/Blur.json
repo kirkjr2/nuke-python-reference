@@ -3,7 +3,7 @@
   "example_count": 1,
   "examples": [
     {
-      "code": "# Soften the alpha edge from the currently selected matte node.\nmatte = nuke.selectedNode()\n\nsoft_matte = nuke.nodes.Blur(name=\"soften_matte_edge\")\nsoft_matte.setInput(0, matte)\nsoft_matte[\"label\"].setValue(\"Soften matte edge\")\n\n# Affect only alpha, preserving the source RGB channels.\nsoft_matte[\"channels\"].setValue(\"alpha\")\nsoft_matte[\"filter\"].setValue(\"gaussian\")\n\n# A small blur removes hard roto/key edges without noticeably spreading the matte.\nsoft_matte[\"size\"].setValue(2.0)\n\n# Keep the result at full strength; adjust this to compare against the hard matte.\nsoft_matte[\"mix\"].setValue(1.0)",
+      "code": "# Soften the alpha edge from the currently selected matte node.\nmatte = nuke.selectedNode()\n\nsoft_matte = nuke.createNode(\"Blur\")\nsoft_matte.setName(\"soften_matte_edge\")\nsoft_matte.setInput(0, matte)\nsoft_matte[\"label\"].setValue(\"Soften matte edge\")\n\n# Affect only alpha, preserving the source RGB channels.\nsoft_matte[\"channels\"].setValue(\"alpha\")\nsoft_matte[\"filter\"].setValue(\"gaussian\")\n\n# A small blur removes hard roto/key edges without noticeably spreading the matte.\nsoft_matte[\"size\"].setValue(2.0)\n\n# Keep the result at full strength; adjust this to compare against the hard matte.\nsoft_matte[\"mix\"].setValue(1.0)",
       "confidence": "reviewed",
       "kind": "curated",
       "provenance": {
