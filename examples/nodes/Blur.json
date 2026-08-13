@@ -1,36 +1,16 @@
 {
   "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
+  "example_count": 1,
   "examples": [
     {
-      "code": "# Create a Blur node and set a 10 pixel blur.\nblur = nuke.createNode(\"Blur\")\nblur[\"size\"].setValue(10)\nblur[\"filter\"].setValue(\"gaussian\")",
+      "code": "# Create a practical RGB-only Gaussian blur.\nblur = nuke.nodes.Blur(name=\"soften_detail\")\n\n# Blur RGB while leaving alpha unchanged.\nblur[\"channels\"].setValue(\"rgb\")\nblur[\"filter\"].setValue(\"gaussian\")\n\n# Set horizontal and vertical blur independently.\nblur[\"size\"].setValue(20.0, 0)\nblur[\"size\"].setValue(8.0, 1)\n\n# Keep the bounding box within the project format and blend the effect.\nblur[\"crop\"].setValue(True)\nblur[\"mix\"].setValue(0.75)",
       "confidence": "reviewed",
       "kind": "curated",
       "provenance": {
         "source": "approved_site_examples",
         "source_type": "project_curated"
       },
-      "title": "Create a Gaussian blur"
-    },
-    {
-      "code": "# Create a Blur and limit the effect to RGB.\nblur = nuke.createNode(\"Blur\")\nblur[\"channels\"].setValue(\"rgb\")\nblur[\"size\"].setValue(20)",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Blur only RGB"
-    },
-    {
-      "code": "# Set horizontal and vertical blur independently.\nblur = nuke.createNode(\"Blur\")\nblur[\"size\"].setValue(25, 0)\nblur[\"size\"].setValue(5, 1)",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Use different horizontal and vertical values"
+      "title": "Build a directional Gaussian blur"
     }
   ],
   "kind": "nuke_node_examples",

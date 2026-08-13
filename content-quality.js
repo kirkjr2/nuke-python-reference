@@ -36,6 +36,27 @@ const CONTENT_QUALITY = {
       }
     },
     suppressExamples: true
+  },
+  Blur: {
+    tier: "documented",
+    label: "Ready for Nuke audit · 12 arguments",
+    hideDescription: true,
+    overview: "Blur softens an image by spreading pixel values horizontally and vertically. Use Size to control the blur radius, Filter to choose the falloff, Channels to limit which channels are affected, and Mix to blend the result with the input.",
+    synopsisArguments: ["channels", "size", "filter", "mix", "crop"],
+    argumentOverrides: {
+      size: {
+        description: "Horizontal and vertical blur size in pixels. Set one number for both axes or set each axis independently."
+      },
+      filter: {
+        description: "Filter used to shape the blur: box, triangle, quadratic, or gaussian."
+      },
+      fringe: {
+        description: "Softens the edge of the mask so the blur transitions more gradually at the mask boundary."
+      },
+      quality: {
+        description: "Performance-quality threshold for very large blurs. Lower values render faster but may look less smooth."
+      }
+    }
   }
 };
 
