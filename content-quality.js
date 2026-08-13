@@ -464,6 +464,36 @@ const CONTENT_QUALITY = {
     overview: "FilterErode grows or shrinks selected channels using a selectable reconstruction filter, offering smoother matte edges than a fast morphological operation.",
     synopsisArguments: ["size", "filter", "channels", "mix"],
     example: { title: "Contract a matte with a smooth filter", code: '# Generate a matte and contract it with a filtered edge.\nmatte = nuke.createNode("Radial")\nerode = nuke.createNode("FilterErode")\nerode.setInput(0, matte)\nerode["channels"].setValue("alpha")\nerode["size"].setValue([-2.0, -2.0])\nerode["filter"].setValue("gaussian")' }
+  },
+  ChannelMerge: {
+    tier: "documented", label: "Ready for Nuke audit · 12 arguments", hideDescription: true,
+    overview: "ChannelMerge combines one channel from input A with one from input B and writes the result into a chosen output channel, leaving other B channels unchanged.",
+    synopsisArguments: ["A", "B", "operation", "output", "bbox", "mix"],
+    example: { title: "Union two generated alpha mattes", code: '# Combine two mattes and write their union into alpha.\na = nuke.createNode("Radial")\nb = nuke.createNode("Rectangle")\nmerge = nuke.createNode("ChannelMerge")\nmerge.setInput(0, a)\nmerge.setInput(1, b)\nmerge["A"].setValue("alpha")\nmerge["B"].setValue("alpha")\nmerge["operation"].setValue("union")\nmerge["output"].setValue("alpha")' }
+  },
+  Difference: {
+    tier: "documented", label: "Ready for Nuke audit · 3 arguments", hideDescription: true,
+    overview: "Difference compares a clean plate in A with a subject plate in B and produces their difference as a rough matte.",
+    synopsisArguments: ["offset", "gain", "output"],
+    example: { title: "Generate a rough difference matte", code: '# Compare a clean plate with a changed plate.\nclean = nuke.createNode("CheckerBoard2")\nsubject = nuke.createNode("ColorWheel")\ndifference = nuke.createNode("Difference")\ndifference.setInput(0, clean)\ndifference.setInput(1, subject)\ndifference["offset"].setValue(0.02)\ndifference["gain"].setValue(2.0)\ndifference["output"].setValue("alpha")' }
+  },
+  CopyRectangle: {
+    tier: "documented", label: "Ready for Nuke audit · 4 arguments", hideDescription: true,
+    overview: "CopyRectangle copies selected channels from a rectangular region of input A over input B, with optional feathering and mix control.",
+    synopsisArguments: ["area", "softness", "channels", "mix"],
+    example: { title: "Patch a rectangular region from another input", code: '# Copy a softly feathered region from A onto B.\npatch = nuke.createNode("ColorWheel")\nbase = nuke.createNode("CheckerBoard2")\ncopy = nuke.createNode("CopyRectangle")\ncopy.setInput(0, patch)\ncopy.setInput(1, base)\ncopy["area"].setValue([500.0, 300.0, 1420.0, 780.0])\ncopy["softness"].setValue([20.0, 20.0])\ncopy["channels"].setValue("rgba")' }
+  },
+  ClipTest: {
+    tier: "documented", label: "Ready for Nuke audit · 12 arguments", hideDescription: true,
+    overview: "ClipTest overlays warnings on values below a lower limit or above an upper limit, helping identify clipped, negative, or super-white pixels.",
+    synopsisArguments: ["lower", "upper", "channels", "mix"],
+    example: { title: "Flag values outside the legal 0–1 range", code: '# Check a generated image for negative and super-white values.\nsource = nuke.createNode("ColorWheel")\ntest = nuke.createNode("ClipTest")\ntest.setInput(0, source)\ntest["channels"].setValue("rgb")\ntest["lower"].setValue(0.0)\ntest["upper"].setValue(1.0)' }
+  },
+  Blend: {
+    tier: "documented", label: "Ready for Nuke audit · 20 arguments", hideDescription: true,
+    overview: "Blend creates a weighted average of multiple inputs, optionally normalizing their weights so the combined contribution remains balanced.",
+    synopsisArguments: ["channels", "normalize", "weight0", "weight1"],
+    example: { title: "Average three generated inputs", code: '# Blend three test images with normalized weights.\na = nuke.createNode("ColorBars")\nb = nuke.createNode("ColorWheel")\nc = nuke.createNode("CheckerBoard2")\nblend = nuke.createNode("Blend")\nblend.setInput(0, a)\nblend.setInput(1, b)\nblend.setInput(2, c)\nblend["channels"].setValue("rgba")\nblend["normalize"].setValue(True)\nblend["weight0"].setValue(1.0)\nblend["weight1"].setValue(1.0)\nblend["weight2"].setValue(1.0)' }
   }
 };
 
