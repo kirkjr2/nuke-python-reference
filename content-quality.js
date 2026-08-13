@@ -340,37 +340,70 @@ const CONTENT_QUALITY = {
     argumentOverrides: { mask_patterns: { examplesHtml: '<span class="source-note">Scene path control</span>' }, path_mask_group: { examplesHtml: '<span class="source-note">UI group</span>' }, time: { examplesHtml: '<span class="source-note">Derived frame range</span>', description: "Derived frame-extent control; use time_offset for ordinary frame slipping." } }
   },
   FrameRange: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 4 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 2 writable arguments passed · 2 special controls inspected", hideDescription: true,
     overview: "FrameRange restricts the frame range reported by an input. It is useful for trimming source ranges before editorial operations such as AppendClip.",
     synopsisArguments: ["first_frame", "last_frame"],
     example: { title: "Trim a source to a working frame range", code: '# Create a source and expose only frames 100 through 150.\nsource = nuke.createNode("ColorBars")\nframe_range = nuke.createNode("FrameRange")\nframe_range.setInput(0, source)\nframe_range["first_frame"].setValue(100)\nframe_range["last_frame"].setValue(150)' },
     argumentOverrides: { reset: { examplesHtml: '<span class="source-note">UI action</span>' }, time: { examplesHtml: '<span class="source-note">Derived frame range</span>' } }
   },
   TimeClip: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 15 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 14 writable arguments passed · derived time control inspected", hideDescription: true,
     overview: "TimeClip combines trimming, slipping, reversing, fades, and out-of-range behavior in one editorial node.",
     synopsisArguments: ["first", "last", "frame_mode", "frame", "before", "after", "reverse", "fadeIn", "fadeOut"],
     example: { title: "Trim and slip a clip with held boundary frames", code: '# Create a source, trim it, and slip the requested source time.\nsource = nuke.createNode("ColorBars")\nclip = nuke.createNode("TimeClip")\nclip.setInput(0, source)\nclip["first"].setValue(100)\nclip["last"].setValue(150)\nclip["before"].setValue("hold")\nclip["after"].setValue("hold")\nclip["frame_mode"].setValue("expression")\nclip["frame"].setValue("frame + 8")\nclip["fadeIn"].setValue(0)\nclip["fadeOut"].setValue(0)' },
     argumentOverrides: { time: { examplesHtml: '<span class="source-note">Derived time control</span>' } }
   },
   AppendClip: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 7 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 6 writable arguments passed · derived time control inspected", hideDescription: true,
     overview: "AppendClip joins multiple inputs head-to-tail and can add fades or cross-dissolves at the edit points.",
     synopsisArguments: ["firstFrame", "fadeIn", "fadeOut", "dissolve", "meta_from_first"],
     example: { title: "Join two trimmed clips with a short dissolve", code: '# Generate two sources, trim them, and append them head-to-tail.\nfirst_source = nuke.createNode("ColorBars")\nsecond_source = nuke.createNode("ColorWheel")\nfirst_trim = nuke.createNode("FrameRange")\nfirst_trim.setInput(0, first_source)\nfirst_trim["first_frame"].setValue(1)\nfirst_trim["last_frame"].setValue(24)\nsecond_trim = nuke.createNode("FrameRange")\nsecond_trim.setInput(0, second_source)\nsecond_trim["first_frame"].setValue(1)\nsecond_trim["last_frame"].setValue(24)\nappend = nuke.createNode("AppendClip")\nappend.setInput(0, first_trim)\nappend.setInput(1, second_trim)\nappend["dissolve"].setValue(4)\nappend["firstFrame"].setValue(1)' },
     argumentOverrides: { time: { examplesHtml: '<span class="source-note">Derived frame range</span>' } }
   },
   BlackOutside: {
-    tier: "documented", label: "Ready for creation audit · no node-specific arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested creation · no node-specific arguments", hideDescription: true,
     overview: "BlackOutside fills pixels beyond the incoming bounding box with black, preventing replicated edge pixels after bounding-box operations.",
     synopsisArguments: [],
     example: { title: "Black out pixels beyond an expanded bounding box", code: '# Expand a procedural element bounding box, then black its exterior.\nsource = nuke.createNode("Radial")\nadjust_bbox = nuke.createNode("AdjBBox")\nadjust_bbox.setInput(0, source)\nadjust_bbox["numpixels"].setValue(20)\nblack_outside = nuke.createNode("BlackOutside")\nblack_outside.setInput(0, adjust_bbox)' }
   },
   CopyBBox: {
-    tier: "documented", label: "Ready for creation audit · no node-specific arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested creation · no node-specific arguments", hideDescription: true,
     overview: "CopyBBox applies the bounding box from input A to the image from input B, often trimming an unnecessarily expanded processing area.",
     synopsisArguments: [],
     example: { title: "Constrain a composite to a reference bounding box", code: '# Use generated matte bounds to constrain another image.\nbounds = nuke.createNode("Radial")\nimage = nuke.createNode("ColorWheel")\ncopy_bbox = nuke.createNode("CopyBBox")\ncopy_bbox.setInput(0, bounds)  # A supplies the bounding box\ncopy_bbox.setInput(1, image)   # B supplies the image' }
+  },
+  ColorBars: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 3 arguments", hideDescription: true,
+    overview: "ColorBars generates an SMPTE test pattern for checking image pipelines, channel processing, and color-management behavior.",
+    synopsisArguments: ["barintensity", "PAL", "format"],
+    example: { title: "Create a full-intensity test pattern", code: '# Generate color bars using the project format.\nbars = nuke.createNode("ColorBars")\nbars["barintensity"].setValue(1.0)\nbars["PAL"].setValue(False)' },
+    argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>' } }
+  },
+  ColorWheel: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 10 arguments", hideDescription: true,
+    overview: "ColorWheel generates a hue wheel with configurable center and edge saturation, value, rotation, and gamma. It is useful for testing color operations visually.",
+    synopsisArguments: ["channels", "centerSaturation", "edgeSaturation", "centerValue", "edgeValue", "gamma", "rotate", "fillFormat"],
+    example: { title: "Create a rotated color-correction test image", code: '# Generate a full-format wheel with a neutral center.\nwheel = nuke.createNode("ColorWheel")\nwheel["channels"].setValue("rgba")\nwheel["centerSaturation"].setValue(0.0)\nwheel["edgeSaturation"].setValue(1.0)\nwheel["centerValue"].setValue(1.0)\nwheel["edgeValue"].setValue(1.0)\nwheel["gamma"].setValue(1.0)\nwheel["rotate"].setValue(30.0)\nwheel["fillFormat"].setValue(True)' },
+    argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>' } }
+  },
+  CheckerBoard2: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 10 arguments", hideDescription: true,
+    overview: "CheckerBoard creates a configurable tiled pattern used as a texture placeholder, distortion reference, or transparent-area backdrop.",
+    synopsisArguments: ["boxsize", "color0", "color1", "linewidth", "linecolor", "format"],
+    example: { title: "Create a neutral checkerboard reference", code: '# Generate a clean gray checkerboard using the project format.\nchecker = nuke.createNode("CheckerBoard2")\nchecker["boxsize"].setValue([64.0, 64.0])\nchecker["color0"].setValue([0.15, 0.15, 0.15, 1.0])\nchecker["color1"].setValue([0.35, 0.35, 0.35, 1.0])\nchecker["color2"].setValue([0.15, 0.15, 0.15, 1.0])\nchecker["color3"].setValue([0.35, 0.35, 0.35, 1.0])\nchecker["linewidth"].setValue([0.0, 0.0])' },
+    argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>' } }
+  },
+  Radial: {
+    tier: "documented", label: "Ready for Nuke audit · 16 arguments", hideDescription: true,
+    overview: "Radial generates an elliptical matte or color ramp with adjustable bounds, softness, opacity, inversion, and output channels.",
+    synopsisArguments: ["area", "softness", "color", "opacity", "output", "ramp", "invert", "replace"],
+    example: { title: "Create a soft elliptical vignette matte", code: '# Generate a soft, inverted alpha vignette.\nradial = nuke.createNode("Radial")\nradial["area"].setValue([480.0, 270.0, 1440.0, 810.0])\nradial["output"].setValue("alpha")\nradial["softness"].setValue(0.6)\nradial["opacity"].setValue(1.0)\nradial["invert"].setValue(True)\nradial["replace"].setValue(True)' }
+  },
+  Ramp: {
+    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    overview: "Ramp generates a linear, smooth, or eased gradient between two points and can draw into selected output channels.",
+    synopsisArguments: ["p0", "p1", "type", "color", "opacity", "output", "invert", "replace"],
+    example: { title: "Create a horizontal alpha gradient", code: '# Generate a left-to-right alpha ramp across an HD frame.\nramp = nuke.createNode("Ramp")\nramp["p0"].setValue([0.0, 540.0])\nramp["p1"].setValue([1920.0, 540.0])\nramp["type"].setValue("linear")\nramp["output"].setValue("alpha")\nramp["color"].setValue([1.0, 1.0, 1.0, 1.0])\nramp["replace"].setValue(True)' }
   }
 };
 

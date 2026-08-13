@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-editorial-bbox.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-generators.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["FrameRange", "TimeClip", "AppendClip", "BlackOutside", "CopyBBox"]
+NODE_CLASSES = ["ColorBars", "ColorWheel", "CheckerBoard2", "Radial", "Ramp"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,20 +35,39 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "FrameRange": {"first_frame": 100.0, "last_frame": 150.0},
-    "TimeClip": {
-        "after": "hold", "before": "hold", "fadeIn": 0.0,
-        "fadeInType": "soft", "fadeOut": 0.0, "fadeOutType": "soft",
-        "first": 100, "frame": "frame + 8", "frame_mode": "expression",
-        "last": 150, "origfirst": 1, "origlast": 100,
-        "origset": False, "reverse": False,
+    "ColorBars": {"PAL": False, "barintensity": 1.0},
+    "ColorWheel": {
+        "area": [480.0, 270.0, 1440.0, 810.0],
+        "centerSaturation": 0.0, "centerValue": 1.0, "channels": "rgba",
+        "edgeSaturation": 1.0, "edgeValue": 1.0, "fillFormat": True,
+        "gamma": 1.0, "rotate": 30.0,
     },
-    "AppendClip": {
-        "dissolve": 4.0, "fadeIn": 0.0, "fadeOut": 0.0,
-        "firstFrame": 1.0, "lastFrame": 48.0, "meta_from_first": False,
+    "CheckerBoard2": {
+        "boxsize": [64.0, 64.0], "centerlinecolor": 1.0,
+        "centerlinewidth": [3.0, 3.0],
+        "color0": [0.15, 0.15, 0.15, 1.0],
+        "color1": [0.35, 0.35, 0.35, 1.0],
+        "color2": [0.15, 0.15, 0.15, 1.0],
+        "color3": [0.35, 0.35, 0.35, 1.0],
+        "linecolor": 1.0, "linewidth": [0.0, 0.0],
     },
-    "BlackOutside": {},
-    "CopyBBox": {},
+    "Radial": {
+        "area": [480.0, 270.0, 1440.0, 810.0], "cliptype": "format",
+        "color": 1.0, "inject": False, "invert": True,
+        "invert_mask": False, "maskChannelInput": "none",
+        "maskChannelMask": "alpha", "maskFromFlag": False,
+        "opacity": 1.0, "output": "alpha", "plinear": False,
+        "premult": "none", "ramp": "none", "replace": True,
+        "softness": 0.6,
+    },
+    "Ramp": {
+        "cliptype": "format", "color": 1.0, "inject": False,
+        "invert": False, "invert_mask": False, "maskChannelInput": "none",
+        "maskChannelMask": "alpha", "maskFromFlag": False,
+        "opacity": 1.0, "output": "alpha", "p0": [0.0, 540.0],
+        "p1": [1920.0, 540.0], "premult": "none", "replace": True,
+        "type": "linear",
+    },
 }
 
 SPECIAL_TYPE_PARTS = (
