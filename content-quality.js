@@ -373,37 +373,67 @@ const CONTENT_QUALITY = {
     example: { title: "Constrain a composite to a reference bounding box", code: '# Use generated matte bounds to constrain another image.\nbounds = nuke.createNode("Radial")\nimage = nuke.createNode("ColorWheel")\ncopy_bbox = nuke.createNode("CopyBBox")\ncopy_bbox.setInput(0, bounds)  # A supplies the bounding box\ncopy_bbox.setInput(1, image)   # B supplies the image' }
   },
   ColorBars: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 3 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 2 writable arguments passed · format control inspected", hideDescription: true,
     overview: "ColorBars generates an SMPTE test pattern for checking image pipelines, channel processing, and color-management behavior.",
     synopsisArguments: ["barintensity", "PAL", "format"],
     example: { title: "Create a full-intensity test pattern", code: '# Generate color bars using the project format.\nbars = nuke.createNode("ColorBars")\nbars["barintensity"].setValue(1.0)\nbars["PAL"].setValue(False)' },
     argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>' } }
   },
   ColorWheel: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 10 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 9 writable arguments passed · format control inspected", hideDescription: true,
     overview: "ColorWheel generates a hue wheel with configurable center and edge saturation, value, rotation, and gamma. It is useful for testing color operations visually.",
     synopsisArguments: ["channels", "centerSaturation", "edgeSaturation", "centerValue", "edgeValue", "gamma", "rotate", "fillFormat"],
     example: { title: "Create a rotated color-correction test image", code: '# Generate a full-format wheel with a neutral center.\nwheel = nuke.createNode("ColorWheel")\nwheel["channels"].setValue("rgba")\nwheel["centerSaturation"].setValue(0.0)\nwheel["edgeSaturation"].setValue(1.0)\nwheel["centerValue"].setValue(1.0)\nwheel["edgeValue"].setValue(1.0)\nwheel["gamma"].setValue(1.0)\nwheel["rotate"].setValue(30.0)\nwheel["fillFormat"].setValue(True)' },
     argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>' } }
   },
   CheckerBoard2: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 10 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 9 writable arguments passed · format control inspected", hideDescription: true,
     overview: "CheckerBoard creates a configurable tiled pattern used as a texture placeholder, distortion reference, or transparent-area backdrop.",
     synopsisArguments: ["boxsize", "color0", "color1", "linewidth", "linecolor", "format"],
     example: { title: "Create a neutral checkerboard reference", code: '# Generate a clean gray checkerboard using the project format.\nchecker = nuke.createNode("CheckerBoard2")\nchecker["boxsize"].setValue([64.0, 64.0])\nchecker["color0"].setValue([0.15, 0.15, 0.15, 1.0])\nchecker["color1"].setValue([0.35, 0.35, 0.35, 1.0])\nchecker["color2"].setValue([0.15, 0.15, 0.15, 1.0])\nchecker["color3"].setValue([0.35, 0.35, 0.35, 1.0])\nchecker["linewidth"].setValue([0.0, 0.0])' },
     argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>' } }
   },
   Radial: {
-    tier: "documented", label: "Ready for Nuke audit · 16 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 16/16 arguments passed", hideDescription: true,
     overview: "Radial generates an elliptical matte or color ramp with adjustable bounds, softness, opacity, inversion, and output channels.",
     synopsisArguments: ["area", "softness", "color", "opacity", "output", "ramp", "invert", "replace"],
     example: { title: "Create a soft elliptical vignette matte", code: '# Generate a soft, inverted alpha vignette.\nradial = nuke.createNode("Radial")\nradial["area"].setValue([480.0, 270.0, 1440.0, 810.0])\nradial["output"].setValue("alpha")\nradial["softness"].setValue(0.6)\nradial["opacity"].setValue(1.0)\nradial["invert"].setValue(True)\nradial["replace"].setValue(True)' }
   },
   Ramp: {
-    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 15/15 arguments passed", hideDescription: true,
     overview: "Ramp generates a linear, smooth, or eased gradient between two points and can draw into selected output channels.",
     synopsisArguments: ["p0", "p1", "type", "color", "opacity", "output", "invert", "replace"],
     example: { title: "Create a horizontal alpha gradient", code: '# Generate a left-to-right alpha ramp across an HD frame.\nramp = nuke.createNode("Ramp")\nramp["p0"].setValue([0.0, 540.0])\nramp["p1"].setValue([1920.0, 540.0])\nramp["type"].setValue("linear")\nramp["output"].setValue("alpha")\nramp["color"].setValue([1.0, 1.0, 1.0, 1.0])\nramp["replace"].setValue(True)' }
+  },
+  Position: {
+    tier: "documented", label: "Ready for Nuke audit · 1 argument", hideDescription: true,
+    overview: "Position moves an image by whole pixels and repeats edge pixels into newly exposed areas. Use Transform when subpixel filtering, rotation, or scale is needed.",
+    synopsisArguments: ["translate"],
+    example: { title: "Offset an element by whole pixels", code: '# Move a generated element 120 pixels right and 40 pixels down.\nsource = nuke.createNode("ColorWheel")\nposition = nuke.createNode("Position")\nposition.setInput(0, source)\nposition["translate"].setValue([120.0, -40.0])' }
+  },
+  Mirror2: {
+    tier: "documented", label: "Ready for Nuke audit · 2 arguments", hideDescription: true,
+    overview: "Mirror flips an image vertically, horizontally, or on both axes around the center of its format.",
+    synopsisArguments: ["flop", "flip"],
+    example: { title: "Create a horizontally mirrored variation", code: '# Mirror a generated test image from left to right.\nsource = nuke.createNode("ColorBars")\nmirror = nuke.createNode("Mirror2")\nmirror.setInput(0, source)\nmirror["flop"].setValue(True)\nmirror["flip"].setValue(False)' }
+  },
+  Tile: {
+    tier: "documented", label: "Ready for Nuke audit · 5 arguments", hideDescription: true,
+    overview: "Tile scales and repeats an input across a fixed number of rows and columns, with optional alternating mirrored copies.",
+    synopsisArguments: ["rows", "columns", "mirrorRows", "mirrorCols", "filter"],
+    example: { title: "Build a seamless mirrored texture preview", code: '# Repeat a checkerboard in a mirrored 3x4 layout.\nsource = nuke.createNode("CheckerBoard2")\ntile = nuke.createNode("Tile")\ntile.setInput(0, source)\ntile["rows"].setValue(3.0)\ntile["columns"].setValue(4.0)\ntile["mirrorRows"].setValue(True)\ntile["mirrorCols"].setValue(True)\ntile["filter"].setValue("cubic")' }
+  },
+  Rectangle: {
+    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    overview: "Rectangle draws a solid or softly feathered rectangular region into selected channels, either over an input or as a standalone generated element.",
+    synopsisArguments: ["area", "softness", "color", "opacity", "output", "replace", "invert"],
+    example: { title: "Create a soft rectangular garbage matte", code: '# Draw a feathered white rectangle into alpha.\nrectangle = nuke.createNode("Rectangle")\nrectangle["area"].setValue([400.0, 250.0, 1520.0, 830.0])\nrectangle["softness"].setValue([20.0, 20.0])\nrectangle["output"].setValue("alpha")\nrectangle["color"].setValue([1.0, 1.0, 1.0, 1.0])\nrectangle["replace"].setValue(True)' }
+  },
+  Soften: {
+    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    overview: "Soften uses a Laplacian operation and a selectable smoothing filter to reduce harsh local detail in chosen channels.",
+    synopsisArguments: ["amount", "size", "minimum", "maximum", "filter", "quality", "channels", "mix"],
+    example: { title: "Reduce harsh texture without a broad blur", code: '# Apply a restrained RGB softening pass to a test image.\nsource = nuke.createNode("ColorBars")\nsoften = nuke.createNode("Soften")\nsoften.setInput(0, source)\nsoften["channels"].setValue("rgb")\nsoften["amount"].setValue(0.35)\nsoften["size"].setValue(2.0)\nsoften["filter"].setValue("gaussian")\nsoften["quality"].setValue(15.0)\nsoften["mix"].setValue(0.8)' }
   }
 };
 

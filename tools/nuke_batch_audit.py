@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-generators.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-transform-draw.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["ColorBars", "ColorWheel", "CheckerBoard2", "Radial", "Ramp"]
+NODE_CLASSES = ["Position", "Mirror2", "Tile", "Rectangle", "Soften"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,39 +35,25 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "ColorBars": {"PAL": False, "barintensity": 1.0},
-    "ColorWheel": {
-        "area": [480.0, 270.0, 1440.0, 810.0],
-        "centerSaturation": 0.0, "centerValue": 1.0, "channels": "rgba",
-        "edgeSaturation": 1.0, "edgeValue": 1.0, "fillFormat": True,
-        "gamma": 1.0, "rotate": 30.0,
+    "Position": {"translate": [120.0, -40.0]},
+    "Mirror2": {"flip": False, "flop": True},
+    "Tile": {
+        "columns": 4.0, "filter": "cubic", "mirrorCols": True,
+        "mirrorRows": True, "rows": 3.0,
     },
-    "CheckerBoard2": {
-        "boxsize": [64.0, 64.0], "centerlinecolor": 1.0,
-        "centerlinewidth": [3.0, 3.0],
-        "color0": [0.15, 0.15, 0.15, 1.0],
-        "color1": [0.35, 0.35, 0.35, 1.0],
-        "color2": [0.15, 0.15, 0.15, 1.0],
-        "color3": [0.35, 0.35, 0.35, 1.0],
-        "linecolor": 1.0, "linewidth": [0.0, 0.0],
-    },
-    "Radial": {
-        "area": [480.0, 270.0, 1440.0, 810.0], "cliptype": "format",
-        "color": 1.0, "inject": False, "invert": True,
+    "Rectangle": {
+        "area": [400.0, 250.0, 1520.0, 830.0], "cliptype": "format",
+        "color": 1.0, "inject": False, "invert": False,
         "invert_mask": False, "maskChannelInput": "none",
         "maskChannelMask": "alpha", "maskFromFlag": False,
-        "opacity": 1.0, "output": "alpha", "plinear": False,
-        "premult": "none", "ramp": "none", "replace": True,
-        "softness": 0.6,
+        "opacity": 1.0, "output": "alpha", "premult": "none",
+        "ramp": "none", "replace": True, "softness": [20.0, 20.0],
     },
-    "Ramp": {
-        "cliptype": "format", "color": 1.0, "inject": False,
-        "invert": False, "invert_mask": False, "maskChannelInput": "none",
-        "maskChannelMask": "alpha", "maskFromFlag": False,
-        "opacity": 1.0, "output": "alpha", "p0": [0.0, 540.0],
-        "p1": [1920.0, 540.0], "premult": "none", "replace": True,
-        "type": "linear",
-    },
+    "Soften": dict(
+        COMMON_MASK_VALUES, amount=0.35, channels="rgb", crop=True,
+        filter="gaussian", maximum=1.0, minimum=0.0, quality=15.0,
+        size=[2.0, 2.0],
+    ),
 }
 
 SPECIAL_TYPE_PARTS = (
