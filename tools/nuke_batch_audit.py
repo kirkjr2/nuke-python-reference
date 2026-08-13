@@ -1,4 +1,4 @@
-r"""Audit scanned Nuke node arguments inside Nuke and write JSON results.
+r"""Conservatively audit explicitly selected Nuke nodes and write JSON results.
 
 Run from Nuke's Script Editor:
     import runpy
@@ -16,6 +16,14 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
 OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results.json")
 
+# Deliberately empty. Add only a small, reviewed batch before running. Never
+# point this tool at every class: some nodes execute callbacks during creation.
+NODE_CLASSES = []
+
+# Values must be reviewed per node and knob. Scanner values are reference data,
+# not a safe replay script.
+TEST_VALUES = {}
+
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
     "Table", "Transform2d",
@@ -23,17 +31,7 @@ SPECIAL_TYPE_PARTS = (
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 
 
-def test_value(argument):
-    values = argument.get("values", {}).get("values") or []
-    default = argument.get("default", {}).get("value")
-
-    for value in values:
-        if value != default and not (isinstance(value, str) and value.startswith("<")):
-            return value
-    return default
-
-
-def audit_argument(node, name, argument):
+def audit_argument(node, node_class, name, argument):
     knob = node.knob(name)
     if knob is None:
         return {"status": "failed", "error": "knob does not exist"}
@@ -46,9 +44,10 @@ def audit_argument(node, name, argument):
     if any(part in knob_type for part in SPECIAL_TYPE_PARTS):
         return dict(base, status="skipped-special", serialized=knob.toScript())
 
-    value = test_value(argument)
-    if value is None or (isinstance(value, str) and value.startswith("<")):
-        return dict(base, status="skipped-no-safe-value")
+    node_tests = TEST_VALUES.get(node_class, {})
+    if name not in node_tests:
+        return dict(base, status="inspected-only")
+    value = node_tests[name]
 
     try:
         knob.setValue(value)
@@ -74,7 +73,7 @@ def audit_node(path):
     try:
         for name in scanned.get("argument_order", []):
             argument = scanned["arguments"][name]
-            result["arguments"][name] = audit_argument(node, name, argument)
+            result["arguments"][name] = audit_argument(node, node_class, name, argument)
 
         statuses = [item["status"] for item in result["arguments"].values()]
         result["status"] = "failed" if "failed" in statuses else "completed"
@@ -87,11 +86,12 @@ def audit_node(path):
 
 
 def main():
-    paths = sorted(
-        os.path.join(DATA_DIR, name)
-        for name in os.listdir(DATA_DIR)
-        if name.endswith(".json")
-    )
+    if not NODE_CLASSES:
+        raise RuntimeError(
+            "Audit disabled until NODE_CLASSES and reviewed TEST_VALUES are "
+            "filled with a small safe batch. Do not run all scanned nodes."
+        )
+    paths = [os.path.join(DATA_DIR, "{}.json".format(name)) for name in NODE_CLASSES]
     results = []
 
     print("Auditing {} Nuke node classes...".format(len(paths)))
@@ -106,6 +106,14 @@ def main():
             }
         results.append(result)
         print("[{}/{}] {}: {}".format(index, len(paths), result["class"], result["status"]))
+
+        payload = {
+            "nuke_version": nuke.NUKE_VERSION_STRING,
+            "node_count": len(results),
+            "results": results,
+        }
+        with open(OUTPUT_PATH, "w", encoding="utf-8") as stream:
+            json.dump(payload, stream, indent=2, sort_keys=True)
 
     payload = {
         "nuke_version": nuke.NUKE_VERSION_STRING,
