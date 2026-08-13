@@ -251,6 +251,11 @@ function applyContentQuality() {
         examples.innerHTML = '<div class="no-examples">No manually verified Python example is published for this special control yet.</div>';
       }
     }
+
+    const examples = page.querySelector(".examples");
+    const examplesHeading = examples?.closest(".section")?.querySelector("h2");
+    const exampleCount = examples?.querySelectorAll(".example-item").length || 0;
+    if (examplesHeading) examplesHeading.textContent = exampleCount === 1 ? "Example" : "Examples";
 }
 
 function contentQualitySynopsisArguments(nodeClass, argumentOrder) {
