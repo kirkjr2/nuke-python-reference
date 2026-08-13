@@ -1,4 +1,14 @@
 {
+  "foundry_python_getting_started": {
+    "publisher": "Foundry",
+    "url": "https://learn.foundry.com/nuke/developers/latest/pythondevguide/basics.html",
+    "use": "Official node creation, connection, knob-setting, and UI scripting conventions."
+  },
+  "ben_mcewan_efficient_compositing": {
+    "publisher": "Ben McEwan",
+    "url": "https://benmcewan.com/blog/back-to-basics-speed-up-your-nuke-scripts-by-compositing-efficiently",
+    "use": "Production-inspired workflow themes such as meaningful labels, bounded elements, clean B-pipes, channel cleanup, and reusable grades. Code and wording are not copied."
+  },
   "foundry_deepread": {
     "publisher": "Foundry",
     "url": "https://learn.foundry.com/nuke/Content/reference_guide/deep_nodes/deepread.html",
