@@ -18,15 +18,62 @@ OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = []
+NODE_CLASSES = ["Gamma", "Invert", "Clamp", "Colorspace", "Log2Lin"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
-TEST_VALUES = {}
+COMMON_MASK_VALUES = {
+    "fringe": False,
+    "inject": False,
+    "invert_mask": False,
+    "invert_unpremult": False,
+    "maskChannelInput": "none",
+    "maskChannelMask": "alpha",
+    "maskFromFlag": False,
+    "mix": 0.75,
+    "unpremult": "none",
+}
+
+TEST_VALUES = {
+    "Gamma": dict(COMMON_MASK_VALUES, channels="rgb", value=1.15),
+    "Invert": dict(COMMON_MASK_VALUES, channels="alpha", clamp=True),
+    "Clamp": dict(
+        COMMON_MASK_VALUES,
+        channels="alpha",
+        minimum=0.0,
+        minimum_enable=True,
+        maximum=1.0,
+        maximum_enable=True,
+        MinClampTo=0.0,
+        MinClampTo_enable=False,
+        MaxClampTo=1.0,
+        MaxClampTo_enable=False,
+    ),
+    "Colorspace": dict(
+        COMMON_MASK_VALUES,
+        bradford_matrix=False,
+        channels="rgb",
+        colorspace_in="RGB\tLinear",
+        colorspace_out="RGB\tLinear",
+        illuminant_in="D65",
+        illuminant_out="D65",
+        primary_in="sRGB",
+        primary_out="sRGB",
+    ),
+    "Log2Lin": dict(
+        COMMON_MASK_VALUES,
+        black=95.0,
+        channels="rgb",
+        gamma=0.6,
+        ignore_black=False,
+        operation="log2lin",
+        white=685.0,
+    ),
+}
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
-    "Table", "Transform2d",
+    "Table", "Transform2d", "IArray",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 

@@ -206,6 +206,41 @@ const CONTENT_QUALITY = {
     synopsisArguments: ["from0", "to0", "channels", "mix", "bbox"],
     example: { title: "Copy a generated matte into an element's alpha", code: '# Generate an RGB element and a separate matte.\nelement = nuke.createNode("ColorWheel")\nmatte = nuke.createNode("Radial")\ncopy = nuke.createNode("Copy")\ncopy.setInput(0, matte)    # A: channel source\ncopy.setInput(1, element)  # B: image to preserve\ncopy["from0"].setValue("alpha")\ncopy["to0"].setValue("alpha")\ncopy["mix"].setValue(1.0)' },
     argumentOverrides: { from0: { description: "Source channel read from input A." }, to0: { description: "Destination channel written into the output based on input B." } }
+  },
+  Gamma: {
+    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    overview: "Gamma reshapes midtones while leaving zero and one anchored. Values above 1 brighten midtones and values below 1 darken them.",
+    synopsisArguments: ["value", "channels", "mix", "unpremult"],
+    example: { title: "Lift dark midtones without moving black or white", code: '# Create a source and apply a subtle RGB gamma adjustment.\nsource = nuke.createNode("ColorWheel")\ngamma = nuke.createNode("Gamma")\ngamma.setInput(0, source)\ngamma["channels"].setValue("rgb")\ngamma["value"].setValue(1.15)\ngamma["mix"].setValue(0.8)' },
+    argumentOverrides: { value: { description: "Per-channel gamma control. Values above 1 brighten midtones; values below 1 darken them." } }
+  },
+  Invert: {
+    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    overview: "Invert subtracts selected channels from one. It is commonly used to reverse mattes or create a photographic negative of RGB channels.",
+    synopsisArguments: ["channels", "clamp", "mix"],
+    example: { title: "Invert an alpha matte while preserving RGB", code: '# Create an alpha-bearing source and invert only its matte.\nsource = nuke.createNode("Radial")\ninvert = nuke.createNode("Invert")\ninvert.setInput(0, source)\ninvert["channels"].setValue("alpha")\ninvert["clamp"].setValue(True)\ninvert["mix"].setValue(1.0)' }
+  },
+  Clamp: {
+    tier: "documented", label: "Ready for Nuke audit · 18 arguments", hideDescription: true,
+    overview: "Clamp limits channel values to a chosen range. It is useful for constraining mattes to 0–1 or preventing negative and super-white values before operations that require bounded data.",
+    synopsisArguments: ["channels", "minimum", "maximum", "minimum_enable", "maximum_enable", "mix"],
+    example: { title: "Constrain a matte to the legal 0–1 range", code: '# Create a matte source and clamp only alpha.\nsource = nuke.createNode("Radial")\nclamp = nuke.createNode("Clamp")\nclamp.setInput(0, source)\nclamp["channels"].setValue("alpha")\nclamp["minimum_enable"].setValue(True)\nclamp["minimum"].setValue(0.0)\nclamp["maximum_enable"].setValue(True)\nclamp["maximum"].setValue(1.0)' }
+  },
+  Colorspace: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 19 arguments", hideDescription: true,
+    overview: "Colorspace converts image values between legacy color spaces, primaries, and illuminants. In modern OCIO-managed projects, prefer OCIOColorSpace unless this legacy node is specifically required.",
+    synopsisArguments: ["colorspace_in", "colorspace_out", "channels", "mix"],
+    example: { title: "Convert legacy sRGB-encoded values to linear", code: '# Convert an sRGB-encoded source into linear values.\nsource = nuke.createNode("ColorWheel")\nconvert = nuke.createNode("Colorspace")\nconvert.setInput(0, source)\nconvert["channels"].setValue("rgb")\nconvert["colorspace_in"].setValue("sRGB")\nconvert["colorspace_out"].setValue("RGB")' },
+    argumentOverrides: {
+      colormatrix: { type: "IArray_Knob / derived matrix", examplesHtml: '<span class="source-note">Advanced / derived</span>', description: "Read-only-style matrix output from some transforms; not a normal integer or list argument to replay from scanner data." },
+      swap: { type: "Script_Knob / button", examplesHtml: '<span class="source-note">UI action</span>', description: "Swaps input and output settings in the Properties panel." }
+    }
+  },
+  Log2Lin: {
+    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    overview: "Log2Lin converts between legacy Cineon log values and linear light using configurable black, white, and film-gamma points. Use it for Cineon-style material when an OCIO transform is not the appropriate pipeline conversion.",
+    synopsisArguments: ["operation", "channels", "black", "white", "gamma", "mix"],
+    example: { title: "Convert Cineon log values to linear light", code: '# Create a source and apply the standard Cineon-style conversion.\nsource = nuke.createNode("ColorWheel")\nconvert = nuke.createNode("Log2Lin")\nconvert.setInput(0, source)\nconvert["operation"].setValue("log2lin")\nconvert["channels"].setValue("rgb")\nconvert["black"].setValue(95.0)\nconvert["white"].setValue(685.0)\nconvert["gamma"].setValue(0.6)' }
   }
 };
 

@@ -8,9 +8,10 @@ import runpy
 runpy.run_path(r"C:\path\to\nuke-python-reference\tools\nuke_batch_audit.py")
 ```
 
-The audit is disabled by default. Before running, fill `NODE_CLASSES` with a
-small reviewed batch and `TEST_VALUES` with values chosen specifically for
-those knobs. It checkpoints `audit-results.json` after every node.
+The checked-in audit contains one small, manually reviewed batch. Confirm the
+`NODE_CLASSES` list before each run; replace it only with another small batch
+whose `TEST_VALUES` were chosen specifically for those knobs. The script
+checkpoints `audit-results.json` after every node.
 
 Do not generate test values from scanner defaults/examples and do not run all
 node classes in one session. Tracker, roto, plug-in, compound, and action knobs
