@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-channel-merge.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-key-utility.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["ChannelMerge", "Difference", "CopyRectangle", "ClipTest", "Blend"]
+NODE_CLASSES = ["AddMix", "Keyer", "DropShadow", "NoOp", "Dot"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,17 +35,16 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "ChannelMerge": dict(COMMON_MASK_VALUES, A="alpha", B="alpha", bbox="union", operation="union", output="alpha"),
-    "Difference": {"gain": 2.0, "offset": 0.02, "output": "alpha"},
-    "CopyRectangle": {"area": [500.0, 300.0, 1420.0, 780.0], "channels": "rgba", "mix": 1.0, "softness": [20.0, 20.0]},
-    "ClipTest": dict(COMMON_MASK_VALUES, channels="rgb", lower=0.0, upper=1.0),
-    "Blend": dict(COMMON_MASK_VALUES, channels="rgba", normalize=True, **{"weight{}".format(i): 1.0 for i in range(12)}),
+    "AddMix": {"A": "rgba", "B": "rgba", "mix": 0.75, "nonlinear": False, "output": "rgba", "premultiplied": False},
+    "Keyer": {"combine": "replace", "input": "rgb", "invert": False, "operation": "luminance key", "output": "alpha"},
+    "DropShadow": {"color": 0.0, "dropshadow_angle": 225.0, "dropshadow_distance": 12.0, "enable_dropshadow_effect": True, "inherit_input_color": False, "opacity": 0.6, "size": 0.0, "softness": 8.0},
+    "NoOp": {}, "Dot": {},
 }
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
     "Table", "Transform2d", "IArray", "Format", "Tab", "FrameExtent",
-    "TimeKnob",
+    "TimeKnob", "Keyer", "Link", "Text",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 
