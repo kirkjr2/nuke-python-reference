@@ -59,8 +59,8 @@ const CONTENT_QUALITY = {
     }
   },
   Merge2: {
-    tier: "documented",
-    label: "Ready for Nuke audit · 17 arguments",
+    tier: "verified",
+    label: "Nuke-tested · 17/17 arguments passed",
     hideDescription: true,
     overview: "Merge combines foreground input A with background input B. The Operation determines how their pixels and alpha interact; Over is the standard choice for placing a premultiplied foreground over a background.",
     synopsisArguments: ["operation", "Achannels", "Bchannels", "output", "mix", "bbox"],
