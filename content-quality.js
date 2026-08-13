@@ -30,70 +30,83 @@ function contentQualityCurrentNode() {
   return new URL(window.location.href).searchParams.get("node");
 }
 
+let contentQualityApplying = false;
+
 function applyContentQuality() {
+  if (contentQualityApplying) return;
+
   const page = document.querySelector("#page");
   if (!page) return;
 
-  const nodeClass = contentQualityCurrentNode();
-  const entry = CONTENT_QUALITY[nodeClass];
+  contentQualityApplying = true;
+  contentQualityObserver.disconnect();
 
-  page.querySelectorAll(".editorial-quality, .editorial-overview, .editorial-note").forEach(el => el.remove());
-  if (!entry || !page.querySelector("h1")) return;
+  try {
+    const nodeClass = contentQualityCurrentNode();
+    const entry = CONTENT_QUALITY[nodeClass];
 
-  const classLine = page.querySelector(".class-line");
-  if (classLine) {
-    const status = document.createElement("div");
-    status.className = `editorial-quality editorial-quality-${entry.tier}`;
-    status.textContent = entry.label;
-    classLine.insertAdjacentElement("afterend", status);
-  }
+    page.querySelectorAll(".editorial-quality, .editorial-overview, .editorial-note").forEach(el => el.remove());
+    if (!entry || !page.querySelector("h1")) return;
 
-  const description = page.querySelector(".description");
-  if (description && entry.overview) {
-    const overview = document.createElement("section");
-    overview.className = "editorial-overview";
-    overview.innerHTML = `<div class="editorial-overview-title">Overview</div><div>${entry.overview}</div>`;
-    description.insertAdjacentElement("afterend", overview);
-
-    if (entry.note) {
-      const note = document.createElement("div");
-      note.className = "editorial-note";
-      note.textContent = entry.note;
-      overview.insertAdjacentElement("afterend", note);
+    const classLine = page.querySelector(".class-line");
+    if (classLine) {
+      const status = document.createElement("div");
+      status.className = `editorial-quality editorial-quality-${entry.tier}`;
+      status.textContent = entry.label;
+      classLine.insertAdjacentElement("afterend", status);
     }
-  }
 
-  for (const [argName, override] of Object.entries(entry.argumentOverrides || {})) {
-    const row = document.querySelector(`#arg-${CSS.escape(argName)}`);
-    if (!row) continue;
+    const description = page.querySelector(".description");
+    if (description && entry.overview) {
+      const overview = document.createElement("section");
+      overview.className = "editorial-overview";
+      overview.innerHTML = `<div class="editorial-overview-title">Overview</div><div>${entry.overview}</div>`;
+      description.insertAdjacentElement("afterend", overview);
 
-    if (override.type) {
-      const el = row.querySelector(".arg-type");
-      if (el) el.textContent = override.type;
+      if (entry.note) {
+        const note = document.createElement("div");
+        note.className = "editorial-note";
+        note.textContent = entry.note;
+        overview.insertAdjacentElement("afterend", note);
+      }
     }
-    if (override.defaultValue !== undefined) {
-      const el = row.querySelector(".arg-default");
-      if (el) el.textContent = override.defaultValue;
-    }
-    if (override.examplesHtml) {
-      const el = row.querySelector(".arg-examples");
-      if (el) el.innerHTML = override.examplesHtml;
-    }
-    if (override.description) {
-      const el = row.querySelector(".arg-desc");
-      if (el) el.textContent = override.description;
-    }
-  }
 
-  if (entry.suppressExamples) {
-    const examples = page.querySelector(".examples");
-    if (examples) {
-      examples.innerHTML = '<div class="no-examples">No manually verified Python example is published for this special control yet.</div>';
+    for (const [argName, override] of Object.entries(entry.argumentOverrides || {})) {
+      const row = document.querySelector(`#arg-${CSS.escape(argName)}`);
+      if (!row) continue;
+
+      if (override.type) {
+        const el = row.querySelector(".arg-type");
+        if (el) el.textContent = override.type;
+      }
+      if (override.defaultValue !== undefined) {
+        const el = row.querySelector(".arg-default");
+        if (el) el.textContent = override.defaultValue;
+      }
+      if (override.examplesHtml) {
+        const el = row.querySelector(".arg-examples");
+        if (el) el.innerHTML = override.examplesHtml;
+      }
+      if (override.description) {
+        const el = row.querySelector(".arg-desc");
+        if (el) el.textContent = override.description;
+      }
     }
+
+    if (entry.suppressExamples) {
+      const examples = page.querySelector(".examples");
+      if (examples) {
+        examples.innerHTML = '<div class="no-examples">No manually verified Python example is published for this special control yet.</div>';
+      }
+    }
+  } finally {
+    contentQualityApplying = false;
+    contentQualityObserver.observe(page, contentQualityObserverOptions);
   }
 }
 
+const contentQualityObserverOptions = {childList: true, subtree: true};
 const contentQualityObserver = new MutationObserver(() => applyContentQuality());
-contentQualityObserver.observe(document.querySelector("#page"), {childList: true, subtree: true});
+contentQualityObserver.observe(document.querySelector("#page"), contentQualityObserverOptions);
 window.addEventListener("popstate", applyContentQuality);
 queueMicrotask(applyContentQuality);
