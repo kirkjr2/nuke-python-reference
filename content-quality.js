@@ -30,18 +30,10 @@ function contentQualityCurrentNode() {
   return new URL(window.location.href).searchParams.get("node");
 }
 
-let contentQualityApplying = false;
-
 function applyContentQuality() {
-  if (contentQualityApplying) return;
-
   const page = document.querySelector("#page");
   if (!page) return;
 
-  contentQualityApplying = true;
-  contentQualityObserver.disconnect();
-
-  try {
     const nodeClass = contentQualityCurrentNode();
     const entry = CONTENT_QUALITY[nodeClass];
 
@@ -99,14 +91,4 @@ function applyContentQuality() {
         examples.innerHTML = '<div class="no-examples">No manually verified Python example is published for this special control yet.</div>';
       }
     }
-  } finally {
-    contentQualityApplying = false;
-    contentQualityObserver.observe(page, contentQualityObserverOptions);
-  }
 }
-
-const contentQualityObserverOptions = {childList: true, subtree: true};
-const contentQualityObserver = new MutationObserver(() => applyContentQuality());
-contentQualityObserver.observe(document.querySelector("#page"), contentQualityObserverOptions);
-window.addEventListener("popstate", applyContentQuality);
-queueMicrotask(applyContentQuality);
