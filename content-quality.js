@@ -243,14 +243,14 @@ const CONTENT_QUALITY = {
     example: { title: "Convert Cineon log values to linear light", code: '# Create a source and apply the standard Cineon-style conversion.\nsource = nuke.createNode("ColorWheel")\nconvert = nuke.createNode("Log2Lin")\nconvert.setInput(0, source)\nconvert["operation"].setValue("log2lin")\nconvert["channels"].setValue("rgb")\nconvert["black"].setValue(95.0)\nconvert["white"].setValue(685.0)\nconvert["gamma"].setValue(0.6)' }
   },
   Constant: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 5 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 4 writable arguments passed · format control inspected", hideDescription: true,
     overview: "Constant creates a flat-color image at the project format. It is useful for backgrounds, utility mattes, test elements, and solid inputs for procedural setups.",
     synopsisArguments: ["color", "channels", "format", "first", "last"],
     example: { title: "Create a neutral-gray background for a comp", code: '# Create a project-sized neutral-gray background.\nbackground = nuke.createNode("Constant")\nbackground["channels"].setValue("rgba")\nbackground["color"].setValue([0.18, 0.18, 0.18, 1.0])\nbackground["first"].setValue(nuke.root().firstFrame())\nbackground["last"].setValue(nuke.root().lastFrame())' },
     argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>', description: "Output format. Pass a valid nuke.Format object or select a named project format; scanner object strings are not reusable values." } }
   },
   ColorCorrect: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 38 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 33 writable arguments passed · 5 special controls inspected", hideDescription: true,
     overview: "ColorCorrect adjusts saturation, contrast, gamma, gain, and offset across the whole image or separately in shadows, midtones, and highlights.",
     synopsisArguments: ["channels", "saturation", "contrast", "gamma", "gain", "offset", "mix"],
     example: { title: "Warm highlights while adding gentle overall contrast", code: '# Build a restrained look on a generated source.\nsource = nuke.createNode("ColorWheel")\ncorrect = nuke.createNode("ColorCorrect")\ncorrect.setInput(0, source)\ncorrect["channels"].setValue("rgb")\ncorrect["contrast"].setValue(1.08)\ncorrect["gamma"].setValue(1.03)\ncorrect["highlights.gain"].setValue([1.08, 1.03, 0.96, 1.0])\ncorrect["shadows.saturation"].setValue(0.9)\ncorrect["mix"].setValue(0.85)' },
@@ -260,22 +260,52 @@ const CONTENT_QUALITY = {
     }
   },
   Dilate: {
-    tier: "documented", label: "Ready for Nuke audit · 9 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 9/9 arguments passed", hideDescription: true,
     overview: "Dilate grows or shrinks selected channels. It is commonly used to expand or contract alpha mattes before edge treatment or compositing.",
     synopsisArguments: ["size", "channels", "mix"],
     example: { title: "Grow an alpha matte before edge treatment", code: '# Generate a matte and expand its edge slightly.\nmatte = nuke.createNode("Radial")\ndilate = nuke.createNode("Dilate")\ndilate.setInput(0, matte)\ndilate["channels"].setValue("alpha")\ndilate["size"].setValue(2.0)\ndilate["mix"].setValue(1.0)' }
   },
   Defocus: {
-    tier: "documented", label: "Ready for Nuke audit · 13 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 13/13 arguments passed", hideDescription: true,
     overview: "Defocus uses a disc-shaped filter to simulate lens defocus and circular highlight bloom. For an ordinary soft blur, Blur is usually faster.",
     synopsisArguments: ["defocus", "ratio", "scale", "quality", "method", "channels", "mix"],
     example: { title: "Create a subtle lens-defocus background", code: '# Create a test image and soften it with a circular lens filter.\nsource = nuke.createNode("ColorBars")\ndefocus = nuke.createNode("Defocus")\ndefocus.setInput(0, source)\ndefocus["channels"].setValue("rgb")\ndefocus["defocus"].setValue(8.0)\ndefocus["ratio"].setValue(1.0)\ndefocus["method"].setValue("accelerated")\ndefocus["quality"].setValue(20.0)' }
   },
   EdgeBlur: {
-    tier: "documented", label: "Ready for Nuke audit · 17 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 17/17 arguments passed", hideDescription: true,
     overview: "EdgeBlur detects edges in a chosen control channel and blurs only those regions. It is useful for softening overly sharp matte boundaries without blurring the entire element.",
     synopsisArguments: ["controlchannel", "size", "edge_mult", "filter", "quality", "channels", "mix"],
     example: { title: "Soften the boundary of an alpha matte", code: '# Generate an alpha-bearing element and soften only its edge.\nsource = nuke.createNode("Radial")\nedge_blur = nuke.createNode("EdgeBlur")\nedge_blur.setInput(0, source)\nedge_blur["controlchannel"].setValue("alpha")\nedge_blur["channels"].setValue("rgba")\nedge_blur["size"].setValue(3.0)\nedge_blur["edge_mult"].setValue(2.0)\nedge_blur["filter"].setValue("gaussian")\nedge_blur["mix"].setValue(1.0)' }
+  },
+  Multiply: {
+    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    overview: "Multiply scales selected channel values by a factor. It behaves like gain: values above one brighten while preserving zero, and values below one darken.",
+    synopsisArguments: ["value", "channels", "mix", "unpremult"],
+    example: { title: "Reduce an element's RGB intensity before merging", code: '# Create an element and reduce its intensity without lifting black.\nsource = nuke.createNode("ColorWheel")\nmultiply = nuke.createNode("Multiply")\nmultiply.setInput(0, source)\nmultiply["channels"].setValue("rgb")\nmultiply["value"].setValue(0.8)\nmultiply["mix"].setValue(1.0)' }
+  },
+  Add: {
+    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    overview: "Add applies a fixed offset to selected channels. Unlike Multiply, it moves black as well as brighter values, making it useful for small level offsets or channel-specific biases.",
+    synopsisArguments: ["value", "channels", "mix", "unpremult"],
+    example: { title: "Add a small RGB floor to a generated element", code: '# Raise all RGB values by a small fixed amount.\nsource = nuke.createNode("ColorWheel")\nadd = nuke.createNode("Add")\nadd.setInput(0, source)\nadd["channels"].setValue("rgb")\nadd["value"].setValue(0.02)\nadd["mix"].setValue(1.0)' }
+  },
+  HueShift: {
+    tier: "documented", label: "Ready for Nuke audit · 17 arguments", hideDescription: true,
+    overview: "HueShift rotates color around a luminance-oriented color space while also providing saturation, axis, gray-point, and brightness controls.",
+    synopsisArguments: ["hue_rotation", "saturation", "brightness", "color", "color_saturation", "channels", "mix"],
+    example: { title: "Create a controlled palette variation", code: '# Rotate the palette while keeping the correction restrained.\nsource = nuke.createNode("ColorWheel")\nhue_shift = nuke.createNode("HueShift")\nhue_shift.setInput(0, source)\nhue_shift["channels"].setValue("rgb")\nhue_shift["hue_rotation"].setValue(20.0)\nhue_shift["saturation"].setValue(0.9)\nhue_shift["brightness"].setValue(1.0)\nhue_shift["mix"].setValue(0.75)' }
+  },
+  Sharpen: {
+    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    overview: "Sharpen increases local edge contrast in selected channels. Small amounts are useful for restoring perceived detail after filtering or resizing; aggressive settings can create halos.",
+    synopsisArguments: ["amount", "size", "filter", "quality", "channels", "mix"],
+    example: { title: "Restore subtle detail after a resize", code: '# Create a test image and apply restrained RGB sharpening.\nsource = nuke.createNode("ColorBars")\nsharpen = nuke.createNode("Sharpen")\nsharpen.setInput(0, source)\nsharpen["channels"].setValue("rgb")\nsharpen["amount"].setValue(0.3)\nsharpen["size"].setValue(2.0)\nsharpen["filter"].setValue("gaussian")\nsharpen["mix"].setValue(0.8)' }
+  },
+  Erode: {
+    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    overview: "Erode contracts or expands selected channels using a filtered matte operation. It is commonly used for small alpha-edge adjustments, with blur available to soften the result.",
+    synopsisArguments: ["size", "blur", "quality", "channels", "mix"],
+    example: { title: "Contract and soften an alpha matte", code: '# Generate a matte, pull its edge inward, and soften the transition.\nmatte = nuke.createNode("Radial")\nerode = nuke.createNode("Erode")\nerode.setInput(0, matte)\nerode["channels"].setValue("alpha")\nerode["size"].setValue(-2.0)\nerode["blur"].setValue(0.5)\nerode["quality"].setValue(15.0)' }
   }
 };
 

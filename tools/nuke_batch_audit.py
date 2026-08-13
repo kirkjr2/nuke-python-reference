@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-core-image.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-color-filter.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["Constant", "ColorCorrect", "Dilate", "Defocus", "EdgeBlur"]
+NODE_CLASSES = ["Multiply", "Add", "HueShift", "Sharpen", "Erode"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,40 +35,21 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "Constant": {
-        "channels": "rgba", "color": [0.18, 0.18, 0.18, 1.0],
-        "first": 1.0, "last": 100.0,
-    },
-    "ColorCorrect": dict(
-        COMMON_MASK_VALUES,
-        channels="rgb", saturation=0.95, contrast=1.08, gamma=1.03,
-        gain=1.02, offset=0.01, enable_mix_luminance=True,
-        mix_luminance=0.25, test=False,
-        **{
-            "shadows.saturation": 0.9, "shadows.contrast": 1.02,
-            "shadows.gamma": 1.0, "shadows.gain": 0.98,
-            "shadows.offset": 0.0, "midtones.saturation": 1.0,
-            "midtones.contrast": 1.04, "midtones.gamma": 1.02,
-            "midtones.gain": 1.0, "midtones.offset": 0.0,
-            "highlights.saturation": 1.0, "highlights.contrast": 1.0,
-            "highlights.gamma": 1.0,
-            "highlights.gain": [1.08, 1.03, 0.96, 1.0],
-            "highlights.offset": 0.0,
-        }
+    "Multiply": dict(COMMON_MASK_VALUES, channels="rgb", value=0.8),
+    "Add": dict(COMMON_MASK_VALUES, channels="rgb", value=0.02),
+    "HueShift": dict(
+        COMMON_MASK_VALUES, brightness=1.0, channels="rgb", color=1.0,
+        color_saturation=1.0, hue_rotation=20.0, ingray=0.25,
+        outgray=0.25, saturation=0.9,
     ),
-    "Dilate": dict(
-        COMMON_MASK_VALUES, channels="alpha", size=[2.0, 2.0]
+    "Sharpen": dict(
+        COMMON_MASK_VALUES, amount=0.3, channels="rgb", crop=True,
+        filter="gaussian", maximum=1.0, minimum=0.0, quality=15.0,
+        size=[2.0, 2.0],
     ),
-    "Defocus": dict(
-        COMMON_MASK_VALUES, channels="rgb", defocus=8.0,
-        method="accelerated", quality=20.0, ratio=1.0,
-        scale=[1.0, 1.0],
-    ),
-    "EdgeBlur": dict(
-        COMMON_MASK_VALUES, brightness=1.0, channels="rgba",
-        controlchannel="alpha", crop=True, edge_mult=2.0,
-        filter="gaussian", output="none", quality=15.0,
-        size=[3.0, 3.0], tint=1.0,
+    "Erode": dict(
+        COMMON_MASK_VALUES, blur=0.5, channels="alpha", quality=15.0,
+        size=[-2.0, -2.0],
     ),
 }
 
