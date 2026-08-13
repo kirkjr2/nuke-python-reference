@@ -2,6 +2,7 @@ const CONTENT_QUALITY = {
   Grade: {
     tier: "documented",
     label: "Editorially reviewed",
+    description: "Adjusts the brightness and contrast of an image by remapping its black and white points, then applying lift, gain, multiply, offset, and gamma controls. Enable Reverse to undo the same grade settings.",
     overview: "Grade remaps an image's tonal range using black point, white point, lift, gain, multiply, offset, and gamma controls. It is commonly used for tonal matching, setting black/white points, and targeted color correction.",
     argumentOverrides: {
       fringe: {
@@ -49,6 +50,9 @@ function applyContentQuality() {
     }
 
     const description = page.querySelector(".description");
+    if (description && entry.description) {
+      description.textContent = entry.description;
+    }
     if (description && entry.overview) {
       const overview = document.createElement("section");
       overview.className = "editorial-overview";

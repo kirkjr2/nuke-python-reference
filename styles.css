@@ -230,6 +230,10 @@ h1 {
 }
 
 .argument-list { border-top: 1px solid var(--line); }
+.arguments-rollout { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.arguments-rollout summary { cursor: pointer; font-size: 22px; font-weight: 650; padding: 14px 0; }
+.arguments-rollout summary span { color: var(--muted); font-size: 13px; font-weight: 500; margin-left: 6px; }
+.arguments-rollout[open] summary { margin-bottom: 8px; }
 
 .argument {
   display: grid;
