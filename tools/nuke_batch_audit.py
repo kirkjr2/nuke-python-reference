@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-transform-draw.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-filter-effects.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["Position", "Mirror2", "Tile", "Rectangle", "Soften"]
+NODE_CLASSES = ["Median", "Dither", "Glow2", "Emboss", "FilterErode"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,25 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "Position": {"translate": [120.0, -40.0]},
-    "Mirror2": {"flip": False, "flop": True},
-    "Tile": {
-        "columns": 4.0, "filter": "cubic", "mirrorCols": True,
-        "mirrorRows": True, "rows": 3.0,
-    },
-    "Rectangle": {
-        "area": [400.0, 250.0, 1520.0, 830.0], "cliptype": "format",
-        "color": 1.0, "inject": False, "invert": False,
-        "invert_mask": False, "maskChannelInput": "none",
-        "maskChannelMask": "alpha", "maskFromFlag": False,
-        "opacity": 1.0, "output": "alpha", "premult": "none",
-        "ramp": "none", "replace": True, "softness": [20.0, 20.0],
-    },
-    "Soften": dict(
-        COMMON_MASK_VALUES, amount=0.35, channels="rgb", crop=True,
-        filter="gaussian", maximum=1.0, minimum=0.0, quality=15.0,
-        size=[2.0, 2.0],
-    ),
+    "Median": dict(COMMON_MASK_VALUES, channels="rgb", ignore_top_line=True, size=[2.0, 2.0]),
+    "Dither": dict(COMMON_MASK_VALUES, amount=0.01, channels="rgb", monodither=True, seed=1.0, static_seed=True),
+    "Glow2": dict(COMMON_MASK_VALUES, W="none", brightness=0.8, channels="rgb", crop=True, effect_only=False, filter="gaussian", nonlinear=False, quality=15.0, saturation=0.9, size=[20.0, 20.0], tint=1.0, tolerance=0.6),
+    "Emboss": dict(COMMON_MASK_VALUES, Angle=45.0, Width=2.0, blurquality=15.0, blursize=[0.0, 0.0], channels="rgb", edgechannels="rgb", edgedetector="sobel", erodesize=0.0, maskedgedetect="none", maskemboss="none", optype="traditional", output="alpha", threshold=0.0),
+    "FilterErode": dict(COMMON_MASK_VALUES, channels="alpha", filter="gaussian", size=[-2.0, -2.0]),
 }
 
 SPECIAL_TYPE_PARTS = (

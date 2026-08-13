@@ -406,34 +406,64 @@ const CONTENT_QUALITY = {
     example: { title: "Create a horizontal alpha gradient", code: '# Generate a left-to-right alpha ramp across an HD frame.\nramp = nuke.createNode("Ramp")\nramp["p0"].setValue([0.0, 540.0])\nramp["p1"].setValue([1920.0, 540.0])\nramp["type"].setValue("linear")\nramp["output"].setValue("alpha")\nramp["color"].setValue([1.0, 1.0, 1.0, 1.0])\nramp["replace"].setValue(True)' }
   },
   Position: {
-    tier: "documented", label: "Ready for Nuke audit · 1 argument", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 1/1 argument passed", hideDescription: true,
     overview: "Position moves an image by whole pixels and repeats edge pixels into newly exposed areas. Use Transform when subpixel filtering, rotation, or scale is needed.",
     synopsisArguments: ["translate"],
     example: { title: "Offset an element by whole pixels", code: '# Move a generated element 120 pixels right and 40 pixels down.\nsource = nuke.createNode("ColorWheel")\nposition = nuke.createNode("Position")\nposition.setInput(0, source)\nposition["translate"].setValue([120.0, -40.0])' }
   },
   Mirror2: {
-    tier: "documented", label: "Ready for Nuke audit · 2 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 2/2 arguments passed", hideDescription: true,
     overview: "Mirror flips an image vertically, horizontally, or on both axes around the center of its format.",
     synopsisArguments: ["flop", "flip"],
     example: { title: "Create a horizontally mirrored variation", code: '# Mirror a generated test image from left to right.\nsource = nuke.createNode("ColorBars")\nmirror = nuke.createNode("Mirror2")\nmirror.setInput(0, source)\nmirror["flop"].setValue(True)\nmirror["flip"].setValue(False)' }
   },
   Tile: {
-    tier: "documented", label: "Ready for Nuke audit · 5 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 5/5 arguments passed", hideDescription: true,
     overview: "Tile scales and repeats an input across a fixed number of rows and columns, with optional alternating mirrored copies.",
     synopsisArguments: ["rows", "columns", "mirrorRows", "mirrorCols", "filter"],
     example: { title: "Build a seamless mirrored texture preview", code: '# Repeat a checkerboard in a mirrored 3x4 layout.\nsource = nuke.createNode("CheckerBoard2")\ntile = nuke.createNode("Tile")\ntile.setInput(0, source)\ntile["rows"].setValue(3.0)\ntile["columns"].setValue(4.0)\ntile["mirrorRows"].setValue(True)\ntile["mirrorCols"].setValue(True)\ntile["filter"].setValue("cubic")' }
   },
   Rectangle: {
-    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 15/15 arguments passed", hideDescription: true,
     overview: "Rectangle draws a solid or softly feathered rectangular region into selected channels, either over an input or as a standalone generated element.",
     synopsisArguments: ["area", "softness", "color", "opacity", "output", "replace", "invert"],
     example: { title: "Create a soft rectangular garbage matte", code: '# Draw a feathered white rectangle into alpha.\nrectangle = nuke.createNode("Rectangle")\nrectangle["area"].setValue([400.0, 250.0, 1520.0, 830.0])\nrectangle["softness"].setValue([20.0, 20.0])\nrectangle["output"].setValue("alpha")\nrectangle["color"].setValue([1.0, 1.0, 1.0, 1.0])\nrectangle["replace"].setValue(True)' }
   },
   Soften: {
-    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 15/15 arguments passed", hideDescription: true,
     overview: "Soften uses a Laplacian operation and a selectable smoothing filter to reduce harsh local detail in chosen channels.",
     synopsisArguments: ["amount", "size", "minimum", "maximum", "filter", "quality", "channels", "mix"],
     example: { title: "Reduce harsh texture without a broad blur", code: '# Apply a restrained RGB softening pass to a test image.\nsource = nuke.createNode("ColorBars")\nsoften = nuke.createNode("Soften")\nsoften.setInput(0, source)\nsoften["channels"].setValue("rgb")\nsoften["amount"].setValue(0.35)\nsoften["size"].setValue(2.0)\nsoften["filter"].setValue("gaussian")\nsoften["quality"].setValue(15.0)\nsoften["mix"].setValue(0.8)' }
+  },
+  Median: {
+    tier: "documented", label: "Ready for Nuke audit · 10 arguments", hideDescription: true,
+    overview: "Median replaces each pixel with the median of neighboring samples, making it useful for reducing isolated noise and small specks while retaining stronger edges.",
+    synopsisArguments: ["size", "channels", "mix"],
+    example: { title: "Reduce isolated color noise", code: '# Apply a small median filter to a generated test image.\nsource = nuke.createNode("ColorBars")\nmedian = nuke.createNode("Median")\nmedian.setInput(0, source)\nmedian["channels"].setValue("rgb")\nmedian["size"].setValue([2.0, 2.0])\nmedian["mix"].setValue(0.75)' }
+  },
+  Dither: {
+    tier: "documented", label: "Ready for Nuke audit · 14 arguments", hideDescription: true,
+    overview: "Dither adds low-level noise to selected channels to reduce visible banding when values are quantized or displayed at limited precision.",
+    synopsisArguments: ["amount", "channels", "monodither", "seed", "static_seed", "mix"],
+    example: { title: "Break up banding in a smooth gradient", code: '# Create a gradient and add subtle monochrome dither.\nsource = nuke.createNode("Ramp")\ndither = nuke.createNode("Dither")\ndither.setInput(0, source)\ndither["channels"].setValue("rgb")\ndither["amount"].setValue(0.01)\ndither["monodither"].setValue(True)\ndither["static_seed"].setValue(True)' }
+  },
+  Glow2: {
+    tier: "documented", label: "Ready for Nuke audit · 19 arguments", hideDescription: true,
+    overview: "Glow isolates brighter values, blurs them, and adds the result back to create a controllable luminous bloom.",
+    synopsisArguments: ["tolerance", "size", "brightness", "saturation", "tint", "channels", "mix"],
+    example: { title: "Add restrained highlight bloom", code: '# Add a soft glow to the bright regions of a test image.\nsource = nuke.createNode("ColorWheel")\nglow = nuke.createNode("Glow2")\nglow.setInput(0, source)\nglow["channels"].setValue("rgb")\nglow["tolerance"].setValue(0.6)\nglow["size"].setValue([20.0, 20.0])\nglow["brightness"].setValue(0.8)\nglow["saturation"].setValue(0.9)\nglow["mix"].setValue(0.75)' }
+  },
+  Emboss: {
+    tier: "documented", label: "Ready for Nuke audit · 20 arguments", hideDescription: true,
+    overview: "Emboss derives directional edge relief from selected channels and can output a traditional embossed image or a utility edge result.",
+    synopsisArguments: ["Angle", "Width", "edgedetector", "edgechannels", "optype", "output", "mix"],
+    example: { title: "Generate a directional embossed edge pass", code: '# Create a test image and derive a directional alpha relief.\nsource = nuke.createNode("ColorWheel")\nemboss = nuke.createNode("Emboss")\nemboss.setInput(0, source)\nemboss["channels"].setValue("rgb")\nemboss["Angle"].setValue(45.0)\nemboss["Width"].setValue(2.0)\nemboss["edgedetector"].setValue("sobel")\nemboss["output"].setValue("alpha")' }
+  },
+  FilterErode: {
+    tier: "documented", label: "Ready for Nuke audit · 10 arguments", hideDescription: true,
+    overview: "FilterErode grows or shrinks selected channels using a selectable reconstruction filter, offering smoother matte edges than a fast morphological operation.",
+    synopsisArguments: ["size", "filter", "channels", "mix"],
+    example: { title: "Contract a matte with a smooth filter", code: '# Generate a matte and contract it with a filtered edge.\nmatte = nuke.createNode("Radial")\nerode = nuke.createNode("FilterErode")\nerode.setInput(0, matte)\nerode["channels"].setValue("alpha")\nerode["size"].setValue([-2.0, -2.0])\nerode["filter"].setValue("gaussian")' }
   }
 };
 
