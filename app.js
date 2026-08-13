@@ -3,6 +3,13 @@ let currentClass = null;
 let currentNode = null;
 const examplesCache = new Map();
 let expandedCategories = new Set();
+const assetVersion = new URL(document.currentScript.src).searchParams.get("v") || "";
+
+function versionedAsset(path) {
+  if (!assetVersion) return path;
+  const separator = path.includes("?") ? "&" : "?";
+  return `${path}${separator}v=${encodeURIComponent(assetVersion)}`;
+}
 
 const nav = document.querySelector("#nav");
 const search = document.querySelector("#search");
@@ -95,7 +102,7 @@ function renderSearchResults(query) { const results=db.nodes.map(node=>({node,..
 async function loadExamples(nodeClass) {
   if (examplesCache.has(nodeClass)) return examplesCache.get(nodeClass);
 
-  const response = await fetch(`examples/nodes/${encodeURIComponent(nodeClass)}.json`);
+  const response = await fetch(versionedAsset(`examples/nodes/${encodeURIComponent(nodeClass)}.json`));
 
   if (!response.ok) {
     const empty = {node:{class:nodeClass},status:"MISSING",example_count:0,examples:[]};
