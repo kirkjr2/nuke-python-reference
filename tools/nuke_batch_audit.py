@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-channel-time.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-editorial-bbox.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["AddChannels", "AdjBBox", "ContactSheet", "FrameHold", "TimeOffset"]
+NODE_CLASSES = ["FrameRange", "TimeClip", "AppendClip", "BlackOutside", "CopyBBox"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,32 +35,26 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "AddChannels": {
-        "channels": "rgba", "channels2": "none", "channels3": "none",
-        "channels4": "none", "color": [0.0, 0.0, 0.0, 1.0],
-        "format_size": False,
+    "FrameRange": {"first_frame": 100.0, "last_frame": 150.0},
+    "TimeClip": {
+        "after": "hold", "before": "hold", "fadeIn": 0.0,
+        "fadeInType": "soft", "fadeOut": 0.0, "fadeOutType": "soft",
+        "first": 100, "frame": "frame + 8", "frame_mode": "expression",
+        "last": 150, "origfirst": 1, "origlast": 100,
+        "origset": False, "reverse": False,
     },
-    "AdjBBox": {"numpixels": [20.0, 20.0]},
-    "ContactSheet": {
-        "center": True, "colorder": "LeftRight", "columns": 2.0,
-        "endframe": -1.0, "gap": 12.0, "height": 1080.0,
-        "roworder": "TopBottom", "rows": 2.0, "splitinputs": False,
-        "startframe": -1.0, "width": 1920.0,
+    "AppendClip": {
+        "dissolve": 4.0, "fadeIn": 0.0, "fadeOut": 0.0,
+        "firstFrame": 1.0, "lastFrame": 48.0, "meta_from_first": False,
     },
-    "FrameHold": {
-        "enable_path_mask": False, "firstFrame": 100.0, "increment": 0.0,
-        "inject_mask": False, "rounding_mode": "Whole frames",
-    },
-    "TimeOffset": {
-        "enable_path_mask": False, "inject_mask": False,
-        "reverse_input": False, "rounding_mode": "Whole frames",
-        "time_offset": -8.0,
-    },
+    "BlackOutside": {},
+    "CopyBBox": {},
 }
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
     "Table", "Transform2d", "IArray", "Format", "Tab", "FrameExtent",
+    "TimeKnob",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 

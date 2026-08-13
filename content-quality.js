@@ -308,36 +308,69 @@ const CONTENT_QUALITY = {
     example: { title: "Contract and soften an alpha matte", code: '# Generate a matte, pull its edge inward, and soften the transition.\nmatte = nuke.createNode("Radial")\nerode = nuke.createNode("Erode")\nerode.setInput(0, matte)\nerode["channels"].setValue("alpha")\nerode["size"].setValue(-2.0)\nerode["blur"].setValue(0.5)\nerode["quality"].setValue(15.0)' }
   },
   AddChannels: {
-    tier: "documented", label: "Ready for Nuke audit · 6 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 6/6 arguments passed", hideDescription: true,
     overview: "AddChannels creates missing channels or layers on an image and initializes them with a chosen value. Existing channel data is left unchanged.",
     synopsisArguments: ["channels", "channels2", "color", "format_size"],
     example: { title: "Add a four-channel utility layer", code: '# Define a custom layer, then add it to a generated image.\nnuke.Layer("utility", ["utility.red", "utility.green", "utility.blue", "utility.alpha"])\nsource = nuke.createNode("ColorWheel")\nadd_channels = nuke.createNode("AddChannels")\nadd_channels.setInput(0, source)\nadd_channels["channels"].setValue("utility")\nadd_channels["color"].setValue([0.0, 0.0, 0.0, 1.0])' }
   },
   AdjBBox: {
-    tier: "documented", label: "Ready for Nuke audit · 1 argument", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 1/1 argument passed", hideDescription: true,
     overview: "AdjBBox expands or crops an image's bounding box by a chosen number of pixels without changing the project format.",
     synopsisArguments: ["numpixels"],
     example: { title: "Add working room around a procedural element", code: '# Generate a bounded element and expand its bounding box.\nsource = nuke.createNode("Radial")\nadjust_bbox = nuke.createNode("AdjBBox")\nadjust_bbox.setInput(0, source)\nadjust_bbox["numpixels"].setValue([20.0, 20.0])' }
   },
   ContactSheet: {
-    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 11/11 arguments passed", hideDescription: true,
     overview: "ContactSheet arranges multiple inputs—or a range of frames from each input—into a configurable review grid.",
     synopsisArguments: ["width", "height", "rows", "columns", "gap", "roworder", "colorder"],
     example: { title: "Build a four-up comparison sheet", code: '# Generate four sources and arrange them in a 2x2 review grid.\nsources = [\n    nuke.createNode("ColorBars"),\n    nuke.createNode("ColorWheel"),\n    nuke.createNode("CheckerBoard2"),\n    nuke.createNode("Constant"),\n]\nsheet = nuke.createNode("ContactSheet")\nfor index, source in enumerate(sources):\n    sheet.setInput(index, source)\nsheet["width"].setValue(1920)\nsheet["height"].setValue(1080)\nsheet["rows"].setValue(2)\nsheet["columns"].setValue(2)\nsheet["gap"].setValue(12)' }
   },
   FrameHold: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 8 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 5 writable arguments passed · 3 special controls inspected", hideDescription: true,
     overview: "FrameHold freezes an input at one frame, or samples it at a regular frame interval when increment is greater than zero.",
     synopsisArguments: ["firstFrame", "increment", "rounding_mode"],
     example: { title: "Freeze a source at frame 100", code: '# Create a source and hold its frame 100 for the full timeline.\nsource = nuke.createNode("ColorBars")\nhold = nuke.createNode("FrameHold")\nhold.setInput(0, source)\nhold["firstFrame"].setValue(100)\nhold["increment"].setValue(0)\nhold["rounding_mode"].setValue("Whole frames")' },
     argumentOverrides: { mask_patterns: { examplesHtml: '<span class="source-note">Scene path control</span>' }, path_mask_group: { examplesHtml: '<span class="source-note">UI group</span>' }, setToCurrentFrame: { examplesHtml: '<span class="source-note">UI action</span>' } }
   },
   TimeOffset: {
-    tier: "documented", label: "Ready for cautious Nuke audit · 8 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 5 writable arguments passed · 3 special controls inspected", hideDescription: true,
     overview: "TimeOffset slips an input earlier or later without changing its playback speed. Positive offsets request later source frames; negative offsets request earlier ones.",
     synopsisArguments: ["time_offset", "rounding_mode", "reverse_input"],
     example: { title: "Slip an element eight frames earlier", code: '# Create a source and offset its requested frame by eight frames.\nsource = nuke.createNode("ColorBars")\noffset = nuke.createNode("TimeOffset")\noffset.setInput(0, source)\noffset["time_offset"].setValue(-8)\noffset["rounding_mode"].setValue("Whole frames")' },
     argumentOverrides: { mask_patterns: { examplesHtml: '<span class="source-note">Scene path control</span>' }, path_mask_group: { examplesHtml: '<span class="source-note">UI group</span>' }, time: { examplesHtml: '<span class="source-note">Derived frame range</span>', description: "Derived frame-extent control; use time_offset for ordinary frame slipping." } }
+  },
+  FrameRange: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 4 arguments", hideDescription: true,
+    overview: "FrameRange restricts the frame range reported by an input. It is useful for trimming source ranges before editorial operations such as AppendClip.",
+    synopsisArguments: ["first_frame", "last_frame"],
+    example: { title: "Trim a source to a working frame range", code: '# Create a source and expose only frames 100 through 150.\nsource = nuke.createNode("ColorBars")\nframe_range = nuke.createNode("FrameRange")\nframe_range.setInput(0, source)\nframe_range["first_frame"].setValue(100)\nframe_range["last_frame"].setValue(150)' },
+    argumentOverrides: { reset: { examplesHtml: '<span class="source-note">UI action</span>' }, time: { examplesHtml: '<span class="source-note">Derived frame range</span>' } }
+  },
+  TimeClip: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 15 arguments", hideDescription: true,
+    overview: "TimeClip combines trimming, slipping, reversing, fades, and out-of-range behavior in one editorial node.",
+    synopsisArguments: ["first", "last", "frame_mode", "frame", "before", "after", "reverse", "fadeIn", "fadeOut"],
+    example: { title: "Trim and slip a clip with held boundary frames", code: '# Create a source, trim it, and slip the requested source time.\nsource = nuke.createNode("ColorBars")\nclip = nuke.createNode("TimeClip")\nclip.setInput(0, source)\nclip["first"].setValue(100)\nclip["last"].setValue(150)\nclip["before"].setValue("hold")\nclip["after"].setValue("hold")\nclip["frame_mode"].setValue("expression")\nclip["frame"].setValue("frame + 8")\nclip["fadeIn"].setValue(0)\nclip["fadeOut"].setValue(0)' },
+    argumentOverrides: { time: { examplesHtml: '<span class="source-note">Derived time control</span>' } }
+  },
+  AppendClip: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 7 arguments", hideDescription: true,
+    overview: "AppendClip joins multiple inputs head-to-tail and can add fades or cross-dissolves at the edit points.",
+    synopsisArguments: ["firstFrame", "fadeIn", "fadeOut", "dissolve", "meta_from_first"],
+    example: { title: "Join two trimmed clips with a short dissolve", code: '# Generate two sources, trim them, and append them head-to-tail.\nfirst_source = nuke.createNode("ColorBars")\nsecond_source = nuke.createNode("ColorWheel")\nfirst_trim = nuke.createNode("FrameRange")\nfirst_trim.setInput(0, first_source)\nfirst_trim["first_frame"].setValue(1)\nfirst_trim["last_frame"].setValue(24)\nsecond_trim = nuke.createNode("FrameRange")\nsecond_trim.setInput(0, second_source)\nsecond_trim["first_frame"].setValue(1)\nsecond_trim["last_frame"].setValue(24)\nappend = nuke.createNode("AppendClip")\nappend.setInput(0, first_trim)\nappend.setInput(1, second_trim)\nappend["dissolve"].setValue(4)\nappend["firstFrame"].setValue(1)' },
+    argumentOverrides: { time: { examplesHtml: '<span class="source-note">Derived frame range</span>' } }
+  },
+  BlackOutside: {
+    tier: "documented", label: "Ready for creation audit · no node-specific arguments", hideDescription: true,
+    overview: "BlackOutside fills pixels beyond the incoming bounding box with black, preventing replicated edge pixels after bounding-box operations.",
+    synopsisArguments: [],
+    example: { title: "Black out pixels beyond an expanded bounding box", code: '# Expand a procedural element bounding box, then black its exterior.\nsource = nuke.createNode("Radial")\nadjust_bbox = nuke.createNode("AdjBBox")\nadjust_bbox.setInput(0, source)\nadjust_bbox["numpixels"].setValue(20)\nblack_outside = nuke.createNode("BlackOutside")\nblack_outside.setInput(0, adjust_bbox)' }
+  },
+  CopyBBox: {
+    tier: "documented", label: "Ready for creation audit · no node-specific arguments", hideDescription: true,
+    overview: "CopyBBox applies the bounding box from input A to the image from input B, often trimming an unnecessarily expanded processing area.",
+    synopsisArguments: [],
+    example: { title: "Constrain a composite to a reference bounding box", code: '# Use generated matte bounds to constrain another image.\nbounds = nuke.createNode("Radial")\nimage = nuke.createNode("ColorWheel")\ncopy_bbox = nuke.createNode("CopyBBox")\ncopy_bbox.setInput(0, bounds)  # A supplies the bounding box\ncopy_bbox.setInput(1, image)   # B supplies the image' }
   }
 };
 
