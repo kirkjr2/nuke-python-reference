@@ -172,6 +172,40 @@ const CONTENT_QUALITY = {
       shuffle: { type: "NoodleKnob / channel mapping data", examplesHtml: '<span class="source-note">Special control</span>', description: "Verified as a visible NoodleKnob. Its default toScript() result is empty, so the editable channel-mapping serialization still needs a change-and-inspect test. Do not treat it as a float despite the scanner's current classification." }
     },
     suppressExamples: true
+  },
+  Dissolve: {
+    tier: "documented", label: "Ready for Nuke audit · 10 arguments", hideDescription: true,
+    overview: "Dissolve switches or blends between multiple image inputs. Whole-number Which values select an input; fractional values blend between neighboring inputs, making it useful for transitions and version comparisons.",
+    synopsisArguments: ["which", "channels", "mergerange", "metainput"],
+    example: { title: "Animate a twelve-frame transition between two images", code: '# Create two sources and dissolve between them.\nfirst = nuke.createNode("CheckerBoard2")\nsecond = nuke.createNode("ColorWheel")\ndissolve = nuke.createNode("Dissolve")\ndissolve.setInput(0, first)\ndissolve.setInput(1, second)\nstart = int(nuke.root()["first_frame"].value())\ndissolve["which"].setAnimated()\ndissolve["which"].setValueAt(0.0, start)\ndissolve["which"].setValueAt(1.0, start + 12)' },
+    argumentOverrides: { which: { description: "Selects an input at whole numbers and blends between adjacent inputs at fractional values." }, metainput: { description: "Chooses which input supplies output metadata." } }
+  },
+  Switch: {
+    tier: "documented", label: "Ready for Nuke audit · 1 argument", hideDescription: true,
+    overview: "Switch outputs one of its connected inputs. Animate Which to change sources over time, or drive it with an expression to select versions, quality levels, or fallback branches.",
+    synopsisArguments: ["which"],
+    example: { title: "Switch from a temporary plate to a final plate", code: '# Build two stand-in sources and switch at frame 101.\ntemporary = nuke.createNode("CheckerBoard2")\nfinal = nuke.createNode("ColorWheel")\nswitch = nuke.createNode("Switch")\nswitch.setInput(0, temporary)\nswitch.setInput(1, final)\nswitch["which"].setExpression("frame < 101 ? 0 : 1")' },
+    argumentOverrides: { which: { description: "Zero-based index of the input to output. It may be animated or expression-driven." } }
+  },
+  Keymix: {
+    tier: "documented", label: "Ready for Nuke audit · 5 arguments", hideDescription: true,
+    overview: "Keymix copies selected channels from A into B through a mask. It is useful for localized replacements where the mask should control exactly where foreground channels replace the background.",
+    synopsisArguments: ["channels", "maskChannel", "invertMask", "mix", "bbox"],
+    example: { title: "Replace part of a background through a matte", code: '# Generate A, B, and mask inputs for a self-contained Keymix.\nbackground = nuke.createNode("CheckerBoard2")\nreplacement = nuke.createNode("ColorWheel")\nmatte = nuke.createNode("Radial")\nkeymix = nuke.createNode("Keymix")\nkeymix.setInput(0, replacement)  # A\nkeymix.setInput(1, background)   # B\nkeymix.setInput(2, matte)        # mask\nkeymix["channels"].setValue("rgba")\nkeymix["maskChannel"].setValue("alpha")\nkeymix["mix"].setValue(1.0)' },
+    argumentOverrides: { bbox: { description: "Chooses the output bounding box from the union, B side, or A side." } }
+  },
+  Remove: {
+    tier: "documented", label: "Ready for Nuke audit · 5 arguments", hideDescription: true,
+    overview: "Remove deletes selected channels or keeps only selected channels. It is commonly used to strip unused render passes and keep scripts lighter and easier to inspect.",
+    synopsisArguments: ["operation", "channels", "channels2", "channels3", "channels4"],
+    example: { title: "Keep only RGBA before continuing the composite", code: '# Create a source and discard every channel except RGBA.\nsource = nuke.createNode("ColorWheel")\nremove = nuke.createNode("Remove")\nremove.setInput(0, source)\nremove["operation"].setValue("keep")\nremove["channels"].setValue("rgba")' }
+  },
+  Copy: {
+    tier: "documented", label: "Ready for Nuke audit · 21 arguments", hideDescription: true,
+    overview: "Copy transfers channels from input A into input B while leaving the other B channels unchanged. A common use is copying a newly created matte into the alpha channel of an RGB element.",
+    synopsisArguments: ["from0", "to0", "channels", "mix", "bbox"],
+    example: { title: "Copy a generated matte into an element's alpha", code: '# Generate an RGB element and a separate matte.\nelement = nuke.createNode("ColorWheel")\nmatte = nuke.createNode("Radial")\ncopy = nuke.createNode("Copy")\ncopy.setInput(0, matte)    # A: channel source\ncopy.setInput(1, element)  # B: image to preserve\ncopy["from0"].setValue("alpha")\ncopy["to0"].setValue("alpha")\ncopy["mix"].setValue(1.0)' },
+    argumentOverrides: { from0: { description: "Source channel read from input A." }, to0: { description: "Destination channel written into the output based on input B." } }
   }
 };
 
