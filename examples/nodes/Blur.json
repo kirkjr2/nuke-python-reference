@@ -3,14 +3,14 @@
   "example_count": 1,
   "examples": [
     {
-      "code": "# Create a practical RGB-only Gaussian blur.\nblur = nuke.nodes.Blur(name=\"soften_detail\")\n\n# Blur RGB while leaving alpha unchanged.\nblur[\"channels\"].setValue(\"rgb\")\nblur[\"filter\"].setValue(\"gaussian\")\n\n# Set horizontal and vertical blur independently.\nblur[\"size\"].setValue(20.0, 0)\nblur[\"size\"].setValue(8.0, 1)\n\n# Keep the bounding box within the project format and blend the effect.\nblur[\"crop\"].setValue(True)\nblur[\"mix\"].setValue(0.75)",
+      "code": "# Soften the alpha edge from the currently selected matte node.\nmatte = nuke.selectedNode()\n\nsoft_matte = nuke.nodes.Blur(name=\"soften_matte_edge\")\nsoft_matte.setInput(0, matte)\nsoft_matte[\"label\"].setValue(\"Soften matte edge\")\n\n# Affect only alpha, preserving the source RGB channels.\nsoft_matte[\"channels\"].setValue(\"alpha\")\nsoft_matte[\"filter\"].setValue(\"gaussian\")\n\n# A small blur removes hard roto/key edges without noticeably spreading the matte.\nsoft_matte[\"size\"].setValue(2.0)\n\n# Keep the result at full strength; adjust this to compare against the hard matte.\nsoft_matte[\"mix\"].setValue(1.0)",
       "confidence": "reviewed",
       "kind": "curated",
       "provenance": {
         "source": "approved_site_examples",
         "source_type": "project_curated"
       },
-      "title": "Build a directional Gaussian blur"
+      "title": "Soften the edge of an alpha matte"
     }
   ],
   "kind": "nuke_node_examples",
