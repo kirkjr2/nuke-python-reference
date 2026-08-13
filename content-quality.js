@@ -106,6 +106,18 @@ const CONTENT_QUALITY = {
       motionblur: { description: "Controls the number of motion-blur samples. Zero disables motion blur; higher values improve smoothness at additional render cost." },
       shutter: { description: "Duration of the motion-blur exposure measured in frames." }
     }
+  },
+  Unpremult: {
+    tier: "documented",
+    label: "Ready for Nuke audit · 3 arguments",
+    hideDescription: true,
+    overview: "Unpremult divides selected color channels by an alpha channel, recovering the unassociated RGB values beneath soft or partially transparent edges. Use it before color corrections on premultiplied elements, then add a Premult afterward to restore the RGB-alpha relationship.",
+    synopsisArguments: ["channels", "alpha", "invert"],
+    argumentOverrides: {
+      channels: { description: "Channels to divide by the selected alpha source. RGB is the standard choice for normal premultiplied imagery." },
+      alpha: { description: "Channel used as the divisor. Alpha is the standard source for an RGBA element." },
+      invert: { description: "Divides by one minus the selected alpha channel instead of the alpha itself." }
+    }
   }
 };
 
