@@ -38,8 +38,8 @@ const CONTENT_QUALITY = {
     suppressExamples: true
   },
   Blur: {
-    tier: "documented",
-    label: "Ready for Nuke audit · 12 arguments",
+    tier: "verified",
+    label: "Nuke-tested · 12/12 arguments passed",
     hideDescription: true,
     overview: "Blur softens an image by spreading pixel values horizontally and vertically. Use Size to control the blur radius, Filter to choose the falloff, Channels to limit which channels are affected, and Mix to blend the result with the input.",
     synopsisArguments: ["channels", "size", "filter", "mix", "crop"],
