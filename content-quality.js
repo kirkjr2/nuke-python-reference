@@ -278,34 +278,66 @@ const CONTENT_QUALITY = {
     example: { title: "Soften the boundary of an alpha matte", code: '# Generate an alpha-bearing element and soften only its edge.\nsource = nuke.createNode("Radial")\nedge_blur = nuke.createNode("EdgeBlur")\nedge_blur.setInput(0, source)\nedge_blur["controlchannel"].setValue("alpha")\nedge_blur["channels"].setValue("rgba")\nedge_blur["size"].setValue(3.0)\nedge_blur["edge_mult"].setValue(2.0)\nedge_blur["filter"].setValue("gaussian")\nedge_blur["mix"].setValue(1.0)' }
   },
   Multiply: {
-    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 11/11 arguments passed", hideDescription: true,
     overview: "Multiply scales selected channel values by a factor. It behaves like gain: values above one brighten while preserving zero, and values below one darken.",
     synopsisArguments: ["value", "channels", "mix", "unpremult"],
     example: { title: "Reduce an element's RGB intensity before merging", code: '# Create an element and reduce its intensity without lifting black.\nsource = nuke.createNode("ColorWheel")\nmultiply = nuke.createNode("Multiply")\nmultiply.setInput(0, source)\nmultiply["channels"].setValue("rgb")\nmultiply["value"].setValue(0.8)\nmultiply["mix"].setValue(1.0)' }
   },
   Add: {
-    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 11/11 arguments passed", hideDescription: true,
     overview: "Add applies a fixed offset to selected channels. Unlike Multiply, it moves black as well as brighter values, making it useful for small level offsets or channel-specific biases.",
     synopsisArguments: ["value", "channels", "mix", "unpremult"],
     example: { title: "Add a small RGB floor to a generated element", code: '# Raise all RGB values by a small fixed amount.\nsource = nuke.createNode("ColorWheel")\nadd = nuke.createNode("Add")\nadd.setInput(0, source)\nadd["channels"].setValue("rgb")\nadd["value"].setValue(0.02)\nadd["mix"].setValue(1.0)' }
   },
   HueShift: {
-    tier: "documented", label: "Ready for Nuke audit · 17 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 17/17 arguments passed", hideDescription: true,
     overview: "HueShift rotates color around a luminance-oriented color space while also providing saturation, axis, gray-point, and brightness controls.",
     synopsisArguments: ["hue_rotation", "saturation", "brightness", "color", "color_saturation", "channels", "mix"],
     example: { title: "Create a controlled palette variation", code: '# Rotate the palette while keeping the correction restrained.\nsource = nuke.createNode("ColorWheel")\nhue_shift = nuke.createNode("HueShift")\nhue_shift.setInput(0, source)\nhue_shift["channels"].setValue("rgb")\nhue_shift["hue_rotation"].setValue(20.0)\nhue_shift["saturation"].setValue(0.9)\nhue_shift["brightness"].setValue(1.0)\nhue_shift["mix"].setValue(0.75)' }
   },
   Sharpen: {
-    tier: "documented", label: "Ready for Nuke audit · 15 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 15/15 arguments passed", hideDescription: true,
     overview: "Sharpen increases local edge contrast in selected channels. Small amounts are useful for restoring perceived detail after filtering or resizing; aggressive settings can create halos.",
     synopsisArguments: ["amount", "size", "filter", "quality", "channels", "mix"],
     example: { title: "Restore subtle detail after a resize", code: '# Create a test image and apply restrained RGB sharpening.\nsource = nuke.createNode("ColorBars")\nsharpen = nuke.createNode("Sharpen")\nsharpen.setInput(0, source)\nsharpen["channels"].setValue("rgb")\nsharpen["amount"].setValue(0.3)\nsharpen["size"].setValue(2.0)\nsharpen["filter"].setValue("gaussian")\nsharpen["mix"].setValue(0.8)' }
   },
   Erode: {
-    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 11/11 arguments passed", hideDescription: true,
     overview: "Erode contracts or expands selected channels using a filtered matte operation. It is commonly used for small alpha-edge adjustments, with blur available to soften the result.",
     synopsisArguments: ["size", "blur", "quality", "channels", "mix"],
     example: { title: "Contract and soften an alpha matte", code: '# Generate a matte, pull its edge inward, and soften the transition.\nmatte = nuke.createNode("Radial")\nerode = nuke.createNode("Erode")\nerode.setInput(0, matte)\nerode["channels"].setValue("alpha")\nerode["size"].setValue(-2.0)\nerode["blur"].setValue(0.5)\nerode["quality"].setValue(15.0)' }
+  },
+  AddChannels: {
+    tier: "documented", label: "Ready for Nuke audit · 6 arguments", hideDescription: true,
+    overview: "AddChannels creates missing channels or layers on an image and initializes them with a chosen value. Existing channel data is left unchanged.",
+    synopsisArguments: ["channels", "channels2", "color", "format_size"],
+    example: { title: "Add a four-channel utility layer", code: '# Define a custom layer, then add it to a generated image.\nnuke.Layer("utility", ["utility.red", "utility.green", "utility.blue", "utility.alpha"])\nsource = nuke.createNode("ColorWheel")\nadd_channels = nuke.createNode("AddChannels")\nadd_channels.setInput(0, source)\nadd_channels["channels"].setValue("utility")\nadd_channels["color"].setValue([0.0, 0.0, 0.0, 1.0])' }
+  },
+  AdjBBox: {
+    tier: "documented", label: "Ready for Nuke audit · 1 argument", hideDescription: true,
+    overview: "AdjBBox expands or crops an image's bounding box by a chosen number of pixels without changing the project format.",
+    synopsisArguments: ["numpixels"],
+    example: { title: "Add working room around a procedural element", code: '# Generate a bounded element and expand its bounding box.\nsource = nuke.createNode("Radial")\nadjust_bbox = nuke.createNode("AdjBBox")\nadjust_bbox.setInput(0, source)\nadjust_bbox["numpixels"].setValue([20.0, 20.0])' }
+  },
+  ContactSheet: {
+    tier: "documented", label: "Ready for Nuke audit · 11 arguments", hideDescription: true,
+    overview: "ContactSheet arranges multiple inputs—or a range of frames from each input—into a configurable review grid.",
+    synopsisArguments: ["width", "height", "rows", "columns", "gap", "roworder", "colorder"],
+    example: { title: "Build a four-up comparison sheet", code: '# Generate four sources and arrange them in a 2x2 review grid.\nsources = [\n    nuke.createNode("ColorBars"),\n    nuke.createNode("ColorWheel"),\n    nuke.createNode("CheckerBoard2"),\n    nuke.createNode("Constant"),\n]\nsheet = nuke.createNode("ContactSheet")\nfor index, source in enumerate(sources):\n    sheet.setInput(index, source)\nsheet["width"].setValue(1920)\nsheet["height"].setValue(1080)\nsheet["rows"].setValue(2)\nsheet["columns"].setValue(2)\nsheet["gap"].setValue(12)' }
+  },
+  FrameHold: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 8 arguments", hideDescription: true,
+    overview: "FrameHold freezes an input at one frame, or samples it at a regular frame interval when increment is greater than zero.",
+    synopsisArguments: ["firstFrame", "increment", "rounding_mode"],
+    example: { title: "Freeze a source at frame 100", code: '# Create a source and hold its frame 100 for the full timeline.\nsource = nuke.createNode("ColorBars")\nhold = nuke.createNode("FrameHold")\nhold.setInput(0, source)\nhold["firstFrame"].setValue(100)\nhold["increment"].setValue(0)\nhold["rounding_mode"].setValue("Whole frames")' },
+    argumentOverrides: { mask_patterns: { examplesHtml: '<span class="source-note">Scene path control</span>' }, path_mask_group: { examplesHtml: '<span class="source-note">UI group</span>' }, setToCurrentFrame: { examplesHtml: '<span class="source-note">UI action</span>' } }
+  },
+  TimeOffset: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 8 arguments", hideDescription: true,
+    overview: "TimeOffset slips an input earlier or later without changing its playback speed. Positive offsets request later source frames; negative offsets request earlier ones.",
+    synopsisArguments: ["time_offset", "rounding_mode", "reverse_input"],
+    example: { title: "Slip an element eight frames earlier", code: '# Create a source and offset its requested frame by eight frames.\nsource = nuke.createNode("ColorBars")\noffset = nuke.createNode("TimeOffset")\noffset.setInput(0, source)\noffset["time_offset"].setValue(-8)\noffset["rounding_mode"].setValue("Whole frames")' },
+    argumentOverrides: { mask_patterns: { examplesHtml: '<span class="source-note">Scene path control</span>' }, path_mask_group: { examplesHtml: '<span class="source-note">UI group</span>' }, time: { examplesHtml: '<span class="source-note">Derived frame range</span>', description: "Derived frame-extent control; use time_offset for ordinary frame slipping." } }
   }
 };
 

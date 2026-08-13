@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-color-filter.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-channel-time.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["Multiply", "Add", "HueShift", "Sharpen", "Erode"]
+NODE_CLASSES = ["AddChannels", "AdjBBox", "ContactSheet", "FrameHold", "TimeOffset"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,27 +35,32 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "Multiply": dict(COMMON_MASK_VALUES, channels="rgb", value=0.8),
-    "Add": dict(COMMON_MASK_VALUES, channels="rgb", value=0.02),
-    "HueShift": dict(
-        COMMON_MASK_VALUES, brightness=1.0, channels="rgb", color=1.0,
-        color_saturation=1.0, hue_rotation=20.0, ingray=0.25,
-        outgray=0.25, saturation=0.9,
-    ),
-    "Sharpen": dict(
-        COMMON_MASK_VALUES, amount=0.3, channels="rgb", crop=True,
-        filter="gaussian", maximum=1.0, minimum=0.0, quality=15.0,
-        size=[2.0, 2.0],
-    ),
-    "Erode": dict(
-        COMMON_MASK_VALUES, blur=0.5, channels="alpha", quality=15.0,
-        size=[-2.0, -2.0],
-    ),
+    "AddChannels": {
+        "channels": "rgba", "channels2": "none", "channels3": "none",
+        "channels4": "none", "color": [0.0, 0.0, 0.0, 1.0],
+        "format_size": False,
+    },
+    "AdjBBox": {"numpixels": [20.0, 20.0]},
+    "ContactSheet": {
+        "center": True, "colorder": "LeftRight", "columns": 2.0,
+        "endframe": -1.0, "gap": 12.0, "height": 1080.0,
+        "roworder": "TopBottom", "rows": 2.0, "splitinputs": False,
+        "startframe": -1.0, "width": 1920.0,
+    },
+    "FrameHold": {
+        "enable_path_mask": False, "firstFrame": 100.0, "increment": 0.0,
+        "inject_mask": False, "rounding_mode": "Whole frames",
+    },
+    "TimeOffset": {
+        "enable_path_mask": False, "inject_mask": False,
+        "reverse_input": False, "rounding_mode": "Whole frames",
+        "time_offset": -8.0,
+    },
 }
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
-    "Table", "Transform2d", "IArray", "Format", "Tab",
+    "Table", "Transform2d", "IArray", "Format", "Tab", "FrameExtent",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 
