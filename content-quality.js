@@ -1,9 +1,21 @@
 const CONTENT_QUALITY = {
   Grade: {
-    tier: "documented",
-    label: "Editorially reviewed",
+    tier: "verified",
+    label: "Nuke-tested · 22/22 arguments passed",
     hideDescription: true,
     overview: "Grade remaps an image's tonal range using black point, white point, lift, gain, multiply, offset, and gamma controls. It is commonly used for tonal matching, setting black/white points, and targeted color correction.",
+    synopsisArguments: [
+      "channels",
+      "blackpoint",
+      "whitepoint",
+      "black",
+      "white",
+      "multiply",
+      "add",
+      "gamma",
+      "mix",
+      "reverse"
+    ],
     argumentOverrides: {
       fringe: {
         description: "Softens the edge of the mask so the grade transitions more gradually at the mask boundary."
@@ -98,4 +110,8 @@ function applyContentQuality() {
         examples.innerHTML = '<div class="no-examples">No manually verified Python example is published for this special control yet.</div>';
       }
     }
+}
+
+function contentQualitySynopsisArguments(nodeClass, argumentOrder) {
+  return CONTENT_QUALITY[nodeClass]?.synopsisArguments || argumentOrder;
 }

@@ -12,6 +12,12 @@
   border-color: #5b6d52;
 }
 
+.editorial-quality-verified {
+  color: #b8f7cf;
+  background: rgba(38, 145, 82, 0.16);
+  border-color: rgba(70, 190, 118, 0.45);
+}
+
 .editorial-quality-needs-research {
   border-color: var(--accent-dim);
   color: var(--accent);
