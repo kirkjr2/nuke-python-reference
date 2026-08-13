@@ -3,16 +3,14 @@
   "example_count": 1,
   "examples": [
     {
-      "title": "Match-move an element with animated transform values",
-      "code": "# Transform knobs can be animated or expression-linked to tracking data.\ntransform = nuke.createNode(\"Transform\")\ntransform.setInput(0, element)\ntransform[\"translate\"].setValue(100, 0)\ntransform[\"translate\"].setValue(50, 1)",
-      "kind": "source_backed_editorial",
-      "confidence": "source_backed_draft",
+      "title": "Animate a graphic into frame",
+      "code": "# Create a visible source so this example runs in an empty script.\ngraphic = nuke.createNode(\"ColorWheel\")\ngraphic.setName(\"Graphic\")\n\ntransform = nuke.createNode(\"Transform\")\ntransform.setName(\"Graphic_entrance\")\ntransform.setInput(0, graphic)\n\nstart = int(nuke.root()[\"first_frame\"].value())\nfinish = start + 12\n\n# Animate the graphic from the left while it settles into scale and rotation.\ntransform[\"translate\"].setAnimated()\ntransform[\"translate\"].setValueAt(-300.0, start, 0)\ntransform[\"translate\"].setValueAt(0.0, finish, 0)\ntransform[\"translate\"].setValueAt(0.0, start, 1)\ntransform[\"translate\"].setValueAt(0.0, finish, 1)\n\ntransform[\"scale\"].setAnimated()\ntransform[\"scale\"].setValueAt(0.85, start, 0)\ntransform[\"scale\"].setValueAt(1.0, finish, 0)\ntransform[\"scale\"].setValueAt(0.85, start, 1)\ntransform[\"scale\"].setValueAt(1.0, finish, 1)\n\ntransform[\"rotate\"].setAnimated()\ntransform[\"rotate\"].setValueAt(-8.0, start)\ntransform[\"rotate\"].setValueAt(0.0, finish)\n\n# Use smooth filtering and enable subtle motion blur for the move.\ntransform[\"filter\"].setValue(\"cubic\")\ntransform[\"motionblur\"].setValue(0.5)\ntransform[\"shutter\"].setValue(0.5)",
+      "kind": "curated",
+      "confidence": "reviewed",
       "provenance": {
-        "source_type": "functional_batch_research",
-        "source_ids": [
-          "foundry_transform_nodes"
-        ],
-        "editorial_note": ""
+        "source_type": "project_curated",
+        "source_ids": ["foundry_transform_nodes"],
+        "editorial_note": "Rewritten as a self-contained compositor workflow."
       }
     }
   ],
