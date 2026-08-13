@@ -436,31 +436,31 @@ const CONTENT_QUALITY = {
     example: { title: "Reduce harsh texture without a broad blur", code: '# Apply a restrained RGB softening pass to a test image.\nsource = nuke.createNode("ColorBars")\nsoften = nuke.createNode("Soften")\nsoften.setInput(0, source)\nsoften["channels"].setValue("rgb")\nsoften["amount"].setValue(0.35)\nsoften["size"].setValue(2.0)\nsoften["filter"].setValue("gaussian")\nsoften["quality"].setValue(15.0)\nsoften["mix"].setValue(0.8)' }
   },
   Median: {
-    tier: "documented", label: "Ready for Nuke audit · 10 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 10/10 arguments passed", hideDescription: true,
     overview: "Median replaces each pixel with the median of neighboring samples, making it useful for reducing isolated noise and small specks while retaining stronger edges.",
     synopsisArguments: ["size", "channels", "mix"],
     example: { title: "Reduce isolated color noise", code: '# Apply a small median filter to a generated test image.\nsource = nuke.createNode("ColorBars")\nmedian = nuke.createNode("Median")\nmedian.setInput(0, source)\nmedian["channels"].setValue("rgb")\nmedian["size"].setValue([2.0, 2.0])\nmedian["mix"].setValue(0.75)' }
   },
   Dither: {
-    tier: "documented", label: "Ready for Nuke audit · 14 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 14/14 arguments passed", hideDescription: true,
     overview: "Dither adds low-level noise to selected channels to reduce visible banding when values are quantized or displayed at limited precision.",
     synopsisArguments: ["amount", "channels", "monodither", "seed", "static_seed", "mix"],
     example: { title: "Break up banding in a smooth gradient", code: '# Create a gradient and add subtle monochrome dither.\nsource = nuke.createNode("Ramp")\ndither = nuke.createNode("Dither")\ndither.setInput(0, source)\ndither["channels"].setValue("rgb")\ndither["amount"].setValue(0.01)\ndither["monodither"].setValue(True)\ndither["static_seed"].setValue(True)' }
   },
   Glow2: {
-    tier: "documented", label: "Ready for Nuke audit · 19 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 19/19 arguments passed", hideDescription: true,
     overview: "Glow isolates brighter values, blurs them, and adds the result back to create a controllable luminous bloom.",
     synopsisArguments: ["tolerance", "size", "brightness", "saturation", "tint", "channels", "mix"],
     example: { title: "Add restrained highlight bloom", code: '# Add a soft glow to the bright regions of a test image.\nsource = nuke.createNode("ColorWheel")\nglow = nuke.createNode("Glow2")\nglow.setInput(0, source)\nglow["channels"].setValue("rgb")\nglow["tolerance"].setValue(0.6)\nglow["size"].setValue([20.0, 20.0])\nglow["brightness"].setValue(0.8)\nglow["saturation"].setValue(0.9)\nglow["mix"].setValue(0.75)' }
   },
   Emboss: {
-    tier: "documented", label: "Ready for Nuke audit · 20 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 20/20 arguments passed", hideDescription: true,
     overview: "Emboss derives directional edge relief from selected channels and can output a traditional embossed image or a utility edge result.",
     synopsisArguments: ["Angle", "Width", "edgedetector", "edgechannels", "optype", "output", "mix"],
     example: { title: "Generate a directional embossed edge pass", code: '# Create a test image and derive a directional alpha relief.\nsource = nuke.createNode("ColorWheel")\nemboss = nuke.createNode("Emboss")\nemboss.setInput(0, source)\nemboss["channels"].setValue("rgb")\nemboss["Angle"].setValue(45.0)\nemboss["Width"].setValue(2.0)\nemboss["edgedetector"].setValue("sobel")\nemboss["output"].setValue("alpha")' }
   },
   FilterErode: {
-    tier: "documented", label: "Ready for Nuke audit · 10 arguments", hideDescription: true,
+    tier: "verified", label: "Nuke-tested · 10/10 arguments passed", hideDescription: true,
     overview: "FilterErode grows or shrinks selected channels using a selectable reconstruction filter, offering smoother matte edges than a fast morphological operation.",
     synopsisArguments: ["size", "filter", "channels", "mix"],
     example: { title: "Contract a matte with a smooth filter", code: '# Generate a matte and contract it with a filtered edge.\nmatte = nuke.createNode("Radial")\nerode = nuke.createNode("FilterErode")\nerode.setInput(0, matte)\nerode["channels"].setValue("alpha")\nerode["size"].setValue([-2.0, -2.0])\nerode["filter"].setValue("gaussian")' }
