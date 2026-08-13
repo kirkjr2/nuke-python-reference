@@ -261,3 +261,12 @@ function applyContentQuality() {
 function contentQualitySynopsisArguments(nodeClass, argumentOrder) {
   return CONTENT_QUALITY[nodeClass]?.synopsisArguments || argumentOrder;
 }
+
+function contentQualityExample(nodeClass) {
+  const example = CONTENT_QUALITY[nodeClass]?.example;
+  return example ? {title: example.title, code: example.code} : null;
+}
+
+function contentQualitySuppressExamples(nodeClass) {
+  return Boolean(CONTENT_QUALITY[nodeClass]?.suppressExamples);
+}

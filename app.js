@@ -100,6 +100,9 @@ function scoreNode(node, rawQuery) {
 function renderSearchResults(query) { const results=db.nodes.map(node=>({node,...scoreNode(node,query)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.node.display_name.localeCompare(b.node.display_name)).slice(0,100); searchMeta.textContent=`${results.length}${results.length===100?"+":""} results`; nav.innerHTML=""; if(!results.length){nav.innerHTML='<div class="search-result-match">No matches</div>';return;} for(const item of results){const b=document.createElement("button");b.className="search-result";b.innerHTML=`<div class="search-result-name">${escapeHtml(item.node.display_name)}</div><div class="search-result-class">${escapeHtml(item.node.class)} · ${escapeHtml(item.node.category||"Uncategorized")}</div><div class="search-result-match">${escapeHtml(item.reason)}: <strong>${escapeHtml(item.value)}</strong></div>`;b.onclick=()=>loadNode(item.node.class,{push:true});nav.appendChild(b);} }
 
 async function loadExamples(nodeClass) {
+  const editorial = window.contentQualityExample?.(nodeClass);
+  if (editorial) return {node:{class:nodeClass},status:"EDITORIAL",example_count:1,examples:[editorial]};
+  if (window.contentQualitySuppressExamples?.(nodeClass)) return {node:{class:nodeClass},status:"SUPPRESSED",example_count:0,examples:[]};
   if (examplesCache.has(nodeClass)) return examplesCache.get(nodeClass);
 
   const response = await fetch(versionedAsset(`examples/nodes/${encodeURIComponent(nodeClass)}.json`));
