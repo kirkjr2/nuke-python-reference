@@ -62,7 +62,7 @@ const CONTENT_QUALITY = {
     tier: "verified",
     label: "Nuke-tested · 17/17 arguments passed",
     hideDescription: true,
-    overview: "Merge combines foreground input A with background input B. The Operation determines how their pixels and alpha interact; Over is the standard choice for placing a premultiplied foreground over a background.",
+    overview: "Merge combines foreground input A with background input B. In Python, input 0 is B and input 1 (or higher) is A. The Operation determines how their pixels and alpha interact; Over is the standard choice for placing a premultiplied foreground over a background.",
     synopsisArguments: ["operation", "Achannels", "Bchannels", "output", "mix", "bbox"],
     argumentOverrides: {
       operation: {
