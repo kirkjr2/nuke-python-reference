@@ -57,6 +57,33 @@ const CONTENT_QUALITY = {
         description: "Performance-quality threshold for very large blurs. Lower values render faster but may look less smooth."
       }
     }
+  },
+  Merge2: {
+    tier: "documented",
+    label: "Ready for Nuke audit · 17 arguments",
+    hideDescription: true,
+    overview: "Merge combines foreground input A with background input B. The Operation determines how their pixels and alpha interact; Over is the standard choice for placing a premultiplied foreground over a background.",
+    synopsisArguments: ["operation", "Achannels", "Bchannels", "output", "mix", "bbox"],
+    argumentOverrides: {
+      operation: {
+        description: "Compositing operation applied between A and B. Use over for a standard premultiplied foreground-over-background composite."
+      },
+      bbox: {
+        description: "Chooses the output bounding box: the union or intersection of both inputs, or only A or B."
+      },
+      also_merge: {
+        description: "Additional non-RGB channels to process with the selected merge operation."
+      },
+      fringe: {
+        description: "Softens the edge of the mask so the merge transitions more gradually at the mask boundary."
+      },
+      metainput: {
+        description: "Chooses whether output metadata comes from B, A, or both inputs. Duplicate keys from B take priority when using All."
+      },
+      rangeinput: {
+        description: "Chooses whether the output frame range comes from B, A, or both inputs."
+      }
+    }
   }
 };
 

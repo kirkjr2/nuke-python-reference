@@ -1,36 +1,16 @@
 {
   "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
+  "example_count": 1,
   "examples": [
     {
-      "code": "# Create a Merge node using the standard over operation.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"over\")",
+      "code": "# Composite a premultiplied foreground over a background plate.\nforeground = nuke.toNode(\"FG_Element\")\nbackground = nuke.toNode(\"Plate\")\n\nif foreground is None or background is None:\n    raise ValueError(\"Rename the source nodes to FG_Element and Plate, or update the names in this script.\")\n\nmerge = nuke.createNode(\"Merge2\")\nmerge.setName(\"FG_over_Plate\")\nmerge.setInput(0, foreground)  # A: foreground\nmerge.setInput(1, background)  # B: background\n\n# Standard premultiplied foreground-over-background composite.\nmerge[\"operation\"].setValue(\"over\")\nmerge[\"Achannels\"].setValue(\"rgba\")\nmerge[\"Bchannels\"].setValue(\"rgba\")\nmerge[\"output\"].setValue(\"rgba\")\n\n# Preserve the full area covered by either input.\nmerge[\"bbox\"].setValue(\"union\")\nmerge[\"mix\"].setValue(1.0)",
       "confidence": "reviewed",
       "kind": "curated",
       "provenance": {
         "source": "approved_site_examples",
         "source_type": "project_curated"
       },
-      "title": "Create an Over merge"
-    },
-    {
-      "code": "# Change an existing Merge node to Plus.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"plus\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Change the merge operation"
-    },
-    {
-      "code": "# Merge RGB channels while leaving other channels unchanged.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"Achannels\"].setValue(\"rgb\")\nmerge[\"Bchannels\"].setValue(\"rgb\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Restrict the merge channels"
+      "title": "Composite a foreground over a plate"
     }
   ],
   "kind": "nuke_node_examples",
