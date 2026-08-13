@@ -108,8 +108,8 @@ const CONTENT_QUALITY = {
     }
   },
   Unpremult: {
-    tier: "documented",
-    label: "Ready for Nuke audit · 3 arguments",
+    tier: "verified",
+    label: "Nuke-tested · 3/3 arguments passed",
     hideDescription: true,
     overview: "Unpremult divides selected color channels by an alpha channel, recovering the unassociated RGB values beneath soft or partially transparent edges. Use it before color corrections on premultiplied elements, then add a Premult afterward to restore the RGB-alpha relationship.",
     synopsisArguments: ["channels", "alpha", "invert"],
