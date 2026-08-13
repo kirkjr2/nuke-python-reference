@@ -241,6 +241,41 @@ const CONTENT_QUALITY = {
     overview: "Log2Lin converts between legacy Cineon log values and linear light using configurable black, white, and film-gamma points. Use it for Cineon-style material when an OCIO transform is not the appropriate pipeline conversion.",
     synopsisArguments: ["operation", "channels", "black", "white", "gamma", "mix"],
     example: { title: "Convert Cineon log values to linear light", code: '# Create a source and apply the standard Cineon-style conversion.\nsource = nuke.createNode("ColorWheel")\nconvert = nuke.createNode("Log2Lin")\nconvert.setInput(0, source)\nconvert["operation"].setValue("log2lin")\nconvert["channels"].setValue("rgb")\nconvert["black"].setValue(95.0)\nconvert["white"].setValue(685.0)\nconvert["gamma"].setValue(0.6)' }
+  },
+  Constant: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 5 arguments", hideDescription: true,
+    overview: "Constant creates a flat-color image at the project format. It is useful for backgrounds, utility mattes, test elements, and solid inputs for procedural setups.",
+    synopsisArguments: ["color", "channels", "format", "first", "last"],
+    example: { title: "Create a neutral-gray background for a comp", code: '# Create a project-sized neutral-gray background.\nbackground = nuke.createNode("Constant")\nbackground["channels"].setValue("rgba")\nbackground["color"].setValue([0.18, 0.18, 0.18, 1.0])\nbackground["first"].setValue(nuke.root().firstFrame())\nbackground["last"].setValue(nuke.root().lastFrame())' },
+    argumentOverrides: { format: { examplesHtml: '<span class="source-note">Format object</span>', description: "Output format. Pass a valid nuke.Format object or select a named project format; scanner object strings are not reusable values." } }
+  },
+  ColorCorrect: {
+    tier: "documented", label: "Ready for cautious Nuke audit · 38 arguments", hideDescription: true,
+    overview: "ColorCorrect adjusts saturation, contrast, gamma, gain, and offset across the whole image or separately in shadows, midtones, and highlights.",
+    synopsisArguments: ["channels", "saturation", "contrast", "gamma", "gain", "offset", "mix"],
+    example: { title: "Warm highlights while adding gentle overall contrast", code: '# Build a restrained look on a generated source.\nsource = nuke.createNode("ColorWheel")\ncorrect = nuke.createNode("ColorCorrect")\ncorrect.setInput(0, source)\ncorrect["channels"].setValue("rgb")\ncorrect["contrast"].setValue(1.08)\ncorrect["gamma"].setValue(1.03)\ncorrect["highlights.gain"].setValue([1.08, 1.03, 0.96, 1.0])\ncorrect["shadows.saturation"].setValue(0.9)\ncorrect["mix"].setValue(0.85)' },
+    argumentOverrides: {
+      lookup: { examplesHtml: '<span class="source-note">Advanced curve control</span>', description: "Defines the shadow and highlight ranges. Its curve serialization requires dedicated handling rather than scalar setValue examples." },
+      master: { examplesHtml: '<span class="source-note">UI group</span>' }, shadows: { examplesHtml: '<span class="source-note">UI group</span>' }, midtones: { examplesHtml: '<span class="source-note">UI group</span>' }, highlights: { examplesHtml: '<span class="source-note">UI group</span>' }
+    }
+  },
+  Dilate: {
+    tier: "documented", label: "Ready for Nuke audit · 9 arguments", hideDescription: true,
+    overview: "Dilate grows or shrinks selected channels. It is commonly used to expand or contract alpha mattes before edge treatment or compositing.",
+    synopsisArguments: ["size", "channels", "mix"],
+    example: { title: "Grow an alpha matte before edge treatment", code: '# Generate a matte and expand its edge slightly.\nmatte = nuke.createNode("Radial")\ndilate = nuke.createNode("Dilate")\ndilate.setInput(0, matte)\ndilate["channels"].setValue("alpha")\ndilate["size"].setValue(2.0)\ndilate["mix"].setValue(1.0)' }
+  },
+  Defocus: {
+    tier: "documented", label: "Ready for Nuke audit · 13 arguments", hideDescription: true,
+    overview: "Defocus uses a disc-shaped filter to simulate lens defocus and circular highlight bloom. For an ordinary soft blur, Blur is usually faster.",
+    synopsisArguments: ["defocus", "ratio", "scale", "quality", "method", "channels", "mix"],
+    example: { title: "Create a subtle lens-defocus background", code: '# Create a test image and soften it with a circular lens filter.\nsource = nuke.createNode("ColorBars")\ndefocus = nuke.createNode("Defocus")\ndefocus.setInput(0, source)\ndefocus["channels"].setValue("rgb")\ndefocus["defocus"].setValue(8.0)\ndefocus["ratio"].setValue(1.0)\ndefocus["method"].setValue("accelerated")\ndefocus["quality"].setValue(20.0)' }
+  },
+  EdgeBlur: {
+    tier: "documented", label: "Ready for Nuke audit · 17 arguments", hideDescription: true,
+    overview: "EdgeBlur detects edges in a chosen control channel and blurs only those regions. It is useful for softening overly sharp matte boundaries without blurring the entire element.",
+    synopsisArguments: ["controlchannel", "size", "edge_mult", "filter", "quality", "channels", "mix"],
+    example: { title: "Soften the boundary of an alpha matte", code: '# Generate an alpha-bearing element and soften only its edge.\nsource = nuke.createNode("Radial")\nedge_blur = nuke.createNode("EdgeBlur")\nedge_blur.setInput(0, source)\nedge_blur["controlchannel"].setValue("alpha")\nedge_blur["channels"].setValue("rgba")\nedge_blur["size"].setValue(3.0)\nedge_blur["edge_mult"].setValue(2.0)\nedge_blur["filter"].setValue("gaussian")\nedge_blur["mix"].setValue(1.0)' }
   }
 };
 
