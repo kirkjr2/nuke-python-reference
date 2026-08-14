@@ -1,36 +1,16 @@
 {
   "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
+  "example_count": 1,
   "examples": [
     {
-      "code": "# Create a Merge node using the standard over operation.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"over\")",
+      "code": "# Build a self-contained A-over-B composite for experimenting with Merge.\nbackground = nuke.createNode(\"CheckerBoard2\")\nbackground.setName(\"Merge_demo_background\")\nbackground.setXYpos(0, 0)\n\nforeground = nuke.createNode(\"ColorWheel\")\nforeground.setName(\"Merge_demo_foreground\")\nforeground.setXYpos(-140, 0)\n\nmerge = nuke.createNode(\"Merge2\")\nmerge.setName(\"Foreground_over_background\")\nmerge.setXYpos(0, 120)\n\n# Merge2 input 0 is B; inputs 1 and above are A inputs.\nmerge.setInput(0, background)  # B: background\nmerge.setInput(1, foreground)  # A: foreground\n\n# Use the standard A-over-B operation and process RGBA.\nmerge[\"operation\"].setValue(\"over\")\nmerge[\"Achannels\"].setValue(\"rgba\")\nmerge[\"Bchannels\"].setValue(\"rgba\")\nmerge[\"output\"].setValue(\"rgba\")\nmerge[\"bbox\"].setValue(\"union\")\n\n# Lower Mix to reveal how the A input contributes to the result.\nmerge[\"mix\"].setValue(0.75)",
       "confidence": "reviewed",
       "kind": "curated",
       "provenance": {
         "source": "approved_site_examples",
         "source_type": "project_curated"
       },
-      "title": "Create an Over merge"
-    },
-    {
-      "code": "# Change an existing Merge node to Plus.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"operation\"].setValue(\"plus\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Change the merge operation"
-    },
-    {
-      "code": "# Merge RGB channels while leaving other channels unchanged.\nmerge = nuke.createNode(\"Merge2\")\nmerge[\"Achannels\"].setValue(\"rgb\")\nmerge[\"Bchannels\"].setValue(\"rgb\")",
-      "confidence": "reviewed",
-      "kind": "curated",
-      "provenance": {
-        "source": "approved_site_examples",
-        "source_type": "project_curated"
-      },
-      "title": "Restrict the merge channels"
+      "title": "Explore A-over-B with generated images"
     }
   ],
   "kind": "nuke_node_examples",

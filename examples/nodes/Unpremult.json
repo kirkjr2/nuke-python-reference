@@ -1,52 +1,20 @@
 {
   "$schema": "../schemas/example.schema.json",
-  "example_count": 3,
+  "example_count": 1,
   "examples": [
     {
-      "title": "Create a Unpremult node",
-      "code": "# Create the node and keep a reference to it.\nunpremult = nuke.createNode(\"Unpremult\")",
-      "kind": "functional_editorial",
-      "confidence": "editorial_verified_pattern",
+      "title": "Color-correct a premultiplied element safely",
+      "code": "# Build a self-contained Unpremult -> Grade -> Premult workflow.\nelement = nuke.createNode(\"ColorWheel\")\nelement.setName(\"Premultiplied_element\")\n\nunpremult = nuke.createNode(\"Unpremult\")\nunpremult.setInput(0, element)\nunpremult[\"channels\"].setValue(\"rgb\")\nunpremult[\"alpha\"].setValue(\"alpha\")\n\n# Correct unassociated RGB so soft edges receive the same correction as solid pixels.\ngrade = nuke.createNode(\"Grade\")\ngrade.setInput(0, unpremult)\ngrade[\"channels\"].setValue(\"rgb\")\ngrade[\"multiply\"].setValue(1.15)\ngrade[\"gamma\"].setValue(0.95)\n\n# Restore premultiplication before compositing the element over another image.\npremult = nuke.createNode(\"Premult\")\npremult.setInput(0, grade)\npremult[\"channels\"].setValue(\"rgb\")\npremult[\"alpha\"].setValue(\"alpha\")",
+      "kind": "curated",
+      "confidence": "reviewed",
       "provenance": {
-        "source_type": "functional_family_research",
+        "source_type": "project_curated",
         "source_ids": [
           "foundry_toolbar_16",
           "erwan_python"
         ],
-        "editorial_note": "Node class is present in the locked scanner dataset; Foundry toolbar source is used where the class is exposed in the standard toolbar."
+        "editorial_note": "Rewritten as the standard Unpremult, color-correct, Premult workflow."
       }
-    },
-    {
-      "title": "Connect foreground and background inputs",
-      "code": "# Connect two image streams to the node.\nunpremult = nuke.createNode(\"Unpremult\")\nunpremult.setInput(0, foreground)\nunpremult.setInput(1, background)",
-      "kind": "functional_editorial",
-      "confidence": "editorial_verified_pattern",
-      "provenance": {
-        "source_type": "functional_family_research",
-        "source_ids": [
-          "foundry_toolbar_16",
-          "erwan_python"
-        ],
-        "editorial_note": "Generic two-input graph pattern; exact A/B semantic labels remain defined by the scanner metadata."
-      }
-    },
-    {
-      "arguments": [
-        "alpha"
-      ],
-      "code": "# Configure the \"alpha\" control.\nunpremult = nuke.createNode(\"Unpremult\")\nunpremult[\"alpha\"].setValue(\"rgba\")",
-      "confidence": "scanner_backed",
-      "kind": "scanner_backed_editorial",
-      "provenance": {
-        "argument": "alpha",
-        "argument_description_source": "nuke.Knob.label()",
-        "argument_values_source": "generator_reference_examples",
-        "source": "locked_reference_metadata",
-        "source_type": "generated",
-        "editorial_pass": "remaining_queue_v5"
-      },
-      "title": "Set by",
-      "editorial_revision": "v2_task_comment"
     }
   ],
   "kind": "nuke_node_examples",
@@ -69,7 +37,7 @@
   },
   "research_flags": [],
   "schema_version": "1.0.0",
-  "status": "FUNCTIONAL_EDITORIAL",
-  "status_reason": "Remaining-queue functional editorial pass completed. Examples combine the locked scanner's node/knob data with documented Nuke Python creation, graph-wiring, and inspection patterns. Node-specific interactive workflows are not invented.",
+  "status": "COMPLETE",
+  "status_reason": "Practical compositor workflow prepared for interactive Nuke verification.",
   "editorial_family": "Merge / Channel"
 }

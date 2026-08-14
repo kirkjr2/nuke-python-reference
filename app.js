@@ -3,6 +3,13 @@ let currentClass = null;
 let currentNode = null;
 const examplesCache = new Map();
 let expandedCategories = new Set();
+const assetVersion = new URL(document.currentScript.src).searchParams.get("v") || "";
+
+function versionedAsset(path) {
+  if (!assetVersion) return path;
+  const separator = path.includes("?") ? "&" : "?";
+  return `${path}${separator}v=${encodeURIComponent(assetVersion)}`;
+}
 
 const nav = document.querySelector("#nav");
 const search = document.querySelector("#search");
@@ -93,9 +100,12 @@ function scoreNode(node, rawQuery) {
 function renderSearchResults(query) { const results=db.nodes.map(node=>({node,...scoreNode(node,query)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.node.display_name.localeCompare(b.node.display_name)).slice(0,100); searchMeta.textContent=`${results.length}${results.length===100?"+":""} results`; nav.innerHTML=""; if(!results.length){nav.innerHTML='<div class="search-result-match">No matches</div>';return;} for(const item of results){const b=document.createElement("button");b.className="search-result";b.innerHTML=`<div class="search-result-name">${escapeHtml(item.node.display_name)}</div><div class="search-result-class">${escapeHtml(item.node.class)} · ${escapeHtml(item.node.category||"Uncategorized")}</div><div class="search-result-match">${escapeHtml(item.reason)}: <strong>${escapeHtml(item.value)}</strong></div>`;b.onclick=()=>loadNode(item.node.class,{push:true});nav.appendChild(b);} }
 
 async function loadExamples(nodeClass) {
+  const editorial = window.contentQualityExample?.(nodeClass);
+  if (editorial) return {node:{class:nodeClass},status:"EDITORIAL",example_count:1,examples:[editorial]};
+  if (window.contentQualitySuppressExamples?.(nodeClass)) return {node:{class:nodeClass},status:"SUPPRESSED",example_count:0,examples:[]};
   if (examplesCache.has(nodeClass)) return examplesCache.get(nodeClass);
 
-  const response = await fetch(`examples/nodes/${encodeURIComponent(nodeClass)}.json`);
+  const response = await fetch(versionedAsset(`examples/nodes/${encodeURIComponent(nodeClass)}.json`));
 
   if (!response.ok) {
     const empty = {node:{class:nodeClass},status:"MISSING",example_count:0,examples:[]};
@@ -132,7 +142,7 @@ async function loadNode(nodeClass,{push=false,preserveHash=false}={}) {
   renderNodePage(node);
 
   if(preserveHash&&window.location.hash) {
-    requestAnimationFrame(()=>document.querySelector(window.location.hash)?.scrollIntoView({block:"start"}));
+    requestAnimationFrame(()=>{const row=document.querySelector(window.location.hash);row?.closest('details')?.setAttribute('open','');row?.scrollIntoView({block:"start"});});
   } else {
     window.scrollTo({top:0});
   }
@@ -150,7 +160,13 @@ function renderCategoryPage(categoryPath,{push=false}={}) {
   }
   currentClass=null;currentNode=null;if(push)updateUrl(categoryUrl(categoryPath));expandedCategories.add(firstPathSegment(categoryPath));renderNav();const children=childCategoryPaths(categoryPath),direct=directNodesForCategory(categoryPath),all=nodesUnderPath(categoryPath),leaf=categoryPath.split("/").pop();page.innerHTML=`${renderBreadcrumb(categoryPath)}<h1>${escapeHtml(leaf)}</h1><div class="compact-meta">${all.length} nodes in this section</div>${children.length?`<section class="section"><h2>Subcategories</h2><div class="category-card-grid">${children.map(c=>`<a class="category-card" href="${escapeAttr(categoryUrl(c))}" data-category-path="${escapeAttr(c)}"><div class="category-card-title">${escapeHtml(c.split('/').pop())}</div><div class="category-card-count">${nodesUnderPath(c).length} nodes</div></a>`).join("")}</div></section>`:""}<section class="section"><h2>${children.length?"Nodes directly in this category":"Nodes"}</h2>${direct.length?`<div class="node-card-grid">${direct.map(renderNodeCard).join("")}</div>`:'<div class="source-note">No nodes are directly assigned to this level.</div>'}</section>`; attachBreadcrumbHandlers();page.querySelectorAll('[data-node-class]').forEach(a=>a.onclick=e=>{e.preventDefault();loadNode(a.dataset.nodeClass,{push:true});}); }
 function renderNodeCard(node) { return `<a class="node-card" href="${escapeAttr(nodeUrl(node.class))}" data-node-class="${escapeAttr(node.class)}"><div class="node-card-title">${escapeHtml(node.display_name)}</div>${node.display_name!==node.class?`<div class="node-card-class">${escapeHtml(node.class)}</div>`:""}<div class="node-card-desc">${escapeHtml(node.description||"")}</div></a>`; }
-function renderSynopsis(node) { const args=node.argument_order.map(name=>node.arguments[name]);const rendered=args.map(arg=>`<span class="synopsis-arg"><a href="${escapeAttr(nodeUrl(node.identity.class,arg.name))}" data-arg="${escapeAttr(arg.name)}">${escapeHtml(arg.name)}</a>=<span>${escapeHtml(arg.python_type)}</span></span>`).join(", ");return `<div class="synopsis"><span class="syntax-module">nuke</span>.<span class="syntax-function">createNode</span>(<span class="syntax-string">"${escapeHtml(node.identity.class)}"</span>${rendered?", "+rendered:""})</div>`; }
+function displayType(type) {
+  return String(type || "")
+    .replace(/\blist(?=\[)/gi, "")
+    .replace(/\btuple(?=\[)/gi, "")
+    .replace(/\s*\|\s*/g, " | ");
+}
+function renderSynopsis(node) { const order=window.contentQualitySynopsisArguments?.(node.identity.class,node.argument_order,node)||node.argument_order;const args=order.map(name=>node.arguments[name]).filter(Boolean);const rendered=args.map(arg=>`<span class="synopsis-arg"><a href="${escapeAttr(nodeUrl(node.identity.class,arg.name))}" data-arg="${escapeAttr(arg.name)}">${escapeHtml(arg.name)}</a>=<span>${escapeHtml(displayType(arg.python_type))}</span></span>`).join(", ");return `<div class="synopsis"><span class="syntax-module">nuke</span>.<span class="syntax-function">createNode</span>(<span class="syntax-string">"${escapeHtml(node.identity.class)}"</span>${rendered?", "+rendered:""})</div>`; }
 function formatValue(value) {
   if (value === undefined || value === null) return "—";
   if (typeof value === "string") return JSON.stringify(value);
@@ -166,7 +182,7 @@ function exampleChips(arg) {
     visible.map(v => `<span class="value-chip">${escapeHtml(formatValue(v))}</span>`).join("")
   }${extra > 0 ? `<span class="value-chip">+${extra} more</span>` : ""}</div>`;
 }
-function renderArguments(node) { const rows=node.argument_order.map(name=>{const arg=node.arguments[name],url=nodeUrl(node.identity.class,name);return `<div class="argument" id="arg-${escapeAttr(name)}"><div class="arg-name"><a href="${escapeAttr(url)}">${escapeHtml(name)}</a><a class="arg-link" href="${escapeAttr(url)}" title="Link to ${escapeAttr(name)}">#</a></div><div class="arg-type">${escapeHtml(arg.python_type||arg.knob_type||"")}</div><div class="arg-default">${escapeHtml(formatValue(arg.default?.value))}</div><div class="arg-examples">${exampleChips(arg)}</div><div class="arg-desc">${escapeHtml(arg.description?.text||"")}</div></div>`;}).join("");return `<div class="argument-list"><div class="argument header"><div>Argument</div><div>Python type</div><div>Default</div><div>Examples / values</div><div>Description</div></div>${rows}</div>`; }
+function renderArguments(node) { const rows=node.argument_order.map(name=>{const arg=node.arguments[name],url=nodeUrl(node.identity.class,name);return `<div class="argument" id="arg-${escapeAttr(name)}" data-argument-name="${escapeAttr(name)}" data-knob-type="${escapeAttr(arg.knob_type||"")}"><div class="arg-name"><a href="${escapeAttr(url)}">${escapeHtml(name)}</a><a class="arg-link" href="${escapeAttr(url)}" title="Link to ${escapeAttr(name)}">#</a></div><div class="arg-type">${escapeHtml(displayType(arg.python_type||arg.knob_type||""))}</div><div class="arg-default">${escapeHtml(formatValue(arg.default?.value))}</div><div class="arg-examples">${exampleChips(arg)}</div><div class="arg-desc">${escapeHtml(arg.description?.text||"")}</div></div>`;}).join("");return `<details class="arguments-rollout"><summary>Arguments <span>${node.argument_order.length}</span></summary><div class="argument-list"><div class="argument header"><div>Argument</div><div>Python type</div><div>Default</div><div>Examples / values</div><div>Description</div></div>${rows}</div></details>`; }
 function sanitizeHelpHtml(raw) {
   if (!raw) return "";
   const template = document.createElement("template");
@@ -244,7 +260,12 @@ function renderExamples(node) {
     </div>
   `).join("");
 }
-function renderNodePage(node) { const cls=node.identity.class,display=node.identity.display_name,category=node.navigation.category||"Uncategorized",menuPath=node.navigation.menu_path||category; page.innerHTML=`${renderBreadcrumb(nodeCategoryPath(menuPath),display)}<h1>${escapeHtml(display)}</h1><div class="class-line">${display!==cls?`Class: ${escapeHtml(cls)} · ${escapeHtml(node.creation.preferred)}`:escapeHtml(node.creation.preferred)}</div><div class="description">${sanitizeHelpHtml(node.description.text||"No description available.")}</div><section class="section"><h2>Synopsis</h2>${renderSynopsis(node)}</section><section class="section"><h2>Creation</h2><div class="creation-grid"><pre class="code">${highlightPython(node.creation.preferred)}</pre>${(node.creation.alternates||[]).map(x=>`<pre class="code">${highlightPython(x)}</pre>`).join("")}</div><div class="compact-meta">Category: ${escapeHtml(category)} · Inputs: ${escapeHtml(node.inputs.minimum)} min / ${escapeHtml(node.inputs.maximum)} max · Nuke ${escapeHtml(node.provenance.nuke_version?.string||"")}</div></section><section class="section"><h2>Arguments</h2>${renderArguments(node)}</section><section class="section"><h2>Examples</h2><div class="examples">${renderExamples(node)}</div></section>`; attachBreadcrumbHandlers();page.querySelectorAll('[data-arg]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const arg=a.dataset.arg;updateUrl(nodeUrl(cls,arg));document.getElementById(`arg-${arg}`)?.scrollIntoView({block:'start'});})); }
+async function copyCodeText(text) {
+  if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text);
+  const textarea=document.createElement("textarea");textarea.value=text;textarea.style.position="fixed";textarea.style.opacity="0";document.body.appendChild(textarea);textarea.select();document.execCommand("copy");textarea.remove();
+}
+function attachCopyButtons() { page.querySelectorAll(".synopsis, pre.code").forEach(target=>{if(target.closest(".code-copy-wrap"))return;const wrap=document.createElement("div");wrap.className="code-copy-wrap";target.parentNode.insertBefore(wrap,target);wrap.appendChild(target);const button=document.createElement("button");button.type="button";button.className="code-copy-button";button.textContent="Copy";button.setAttribute("aria-label","Copy code");button.onclick=async()=>{try{await copyCodeText(target.innerText);button.textContent="Copied";}catch{button.textContent="Copy failed";}setTimeout(()=>button.textContent="Copy",1400);};wrap.appendChild(button);}); }
+function renderNodePage(node) { const cls=node.identity.class,display=node.identity.display_name,category=node.navigation.category||"Uncategorized",menuPath=node.navigation.menu_path||category; page.innerHTML=`${renderBreadcrumb(nodeCategoryPath(menuPath),display)}<h1>${escapeHtml(display)}</h1><div class="class-line">${display!==cls?`Class: ${escapeHtml(cls)} · ${escapeHtml(node.creation.preferred)}`:escapeHtml(node.creation.preferred)}</div><div class="description">${sanitizeHelpHtml(node.description.text||"No description available.")}</div><section class="section"><h2>Synopsis</h2>${renderSynopsis(node)}</section><section class="section"><h2>Creation</h2><div class="creation-grid"><pre class="code">${highlightPython(node.creation.preferred)}</pre></div><div class="compact-meta">Category: ${escapeHtml(category)} · Inputs: ${escapeHtml(node.inputs.minimum)} min / ${escapeHtml(node.inputs.maximum)} max · Nuke ${escapeHtml(node.provenance.nuke_version?.string||"")}</div></section><section class="section">${renderArguments(node)}</section><section class="section"><h2>Examples</h2><div class="examples">${renderExamples(node)}</div></section>`; window.applyContentQuality?.(); attachCopyButtons(); attachBreadcrumbHandlers();page.querySelectorAll('[data-arg]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const arg=a.dataset.arg;updateUrl(nodeUrl(cls,arg));const row=document.getElementById(`arg-${arg}`);row?.closest('details')?.setAttribute('open','');row?.scrollIntoView({block:'start'});})); }
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
