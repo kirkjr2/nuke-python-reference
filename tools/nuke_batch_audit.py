@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-geo-selection.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-particle-variable.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["GeoActivation", "GeoVisibility", "GeoCollection", "GeoDuplicate", "GeoSelection"]
+NODE_CLASSES = ["ParticleSettings", "ParticleMerge", "GeoViewScene", "VariableSwitch", "TimeDissolve"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "GeoActivation": {"inject_mask": False, "invert_mask": False, "method": "deactivate\tdeactivate"},
-    "GeoVisibility": {"inject_mask": False, "invert_mask": False, "method": "hide\thide"},
-    "GeoCollection": {"collection_name": "foreground", "inject_mask": False},
-    "GeoDuplicate": {"inject_mask": False, "mode": "Duplicate", "parent_prim_type": "Xform", "prim_path": "{path}_{nodename}"},
-    "GeoSelection": {"inject_mask": False},
+    "ParticleSettings": {"steps_per_frame": 2.0},
+    "ParticleMerge": {},
+    "GeoViewScene": {"max_length": 250.0},
+    "VariableSwitch": {"dynamic_knobs": 2.0, "i0": "primary", "i1": "alternate"},
+    "TimeDissolve": {"in": 1.0, "out": 10.0},
 }
 
 SPECIAL_TYPE_PARTS = (
