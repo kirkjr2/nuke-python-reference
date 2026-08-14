@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-material-project.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-geo-selection.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["FillShader", "Specular", "WireframeShader", "Project3DShader", "Project3D2"]
+NODE_CLASSES = ["GeoActivation", "GeoVisibility", "GeoCollection", "GeoDuplicate", "GeoSelection"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "FillShader": {"channels": "rgba", "color": [0.2, 0.4, 0.8, 1.0]},
-    "Specular": {"channels": "rgba", "max_shininess": 20.0, "min_shininess": 5.0, "shininess_channel": "luminance", "white": [0.18, 0.18, 0.18]},
-    "WireframeShader": {"channels": "rgba", "face_edges": True, "line_color": [1.0, 0.2, 0.1, 1.0], "line_width": 1.0, "operation": "over"},
-    "Project3DShader": {"crop": True, "far_clip_enable": True, "near_clip_enable": True, "occlusion_mode": "self", "project_on": "both"},
-    "Project3D2": {"crop": True, "occlusion_mode": "self", "project_on": "both"},
+    "GeoActivation": {"inject_mask": False, "invert_mask": False, "method": "deactivate\tdeactivate"},
+    "GeoVisibility": {"inject_mask": False, "invert_mask": False, "method": "hide\thide"},
+    "GeoCollection": {"collection_name": "foreground", "inject_mask": False},
+    "GeoDuplicate": {"inject_mask": False, "mode": "Duplicate", "parent_prim_type": "Xform", "prim_path": "{path}_{nodename}"},
+    "GeoSelection": {"inject_mask": False},
 }
 
 SPECIAL_TYPE_PARTS = (
