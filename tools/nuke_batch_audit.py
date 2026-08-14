@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-vector-time.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-deep-basic.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["VectorBlur2", "ZDefocus2", "MotionBlur2D", "NoTimeBlur", "TimeEcho"]
+NODE_CLASSES = ["DeepFromImage", "DeepCrop", "DeepMerge2", "DeepToImage2", "DeepRecolor"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,17 +35,17 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "VectorBlur2": dict(COMMON_MASK_VALUES, alpha="none", blur_inside=True, blur_type="gaussian", blur_uv="none", channels="rgba", grow_bbox=[0.0,0.0], invert_uv=False, motion_falloff=0.33, mv_presets="Nuke ScanlineRender", normalize=True, offset=-0.5, output="result", scale=[1.0,1.0], soft_lines=False, useGPUIfAvailable=False, uv="none", uv_offset=0.0),
-    "ZDefocus2": dict(COMMON_MASK_VALUES, aspect=1.0, autoLayerSpacing=True, blades=5.0, bloom=False, bloom_gain=2.0, bloom_gamma=False, bloom_threshold=0.8, blur_dof=True, catadioptric=False, catadioptric_size=0.3, center=0.0, channels="rgba", clamp_image_filter=False, dof=0.0, fill_foreground=True, filter_bounds="shape", filter_channel="alpha", filter_type="disc", focal_point=[960.0,540.0], image_filter="cubic", inner_brightness=0.8, inner_feather=1.0, inner_size=0.8, layerCurve=1.0, layers=50.0, legacy_resize_mode=True, math="far=0", max_size=[10.0,10.0], output="result", rotation=0.0, roundness=0.2, shape=1.0, show_image=True, show_legacy_resize_mode=True, size=[5.0,5.0], useGPUIfAvailable=False, use_input_channels=False, z_channel="depth.Z"),
-    "MotionBlur2D": {"shutter":0.5,"shuttercustomoffset":0.0,"shutteroffset":"start","uv":"motion"},
-    "NoTimeBlur": {"rounding":"rint","single":True},
-    "TimeEcho": {"framesbehind":3.0,"frmaesfade":0.75,"mode":"Max"},
+    "DeepFromImage": {"keepZeroAlpha":False,"premult":False,"set_z":True,"z":1.0},
+    "DeepCrop": {"bbox":[100.0,100.0,1820.0,980.0],"outside_bbox":False,"outside_zrange":False,"use_bbox":True,"use_zfar":True,"use_znear":True,"zfar":10.0,"znear":1.0},
+    "DeepMerge2": {"drop_hidden":False,"drop_zero_threshold":0.0000001,"metainput":"B","operation":"combine","volumetric_holdout":False},
+    "DeepToImage2": {"volumetric_composition":True},
+    "DeepRecolor": {"bbox":"deep","channels":"rgb","targetInputAlpha":False},
 }
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
     "Table", "Transform2d", "IArray", "Format", "Tab", "FrameExtent",
-    "TimeKnob", "Keyer", "Link", "Text", "ViewPair",
+    "TimeKnob", "Keyer", "Link", "Text", "ViewPair", "MetaData",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 
