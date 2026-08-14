@@ -19,3 +19,10 @@ can execute callbacks or reject replayed state and may destabilize Nuke.
 
 Run this in a disposable Nuke session. Some installed node classes may display
 license warnings or require plug-ins that are unavailable on another machine.
+
+## In-Nuke audit worker
+
+When terminal-mode Nuke cannot acquire the Foundry license lock, start
+`nuke_audit_worker.py` once from the Script Editor. It polls for a local request
+file and runs only the fixed `nuke_batch_audit.py` file from this directory.
+Close Nuke or call the worker's `stop()` function to stop polling.
