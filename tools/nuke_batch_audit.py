@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-deep-basic.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-light-view.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["DeepFromImage", "DeepCrop", "DeepMerge2", "DeepToImage2", "DeepRecolor"]
+NODE_CLASSES = ["HueKeyer", "ReLight", "SideBySide", "Wireframe", "AmbientOcclusion"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "DeepFromImage": {"keepZeroAlpha":False,"premult":False,"set_z":True,"z":1.0},
-    "DeepCrop": {"bbox":[100.0,100.0,1820.0,980.0],"outside_bbox":False,"outside_zrange":False,"use_bbox":True,"use_zfar":True,"use_znear":True,"zfar":10.0,"znear":1.0},
-    "DeepMerge2": {"drop_hidden":False,"drop_zero_threshold":0.0000001,"metainput":"B","operation":"combine","volumetric_holdout":False},
-    "DeepToImage2": {"volumetric_composition":True},
-    "DeepRecolor": {"bbox":"deep","channels":"rgb","targetInputAlpha":False},
+    "HueKeyer": {"channels": "rgb", "invert": False, "output": "alpha"},
+    "ReLight": {"ambient": [0.05, 0.05, 0.05], "normal": "none", "position": "none", "use_alpha": True},
+    "SideBySide": {"vertical": False},
+    "Wireframe": {"channels": "rgba", "line_color": [1.0, 0.2, 0.1, 1.0], "line_width": 1.0, "operation": "over"},
+    "AmbientOcclusion": {"falloff": 0.5, "far": 10.0, "near": 0.1, "samples": 16.0, "spread": 1.0},
 }
 
 SPECIAL_TYPE_PARTS = (
