@@ -28,3 +28,10 @@ batches should skip the listed controls and continue processing other nodes.
   it expects three floats.
 - Follow-up: inspect the three components in Nuke and rerun with an explicit
   three-value test before publishing a writable example.
+
+## ParticleGravity
+
+- `strength` — the `PositionVector_Knob` rejected a three-value sequence with
+  `must be real number, not list`.
+- Follow-up: audit its component-aware setter before documenting it as a
+  directly writable vector argument.

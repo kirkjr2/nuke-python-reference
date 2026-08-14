@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-geo-points-warp.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-particle-field-render.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["GeoPointsToMesh", "GeoProjectUV", "GeoTrilinearWarp", "GeoNoise", "GeoPoints"]
+NODE_CLASSES = ["ParticleCylinderFlow", "ParticleInfo", "ParticleBlinkScript", "FieldShapeModify", "SplatRender"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -34,12 +34,14 @@ COMMON_MASK_VALUES = {
     "unpremult": "none",
 }
 
+PARTICLE_COMMON = {"display": "unchanged", "max_age": 1.0, "min_age": 0.0, "pivot_rotate": [0.0, 0.0, 0.0], "pivot_translate": [0.0, 0.0, 0.0], "probability": 1.0, "region": "none", "region_invert": False, "render_mode": "unchanged", "rot_order": "ZXY", "rotate": [0.0, 0.0, 0.0], "scaling": [1.0, 1.0, 1.0], "seed": 0.0, "selectable": True, "skew": [0.0, 0.0, 0.0], "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"}
+
 TEST_VALUES = {
-    "GeoPointsToMesh": {"confidence": False, "create_missing_parents": True, "depth": 8.0, "iso_divide": 8.0, "kernel_depth": 6.0, "no_clip_tree": False, "no_reset_samples": False, "parentPrimType": "Xform", "refine": 3.0, "samples_per_node": 1.0, "scale": 1.25, "selectable": True, "solver_divide": 8.0, "use_filtering": True, "use_selection": True, "verbose": False},
-    "GeoProjectUV": {"frustum_culling": True, "generate_w": True, "inject_mask": False, "plane": "XY", "proj_plane_culling": False, "project_on": "both\tBoth", "projection": "perspective\tPerspective", "reference_frame": 1.0, "u_invert": False, "u_scale": 1.0, "use_reference_frame": False, "uv_attrib_name": "primvars:st", "uvw_attrib_name": "primvars:stw", "v_invert": False, "v_scale": 1.0},
-    "GeoTrilinearWarp": {"inject_mask": False, "p0": [-0.5, -0.5, -0.5], "p1": [0.5, -0.5, -0.5], "p2": [0.5, 0.5, -0.5], "p3": [-0.5, 0.5, -0.5], "p4": [-0.5, -0.5, 0.5], "p5": [0.5, -0.5, 0.5], "p6": [0.5, 0.5, 0.5], "p7": [-0.5, 0.5, 0.5], "src0": [-0.5, -0.5, -0.5], "src1": [0.5, 0.5, 0.5], "src_use_bbox": True},
-    "GeoNoise": {"amount": [1.0, 1.0, 1.0], "gain": 0.5, "geosnap_operation": "Geo to", "geosnap_rotate": False, "geosnap_scale": False, "geosnap_translate": True, "inject_mask": False, "lacunarity": 2.0, "mode": "fBm", "octaves": 2.0, "pivot_rotate": [0.0, 0.0, 0.0], "pivot_translate": [0.0, 0.0, 0.0], "rot_order": "ZXY", "rotate": [0.0, 0.0, 0.0], "skew": [0.0, 0.0, 0.0], "time": 0.0, "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"},
-    "GeoPoints": {"N_channel": "none", "P_channel": "none", "color_channel": "rgba", "create_missing_parents": True, "depth_channel": "depth.Z", "depth_type": "1/Z", "detail": 0.25, "geosnap_operation": "Geo to", "geosnap_rotate": False, "geosnap_scale": False, "geosnap_translate": True, "parentPrimType": "Xform", "point_size": 0.0001, "selectable": True, "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"},
+    "ParticleCylinderFlow": {"showGeometry": True},
+    "ParticleInfo": {"axisScale": 1.0, "display": "unchanged", "firstParticle": 0.0, "maxParticles": 1000.0, "render_mode": "unchanged", "selectable": True, "showAge": True, "showColor": True, "showPosition": True, "showVelocity": True, "show_count": True},
+    "ParticleBlinkScript": dict(PARTICLE_COMMON, protectKernelWhenPublishing=False),
+    "FieldShapeModify": {"angle": 15.0, "elongate": [0.0, 0.0, 0.0], "limit": [1.0, 1.0, 1.0], "operation": "round\tRound", "preview_bounds": False, "preview_detail": 1.0, "preview_offset": 0.0, "preview_on": False, "preview_opacity": 0.5, "preview_scale": 1.0, "radius": 0.0, "repeat": [0.5, 0.5, 0.5], "rounding": 0.0, "thickness": 0.1, "x_axis": True, "y_axis": False, "z_axis": False},
+    "SplatRender": {"alpha_threshold_for_depth": 0.5, "camera_motion_blur": True, "channels": "rgba", "deep_alpha_threshold": 0.5, "depth_channels": "depth.Z", "motion_samples": 0.0, "object_motion_blur": True, "one_over_z": True, "scene_time_offset": 0.0, "shutter": 0.5, "shutter_bias": 0.0, "shuttercustomoffset": 0.0, "shutteroffset": "start"},
 }
 
 SPECIAL_TYPE_PARTS = (
