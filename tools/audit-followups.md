@@ -35,3 +35,9 @@ batches should skip the listed controls and continue processing other nodes.
   `must be real number, not list`.
 - Follow-up: audit its component-aware setter before documenting it as a
   directly writable vector argument.
+
+## LiveGroup
+
+- `modified` and `published` — Nuke 17.0v3 reports `read only variable`.
+- Follow-up: present both as internal state indicators, not writable Python
+  arguments.

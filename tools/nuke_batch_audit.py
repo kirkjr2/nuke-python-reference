@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-furnace-motion-cleanup.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-livegroup-corrected.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["OFXuk.co.thefoundry.furnace.f_deflicker2_v403", "OFXuk.co.thefoundry.furnace.f_rigremoval_v403", "OFXuk.co.thefoundry.furnace.f_align_v403", "OFXuk.co.thefoundry.furnace.f_wireremoval_v403", "OFXuk.co.thefoundry.furnace.f_steadiness_v403"]
+NODE_CLASSES = ["LiveGroup"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -40,11 +40,7 @@ MESH_COMMON = dict(GEO_COMMON, columns=30.0, display_color=[0.18, 0.18, 0.18], d
 LIGHT_COMMON = dict(GEO_COMMON, display="wireframe", editable=True, inject_mask=False, inputs_color=[1.0, 1.0, 1.0], inputs_colorTemperature=6500.0, inputs_diffuse=1.0, inputs_enableColorTemperature=False, inputs_exposure=0.0, inputs_intensity=1.0, inputs_normalize=False, inputs_specular=1.0, locator_fill_color=[0.8, 0.8, 0.8], locator_fixed_size=False, locator_use_light_for_fill_color=True, mode="Create", xform_op_order="Prepend")
 
 TEST_VALUES = {
-    "OFXuk.co.thefoundry.furnace.f_deflicker2_v403": {"amount": 0.3, "blockSize": 9.6, "cacheBreaker": True, "range": 2.0, "scaleDown": 0.5, "useMotion": True, "vectorDetail": 0.2},
-    "OFXuk.co.thefoundry.furnace.f_rigremoval_v403": {"cacheBreaker": True, "failOpacity": 0.5, "filtering": "Medium", "frameRange": 4.0, "framesSearched": "Forward and Backward", "framesUsed": "Half of Frames", "lumCorrect": False, "maxRigMove": 30.0, "overlapCorrect": 1.0, "perspCorrect": False, "preserveAlpha": False, "regionBL": [716.8, 307.2], "regionTR": [1331.2, 768.0], "rigRegion": "Box"},
-    "OFXuk.co.thefoundry.furnace.f_align_v403": {"accuracy": 0.9, "badAnalysis": True, "cacheBreaker": True, "filtering": "Medium", "invert": False, "mat00": 1.0, "mat01": 0.0, "mat02": 0.0, "mat10": 0.0, "mat11": 1.0, "mat12": 0.0, "mat20": 0.0, "mat21": 0.0, "mat22": 1.0, "perspective": False, "pinBL": [0.0, 0.0], "pinBR": [2048.0, 0.0], "pinOriginBL": [0.0, 0.0], "pinOriginTR": [2048.0, 1080.0], "pinTL": [0.0, 1080.0], "pinTR": [2048.0, 1080.0], "range": "Source Clip Range", "regionBL": [204.8, 108.0], "regionTR": [1843.2, 972.0], "renderOn": True, "rotate": True, "scale": False, "start": 0.0, "stop": 100.0, "translate": True},
-    "OFXuk.co.thefoundry.furnace.f_wireremoval_v403": {"cacheBreaker": True, "end": 100.0, "endWidth": 15.56, "filterSize": 5.0, "isUserKeyFrame": 0.0, "lumBlockSize": 31.12, "lumCorrect": False, "onScreenWire": "Show", "output": "Source", "overallWidth": 15.56, "point1": [614.4, 540.0], "point2": [819.2, 540.0], "point3": [1024.0, 540.0], "point4": [1228.8, 540.0], "point5": [1433.6, 540.0], "range": "Source Clip Range", "repairMethod": "Spatial", "showUI": False, "start": 0.0, "startWidth": 15.56, "tempOffset": 1.0, "wireRangeEndInternal": 100.0, "wireRangeStartInternal": 0.0, "wireType": "Three Points"},
-    "OFXuk.co.thefoundry.furnace.f_steadiness_v403": {"accuracy": 0.6, "autoScale": 1.0, "autoScaleBL": [0.0, 0.0], "autoScaleTR": [2048.0, 1080.0], "badAnalysis": True, "cacheBreaker": True, "filtering": "Medium", "invert": False, "lockFrame": 0.0, "mat00": 1.0, "mat01": 0.0, "mat02": 0.0, "mat10": 0.0, "mat11": 1.0, "mat12": 0.0, "mat20": 0.0, "mat21": 0.0, "mat22": 1.0, "mode": "Smooth", "perspective": False, "pinBL": [0.0, 0.0], "pinBR": [2048.0, 0.0], "pinOriginBL": [0.0, 0.0], "pinOriginTR": [2048.0, 1080.0], "pinTL": [0.0, 1080.0], "pinTR": [2048.0, 1080.0], "range": "Source Clip Range", "regionBL": [409.6, 216.0], "regionTR": [1638.4, 864.0], "renderOn": True, "rotate": True, "scale": False, "smooth": 10.0, "start": 0.0, "stop": 100.0, "translate": True},
+    "LiveGroup": {"disable_group_view": False, "group_view_position": "top-left", "on_error": "error", "output": "", "reading": False, "show_group_view": False, "shownWarningFile": "", "useOutput": False, "version": 0.0},
 }
 
 SPECIAL_TYPE_PARTS = (
