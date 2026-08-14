@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-filter-analysis.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-key-distort-metadata.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["EdgeDetectWrapper", "Laplacian", "DegrainSimple", "DegrainBlue", "Bilateral2"]
+NODE_CLASSES = ["ChromaKeyer", "EdgeExtend", "IDistort", "Anaglyph", "CopyMetaData"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,32 +35,39 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "EdgeDetectWrapper": {
-        "blurquality": 15.0, "blursize": [0.0, 0.0], "channels": "rgb",
-        "edgedetector": "sobel", "erodesize": 0.0,
-        "maskedgedetect": "none", "output": "alpha", "threshold": 0.0,
+    "ChromaKeyer": {
+        "_alphaBias": 0.5, "_blackPoint": 0.0, "_chromaGain": 0.0,
+        "_despillBias": 0.5, "_insideMask": "ignore",
+        "_overrideDespillBias": False, "_preMultiply": True,
+        "_replace": "ignore", "_replaceAlphaDiff": False,
+        "_replaceAmount": 1.0, "_replaceColor": 1.0,
+        "_screenBalance": 0.5, "_screenColor": 0.0,
+        "_screenGain": 1.0, "_view": "final result",
+        "_whitePoint": 1.0, "useGPUIfAvailable": False,
     },
-    "Laplacian": dict(
-        COMMON_MASK_VALUES, channels="rgb", crop=True, filter="gaussian",
-        quality=15.0, size=[3.0, 3.0],
-    ),
-    "DegrainSimple": dict(
-        COMMON_MASK_VALUES, bVal=5.0, channels="rgb", gVal=2.0, rVal=2.0,
-    ),
-    "DegrainBlue": {"size": 8.0},
-    "Bilateral2": {
-        "channels": "rgb", "colorSigma": 0.4, "filter": "gaussian",
-        "fringe": False, "guide": "rgb", "inject": False,
-        "invertMask": False, "maskChannelInput": "none", "mix": 1.0,
-        "positionalSigma": 0.4, "size": [3.0, 3.0],
-        "useGPUIfAvailable": False,
+    "EdgeExtend": {
+        "channels": "rgb", "detailAmount": 1.0, "edgeMaskChannel": "none",
+        "erode": 0.0, "matte": "Source Alpha", "premultiply": True,
+        "sourceIsPremultiplied": False, "useGPUIfAvailable": False,
+    },
+    "IDistort": {
+        "blur": "none", "blur_scale": [1.0, 1.0], "channels": "rgba",
+        "filter": "cubic", "invert_mask": False, "maskChannel": "none",
+        "premultiplied": False, "uv": "none", "uv_offset": 0.0,
+        "uv_scale": [1.0, 1.0],
+    },
+    "Anaglyph": {"amtcolour": 0.5, "offset": 0.0, "swap": False},
+    "CopyMetaData": {
+        "imageMetadatafilter": "", "imageMetadatafilterMode": "keys and values",
+        "mergeMode": "Image+Meta", "metadatafilter": "",
+        "metadatafilterMode": "keys and values",
     },
 }
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
     "Table", "Transform2d", "IArray", "Format", "Tab", "FrameExtent",
-    "TimeKnob", "Keyer", "Link", "Text",
+    "TimeKnob", "Keyer", "Link", "Text", "ViewPair",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
 
