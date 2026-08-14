@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-surface-procedural.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-map-depth-advanced.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["ReflectiveSurface", "Displacement", "PoissonMesh", "ProcGeo", "Inpaint2"]
+NODE_CLASSES = ["C_STMap2_1", "C_Blender2_1", "C_DisparityGenerator2_1", "EXPTool", "DepthGenerator"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "ReflectiveSurface": {"camera_visibility": True, "dielectric_priority": 0.0, "diffuse_visibility": True, "fresnel_bias": 0.5, "fresnel_enable": True, "index_of_refraction": 1.57, "reflection_percentage": 1.0, "reflection_tint": [1.0, 1.0, 1.0], "shadow_visibility": True, "side_visibility": "both-sides", "sided_mode": "prim-attrib", "specular_visibility": True, "transmission_tint": [1.0, 1.0, 1.0], "transmission_visibility": True},
-    "Displacement": {"build_normals": True, "displacement_channel": "luminance", "displacement_displace_threshold": 0.01, "displacement_edge_length": 20.0, "displacement_edge_threshold": 0.01, "displacement_max_tessellation": 4.0, "displacement_mode": "screen", "displacement_normal_threshold": 0.9, "filter": "cubic\t\t\tCubic,Bicubic", "filter_size": [5.0, 5.0], "normal_expansion": "none", "scale": 0.1},
-    "PoissonMesh": {"confidence": False, "depth": 8.0, "display": "solid", "isoDivide": 8.0, "render_mode": "solid", "samplesPerNode": 1.0, "scale": 1.25, "selectable": True, "solverDivide": 8.0, "useFiltering": True, "useSelection": True},
-    "ProcGeo": {"Gain": 0.5, "Lacunarity": 2.5, "Octaves": 5.0, "Speed": 1.1, "display": "solid", "mode": "Turbulence", "orient": "Z", "render_mode": "solid", "selectable": True, "x_offset": 0.0, "x_size": 4.0, "y_offset": 0.0, "y_size": 4.0},
-    "Inpaint2": {"LABColourSpace": False, "center": [960.0, 540.0], "channels": "rgb", "detailAmount": 0.0, "detailSource": "Source", "fillRegion": "Source Alpha", "invert_matrix": False, "rotate": 0.0, "scale": [1.0, 1.0], "smoothness": 1.0, "stretchAmount": 0.0, "stretchDirection": 0.0, "translate": [0.0, 0.0], "useGPUIfAvailable": True},
+    "C_STMap2_1": {"blackOutside": False, "blur": "none", "blurScale": [1.0, 1.0], "channels": "all", "filter": "cubic\t\t\tCubic,Bicubic", "fringe": False, "inject": False, "interpolate": False, "invertMask": False, "map": "stmap", "maskChannelInput": "none", "mode": "warped src\t\t\tWarped src", "splatting": 2.0, "useGPUIfAvailable": True, "uv": "stitch_map", "xyz": "none"},
+    "C_Blender2_1": {"blendSuppression": 0.125, "blendType": "Alpha", "expandBlend": True, "manualOverride": False, "useGPUIfAvailable": True},
+    "C_DisparityGenerator2_1": {"consistency": 1.0, "consistencyThreshold": 1.0, "dilationSize": 5.0, "gradientThreshold": 1.0, "inputProjectionType": "Default", "leftView": "main", "maskWith": "None", "maxIterations": 30.0, "rightView": "main", "smoothness": 1.0, "strength": 5.0, "useGPUIfAvailable": True, "vectorDetail": 1.0, "vectorSpace": "Default (wrapped)", "warps": 3.0},
+    "EXPTool": {"blackpoint": [0.0, 0.0, 0.0], "blue": 0.0, "channels": "rgb", "colorspace": "Linear", "fringe": False, "gang": True, "green": 0.0, "inject": False, "invert_mask": False, "invert_unpremult": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0, "mode": "Densities", "red": 0.0, "unpremult": "none"},
+    "DepthGenerator": {"N_channel": "none", "P_channel": "none", "accuracy": 0.0, "classic3D": False, "far": 10000.0, "frameSeparation": 1.0, "ignoreMask": "None", "markRegions": False, "near": 0.1, "noiseLevel": 0.01, "normalDetail": 0.25, "outputType": "Depth (1/Z)", "sharpness": 0.5, "smoothness": 0.5, "strength": 1.0, "vectorDetail": 0.5},
 }
 
 SPECIAL_TYPE_PARTS = (
