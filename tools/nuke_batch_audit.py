@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-map-depth-advanced.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-geo-points-warp.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["C_STMap2_1", "C_Blender2_1", "C_DisparityGenerator2_1", "EXPTool", "DepthGenerator"]
+NODE_CLASSES = ["GeoPointsToMesh", "GeoProjectUV", "GeoTrilinearWarp", "GeoNoise", "GeoPoints"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "C_STMap2_1": {"blackOutside": False, "blur": "none", "blurScale": [1.0, 1.0], "channels": "all", "filter": "cubic\t\t\tCubic,Bicubic", "fringe": False, "inject": False, "interpolate": False, "invertMask": False, "map": "stmap", "maskChannelInput": "none", "mode": "warped src\t\t\tWarped src", "splatting": 2.0, "useGPUIfAvailable": True, "uv": "stitch_map", "xyz": "none"},
-    "C_Blender2_1": {"blendSuppression": 0.125, "blendType": "Alpha", "expandBlend": True, "manualOverride": False, "useGPUIfAvailable": True},
-    "C_DisparityGenerator2_1": {"consistency": 1.0, "consistencyThreshold": 1.0, "dilationSize": 5.0, "gradientThreshold": 1.0, "inputProjectionType": "Default", "leftView": "main", "maskWith": "None", "maxIterations": 30.0, "rightView": "main", "smoothness": 1.0, "strength": 5.0, "useGPUIfAvailable": True, "vectorDetail": 1.0, "vectorSpace": "Default (wrapped)", "warps": 3.0},
-    "EXPTool": {"blackpoint": [0.0, 0.0, 0.0], "blue": 0.0, "channels": "rgb", "colorspace": "Linear", "fringe": False, "gang": True, "green": 0.0, "inject": False, "invert_mask": False, "invert_unpremult": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0, "mode": "Densities", "red": 0.0, "unpremult": "none"},
-    "DepthGenerator": {"N_channel": "none", "P_channel": "none", "accuracy": 0.0, "classic3D": False, "far": 10000.0, "frameSeparation": 1.0, "ignoreMask": "None", "markRegions": False, "near": 0.1, "noiseLevel": 0.01, "normalDetail": 0.25, "outputType": "Depth (1/Z)", "sharpness": 0.5, "smoothness": 0.5, "strength": 1.0, "vectorDetail": 0.5},
+    "GeoPointsToMesh": {"confidence": False, "create_missing_parents": True, "depth": 8.0, "iso_divide": 8.0, "kernel_depth": 6.0, "no_clip_tree": False, "no_reset_samples": False, "parentPrimType": "Xform", "refine": 3.0, "samples_per_node": 1.0, "scale": 1.25, "selectable": True, "solver_divide": 8.0, "use_filtering": True, "use_selection": True, "verbose": False},
+    "GeoProjectUV": {"frustum_culling": True, "generate_w": True, "inject_mask": False, "plane": "XY", "proj_plane_culling": False, "project_on": "both\tBoth", "projection": "perspective\tPerspective", "reference_frame": 1.0, "u_invert": False, "u_scale": 1.0, "use_reference_frame": False, "uv_attrib_name": "primvars:st", "uvw_attrib_name": "primvars:stw", "v_invert": False, "v_scale": 1.0},
+    "GeoTrilinearWarp": {"inject_mask": False, "p0": [-0.5, -0.5, -0.5], "p1": [0.5, -0.5, -0.5], "p2": [0.5, 0.5, -0.5], "p3": [-0.5, 0.5, -0.5], "p4": [-0.5, -0.5, 0.5], "p5": [0.5, -0.5, 0.5], "p6": [0.5, 0.5, 0.5], "p7": [-0.5, 0.5, 0.5], "src0": [-0.5, -0.5, -0.5], "src1": [0.5, 0.5, 0.5], "src_use_bbox": True},
+    "GeoNoise": {"amount": [1.0, 1.0, 1.0], "gain": 0.5, "geosnap_operation": "Geo to", "geosnap_rotate": False, "geosnap_scale": False, "geosnap_translate": True, "inject_mask": False, "lacunarity": 2.0, "mode": "fBm", "octaves": 2.0, "pivot_rotate": [0.0, 0.0, 0.0], "pivot_translate": [0.0, 0.0, 0.0], "rot_order": "ZXY", "rotate": [0.0, 0.0, 0.0], "skew": [0.0, 0.0, 0.0], "time": 0.0, "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"},
+    "GeoPoints": {"N_channel": "none", "P_channel": "none", "color_channel": "rgba", "create_missing_parents": True, "depth_channel": "depth.Z", "depth_type": "1/Z", "detail": 0.25, "geosnap_operation": "Geo to", "geosnap_rotate": False, "geosnap_scale": False, "geosnap_translate": True, "parentPrimType": "Xform", "point_size": 0.0001, "selectable": True, "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"},
 }
 
 SPECIAL_TYPE_PARTS = (
