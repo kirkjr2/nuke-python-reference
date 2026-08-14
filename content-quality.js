@@ -501,6 +501,34 @@ function contentQualityCurrentNode() {
   return new URL(window.location.href).searchParams.get("node");
 }
 
+const AUDIT_READ_ONLY = {
+  BigCat: ["isFirstTime"], CopyCat: ["showValidation"],
+  Deblur: ["isFirstTime", "tileOverlap", "tileSize"],
+  GridWarpTracker: ["*_isInFromTree", "*_isSelected", "*_linked", "*_previous", "*_registered", "*_relative"],
+  Inference: ["isFirstTime"], LiveGroup: ["modified", "published"],
+  MotionBlur: ["computedVectorFlag", "flickerCompensation", "maskFlag", "matteChannel", "motionEstimation", "resampleType", "shutterSamples", "shutterTime", "smoothnessLocal", "strengthReg", "vectorDetailLocal", "vectorDetailReg", "vectorSourceFlag", "warpSourceFlag", "weightBlue", "weightGreen", "weightRed"],
+  Upscale: ["isFirstTime"]
+};
+const AUDIT_SPECIAL_TYPE_PARTS = ["Button", "Curve", "Data", "File", "Font", "FreeType", "GeoSelect", "GridTree", "IArray", "Interact", "Keyer", "Link", "List", "MatchKnob", "Menu", "MetaData", "MetaKeyFrame", "Noodle", "Path", "Pulldown", "Python", "Roto", "SceneGraph", "Script", "Serialize", "Spline", "Tab", "Table", "Text", "Tracker", "Transform2d"];
+const AUDIT_ACTION_NAME_PARTS = ["analy", "calculate", "execute", "export", "generate", "import", "learn", "reload", "render", "solve", "track", "train", "update"];
+const AUDIT_INTERNAL_NAME_PATTERNS = [/^_/, /IsPressed$/];
+const SYNOPSIS_PRIORITY = ["operation", "channels", "output", "size", "amount", "value", "translate", "rotate", "scale", "center", "filter", "mix", "mask", "bbox", "first", "last"];
+
+function auditNameMatches(pattern, name) {
+  return pattern.startsWith("*") ? name.endsWith(pattern.slice(1)) : pattern === name;
+}
+
+function contentQualityArgumentAudit(nodeClass, name, knobType="") {
+  if ((AUDIT_READ_ONLY[nodeClass] || []).some(pattern => auditNameMatches(pattern, name))) return {kind: "read-only", label: "Read-only", description: "Internal or derived state confirmed read-only in Nuke 17.0v3; inspect it if needed, but do not use it as a writable argument."};
+  if (AUDIT_INTERNAL_NAME_PATTERNS.some(pattern => pattern.test(name))) return {kind: "special", label: "Internal control", description: "Internal UI state; not intended as a normal node-creation argument."};
+  if (AUDIT_SPECIAL_TYPE_PARTS.some(part => knobType.includes(part))) {
+    const action = /Button|Menu|Pulldown|Python|Script/.test(knobType);
+    return {kind: action ? "action" : "special", label: action ? "UI action" : "Special control", description: action ? "UI or command control; not an ordinary value argument." : "Compound or application-specific control with a dedicated scripting interface."};
+  }
+  if (AUDIT_ACTION_NAME_PARTS.some(part => name.toLowerCase().includes(part))) return {kind: "action", label: "Action control", description: "May start an operation or callback; intentionally excluded from automatic value-setting examples."};
+  return {kind: "writable", label: "Nuke-tested"};
+}
+
 function applyContentQuality() {
   const page = document.querySelector("#page");
   if (!page) return;
@@ -509,14 +537,30 @@ function applyContentQuality() {
     const entry = CONTENT_QUALITY[nodeClass];
 
     page.querySelectorAll(".editorial-quality, .editorial-overview, .editorial-note").forEach(el => el.remove());
-    if (!entry || !page.querySelector("h1")) return;
+    if (!nodeClass || !page.querySelector("h1")) return;
 
     const classLine = page.querySelector(".class-line");
     if (classLine) {
       const status = document.createElement("div");
-      status.className = `editorial-quality editorial-quality-${entry.tier}`;
-      status.textContent = entry.label;
+      status.className = `editorial-quality editorial-quality-${entry?.tier || "verified"}`;
+      status.textContent = entry?.label || "Nuke 17.0v3 argument audit complete";
       classLine.insertAdjacentElement("afterend", status);
+    }
+
+    page.querySelectorAll(".argument[data-argument-name]").forEach(row => {
+      const audit = contentQualityArgumentAudit(nodeClass, row.dataset.argumentName, row.dataset.knobType);
+      row.classList.add(`argument-${audit.kind}`);
+      if (audit.kind === "writable") return;
+      const examples = row.querySelector(".arg-examples");
+      if (examples) examples.innerHTML = `<span class="argument-audit-badge argument-audit-${audit.kind}">${audit.label}</span>`;
+      const description = row.querySelector(".arg-desc");
+      if (description && (!description.textContent.trim() || audit.kind === "read-only")) description.textContent = audit.description;
+    });
+
+    if (!entry) {
+      const examples = page.querySelector(".examples");
+      if (examples) examples.innerHTML = '<div class="no-examples">A practical compositor example has not been editorially reviewed for this node yet.</div>';
+      return;
     }
 
     const description = page.querySelector(".description");
@@ -580,8 +624,19 @@ function applyContentQuality() {
     if (examplesHeading) examplesHeading.textContent = exampleCount === 1 ? "Example" : "Examples";
 }
 
-function contentQualitySynopsisArguments(nodeClass, argumentOrder) {
-  return CONTENT_QUALITY[nodeClass]?.synopsisArguments || argumentOrder;
+function contentQualitySynopsisArguments(nodeClass, argumentOrder, node) {
+  const curated = CONTENT_QUALITY[nodeClass]?.synopsisArguments;
+  if (curated) return curated;
+  if (!node) return argumentOrder.slice(0, 8);
+  const writable = argumentOrder.filter(name => {
+    const arg = node.arguments[name];
+    if (!arg || arg.capabilities?.visible === false || arg.classification?.public === false) return false;
+    return contentQualityArgumentAudit(nodeClass, name, arg.knob_type).kind === "writable";
+  });
+  return writable.sort((a, b) => {
+    const ai = SYNOPSIS_PRIORITY.indexOf(a), bi = SYNOPSIS_PRIORITY.indexOf(b);
+    return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi) || argumentOrder.indexOf(a) - argumentOrder.indexOf(b);
+  }).slice(0, 8);
 }
 
 function contentQualityExample(nodeClass) {
