@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-rays-motion.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-vector-time.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["MotionBlur", "DirBlurWrapper", "GodRays", "VolumeRays", "BumpBoss"]
+NODE_CLASSES = ["VectorBlur2", "ZDefocus2", "MotionBlur2D", "NoTimeBlur", "TimeEcho"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,20 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "MotionBlur": {
-        "computedVectorFlag": 1.0, "flickerCompensation": False,
-        "maskFlag": 1.0, "matteChannel": "None", "motionEstimation": "Local",
-        "resampleType": "Bilinear", "shutterSamples": 3.0,
-        "shutterTime": 0.75, "smoothnessLocal": 0.5, "strengthReg": 1.5,
-        "useGPUIfAvailable": False, "vectorDetailLocal": 0.2,
-        "vectorDetailReg": 0.3, "vectorSourceFlag": 1.0,
-        "warpSourceFlag": 1.0, "weightBlue": 0.1,
-        "weightGreen": 0.6, "weightRed": 0.3,
-    },
-    "DirBlurWrapper": dict(COMMON_MASK_VALUES, BlurAngle=45.0, BlurCenter=[960.0,540.0], BlurLayer="rgb", BlurLength=5.0, BlurType="linear", PixelAspect=1.0, Quality=1.0, Samples=8.0, UseTarget=False, channels="rgb", holdout="none", pixeloffset=0.0, target=[960.0,540.0]),
-    "GodRays": dict(COMMON_MASK_VALUES, center=[960.0,540.0], channels="rgb", from_color=1.0, gamma=1.0, max=False, rotate=0.0, scale=1.0, skew=0.0, steps=8.0, to_color=1.0, translate=[0.0,0.0]),
-    "VolumeRays": {"CCorrect1_gain":1.0,"CCorrect1_gamma":1.0,"blur_size":[3.0,3.0],"chk_desat":False,"chk_flicker":True,"chk_radial":True,"chk_use_mask":False,"chk_xform_mask":False,"comp_me":False,"edge_size":0.0,"flicker_size":40.0,"flicker_speed":2.0,"initcolor":1.0,"luma_tol":0.0,"mask_blur":0.0,"pre_blur":0.0,"quality":"Medium","rad_softness":1.0,"radial_size":500.0,"raylength":[20.0,20.0],"style":"RGB Luminance","vol_pos":[960.0,540.0],"volume_end_color":0.0,"xform_flicker":False},
-    "BumpBoss": dict(COMMON_MASK_VALUES, bumpsize=[1.0,1.0], center=[960.0,540.0], channels="rgb", height=1.0, intensity=1.0, lightposition=[960.0,540.0], minshadow=0.0),
+    "VectorBlur2": dict(COMMON_MASK_VALUES, alpha="none", blur_inside=True, blur_type="gaussian", blur_uv="none", channels="rgba", grow_bbox=[0.0,0.0], invert_uv=False, motion_falloff=0.33, mv_presets="Nuke ScanlineRender", normalize=True, offset=-0.5, output="result", scale=[1.0,1.0], soft_lines=False, useGPUIfAvailable=False, uv="none", uv_offset=0.0),
+    "ZDefocus2": dict(COMMON_MASK_VALUES, aspect=1.0, autoLayerSpacing=True, blades=5.0, bloom=False, bloom_gain=2.0, bloom_gamma=False, bloom_threshold=0.8, blur_dof=True, catadioptric=False, catadioptric_size=0.3, center=0.0, channels="rgba", clamp_image_filter=False, dof=0.0, fill_foreground=True, filter_bounds="shape", filter_channel="alpha", filter_type="disc", focal_point=[960.0,540.0], image_filter="cubic", inner_brightness=0.8, inner_feather=1.0, inner_size=0.8, layerCurve=1.0, layers=50.0, legacy_resize_mode=True, math="far=0", max_size=[10.0,10.0], output="result", rotation=0.0, roundness=0.2, shape=1.0, show_image=True, show_legacy_resize_mode=True, size=[5.0,5.0], useGPUIfAvailable=False, use_input_channels=False, z_channel="depth.Z"),
+    "MotionBlur2D": {"shutter":0.5,"shuttercustomoffset":0.0,"shutteroffset":"start","uv":"motion"},
+    "NoTimeBlur": {"rounding":"rint","single":True},
+    "TimeEcho": {"framesbehind":3.0,"frmaesfade":0.75,"mode":"Max"},
 }
 
 SPECIAL_TYPE_PARTS = (
