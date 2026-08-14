@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-temporal-depth-grain.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-particle-geometry.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["LevelSet", "TemporalMedian", "FrameBlend", "Grain2", "ZSlice"]
+NODE_CLASSES = ["ParticleToGeo", "ParticleShockWave", "ParticleGrid", "ParticleFlock", "ParticleHelixFlow"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "LevelSet": {"channel": "alpha", "create_matte": False, "extrapolated": "none", "gradient": "motion", "gradient_extrapolate": False, "matte_limit": 0.0, "output": "alpha", "threshold": 0.5},
-    "TemporalMedian": {"channels": "all", "core": [0.05, 0.05, 0.05, 0.05], "fringe": False, "inject": False, "invert_mask": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0},
-    "FrameBlend": {"blendmask": "none", "channels": "all", "endframe": 10.0, "fringe": False, "inject": False, "inputmask": "none", "invert_mask": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0, "numframes": 5.0, "startframe": 1.0, "userange": True},
-    "Grain2": {"black": [0.0, 0.0, 0.0], "blue_i": 0.6, "blue_m": 0.85, "blue_size": [2.5, 2.5], "green_i": 0.6, "green_m": 0.46, "green_size": [2.9, 2.9], "maskgrain": True, "minimum": [0.0, 0.0, 0.0], "red_i": 0.6, "red_m": 0.416, "red_size": [3.3, 3.3], "seed": 134.0},
-    "ZSlice": {"Zchan": "none", "center": 0.5, "channels": "all", "dof": 0.1, "fringe": False, "inject": False, "invert_mask": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0},
+    "ParticleToGeo": {"align": "velocity", "display": "solid", "frame": 1.0, "render_mode": "solid", "selectable": True, "suppress_move": False, "use_frame": False},
+    "ParticleShockWave": {"showGeometry": False},
+    "ParticleGrid": {"showGeometry": True},
+    "ParticleFlock": {},
+    "ParticleHelixFlow": {},
 }
 
 SPECIAL_TYPE_PARTS = (
