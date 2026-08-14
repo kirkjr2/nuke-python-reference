@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-particle-field-render.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-geo-primitives-lights.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["ParticleCylinderFlow", "ParticleInfo", "ParticleBlinkScript", "FieldShapeModify", "SplatRender"]
+NODE_CLASSES = ["GeoCube", "GeoCylinder", "GeoSphere", "GeoDomeLight", "GeoSphereLight"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,13 +35,16 @@ COMMON_MASK_VALUES = {
 }
 
 PARTICLE_COMMON = {"display": "unchanged", "max_age": 1.0, "min_age": 0.0, "pivot_rotate": [0.0, 0.0, 0.0], "pivot_translate": [0.0, 0.0, 0.0], "probability": 1.0, "region": "none", "region_invert": False, "render_mode": "unchanged", "rot_order": "ZXY", "rotate": [0.0, 0.0, 0.0], "scaling": [1.0, 1.0, 1.0], "seed": 0.0, "selectable": True, "skew": [0.0, 0.0, 0.0], "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"}
+GEO_COMMON = {"create_missing_parents": True, "geosnap_operation": "Geo to", "geosnap_rotate": False, "geosnap_scale": False, "geosnap_translate": True, "parentPrimType": "Xform", "pivot_rotate": [0.0, 0.0, 0.0], "pivot_translate": [0.0, 0.0, 0.0], "prim_path": "{nodename}", "rot_order": "ZXY", "rotate": [0.0, 0.0, 0.0], "scaling": [1.0, 1.0, 1.0], "selectable": True, "skew": [0.0, 0.0, 0.0], "translate": [0.0, 0.0, 0.0], "uniform_scale": 1.0, "useMatrix": False, "xform_order": "SRT"}
+MESH_COMMON = dict(GEO_COMMON, columns=30.0, display_color=[0.18, 0.18, 0.18], display_opacity=1.0, double_sided=True, interpolate_boundary="none", kind="subcomponent", mesh_type="separateVertices\tseparate vertices", normals="faceVarying\tface-vertex", purpose="default", rows=30.0, subdivision_scheme="none", visibility="inherited")
+LIGHT_COMMON = dict(GEO_COMMON, display="wireframe", editable=True, inject_mask=False, inputs_color=[1.0, 1.0, 1.0], inputs_colorTemperature=6500.0, inputs_diffuse=1.0, inputs_enableColorTemperature=False, inputs_exposure=0.0, inputs_intensity=1.0, inputs_normalize=False, inputs_specular=1.0, locator_fill_color=[0.8, 0.8, 0.8], locator_fixed_size=False, locator_use_light_for_fill_color=True, mode="Create", xform_op_order="Prepend")
 
 TEST_VALUES = {
-    "ParticleCylinderFlow": {"showGeometry": True},
-    "ParticleInfo": {"axisScale": 1.0, "display": "unchanged", "firstParticle": 0.0, "maxParticles": 1000.0, "render_mode": "unchanged", "selectable": True, "showAge": True, "showColor": True, "showPosition": True, "showVelocity": True, "show_count": True},
-    "ParticleBlinkScript": dict(PARTICLE_COMMON, protectKernelWhenPublishing=False),
-    "FieldShapeModify": {"angle": 15.0, "elongate": [0.0, 0.0, 0.0], "limit": [1.0, 1.0, 1.0], "operation": "round\tRound", "preview_bounds": False, "preview_detail": 1.0, "preview_offset": 0.0, "preview_on": False, "preview_opacity": 0.5, "preview_scale": 1.0, "radius": 0.0, "repeat": [0.5, 0.5, 0.5], "rounding": 0.0, "thickness": 0.1, "x_axis": True, "y_axis": False, "z_axis": False},
-    "SplatRender": {"alpha_threshold_for_depth": 0.5, "camera_motion_blur": True, "channels": "rgba", "deep_alpha_threshold": 0.5, "depth_channels": "depth.Z", "motion_samples": 0.0, "object_motion_blur": True, "one_over_z": True, "scene_time_offset": 0.0, "shutter": 0.5, "shutter_bias": 0.0, "shuttercustomoffset": 0.0, "shutteroffset": "start"},
+    "GeoCube": dict(MESH_COMMON, columns=10.0, cube=[-0.5, -0.5, -0.5, 0.5, 0.5, 0.5], normals="none\tnone", rows=10.0),
+    "GeoCylinder": dict(MESH_COMMON, axis_scales=[1.0, 1.0, 1.0], close_bottom=True, close_top=True, height=2.0, radius=1.0, theta_center=180.0, theta_extent=360.0, u_extent=360.0, uv_bottom=True, uv_top=True),
+    "GeoSphere": dict(MESH_COMMON, axis_scales=[1.0, 1.0, 1.0], close_bottom=True, close_top=True, radius=1.0, theta_center=180.0, theta_extent=360.0, u_extent=360.0, v_extent=180.0, y_center=90.0, y_extent=180.0),
+    "GeoDomeLight": dict(LIGHT_COMMON, guideRadius=100000.0, slr_blur_size=[0.0, 0.0], slr_mirror_image_x=0.0, slr_mirror_image_y=0.0),
+    "GeoSphereLight": dict(LIGHT_COMMON, inputs_radius=0.5, slr_castShadow=True, slr_falloff_type="No Falloff", treatAsPoint=False),
 }
 
 SPECIAL_TYPE_PARTS = (
