@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-lens-advanced.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-temporal-depth-grain.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["LensDistortion2", "SphericalTransform2", "C_GlobalWarp2_1", "C_Blur2_1", "Deblur"]
+NODE_CLASSES = ["LevelSet", "TemporalMedian", "FrameBlend", "Grain2", "ZSlice"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "LensDistortion2": {"anamorphicScale": [1.0, 1.0], "anamorphicSqueeze": 1.0, "anamorphicTwist": 0.0, "angleThreshold": 8.0, "bboxBackupSet": False, "bboxType": "Auto", "beamSplitterBending": 0.0, "beamSplitterDirection": 0.0, "centre": [960.0, 540.0], "detectionFrameSpacing": 5.0, "detectionFrameType": "Current Frame", "detectionThreshold": 100.0, "detectionType": "Grids", "distanceThreshold": 30.0, "distortInFisheyeSpace": True, "distortionExponent": 2.0, "distortionModelDirection": "Forward", "distortionModelPreset": "NukeX Classic", "distortionModelType": "Radial Standard", "distortionScalingType": "Scale To Input Format", "distortionXY": [0.0, 0.0], "enableBeamSplitter": False, "filter": "cubic\t\t\tCubic,Bicubic", "focal": 9.0, "lens": "Spherical", "normalisationType": "Maximum", "output": "STMap", "outputFormatType": "Input", "preview": False, "projection": "None (Rectilinear)", "sensorSize": [36.0, 24.0], "useFisheye": True, "useGPUIfAvailable": True},
-    "SphericalTransform2": {"KInput": [0.0, 0.0, 0.0], "KOutput": [0.0, 0.0, 0.0], "adjustBBox": 0.0, "angleInput": 0.0, "angleOutput": 0.0, "convergence": 10.0, "cubemapPackingInput": "LL-Cross", "cubemapPackingOutput": "LL-Cross", "fisheyeTypeInput": "Equidistant", "fisheyeTypeOutput": "Equidistant", "focalInput": 16.0, "focalOutput": 16.0, "formatMode": "To Scale", "fromInput": [0.0, 0.0], "fromOutput": [0.0, 0.0], "metaDataOperation": "Ignore", "modeInput": "Pan-Tilt-Roll", "modeOutput": "Pan-Tilt-Roll", "octant": "-Z", "packingTypeInput": "Faces", "packingTypeOutput": "Image", "panTiltRollInput": [0.0, 0.0, 0.0], "panTiltRollOutput": [0.0, 0.0, 0.0], "positionInput": [0.0, 0.0, 0.0], "positionOutput": [0.0, 0.0, 0.0], "projTypeInput": "Latlong", "projTypeOutput": "Latlong", "resampleType": "cubic\t\t\tCubic,Bicubic", "rotationAnglesInput": [0.0, 0.0, 0.0], "rotationAnglesOutput": [0.0, 0.0, 0.0], "rotationOrderInput": "ZXY", "rotationOrderOutput": "ZXY", "scale": 1.0, "sensorInput": [36.0, 24.0], "sensorOutput": [36.0, 24.0], "shiftInput": [0.0, 0.0], "shiftOutput": [0.0, 0.0], "toInput": [0.0, 0.0], "toOutput": [0.0, 0.0], "useGPUIfAvailable": True, "width": 2048.0},
-    "C_GlobalWarp2_1": {"addPoint": False, "analysisKeyframe": 1.0, "autoConvergenceDepth": True, "blendSuppression": 0.125, "blendType": "Alpha", "cameraOutputMode": "Unwarped", "cameraProjectionType": "Default (pass-through)", "constraintColour": [1.0, 1.0, 1.0], "constraintEndFrame": 10.0, "constraintStartFrame": 1.0, "constraintStrength": 4.0, "convergenceDepth": 10.0, "expandBlend": True, "focalLength": 16.0, "gridSize": 10.0, "kernelType": "Linear", "keyStep": 30.0, "manualOverride": False, "matchStrength": 2.0, "outputMode": "Warped", "projectionType": "Spherical", "rectilinearProjection": False, "resampleType": "Cubic", "rotationAngles": [0.0, 0.0, 0.0], "rotationOrder": "ZXY", "showCameras": True},
-    "C_Blur2_1": {"accuracy": 1.0, "bilinear": False, "channels": "rgb", "crop": True, "factor": 1.0, "filter": "box\t\t\tBox", "fringe": False, "inject": False, "invertMask": False, "maskChannelInput": "none", "mix": 1.0, "projection": "latlong", "quality": 15.0, "repeatEdgePixels": True, "size": 1.0, "useGPUIfAvailable": True},
-    "Deblur": {"fringe": False, "halfPrecision": False, "inject": False, "invert_mask": False, "isFirstTime": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0, "tileOverlap": 64.0, "tileSize": "None", "useGPUIfAvailable": True},
+    "LevelSet": {"channel": "alpha", "create_matte": False, "extrapolated": "none", "gradient": "motion", "gradient_extrapolate": False, "matte_limit": 0.0, "output": "alpha", "threshold": 0.5},
+    "TemporalMedian": {"channels": "all", "core": [0.05, 0.05, 0.05, 0.05], "fringe": False, "inject": False, "invert_mask": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0},
+    "FrameBlend": {"blendmask": "none", "channels": "all", "endframe": 10.0, "fringe": False, "inject": False, "inputmask": "none", "invert_mask": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0, "numframes": 5.0, "startframe": 1.0, "userange": True},
+    "Grain2": {"black": [0.0, 0.0, 0.0], "blue_i": 0.6, "blue_m": 0.85, "blue_size": [2.5, 2.5], "green_i": 0.6, "green_m": 0.46, "green_size": [2.9, 2.9], "maskgrain": True, "minimum": [0.0, 0.0, 0.0], "red_i": 0.6, "red_m": 0.416, "red_size": [3.3, 3.3], "seed": 134.0},
+    "ZSlice": {"Zchan": "none", "center": 0.5, "channels": "all", "dof": 0.1, "fringe": False, "inject": False, "invert_mask": False, "maskChannelInput": "none", "maskChannelMask": "alpha", "maskFromFlag": False, "mix": 1.0},
 }
 
 SPECIAL_TYPE_PARTS = (
