@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-particle-geometry.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-structural-special.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["ParticleToGeo", "ParticleShockWave", "ParticleGrid", "ParticleFlock", "ParticleHelixFlow"]
+NODE_CLASSES = ["Shuffle2", "ModifyMetaData", "Input", "Output", "StickyNote"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "ParticleToGeo": {"align": "velocity", "display": "solid", "frame": 1.0, "render_mode": "solid", "selectable": True, "suppress_move": False, "use_frame": False},
-    "ParticleShockWave": {"showGeometry": False},
-    "ParticleGrid": {"showGeometry": True},
-    "ParticleFlock": {},
-    "ParticleHelixFlow": {},
+    "Shuffle2": {},
+    "ModifyMetaData": {},
+    "Input": {},
+    "Output": {},
+    "StickyNote": {},
 }
 
 SPECIAL_TYPE_PARTS = (
