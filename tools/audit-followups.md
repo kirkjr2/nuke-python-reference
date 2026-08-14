@@ -21,3 +21,10 @@ batches should skip the listed controls and continue processing other nodes.
 
 - `isFirstTime` — Nuke 17.0v3 reports `read only variable`.
 - Follow-up: mark it as internal/read-only.
+
+## Histogram
+
+- `in` — `Range_Knob.setValue()` rejected a two-value sequence and reports that
+  it expects three floats.
+- Follow-up: inspect the three components in Nuke and rerun with an explicit
+  three-value test before publishing a writable example.

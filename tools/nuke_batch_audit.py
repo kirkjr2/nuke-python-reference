@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-structural-special.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-surface-procedural.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["Shuffle2", "ModifyMetaData", "Input", "Output", "StickyNote"]
+NODE_CLASSES = ["ReflectiveSurface", "Displacement", "PoissonMesh", "ProcGeo", "Inpaint2"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "Shuffle2": {},
-    "ModifyMetaData": {},
-    "Input": {},
-    "Output": {},
-    "StickyNote": {},
+    "ReflectiveSurface": {"camera_visibility": True, "dielectric_priority": 0.0, "diffuse_visibility": True, "fresnel_bias": 0.5, "fresnel_enable": True, "index_of_refraction": 1.57, "reflection_percentage": 1.0, "reflection_tint": [1.0, 1.0, 1.0], "shadow_visibility": True, "side_visibility": "both-sides", "sided_mode": "prim-attrib", "specular_visibility": True, "transmission_tint": [1.0, 1.0, 1.0], "transmission_visibility": True},
+    "Displacement": {"build_normals": True, "displacement_channel": "luminance", "displacement_displace_threshold": 0.01, "displacement_edge_length": 20.0, "displacement_edge_threshold": 0.01, "displacement_max_tessellation": 4.0, "displacement_mode": "screen", "displacement_normal_threshold": 0.9, "filter": "cubic\t\t\tCubic,Bicubic", "filter_size": [5.0, 5.0], "normal_expansion": "none", "scale": 0.1},
+    "PoissonMesh": {"confidence": False, "depth": 8.0, "display": "solid", "isoDivide": 8.0, "render_mode": "solid", "samplesPerNode": 1.0, "scale": 1.25, "selectable": True, "solverDivide": 8.0, "useFiltering": True, "useSelection": True},
+    "ProcGeo": {"Gain": 0.5, "Lacunarity": 2.5, "Octaves": 5.0, "Speed": 1.1, "display": "solid", "mode": "Turbulence", "orient": "Z", "render_mode": "solid", "selectable": True, "x_offset": 0.0, "x_size": 4.0, "y_offset": 0.0, "y_size": 4.0},
+    "Inpaint2": {"LABColourSpace": False, "center": [960.0, 540.0], "channels": "rgb", "detailAmount": 0.0, "detailSource": "Source", "fillRegion": "Source Alpha", "invert_matrix": False, "rotate": 0.0, "scale": [1.0, 1.0], "smoothness": 1.0, "stretchAmount": 0.0, "stretchDirection": 0.0, "translate": [0.0, 0.0], "useGPUIfAvailable": True},
 }
 
 SPECIAL_TYPE_PARTS = (
