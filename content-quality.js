@@ -536,16 +536,10 @@ function applyContentQuality() {
     const nodeClass = contentQualityCurrentNode();
     const entry = CONTENT_QUALITY[nodeClass];
 
-    page.querySelectorAll(".editorial-quality, .editorial-overview, .editorial-note").forEach(el => el.remove());
+    page.querySelectorAll(".editorial-overview, .editorial-note").forEach(el => el.remove());
     if (!nodeClass || !page.querySelector("h1")) return;
 
     const classLine = page.querySelector(".class-line");
-    if (classLine) {
-      const status = document.createElement("div");
-      status.className = `editorial-quality editorial-quality-${entry?.tier || "verified"}`;
-      status.textContent = entry?.label || "Nuke 17.0v3 argument audit complete";
-      classLine.insertAdjacentElement("afterend", status);
-    }
 
     page.querySelectorAll(".argument[data-argument-name]").forEach(row => {
       const audit = contentQualityArgumentAudit(nodeClass, row.dataset.argumentName, row.dataset.knobType);

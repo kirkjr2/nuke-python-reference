@@ -1,28 +1,3 @@
-.editorial-quality {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 4px 7px;
-  border: 1px solid var(--line);
-  font-size: 11px;
-  color: var(--muted);
-  background: var(--panel);
-}
-
-.editorial-quality-documented {
-  border-color: #5b6d52;
-}
-
-.editorial-quality-verified {
-  color: #b8f7cf;
-  background: rgba(38, 145, 82, 0.16);
-  border-color: rgba(70, 190, 118, 0.45);
-}
-
-.editorial-quality-needs-research {
-  border-color: var(--accent-dim);
-  color: var(--accent);
-}
-
 .editorial-overview {
   max-width: 1050px;
   margin-top: 20px;
