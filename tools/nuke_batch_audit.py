@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-light-view.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-material-project.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["HueKeyer", "ReLight", "SideBySide", "Wireframe", "AmbientOcclusion"]
+NODE_CLASSES = ["FillShader", "Specular", "WireframeShader", "Project3DShader", "Project3D2"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,11 +35,11 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "HueKeyer": {"channels": "rgb", "invert": False, "output": "alpha"},
-    "ReLight": {"ambient": [0.05, 0.05, 0.05], "normal": "none", "position": "none", "use_alpha": True},
-    "SideBySide": {"vertical": False},
-    "Wireframe": {"channels": "rgba", "line_color": [1.0, 0.2, 0.1, 1.0], "line_width": 1.0, "operation": "over"},
-    "AmbientOcclusion": {"falloff": 0.5, "far": 10.0, "near": 0.1, "samples": 16.0, "spread": 1.0},
+    "FillShader": {"channels": "rgba", "color": [0.2, 0.4, 0.8, 1.0]},
+    "Specular": {"channels": "rgba", "max_shininess": 20.0, "min_shininess": 5.0, "shininess_channel": "luminance", "white": [0.18, 0.18, 0.18]},
+    "WireframeShader": {"channels": "rgba", "face_edges": True, "line_color": [1.0, 0.2, 0.1, 1.0], "line_width": 1.0, "operation": "over"},
+    "Project3DShader": {"crop": True, "far_clip_enable": True, "near_clip_enable": True, "occlusion_mode": "self", "project_on": "both"},
+    "Project3D2": {"crop": True, "occlusion_mode": "self", "project_on": "both"},
 }
 
 SPECIAL_TYPE_PARTS = (
