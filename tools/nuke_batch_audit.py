@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-livegroup-corrected.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-remaining-tracker-corrected.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["LiveGroup"]
+NODE_CLASSES = ["CameraTracker", "GridWarpTracker"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -40,15 +40,34 @@ MESH_COMMON = dict(GEO_COMMON, columns=30.0, display_color=[0.18, 0.18, 0.18], d
 LIGHT_COMMON = dict(GEO_COMMON, display="wireframe", editable=True, inject_mask=False, inputs_color=[1.0, 1.0, 1.0], inputs_colorTemperature=6500.0, inputs_diffuse=1.0, inputs_enableColorTemperature=False, inputs_exposure=0.0, inputs_intensity=1.0, inputs_normalize=False, inputs_specular=1.0, locator_fill_color=[0.8, 0.8, 0.8], locator_fixed_size=False, locator_use_light_for_fill_color=True, mode="Create", xform_op_order="Prepend")
 
 TEST_VALUES = {
-    "LiveGroup": {"disable_group_view": False, "group_view_position": "top-left", "on_error": "error", "output": "", "reading": False, "show_group_view": False, "shownWarningFile": "", "useOutput": False, "version": 0.0},
+    "CameraTracker": {},
+    "GridWarpTracker": {},
 }
 
 SPECIAL_TYPE_PARTS = (
     "Curve", "List", "Noodle", "PathExpression", "Roto", "Spline",
     "Table", "Transform2d", "IArray", "Format", "Tab", "FrameExtent",
-    "TimeKnob", "Keyer", "Link", "Text", "ViewPair", "MetaData",
+    "TimeKnob", "Keyer", "Link", "Text", "ViewPair", "MetaData", "File",
+    "Python", "Custom", "Interact", "Serialize", "Tracker", "Data", "Path",
+    "Menu", "Button", "Script", "SceneGraph", "GeoSelect", "Axis", "Font",
+    "FreeType",
+    "Pulldown",
 )
 ACTION_TYPES = {"Button_Knob", "PyScript_Knob", "Script_Knob"}
+ACTION_NAME_PARTS = (
+    "analy", "calculate", "create", "execute", "export", "generate",
+    "import", "learn", "reload", "render", "solve", "track", "train",
+    "update",
+)
+VERIFY_CURRENT_VALUES = True
+READ_ONLY_NAMES = {"isFirstTime", "showValidation"}
+READ_ONLY_BY_NODE = {
+    "Deblur": {"tileOverlap", "tileSize"},
+    "MotionBlur": {"computedVectorFlag", "flickerCompensation", "maskFlag", "matteChannel", "motionEstimation", "resampleType", "shutterSamples", "shutterTime", "smoothnessLocal", "strengthReg", "vectorDetailLocal", "vectorDetailReg", "vectorSourceFlag", "warpSourceFlag", "weightBlue", "weightGreen", "weightRed"},
+}
+READ_ONLY_SUFFIXES_BY_NODE = {
+    "GridWarpTracker": ("_isInFromTree", "_isSelected", "_linked", "_previous", "_registered", "_relative"),
+}
 
 
 def audit_argument(node, node_class, name, argument):
@@ -63,11 +82,22 @@ def audit_argument(node, node_class, name, argument):
         return dict(base, status="skipped-action")
     if any(part in knob_type for part in SPECIAL_TYPE_PARTS):
         return dict(base, status="skipped-special", serialized=knob.toScript())
+    if (name in READ_ONLY_NAMES or name in READ_ONLY_BY_NODE.get(node_class, set())
+            or name.endswith(READ_ONLY_SUFFIXES_BY_NODE.get(node_class, ()) )):
+        return dict(base, status="skipped-read-only", serialized=knob.toScript())
+    if any(part in name.lower() for part in ACTION_NAME_PARTS):
+        return dict(base, status="skipped-action-name")
 
     node_tests = TEST_VALUES.get(node_class, {})
-    if name not in node_tests:
+    if name in node_tests:
+        value = node_tests[name]
+    elif VERIFY_CURRENT_VALUES:
+        try:
+            value = knob.value()
+        except Exception as error:
+            return dict(base, status="failed", error="current value unreadable: {}".format(error))
+    else:
         return dict(base, status="inspected-only")
-    value = node_tests[name]
 
     try:
         knob.setValue(value)

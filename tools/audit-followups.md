@@ -41,3 +41,33 @@ batches should skip the listed controls and continue processing other nodes.
 - `modified` and `published` — Nuke 17.0v3 reports `read only variable`.
 - Follow-up: present both as internal state indicators, not writable Python
   arguments.
+
+## BigCat
+
+- `isFirstTime` — Nuke 17.0v3 reports `read only variable`.
+- Follow-up: mark it as internal/read-only.
+
+## Text2
+
+- `font` — `Font_Knob.setValue()` requires a component/index argument and does
+  not support the ordinary one-value setter.
+- Follow-up: document it as a compound/special scripting control.
+
+## CopyCat
+
+- `showValidation` — Nuke 17.0v3 reports `read only variable`.
+- Follow-up: mark it as internal/read-only.
+
+## CameraTracker
+
+- `addReferenceFramesMenu` and `deleteReferenceFramesMenu` are
+  `Pulldown_Knob` controls whose values are command tuples, not ordinary scalar
+  arguments.
+- Follow-up: classify pulldown menus as special UI/action controls.
+
+## GridWarpTracker
+
+- The internal `from_*` and `to_*` state fields ending in `_isInFromTree`,
+  `_isSelected`, `_linked`, `_previous`, `_registered`, and `_relative` are
+  read-only.
+- Follow-up: omit these implementation-state controls from writable examples.
