@@ -14,11 +14,11 @@ import nuke
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data", "nodes")
-OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-key-utility.json")
+OUTPUT_PATH = os.path.join(REPO_ROOT, "audit-results-filter-analysis.json")
 
 # Deliberately empty. Add only a small, reviewed batch before running. Never
 # point this tool at every class: some nodes execute callbacks during creation.
-NODE_CLASSES = ["AddMix", "Keyer", "DropShadow", "NoOp", "Dot"]
+NODE_CLASSES = ["EdgeDetectWrapper", "Laplacian", "DegrainSimple", "DegrainBlue", "Bilateral2"]
 
 # Values must be reviewed per node and knob. Scanner values are reference data,
 # not a safe replay script.
@@ -35,10 +35,26 @@ COMMON_MASK_VALUES = {
 }
 
 TEST_VALUES = {
-    "AddMix": {"A": "rgba", "B": "rgba", "mix": 0.75, "nonlinear": False, "output": "rgba", "premultiplied": False},
-    "Keyer": {"combine": "replace", "input": "rgb", "invert": False, "operation": "luminance key", "output": "alpha"},
-    "DropShadow": {"color": 0.0, "dropshadow_angle": 225.0, "dropshadow_distance": 12.0, "enable_dropshadow_effect": True, "inherit_input_color": False, "opacity": 0.6, "size": 0.0, "softness": 8.0},
-    "NoOp": {}, "Dot": {},
+    "EdgeDetectWrapper": {
+        "blurquality": 15.0, "blursize": [0.0, 0.0], "channels": "rgb",
+        "edgedetector": "sobel", "erodesize": 0.0,
+        "maskedgedetect": "none", "output": "alpha", "threshold": 0.0,
+    },
+    "Laplacian": dict(
+        COMMON_MASK_VALUES, channels="rgb", crop=True, filter="gaussian",
+        quality=15.0, size=[3.0, 3.0],
+    ),
+    "DegrainSimple": dict(
+        COMMON_MASK_VALUES, bVal=5.0, channels="rgb", gVal=2.0, rVal=2.0,
+    ),
+    "DegrainBlue": {"size": 8.0},
+    "Bilateral2": {
+        "channels": "rgb", "colorSigma": 0.4, "filter": "gaussian",
+        "fringe": False, "guide": "rgb", "inject": False,
+        "invertMask": False, "maskChannelInput": "none", "mix": 1.0,
+        "positionalSigma": 0.4, "size": [3.0, 3.0],
+        "useGPUIfAvailable": False,
+    },
 }
 
 SPECIAL_TYPE_PARTS = (
